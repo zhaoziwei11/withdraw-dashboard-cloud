@@ -108,3 +108,16 @@ main { padding: 24px; max-width: 1100px; margin: 0 auto; }
 .config-status { font-size: 13px; }
 .config-status.ok { color: #16a34a; }
 .config-status.err { color: #dc2626; }
+
+/* ===== 锁定按钮 + 访问口令遮罩 ===== */
+.lock-btn { background: transparent; border: 1px solid var(--line); border-radius: 6px; padding: 4px 8px; cursor: pointer; font-size: 13px; }
+.lock-btn:hover { background: var(--brand-soft); }
+.gate { position: fixed; inset: 0; background: rgba(245,247,250,.97); display: flex; align-items: center; justify-content: center; z-index: 9999; }
+.gate-box { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 32px 28px; width: 320px; text-align: center; box-shadow: 0 8px 30px rgba(0,0,0,.08); }
+.gate-box h2 { margin: 0 0 4px; font-size: 20px; }
+.gate-box .meta { margin: 0; }
+.gate-box input { width: 100%; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; font-size: 15px; margin: 14px 0; box-sizing: border-box; }
+.gate-box .btn { width: 100%; }
+.gate-err { color: #dc2626; font-size: 13px; min-height: 18px; margin: 8px 0 0; }
+.shake { animation: shake .3s; }
+@keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-8px)} 75%{transform:translateX(8px)} }

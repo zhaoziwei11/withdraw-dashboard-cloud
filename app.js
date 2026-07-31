@@ -87,6 +87,48 @@ const DATA = {
 const SB_URL = "https://kbelxtwmqfbkrbrnetzzm.supabase.co";
 const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtiZWx4dHdtcWZia3JibmV0enptIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUyMjg2MTIsImV4cCI6MjEwMDgwNDYxMn0.VWHOrivhqd3NlFBGAXakdGWKbGhSnZ79GpLVYPZXDq0";
 
+// ========== 访问口令（前端密码门） ==========
+// 纯静态站点无法真正登录，这是"挡住随手拿到链接的人"的轻量措施。
+// 👉 改成你自己好记的口令即可（默认 ziwei888）。
+const ACCESS_PASSWORD = "ziwei888";
+
+async function hashPwd(str) {
+  if (window.crypto && crypto.subtle) {
+    const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+  }
+  return str; // 本地 file:// 预览时回退：直接比对明文（仅开发用）
+}
+
+async function verifyGate() {
+  const input = document.getElementById("gatePwd").value.trim();
+  if (!input) return;
+  const ok = (await hashPwd(input)) === (await hashPwd(ACCESS_PASSWORD));
+  if (ok) {
+    sessionStorage.setItem("wb_unlocked", "1");
+    document.getElementById("gate").style.display = "none";
+    document.getElementById("app").style.display = "";
+    startApp();
+  } else {
+    const err = document.getElementById("gateErr");
+    err.textContent = "口令错误，请重试";
+    const box = document.querySelector(".gate-box");
+    box.classList.add("shake");
+    setTimeout(() => box.classList.remove("shake"), 300);
+    document.getElementById("gatePwd").value = "";
+  }
+}
+
+function lockNow() {
+  sessionStorage.removeItem("wb_unlocked");
+  document.getElementById("app").style.display = "none";
+  const g = document.getElementById("gate");
+  g.style.display = "flex";
+  document.getElementById("gatePwd").value = "";
+  document.getElementById("gateErr").textContent = "";
+  document.getElementById("gatePwd").focus();
+}
+
 function normalizeSettings(s) {
   s = s || {};
   s.pending = s.pending || { time: "09:00", data_range: "T-1", wechat_push: false };
@@ -124,6 +166,24 @@ async function loadSettings() {
     console.warn("云端配置读取失败，使用内置默认：", e);
   }
   return "default";
+}
+
+// 读取云端报表数据（最新一条），覆盖内置快照；失败则保留内置
+async function loadReport() {
+  try {
+    const res = await sbApi("/rest/v1/withdraw_reports?select=*&order=created_at.desc&limit=1");
+    const rows = await res.json();
+    if (rows && rows.length && rows[0].payload) {
+      const p = rows[0].payload;
+      for (const k of ["report", "history", "predict", "coefficient", "forecast_diff", "status"]) {
+        if (p[k] !== undefined) DATA[k] = p[k];
+      }
+      return rows[0].created_at || "cloud";
+    }
+  } catch (e) {
+    console.warn("云端报表读取失败，使用内置快照：", e);
+  }
+  return null;
 }
 
 async function upsertSettings(cfg) {
@@ -406,21 +466,46 @@ $$(".tab").forEach(btn => {
 });
 
 // ========== 初始化 ==========
-document.addEventListener("DOMContentLoaded", async () => {
-  try {
-    const src = await loadSettings();
-    renderReport();
-    renderHistory();
-    renderPredict();
-    renderCoefficient();
-    renderForecastDiff();
-    renderConfig();
-    renderSettings();
-    $("#genTime").textContent = "快照时间: " + DATA.report.generated_at +
-      (src === "cloud" ? " · 配置已从云端加载" : " · 配置为内置默认");
-    $("#status").className = "status ok";
-  } catch (e) {
-    $("#status").textContent = "渲染错误: " + e.message;
-    $("#status").className = "status err";
+function startApp() {
+  (async () => {
+    try {
+      const src = await loadSettings();
+      const src2 = await loadReport();
+      renderReport();
+      renderHistory();
+      renderPredict();
+      renderCoefficient();
+      renderForecastDiff();
+      renderConfig();
+      renderSettings();
+      const cfgTxt = src === "cloud" ? "配置已从云端加载" : "配置为内置默认";
+      const repTxt = src2 ? ("报表已从云端加载(" + new Date(src2).toLocaleString("zh-CN") + ")") : "报表为内置快照";
+      $("#genTime").textContent = "快照时间: " + (DATA.report.generated_at || "?") + " · " + cfgTxt + " · " + repTxt;
+      $("#status").className = "status ok";
+    } catch (e) {
+      $("#status").textContent = "渲染错误: " + e.message;
+      $("#status").className = "status err";
+    }
+  })();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  // 口令门接线
+  document.getElementById("gateBtn").addEventListener("click", verifyGate);
+  document.getElementById("gatePwd").addEventListener("keydown", (e) => {
+    if (e.key === "Enter") verifyGate();
+  });
+  const lb = document.getElementById("lockBtn");
+  if (lb) lb.addEventListener("click", lockNow);
+
+  // 已在本会话解锁过（刷新/切 tab 不重复弹），否则弹出口令框
+  if (sessionStorage.getItem("wb_unlocked") === "1") {
+    document.getElementById("gate").style.display = "none";
+    document.getElementById("app").style.display = "";
+    startApp();
+  } else {
+    document.getElementById("gate").style.display = "flex";
+    document.getElementById("app").style.display = "none";
+    document.getElementById("gatePwd").focus();
   }
 });
