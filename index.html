@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>承运提现日报 · 云端看板</title>
+<link rel="stylesheet" href="styles.css" />
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <h1>承运提现日报 · 云端看板</h1>
+    <p class="sub">在家 / 公司任意浏览器可改、可看（数据由本机抓取后同步）</p>
+  </div>
+  <span id="genTime" class="muted"></span>
+</header>
+
+<nav class="tabs">
+  <button class="tab active" data-tab="report">今日日报</button>
+  <button class="tab" data-tab="history">历史记录</button>
+  <button class="tab" data-tab="predict">预测</button>
+  <button class="tab" data-tab="coefficient">系数</button>
+  <button class="tab" data-tab="forecast">预测 vs 真实</button>
+</nav>
+
+<main>
+  <section id="tab-report" class="panel active"></section>
+  <section id="tab-history" class="panel"></section>
+  <section id="tab-predict" class="panel"></section>
+  <section id="tab-coefficient" class="panel"></section>
+  <section id="tab-forecast" class="panel"></section>
+</main>
+
+<div id="status" class="status">加载中…</div>
+
+<script src="app.js"></script>
+</body>
+</html>
