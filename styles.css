@@ -44,3 +44,67 @@ main { padding: 24px; max-width: 1100px; margin: 0 auto; }
 .status { padding: 12px 24px; color: var(--muted); font-size: 13px; }
 .panel.active :where(h1,h2,h3) { color: var(--ink); }
 .panel.active table { margin: 12px 0; }
+
+/* ===== 卡片与文本 ===== */
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+  padding: 20px 24px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,.04);
+}
+.card h2 { margin: 0 0 12px; font-size: 18px; }
+.card h3 { margin: 20px 0 8px; font-size: 15px; color: var(--brand); }
+.card h4 { margin: 14px 0 6px; font-size: 14px; }
+.card p { margin: 6px 0; line-height: 1.6; }
+.meta { color: var(--muted); font-size: 13px; }
+.note { color: var(--muted); font-size: 12px; background: #fffbeb; border: 1px solid #fde68a; border-radius: 6px; padding: 8px 10px; }
+.footnote { color: var(--muted); font-size: 12px; font-style: italic; }
+.small { font-size: 12px; color: var(--muted); }
+
+/* ===== 大数字 ===== */
+.big-num { display: flex; align-items: baseline; gap: 12px; margin: 10px 0; }
+.big-num .amount { font-size: 32px; font-weight: 700; color: var(--brand); }
+.big-num .count { font-size: 16px; color: var(--muted); }
+
+/* ===== 数据表 ===== */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.data-table th, .data-table td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap; }
+.data-table th { background: var(--brand-soft); color: var(--brand); font-weight: 600; position: sticky; top: 0; }
+.data-table tr:hover { background: #f9fafb; }
+.active-row { background: var(--brand-soft); }
+.scroll-x { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; }
+.neg { color: #dc2626; font-weight: 600; }
+.pos { color: #16a34a; font-weight: 600; }
+
+/* ===== 网格统计 ===== */
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 10px; }
+.stat-box { background: #f8fafc; border: 1px solid var(--line); border-radius: 8px; padding: 12px; }
+.stat-box label { display: block; color: var(--muted); font-size: 12px; margin-bottom: 4px; }
+.stat-box b { font-size: 16px; }
+
+/* ===== 配置条 ===== */
+.settings-bar { background: var(--brand-soft); border: 1px solid #bfdbfe; border-radius: 8px; padding: 10px 14px; font-size: 13px; line-height: 1.8; }
+.settings-bar a { color: var(--brand); text-decoration: none; font-weight: 600; }
+
+/* ===== 状态 ===== */
+.status.ok { color: #16a34a; }
+.status.err { color: #dc2626; background: #fef2f2; border-radius: 8px; }
+
+/* ===== 配置表单 ===== */
+.form-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin: 10px 0; }
+.form-row.col { flex-direction: column; align-items: stretch; }
+.form-row label { font-size: 14px; display: inline-flex; align-items: center; gap: 6px; }
+.form-row input[type="time"], .form-row select {
+  padding: 6px 10px; border: 1px solid var(--line); border-radius: 6px; font-size: 14px;
+}
+.form-row textarea {
+  width: 100%; font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 13px; padding: 10px; border: 1px solid var(--line); border-radius: 8px; resize: vertical;
+}
+.form-actions { display: flex; align-items: center; gap: 14px; margin-top: 16px; }
+.btn {
+  background: var(--brand); color: #fff; border: none; border-radius: 8px;
+  padding: 10px 18px; font-size: 14px; cursor: pointer; font-weight: 600;
+}
+.btn:hover { background: #1d4ed8; }
+.config-status { font-size: 13px; }
+.config-status.ok { color: #16a34a; }
+.config-status.err { color: #dc2626; }

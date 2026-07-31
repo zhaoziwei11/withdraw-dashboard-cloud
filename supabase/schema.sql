@@ -25,3 +25,32 @@ drop policy if exists "anon insert withdraw_reports" on public.withdraw_reports;
 create policy "anon insert withdraw_reports"
   on public.withdraw_reports for insert
   with check (true);
+
+-- ============================================================
+-- 在线可编辑配置表：withdraw_settings（单行，id 固定为 1）
+-- 网页「配置」标签页读取 / 保存此表，家/公司同步。
+-- ============================================================
+create table if not exists public.withdraw_settings (
+  id int primary key default 1,
+  payload jsonb not null,
+  updated_at timestamptz not null default now()
+);
+
+alter table public.withdraw_settings enable row level security;
+
+-- 看板为公开网页，允许匿名读取配置
+drop policy if exists "public read withdraw_settings" on public.withdraw_settings;
+create policy "public read withdraw_settings"
+  on public.withdraw_settings for select
+  using (true);
+
+-- 允许匿名更新 / 插入（公开网页可保存配置；内部使用）
+drop policy if exists "anon write withdraw_settings" on public.withdraw_settings;
+create policy "anon write withdraw_settings"
+  on public.withdraw_settings for insert
+  with check (true);
+drop policy if exists "anon update withdraw_settings" on public.withdraw_settings;
+create policy "anon update withdraw_settings"
+  on public.withdraw_settings for update
+  using (true)
+  with check (true);

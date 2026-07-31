@@ -1,6 +1,6 @@
-// 承运提现日报 · 云端看板（数据内置版）
+// 承运提现日报 · 云端看板（数据内置版 + 在线可编辑配置）
 // 数据来源：本机 8766 控制台 2026-07-31 08:55:22 快照
-// 不依赖 Supabase / 本机服务，纯静态可部署
+// 报表数据内置；「配置」标签页可在线修改，保存到云端 Supabase，家/公司同步。
 
 const DATA = {
   report: {
@@ -60,7 +60,18 @@ const DATA = {
   settings: {
     pending: { time: "09:00", data_range: "T-1", wechat_push: false },
     fail: { time: "15:10", data_range: "T-1", wechat_push: false },
-    holiday: { skip: true, accumulate: true, holidays_count: 33 }
+    holiday: {
+      skip: true, accumulate: true, holidays_count: 33,
+      holidays: [
+        "2026-01-01","2026-01-02","2026-01-03",
+        "2026-02-15","2026-02-16","2026-02-17","2026-02-18","2026-02-19","2026-02-20","2026-02-21","2026-02-22","2026-02-23",
+        "2026-04-04","2026-04-05","2026-04-06",
+        "2026-05-01","2026-05-02","2026-05-03","2026-05-04","2026-05-05",
+        "2026-06-19","2026-06-20","2026-06-21",
+        "2026-09-25","2026-09-26","2026-09-27",
+        "2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07"
+      ]
+    }
   },
 
   status: {
@@ -71,6 +82,57 @@ const DATA = {
     fail_status: "未运行"
   }
 };
+
+// ========== Supabase 配置（前端公开 key，安全） ==========
+const SB_URL = "https://kbelxtwmqfbkrbrnetzzm.supabase.co";
+const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtiZWx4dHdtcWZia3JibmV0enptIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUyMjg2MTIsImV4cCI6MjEwMDgwNDYxMn0.VWHOrivhqd3NlFBGAXakdGWKbGhSnZ79GpLVYPZXDq0";
+
+function normalizeSettings(s) {
+  s = s || {};
+  s.pending = s.pending || { time: "09:00", data_range: "T-1", wechat_push: false };
+  s.fail = s.fail || { time: "15:10", data_range: "T-1", wechat_push: false };
+  s.holiday = s.holiday || { skip: true, accumulate: true, holidays: [] };
+  s.holiday.holidays = s.holiday.holidays || [];
+  s.holiday.holidays_count = s.holiday.holidays.length;
+  return s;
+}
+
+async function sbApi(path, opts = {}) {
+  const res = await fetch(SB_URL + path, {
+    ...opts,
+    headers: {
+      ...(opts.headers || {}),
+      apikey: SB_KEY,
+      Authorization: "Bearer " + SB_KEY,
+      "Content-Type": "application/json"
+    }
+  });
+  if (!res.ok) throw new Error("HTTP " + res.status);
+  return res;
+}
+
+// 读取云端配置；失败则保留内置默认
+async function loadSettings() {
+  try {
+    const res = await sbApi("/rest/v1/withdraw_settings?select=payload&id=eq.1");
+    const rows = await res.json();
+    if (rows && rows.length && rows[0].payload) {
+      DATA.settings = normalizeSettings(rows[0].payload);
+      return "cloud";
+    }
+  } catch (e) {
+    console.warn("云端配置读取失败，使用内置默认：", e);
+  }
+  return "default";
+}
+
+async function upsertSettings(cfg) {
+  await sbApi("/rest/v1/withdraw_settings", {
+    method: "POST",
+    headers: { Prefer: "resolution=merge-duplicates" },
+    body: JSON.stringify({ id: 1, payload: cfg, updated_at: new Date().toISOString() })
+  });
+}
 
 // ========== 渲染引擎 ==========
 const $ = (s) => document.querySelector(s);
@@ -92,27 +154,28 @@ function fmtPct(v) {
 
 function renderReport() {
   const r = DATA.report;
+  const s = DATA.settings;
   $("#tab-report").innerHTML = `
     <div class="card">
       <h2>承运提现日报 - ${r.date}</h2>
       <p class="meta">生成时间: ${r.generated_at} | 数据来源: ${r.source} | 统计口径: ${r.stat_range}</p>
 
-      <h3>一、待提现金额(需求一 · ${DATA.settings.pending.time})</h3>
+      <h3>一、待提现金额(需求一 · ${s.pending.time})</h3>
       <div class="big-num">
         <span class="amount">${fmt(r.pending_amount)}</span>
         <span class="count">/ ${r.pending_count} 笔</span>
       </div>
 
-      <h3>二、失败原因 Top 3(${DATA.settings.fail.time})</h3>
+      <h3>二、失败原因 Top 3(${s.fail.time})</h3>
       <p>${r.fail_top3}</p>
 
-      <h3>三、需求二 · 当日待提现与明日提现预测(${DATA.settings.fail.time})</h3>
+      <h3>三、需求二 · 当日待提现与明日提现预测(${s.fail.time})</h3>
       <p>${r.demand2_note}</p>
 
       <h4>系数对比(当前 active vs 上次)</h4>
       <ul>
         <li>当前系数(active=${DATA.coefficient.active}): 系数 <b>${r.coeff_active.coeff}</b> (汇总比值 ${r.coeff_active.pooled}) · 区间 ${r.coeff_active.range}, ${r.coeff_active.days} 天, 样本 ${r.coeff_active.rows} 行</li>
-        <li>区间 0~${DATA.coefficient.sets[DATA.coefficient.active].split_hour || 15}点 合计 <b>${fmt(r.partial_total)}</b> / 0~24点 合计 <b>${fmt(r.full_total)}</b></li>
+        <li>区间 0~15点 合计 <b>${fmt(r.partial_total)}</b> / 0~24点 合计 <b>${fmt(r.full_total)}</b></li>
         <li>上次系数: 系数 (无) (汇总比值 (无))</li>
       </ul>
 
@@ -156,6 +219,7 @@ function renderHistory() {
 
 function renderPredict() {
   const p = DATA.predict;
+  const s = DATA.settings;
   $("#tab-predict").innerHTML = `
     <div class="card">
       <h2>🔮 预测</h2>
@@ -166,7 +230,7 @@ function renderPredict() {
         <div class="stat-box"><label>失败核查</label><b>${DATA.status.fail_status}</b></div>
         <div class="stat-box"><label>今日系数</label><b>${p.coefficient}</b></div>
         <div class="stat-box"><label>系数来源</label><span class="small">${p.coefficient_source}</span></div>
-        <div class="stat-box"><label>预测全天</label><b>${p.predicted_full ? fmt(p.predicted_full) : "待 " + DATA.settings.fail.time + " 生成"}</b></div>
+        <div class="stat-box"><label>预测全天</label><b>${p.predicted_full ? fmt(p.predicted_full) : "待 " + s.fail.time + " 生成"}</b></div>
         <div class="stat-box"><label>0~15点合计</label><b>${fmt(p.total_partial)}</b></div>
         <div class="stat-box"><label>0~24点合计</label><b>${fmt(p.total_full)}</b></div>
       </div>
@@ -226,14 +290,109 @@ function renderForecastDiff() {
 
 function renderSettings() {
   const s = DATA.settings;
-  // Settings shown inline in the status area
   $("#status").innerHTML = `
     <div class="settings-bar">
       <strong>⚙️ 当前配置</strong> &nbsp;|&nbsp;
       待提现推送: 时间 ${s.pending.time} · 范围 ${s.pending.data_range} · 微信推送 ${s.pending.wechat_push ? "开" : "关"} &nbsp;|&nbsp;
       失败核查: 时间 ${s.fail.time} · 范围 ${s.fail.data_range} · 微信推送 ${s.fail.wechat_push ? "开" : "关"} &nbsp;|&nbsp;
       节假日处理: 跳过 ${s.holiday.skip ? "是" : "否"} · 累积 ${s.holiday.accumulate ? "是" : "否"} · 已配置 ${s.holiday.holidays_count} 天
+      &nbsp;|&nbsp; <a href="#" id="gotoConfig">去修改 →</a>
     </div>`;
+  const gc = $("#gotoConfig");
+  if (gc) gc.addEventListener("click", (e) => {
+    e.preventDefault();
+    $$(".tab").forEach(b => b.classList.remove("active"));
+    $$(".panel").forEach(p => p.classList.remove("active"));
+    $('.tab[data-tab="config"]').classList.add("active");
+    $("#tab-config").classList.add("active");
+  });
+}
+
+const RANGE_OPTS = ["T-1", "T-2", "T-3", "T-0"];
+function rangeOptions(v) {
+  return RANGE_OPTS.map(r => `<option value="${r}" ${r === v ? "selected" : ""}>${r}</option>`).join("");
+}
+
+function renderConfig() {
+  const s = DATA.settings;
+  $("#tab-config").innerHTML = `
+    <div class="card">
+      <h2>⚙️ 配置（可在线修改）</h2>
+      <p class="meta">修改后点「保存配置」，写入云端 Supabase，家/公司任意浏览器同步生效。</p>
+
+      <h3>待提现推送</h3>
+      <div class="form-row">
+        <label>推送时间</label><input type="time" id="pending_time" value="${s.pending.time}">
+        <label>数据范围</label><select id="pending_range">${rangeOptions(s.pending.data_range)}</select>
+        <label><input type="checkbox" id="pending_wechat" ${s.pending.wechat_push ? "checked" : ""}> 微信推送</label>
+      </div>
+
+      <h3>失败核查</h3>
+      <div class="form-row">
+        <label>核查时间</label><input type="time" id="fail_time" value="${s.fail.time}">
+        <label>数据范围</label><select id="fail_range">${rangeOptions(s.fail.data_range)}</select>
+        <label><input type="checkbox" id="fail_wechat" ${s.fail.wechat_push ? "checked" : ""}> 微信推送</label>
+      </div>
+
+      <h3>节假日处理</h3>
+      <div class="form-row">
+        <label><input type="checkbox" id="holiday_skip" ${s.holiday.skip ? "checked" : ""}> 跳过节假日</label>
+        <label><input type="checkbox" id="holiday_accumulate" ${s.holiday.accumulate ? "checked" : ""}> 累计</label>
+      </div>
+      <div class="form-row col">
+        <label>已配置节假日（每行一个日期 YYYY-MM-DD）</label>
+        <textarea id="holiday_list" rows="7">${(s.holiday.holidays || []).join("\n")}</textarea>
+        <span class="small" id="holiday_count">共 ${(s.holiday.holidays || []).length} 天</span>
+      </div>
+
+      <div class="form-row">
+        <label><input type="checkbox" id="confirmEdit"> 我确认要修改以上配置</label>
+      </div>
+      <div class="form-actions">
+        <button id="saveConfig" class="btn">💾 保存配置</button>
+        <span id="configStatus" class="config-status"></span>
+      </div>
+      <p class="note">说明：配置保存在云端 Supabase，公开网页均可读写（仅供内部使用）。若日后需限制修改权限，可加访问口令。本地 8766 自动化要真正采用这些配置，需让其改为读取云端配置（可后续对接）。</p>
+    </div>`;
+
+  // 实时统计节假日天数
+  const listEl = $("#holiday_list");
+  const countEl = $("#holiday_count");
+  listEl.addEventListener("input", () => {
+    const n = listEl.value.split("\n").map(x => x.trim()).filter(Boolean).length;
+    countEl.textContent = "共 " + n + " 天";
+  });
+
+  $("#saveConfig").addEventListener("click", saveSettings);
+}
+
+async function saveSettings() {
+  const status = $("#configStatus");
+  if (!$("#confirmEdit").checked) {
+    status.textContent = "请先勾选「我确认要修改以上配置」";
+    status.className = "config-status err";
+    return;
+  }
+  const holidays = $("#holiday_list").value.split("\n").map(x => x.trim()).filter(Boolean);
+  const cfg = {
+    pending: { time: $("#pending_time").value, data_range: $("#pending_range").value, wechat_push: $("#pending_wechat").checked },
+    fail: { time: $("#fail_time").value, data_range: $("#fail_range").value, wechat_push: $("#fail_wechat").checked },
+    holiday: { skip: $("#holiday_skip").checked, accumulate: $("#holiday_accumulate").checked, holidays }
+  };
+  status.textContent = "保存中…";
+  status.className = "config-status";
+  try {
+    await upsertSettings(cfg);
+    DATA.settings = normalizeSettings(cfg);
+    status.textContent = "✅ 已保存到云端";
+    status.className = "config-status ok";
+    renderReport();
+    renderPredict();
+    renderSettings();
+  } catch (e) {
+    status.textContent = "❌ 保存失败：" + e.message + "（可能云端不可达，请检查网络后重试）";
+    status.className = "config-status err";
+  }
 }
 
 // ========== Tab 切换 ==========
@@ -247,17 +406,20 @@ $$(".tab").forEach(btn => {
 });
 
 // ========== 初始化 ==========
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   try {
+    const src = await loadSettings();
     renderReport();
     renderHistory();
     renderPredict();
     renderCoefficient();
     renderForecastDiff();
+    renderConfig();
     renderSettings();
-    $("#genTime").textContent = "快照时间: " + DATA.report.generated_at;
+    $("#genTime").textContent = "快照时间: " + DATA.report.generated_at +
+      (src === "cloud" ? " · 配置已从云端加载" : " · 配置为内置默认");
     $("#status").className = "status ok";
-  } catch(e) {
+  } catch (e) {
     $("#status").textContent = "渲染错误: " + e.message;
     $("#status").className = "status err";
   }
