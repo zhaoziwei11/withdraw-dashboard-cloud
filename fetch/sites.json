@@ -1,0 +1,24 @@
+{
+    "carrier": {
+        "name": "承运提现",
+        "base_url": "https://chengyun.91msl.com",
+        "target_page": "https://chengyun.91msl.com/financial-center/settlement-manage/carrier-withdrawal-manage",
+        "login_url": "https://chengyun.91msl.com/login",
+        "browser_data_dir": "browser-data",
+        "output_dir": "reports",
+        "demand2_dir": "demand2",
+        "prefix": "",
+        "coeff_exclude_threshold": 0
+    },
+    "admin": {
+        "name": "提现拦截",
+        "base_url": "https://admin.91msl.com",
+        "target_page": "https://admin.91msl.com/#/payment/withrawIntercept/index",
+        "login_url": "https://admin.91msl.com/#/login",
+        "browser_data_dir": "browser-data",
+        "output_dir": "reports",
+        "demand2_dir": "demand2_admin",
+        "prefix": "admin_",
+        "coeff_exclude_threshold": 200000
+    }
+}
