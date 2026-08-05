@@ -315,6 +315,36 @@ def push(payload):
     print("\u2713 已同步到云端 Supabase")
 
 
+def verify(expect_date=None):
+    """推送后回查云端最新一行，确认数据真的落库（避免"以为同步了"）。"""
+    headers = {
+        "apikey": SUPABASE_ANON_KEY,
+        "Authorization": f"Bearer {SUPABASE_ANON_KEY}",
+    }
+    url = (
+        f"{SUPABASE_URL}/rest/v1/withdraw_reports"
+        "?select=generated_at,payload&order=generated_at.desc&limit=1"
+    )
+    raw = _http("GET", url, headers=headers)
+    rows = json.loads(raw)
+    if not rows:
+        print("\u2717 云端回查: 表里没有任何数据")
+        return False
+    row = rows[0]
+    rep = (row.get("payload") or {}).get("report") or {}
+    cloud_date = rep.get("date")
+    amount = rep.get("pending_amount") or 0
+    print("\n--- 云端回查 ---")
+    print(f"  云端最新数据日期 : {cloud_date}")
+    print(f"  待提现金额       : \u00a5{amount:,.2f} / {rep.get('pending_count')} 笔")
+    print(f"  入库时间(UTC)    : {row.get('generated_at')}")
+    if expect_date and cloud_date != expect_date:
+        print(f"\u2717 不一致! 本地是 {expect_date}, 云端是 {cloud_date}")
+        return False
+    print("\u2713 云端数据与本机一致, 网页刷新即可看到")
+    return True
+
+
 if __name__ == "__main__":
     print("读取本机数据文件…")
     try:
@@ -342,4 +372,11 @@ if __name__ == "__main__":
         print(f"\u2717 同步失败: {type(e).__name__}: {e}")
         sys.exit(1)
 
-    print("完成。")
+    try:
+        ok = verify(expect_date=rp.get("date"))
+    except Exception as e:
+        print(f"\u26a0 回查失败(数据可能已推送成功): {type(e).__name__}: {e}")
+        ok = True
+
+    print("\n完成。" if ok else "\n完成, 但云端校验未通过, 请重跑一次。")
+    sys.exit(0 if ok else 1)
