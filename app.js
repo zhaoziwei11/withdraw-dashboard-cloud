@@ -1,85 +1,363 @@
 // 承运提现日报 · 云端看板（数据内置版 + 在线可编辑配置）
-// 数据来源：本机 8766 控制台 2026-07-31 08:55:22 快照
+// 内置兜底数据（云端不可达时降级显示）：2026-08-05 15:06:20 本机快照
 // 报表数据内置；「配置」标签页可在线修改，保存到云端 Supabase，家/公司同步。
 
 const DATA = {
-  report: {
-    date: "2026-07-31",
-    generated_at: "2026-07-31 08:55:22",
-    source: "https://chengyun.91msl.com/financial-center/settlement-manage/carrier-withdrawal-manage",
-    stat_range: "创建时间 = 2026-07-30 ~ 2026-07-30",
-    pending_amount: 890765.61,
-    pending_count: 425,
-    fail_top3: "待补充(每天 15:00 任务执行后更新)",
-    demand2_note: "待补充(每天 15:00 任务执行后更新)",
-    coeff_active: { coeff: 0.6421, pooled: 0.7041, range: "2026-06-28 ~ 2026-07-27", days: 30, rows: 6289 },
-    partial_total: 9307166.32,
-    full_total: 13219322.98,
-    forecast_diff: [
-      { date: "2026-07-30", predicted: 926819.82, actual: 890765.61, diff: -36054.21, pct: "-3.89%" },
-      { date: "2026-07-29", predicted: 852324.35, actual: 786881.09, diff: -65443.26, pct: "-7.68%" },
-      { date: "2026-07-28", predicted: 0, actual: 807407.44, diff: null, pct: null },
-      { date: "2026-07-27", predicted: 0, actual: 1673821.24, diff: null, pct: null }
+  "report": {
+    "date": "2026-08-05",
+    "generated_at": "2026-08-05 15:06:20",
+    "source": "https://chengyun.91msl.com/financial-center/settlement-manage/carrier-withdrawal-manage",
+    "stat_range": "创建时间 = 2026-08-04 ~ 2026-08-04",
+    "pending_amount": 448261.42,
+    "pending_count": 191,
+    "fail_top3": "无提现失败",
+    "demand2_note": "当天 0~15 点待提现 <b>¥224,805.21</b> · 系数 <b>0.701006</b> · 预测当天全天(0~24) <b>¥320,689.42</b>",
+    "coeff_active": {
+      "coeff": 0.701006,
+      "pooled": 0.711912,
+      "range": "2026-07-04 ~ 2026-08-02",
+      "days": 30,
+      "rows": 6536
+    },
+    "partial_total": 10093233.07,
+    "full_total": 14177650.16,
+    "forecast_diff": [
+      {
+        "date": "2026-08-05",
+        "predicted": 320689.42,
+        "actual": null,
+        "diff": null,
+        "pct": null
+      },
+      {
+        "date": "2026-08-04",
+        "predicted": 469001.96,
+        "actual": 448261.42,
+        "diff": -20740.54,
+        "pct": "-4.42%"
+      },
+      {
+        "date": "2026-08-03",
+        "predicted": 1223737.46,
+        "actual": null,
+        "diff": null,
+        "pct": null
+      },
+      {
+        "date": "2026-07-31",
+        "predicted": 767908.71,
+        "actual": 0.0,
+        "diff": -767908.71,
+        "pct": "-100.00%"
+      },
+      {
+        "date": "2026-07-30",
+        "predicted": 926819.82,
+        "actual": 890765.61,
+        "diff": -36054.21,
+        "pct": "-3.89%"
+      }
     ]
   },
-
-  history: [
-    { run_date: "2026-07-31", pending_amount: 890765.61, pending_count: 425, today_15: null, coefficient: null, predicted_full: null, actual_next_day_09: null, diff: null, diff_pct: null, status: "" },
-    { run_date: "2026-07-30", pending_amount: 786881.09, pending_count: 373, today_15: 637364.72, coefficient: "0.6877", predicted_full: 926819.82, actual_next_day_09: 890765.61, diff: -36054.21, diff_pct: "-3.89%", status: "compared" },
-    { run_date: "2026-07-29", pending_amount: 807407.44, pending_count: 348, today_15: 586134.93, coefficient: "0.6877", predicted_full: 852324.35, actual_next_day_09: 786881.09, diff: -65443.26, diff_pct: "-7.68%", status: "compared" },
-    { run_date: "2026-07-28", pending_amount: 1673821.24, pending_count: 506, today_15: 675197.11, coefficient: "", predicted_full: "", actual_next_day_09: 807407.44, diff: "", diff_pct: "", status: "compared" },
-    { run_date: "2026-07-27", pending_amount: 0, pending_count: 0, today_15: 1260768.60, coefficient: "", predicted_full: "", actual_next_day_09: 1673821.24, diff: "", diff_pct: "", status: "compared" }
+  "history": [
+    {
+      "run_date": "2026-08-05",
+      "pending_amount": 448261.42,
+      "pending_count": 191,
+      "today_15": 224805.21,
+      "coefficient": "0.7010",
+      "predicted_full": 320689.42,
+      "actual_next_day_09": null,
+      "diff": null,
+      "diff_pct": "",
+      "status": "pending"
+    },
+    {
+      "run_date": "2026-08-04",
+      "pending_amount": 0,
+      "pending_count": 0,
+      "today_15": 328773.19,
+      "coefficient": "0.7010",
+      "predicted_full": 469001.96,
+      "actual_next_day_09": 448261.42,
+      "diff": -20740.54,
+      "diff_pct": "-4.42",
+      "status": "compared"
+    },
+    {
+      "run_date": "2026-08-03",
+      "pending_amount": 0,
+      "pending_count": 0,
+      "today_15": 1292526.86,
+      "coefficient": "0.7010",
+      "predicted_full": 1223737.46,
+      "actual_next_day_09": null,
+      "diff": null,
+      "diff_pct": "",
+      "status": "pending"
+    },
+    {
+      "run_date": "2026-07-31",
+      "pending_amount": 890765.61,
+      "pending_count": 425,
+      "today_15": 538022.18,
+      "coefficient": "0.7006",
+      "predicted_full": 767908.71,
+      "actual_next_day_09": 0.0,
+      "diff": -767908.71,
+      "diff_pct": "-100.00",
+      "status": "compared"
+    },
+    {
+      "run_date": "2026-07-30",
+      "pending_amount": 786881.09,
+      "pending_count": 373,
+      "today_15": 637364.72,
+      "coefficient": "0.6877",
+      "predicted_full": 926819.82,
+      "actual_next_day_09": 890765.61,
+      "diff": -36054.21,
+      "diff_pct": "-3.89",
+      "status": "compared"
+    },
+    {
+      "run_date": "2026-07-29",
+      "pending_amount": 807407.44,
+      "pending_count": 348,
+      "today_15": 586134.93,
+      "coefficient": "0.6877",
+      "predicted_full": 852324.35,
+      "actual_next_day_09": 786881.09,
+      "diff": -65443.26,
+      "diff_pct": "-7.68",
+      "status": "compared"
+    },
+    {
+      "run_date": "2026-07-28",
+      "pending_amount": 1673821.24,
+      "pending_count": 506,
+      "today_15": 675197.11,
+      "coefficient": "",
+      "predicted_full": null,
+      "actual_next_day_09": 807407.44,
+      "diff": null,
+      "diff_pct": "",
+      "status": "compared"
+    },
+    {
+      "run_date": "2026-07-27",
+      "pending_amount": 0,
+      "pending_count": 0,
+      "today_15": 1260768.6,
+      "coefficient": "",
+      "predicted_full": null,
+      "actual_next_day_09": 1673821.24,
+      "diff": null,
+      "diff_pct": "",
+      "status": "compared"
+    }
   ],
-
-  predict: {
-    today: "2026-07-31",
-    has_data: true,
-    coefficient: 0.68769,
-    predicted_full: null,
-    coefficient_source: "2026-06-28 ~ 2026-07-27, 6289 行",
-    total_partial: 9307166.32,
-    total_full: 13219322.98
+  "predict": {
+    "today": "2026-08-05",
+    "has_data": true,
+    "demand2_today_pending": 224805.21,
+    "coefficient": 0.701006,
+    "predicted_full": 320689.42,
+    "predict_mode": "weekday",
+    "predict_breakdown": null,
+    "coefficient_source": "2026-07-04 ~ 2026-08-02, 6536 行",
+    "total_partial": 10093233.07,
+    "total_full": 14177650.16
   },
-
-  coefficient: {
-    active: "1m",
-    sets: {
-      "1m": { label: "近1月", coeff: 0.642105, pooled: 0.704058, range: "2026-06-28 ~ 2026-07-27", days: 30, rows: 6289, total_partial: 9307166.32, total_full: 13219322.98 },
-      "2m": { label: "近2月", coeff: 0.670873, pooled: 0.721157, range: "2026-05-29 ~ 2026-07-27", days: 60, rows: 14127, total_partial: 23801612.29, total_full: 33004756.99 },
-      "3m": { label: "近3月", coeff: 0.6658, pooled: 0.7193, range: "2026-04-29 ~ 2026-07-27", days: 90, rows: 22642, total_partial: 35800000, total_full: 49800000 }
+  "coefficient": {
+    "active": "1m",
+    "sets": {
+      "1m": {
+        "label": "近1月",
+        "coeff": 0.701006,
+        "coeff_all": 0.645646,
+        "pooled": 0.711912,
+        "range": "2026-07-04 ~ 2026-08-02",
+        "days": 30,
+        "rows": 6536,
+        "total_partial": 10093233.07,
+        "total_full": 14177650.16,
+        "computed_at": "2026-08-03T13:34:58.636300"
+      },
+      "2m": {
+        "label": "近2月",
+        "coeff": 0.694864,
+        "coeff_all": 0.666014,
+        "pooled": 0.705908,
+        "range": "2026-06-04 ~ 2026-08-02",
+        "days": 60,
+        "rows": 13625,
+        "total_partial": 21459886.17,
+        "total_full": 30400382.44,
+        "computed_at": "2026-08-03T13:34:58.636300"
+      },
+      "3m": {
+        "label": "近3月",
+        "coeff": 0.706438,
+        "coeff_all": 0.674896,
+        "pooled": 0.723513,
+        "range": "2026-05-05 ~ 2026-08-02",
+        "days": 90,
+        "rows": 23311,
+        "total_partial": 41197496.28,
+        "total_full": 56940931.3,
+        "computed_at": "2026-08-03T13:34:58.636300"
+      }
     }
   },
-
-  forecast_diff: [
-    { predict_date: "2026-07-30", today_pending_15: 637364.72, coefficient: "0.687690", predicted_full: 926819.82, mode: "weekday", actual_next_day_09: 890765.61, diff: -36054.21, diff_pct: "-3.89%", status: "compared" },
-    { predict_date: "2026-07-29", today_pending_15: 586134.93, coefficient: "0.687690", predicted_full: 852324.35, mode: "weekday", actual_next_day_09: 786881.09, diff: -65443.26, diff_pct: "-7.68%", status: "compared" },
-    { predict_date: "2026-07-28", today_pending_15: 675197.11, coefficient: "", predicted_full: "", mode: "", actual_next_day_09: 807407.44, diff: "", diff_pct: "", status: "compared" },
-    { predict_date: "2026-07-27", today_pending_15: 1260768.60, coefficient: "", predicted_full: "", mode: "", actual_next_day_09: 1673821.24, diff: "", diff_pct: "", status: "compared" }
+  "forecast_diff": [
+    {
+      "predict_date": "2026-08-05",
+      "today_pending_15": 224805.21,
+      "coefficient": "0.701006",
+      "predicted_full": 320689.42,
+      "mode": "weekday",
+      "actual_next_day_09": null,
+      "diff": null,
+      "diff_pct": "",
+      "status": "pending"
+    },
+    {
+      "predict_date": "2026-08-04",
+      "today_pending_15": 328773.19,
+      "coefficient": "0.701006",
+      "predicted_full": 469001.96,
+      "mode": "weekday",
+      "actual_next_day_09": 448261.42,
+      "diff": -20740.54,
+      "diff_pct": "-4.42",
+      "status": "compared"
+    },
+    {
+      "predict_date": "2026-08-03",
+      "today_pending_15": 538022.18,
+      "coefficient": "0.701006",
+      "predicted_full": 1223737.46,
+      "mode": "monday",
+      "actual_next_day_09": null,
+      "diff": null,
+      "diff_pct": "",
+      "status": "pending"
+    },
+    {
+      "predict_date": "2026-07-31",
+      "today_pending_15": 538022.18,
+      "coefficient": "0.700633",
+      "predicted_full": 767908.71,
+      "mode": "weekday",
+      "actual_next_day_09": 0.0,
+      "diff": -767908.71,
+      "diff_pct": "-100.00",
+      "status": "compared"
+    },
+    {
+      "predict_date": "2026-07-30",
+      "today_pending_15": 637364.72,
+      "coefficient": "0.687690",
+      "predicted_full": 926819.82,
+      "mode": "weekday",
+      "actual_next_day_09": 890765.61,
+      "diff": -36054.21,
+      "diff_pct": "-3.89",
+      "status": "compared"
+    },
+    {
+      "predict_date": "2026-07-29",
+      "today_pending_15": 586134.93,
+      "coefficient": "0.687690",
+      "predicted_full": 852324.35,
+      "mode": "weekday",
+      "actual_next_day_09": 786881.09,
+      "diff": -65443.26,
+      "diff_pct": "-7.68",
+      "status": "compared"
+    },
+    {
+      "predict_date": "2026-07-28",
+      "today_pending_15": 675197.11,
+      "coefficient": "",
+      "predicted_full": null,
+      "mode": "",
+      "actual_next_day_09": 807407.44,
+      "diff": null,
+      "diff_pct": "",
+      "status": "compared"
+    },
+    {
+      "predict_date": "2026-07-27",
+      "today_pending_15": 1260768.6,
+      "coefficient": "",
+      "predicted_full": null,
+      "mode": "",
+      "actual_next_day_09": 1673821.24,
+      "diff": null,
+      "diff_pct": "",
+      "status": "compared"
+    }
   ],
-
-  settings: {
-    pending: { time: "09:00", data_range: "T-1", wechat_push: false },
-    fail: { time: "15:10", data_range: "T-1", wechat_push: false },
-    holiday: {
-      skip: true, accumulate: true, holidays_count: 33,
-      holidays: [
-        "2026-01-01","2026-01-02","2026-01-03",
-        "2026-02-15","2026-02-16","2026-02-17","2026-02-18","2026-02-19","2026-02-20","2026-02-21","2026-02-22","2026-02-23",
-        "2026-04-04","2026-04-05","2026-04-06",
-        "2026-05-01","2026-05-02","2026-05-03","2026-05-04","2026-05-05",
-        "2026-06-19","2026-06-20","2026-06-21",
-        "2026-09-25","2026-09-26","2026-09-27",
-        "2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07"
-      ]
+  "settings": {
+    "pending": {
+      "time": "09:00",
+      "data_range": "T-1",
+      "wechat_push": false
+    },
+    "fail": {
+      "time": "15:10",
+      "data_range": "T-1",
+      "wechat_push": false
+    },
+    "holiday": {
+      "skip": true,
+      "accumulate": true,
+      "holidays": [
+        "2026-01-01",
+        "2026-01-02",
+        "2026-01-03",
+        "2026-02-15",
+        "2026-02-16",
+        "2026-02-17",
+        "2026-02-18",
+        "2026-02-19",
+        "2026-02-20",
+        "2026-02-21",
+        "2026-02-22",
+        "2026-02-23",
+        "2026-04-04",
+        "2026-04-05",
+        "2026-04-06",
+        "2026-05-01",
+        "2026-05-02",
+        "2026-05-03",
+        "2026-05-04",
+        "2026-05-05",
+        "2026-06-19",
+        "2026-06-20",
+        "2026-06-21",
+        "2026-09-25",
+        "2026-09-26",
+        "2026-09-27",
+        "2026-10-01",
+        "2026-10-02",
+        "2026-10-03",
+        "2026-10-04",
+        "2026-10-05",
+        "2026-10-06",
+        "2026-10-07"
+      ],
+      "holidays_count": 33
     }
   },
-
-  status: {
-    today: "2026-07-31",
-    report_exists: true,
-    report_time: "2026-07-31 08:55:22",
-    pending_status: "已生成 ¥890,765.61 / 425 笔",
-    fail_status: "未运行"
+  "status": {
+    "today": "2026-08-05",
+    "report_exists": true,
+    "report_time": "2026-08-05 15:06:20",
+    "pending_status": "已生成 ¥448,261.42 / 191 笔",
+    "fail_status": "无失败"
   }
 };
 
@@ -465,6 +743,43 @@ $$(".tab").forEach(btn => {
   });
 });
 
+// ========== 数据新鲜度检查 ==========
+// 上个工作日（跳过周六周日）
+function lastWorkday(from) {
+  const d = new Date(from);
+  do { d.setDate(d.getDate() - 1); } while (d.getDay() === 0 || d.getDay() === 6);
+  return d;
+}
+
+function ymd(d) {
+  return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+}
+
+/**
+ * 判断报表数据是否陈旧。
+ * 数据由本机定时任务(工作日 09:00 / 15:00)推送，因此：
+ *  - 今天是工作日：数据日期 = 今天 或 上个工作日，都算新鲜
+ *  - 今天是周末：数据日期 = 最近的工作日(周五)即可
+ */
+function checkStale(reportDate, fromCloud) {
+  if (!reportDate) return { stale: true, reason: "报表数据缺失" };
+  const today = new Date();
+  const todayStr = ymd(today);
+  const isWeekend = today.getDay() === 0 || today.getDay() === 6;
+  const okDates = new Set([todayStr, ymd(lastWorkday(today))]);
+  if (isWeekend) okDates.add(ymd(lastWorkday(lastWorkday(today))));
+
+  if (okDates.has(reportDate)) return { stale: false };
+
+  const diffDays = Math.round((new Date(todayStr) - new Date(reportDate)) / 86400000);
+  return {
+    stale: true,
+    reason: fromCloud
+      ? `云端最新数据停留在 ${reportDate}（距今 ${diffDays} 天），本机同步任务可能未执行`
+      : `未能从云端读取数据，当前显示的是网页内置的 ${reportDate} 旧快照`,
+  };
+}
+
 // ========== 初始化 ==========
 function startApp() {
   (async () => {
@@ -478,9 +793,34 @@ function startApp() {
       renderForecastDiff();
       renderConfig();
       renderSettings();
+
+      const fromCloud = !!src2;
       const cfgTxt = src === "cloud" ? "配置已从云端加载" : "配置为内置默认";
-      const repTxt = src2 ? ("报表已从云端加载(" + new Date(src2).toLocaleString("zh-CN") + ")") : "报表为内置快照";
-      $("#genTime").textContent = "快照时间: " + (DATA.report.generated_at || "?") + " · " + cfgTxt + " · " + repTxt;
+      const repTxt = fromCloud
+        ? "报表已从云端加载(" + new Date(src2).toLocaleString("zh-CN") + ")"
+        : "⚠️ 云端无数据，显示内置旧快照";
+      $("#genTime").textContent = "数据时间: " + (DATA.report.generated_at || "?") + " · " + cfgTxt + " · " + repTxt;
+
+      // 副标题动态显示当前数据日期
+      const sub = $("#subTitle");
+      if (sub) {
+        sub.textContent = "在家 / 公司任意浏览器可查看 · 当前数据日期 " + (DATA.report.date || "未知");
+      }
+
+      // 数据陈旧时给出醒目提示，避免误把旧数据当成最新
+      const st = checkStale(DATA.report.date, fromCloud);
+      const banner = $("#staleBanner");
+      if (banner) {
+        if (st.stale) {
+          banner.style.display = "";
+          banner.innerHTML =
+            "⚠️ <b>数据可能不是最新的</b> — " + st.reason +
+            "。<br>请在本机运行 <code>withdraw-dashboard-cloud\\sync\\同步到云端看板.bat</code> 后刷新本页。";
+        } else {
+          banner.style.display = "none";
+        }
+      }
+
       $("#status").className = "status ok";
     } catch (e) {
       $("#status").textContent = "渲染错误: " + e.message;
