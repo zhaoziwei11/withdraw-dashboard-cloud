@@ -22,26 +22,65 @@ if (-not (Test-Path $bat)) {
     exit 1
 }
 
-# 任务动作: 用 cmd 跑 bat (bat 内部已 cd 到项目根并调用 python)
-$action = New-ScheduledTaskAction -Execute "cmd.exe" -Argument ('/c "' + $bat + '"')
+function Register-DashboardTask {
+    param(
+        [string]$TaskName,
+        [string]$StartBoundary
+    )
 
-# 设置: 允许用电池/不中断, 最长 10 分钟
-# 注意: -StartWhenAvailable 与今天已过触发时间组合在某些系统会报 0x80070057, 故移除
-$set = New-ScheduledTaskSettingsSet `
-    -AllowStartIfOnBatteries `
-    -DontStopIfGoingOnBatteries `
-    -ExecutionTimeLimit (New-TimeSpan -Minutes 10)
+    $xml = @"
+<?xml version="1.0" encoding="UTF-16"?>
+<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+  <RegistrationInfo>
+    <Description>承运提现看板自动推送（工作日 $StartBoundary）</Description>
+  </RegistrationInfo>
+  <Triggers>
+    <CalendarTrigger>
+      <StartBoundary>$StartBoundary</StartBoundary>
+      <ScheduleByWeek>
+        <DaysOfWeek>
+          <Monday/><Tuesday/><Wednesday/><Thursday/><Friday/>
+        </DaysOfWeek>
+        <WeeksInterval>1</WeeksInterval>
+      </ScheduleByWeek>
+    </CalendarTrigger>
+  </Triggers>
+  <Principals>
+    <Principal id="Author">
+      <LogonType>InteractiveToken</LogonType>
+      <RunLevel>HighestAvailable</RunLevel>
+    </Principal>
+  </Principals>
+  <Settings>
+    <AllowStartIfOnBatteries>true</AllowStartIfOnBatteries>
+    <DontStopIfGoingOnBatteries>true</DontStopIfGoingOnBatteries>
+    <ExecutionTimeLimit>PT10M</ExecutionTimeLimit>
+    <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
+    <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
+  </Settings>
+  <Actions Context="Author">
+    <Exec>
+      <Command>cmd.exe</Command>
+      <Arguments>/c "$bat"</Arguments>
+    </Exec>
+  </Actions>
+</Task>
+"@
 
-# 工作日触发 (周一到周五)
-$days = [System.DayOfWeek]::Monday, [System.DayOfWeek]::Tuesday, [System.DayOfWeek]::Wednesday, [System.DayOfWeek]::Thursday, [System.DayOfWeek]::Friday
+    $tmp = [System.IO.Path]::GetTempFileName() + ".xml"
+    [System.IO.File]::WriteAllText($tmp, $xml, [System.Text.Encoding]::Unicode)
+    try {
+        schtasks.exe /CREATE /XML "$tmp" /TN "$TaskName" /F | Out-String | Write-Host
+        if ($LASTEXITCODE -ne 0) {
+            throw "schtasks.exe 返回非零退出码: $LASTEXITCODE"
+        }
+    } finally {
+        Remove-Item $tmp -ErrorAction SilentlyContinue
+    }
+}
 
-Register-ScheduledTask -TaskName "承运提现看板推送-早09:05" -Action $action `
-    -Trigger (New-ScheduledTaskTrigger -Weekly -DaysOfWeek $days -At "09:05") `
-    -Settings $set -Force | Out-Null
-
-Register-ScheduledTask -TaskName "承运提现看板推送-午15:15" -Action $action `
-    -Trigger (New-ScheduledTaskTrigger -Weekly -DaysOfWeek $days -At "15:15") `
-    -Settings $set -Force | Out-Null
+Register-DashboardTask -TaskName "承运提现看板推送-早09:05" -StartBoundary "2026-08-20T09:05:00"
+Register-DashboardTask -TaskName "承运提现看板推送-午15:15" -StartBoundary "2026-08-20T15:15:00"
 
 Write-Host "OK: 已注册两个定时推送任务 (工作日 09:05 / 15:15), 本机全自动推送看板。"
 Write-Host "提示: 云端 GitHub Actions 已加防护(抓取失败自动跳过推送, 不再污染数据), 与本地任务可同时运行。"
