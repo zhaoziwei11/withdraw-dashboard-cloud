@@ -145,12 +145,12 @@ def build_report(db, status, predict, auto_coeff, forecast_rows, settings):
                 else:
                     counter = Counter(reasons)
                     total = len(fail_records)
-                    parts = []
+                    blocks = []
                     for i, (reason, cnt) in enumerate(counter.most_common(3), 1):
                         pct = cnt / total * 100 if total > 0 else 0
-                        parts.append(f"{i}. {reason}（{cnt} 次 · {pct:.1f}%）")
                         # 该原因下最多展示 3 条详情(按截图格式)
                         shown = 0
+                        lines = []
                         for r in fail_records:
                             if r.get("reason") != reason:
                                 continue
@@ -162,11 +162,15 @@ def build_report(db, status, predict, auto_coeff, forecast_rows, settings):
                             card = r.get("card") or "-"
                             amount = float(r.get("amount", 0) or 0)
                             record_status = r.get("status") or "交易失败"
-                            parts.append(
-                                f"   司机姓名：{name} | 手机号：{phone} | 银行卡号：{card} | "
-                                f"提现金额：¥{amount:,.2f} | 交易状态：{record_status}"
-                            )
-                    fail_top3 = "<br>".join(parts)
+                            lines.append(f"司机姓名：{name}")
+                            lines.append(f"手机号：{phone}")
+                            lines.append(f"银行卡号：{card}")
+                            lines.append(f"提现金额：¥{amount:,.2f}")
+                            lines.append(f"交易状态：{record_status}")
+                        # 失败原因(次数·占比)行放在最后
+                        lines.append(f"{i}. {reason}（{cnt} 次 · {pct:.1f}%）")
+                        blocks.append("<br>".join(lines))
+                    fail_top3 = "<br><br>".join(blocks)
     except Exception:
         pass
 
