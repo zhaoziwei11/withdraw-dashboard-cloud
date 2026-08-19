@@ -33,8 +33,8 @@ from pathlib import Path
 # ============ 配置 ============
 # 后端改用 GitHub 仓库文件（data/dashboard.json），无第三方依赖，不受 Supabase 域名污染影响。
 # 网页从 GitHub Pages 同源读取该文件；本脚本/Action 通过 GitHub Contents API 写它。
-# GitHub Actions 通过 secrets.GITHUB_TOKEN 注入；本机未设环境变量时回退到写死的 PAT。
-# ⚠️ 该 PAT 明文存在于本地脚本，仅适用于私有仓库；若仓库改为公开请改用环境变量 GH_TOKEN。
+# GitHub Actions 用自带 GITHUB_TOKEN；本机从环境变量 GH_TOKEN 或 sync/.gh_token(不入库) 读取。
+# ⚠️ 切勿把明文 PAT 写进会被提交的脚本, 否则触发仓库密钥扫描拦截。
 GH_REPO = os.environ.get("GH_REPO") or "zhaoziwei11/withdraw-dashboard-cloud"
 GH_BRANCH = os.environ.get("GH_BRANCH") or "main"
 GH_DATA_PATH = os.environ.get("GH_DATA_PATH") or "data/dashboard.json"
@@ -121,7 +121,9 @@ def build_report(db, status, predict, auto_coeff, forecast_rows, settings):
         data_file = db.DATA_DIR / f"withdraw_data_{today}.json"
         if data_file.exists():
             d = json.loads(data_file.read_text(encoding="utf-8"))
-            if "fail_reasons" in d:
+            fail_records = d.get("fail_records") or []
+            # 兼容旧数据: 只有 fail_reasons 字符串数组
+            if not fail_records and "fail_reasons" in d:
                 fr = [x for x in (d.get("fail_reasons") or []) if x not in (None, "", "-")]
                 if not fr:
                     fail_top3 = "无提现失败"
@@ -133,6 +135,37 @@ def build_report(db, status, predict, auto_coeff, forecast_rows, settings):
                         f"{i}. {reason}（{cnt} 次 · {cnt / total * 100:.1f}%）"
                         for i, (reason, cnt) in enumerate(Counter(fr).most_common(3), 1)
                     ]
+                    fail_top3 = "<br>".join(parts)
+            elif fail_records:
+                from collections import Counter
+
+                reasons = [r.get("reason", "") for r in fail_records if r.get("reason")]
+                if not reasons:
+                    fail_top3 = "无提现失败"
+                else:
+                    counter = Counter(reasons)
+                    total = len(fail_records)
+                    parts = []
+                    for i, (reason, cnt) in enumerate(counter.most_common(3), 1):
+                        pct = cnt / total * 100 if total > 0 else 0
+                        parts.append(f"{i}. {reason}（{cnt} 次 · {pct:.1f}%）")
+                        # 该原因下最多展示 3 条详情(按截图格式)
+                        shown = 0
+                        for r in fail_records:
+                            if r.get("reason") != reason:
+                                continue
+                            shown += 1
+                            if shown > 3:
+                                break
+                            name = r.get("driver_name") or "-"
+                            phone = r.get("phone") or "-"
+                            card = r.get("card") or "-"
+                            amount = float(r.get("amount", 0) or 0)
+                            record_status = r.get("status") or "交易失败"
+                            parts.append(
+                                f"   司机姓名：{name} | 手机号：{phone} | 银行卡号：{card} | "
+                                f"提现金额：¥{amount:,.2f} | 交易状态：{record_status}"
+                            )
                     fail_top3 = "<br>".join(parts)
     except Exception:
         pass
