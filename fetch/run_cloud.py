@@ -49,13 +49,25 @@ def main():
     print("[run] 控制台已就绪")
 
     # 2) 抓取（结束后 withdraw_report.py 也会后台触发一次 sync，这里再显式跑一次确保成功）
+    #    scraped 标记用于防护: 抓取(含登录)失败时绝不推送, 避免把空/旧数据推上去污染看板。
+    scraped = False
     try:
         subprocess.run([exe, "withdraw_report.py", *fetch_args], cwd=here, check=True)
         print("[run] 抓取完成")
+        scraped = True
     except subprocess.CalledProcessError as e:
-        print(f"[run] 抓取失败（非致命，仍尝试同步已有数据）: {e}")
+        print(f"[run] 抓取失败(登录/取数未成功), 不推送: {e}")
 
-    # 3) 显式推送（确保控制台在线时完成）
+    # 3) 仅当抓取成功才推送。云端登不上公司系统时本步会跳过,
+    #    由本机 Windows 定时任务(更稳的本地数据通道)兜底推送真实数据, 两路互不污染。
+    if not scraped:
+        print("[run] 抓取未成功, 跳过推送, 避免污染云端看板")
+        try:
+            dash.terminate()
+        except Exception:
+            pass
+        sys.exit(0)
+
     time.sleep(3)
     try:
         subprocess.run([exe, "sync/sync_to_cloud.py"], cwd=here, timeout=120)
