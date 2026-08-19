@@ -5,29 +5,30 @@
 ## 架构
 
 ```
-本机(8766 控制台)
+本机(8766 控制台) / GitHub Actions
   ├─ dashboard.py 抓取公司财务数据 → 本地文件
-  └─ sync/sync_to_cloud.py  → 写入 Supabase(withdraw_reports 表)
+  └─ sync/sync_to_cloud.py  → 写入本仓库 data/dashboard.json (GitHub Contents API)
                                       │
                                       ▼
-云端看板(本仓库, 部署到 CloudStudio)
-  └─ index.html + app.js  → 读 Supabase → 渲染展示
+云端看板(本仓库, GitHub Pages 同源)
+  └─ index.html + app.js  → 读 ./data/dashboard.json → 渲染展示
 ```
 
-- **数据**：本机抓取后由 `sync_to_cloud.py` 推到 Supabase（云端）。
-- **显示**：本仓库静态页，部署到 CloudStudio，任意浏览器访问。
+- **数据**：本机抓取后由 `sync/sync_to_cloud.py` 推到本仓库 `data/dashboard.json`（GitHub Contents API，无需第三方数据库）。
+- **显示**：本仓库静态页（GitHub Pages），任意浏览器同源访问 `./data/dashboard.json`。
 - **改功能**：编辑本仓库源码 → 重新部署（见下）。抓取/登录仍在本机触发。
 
-## 一次性准备（在 Supabase 控制台 SQL Editor 运行）
-
-`schema.sql` 里的建表 + 权限策略。运行一次即可。
+> 注：此前用 Supabase 作后端，但其域名在国内被 DNS 污染，浏览器无法读取，故改为 GitHub 仓库文件（同源、稳定）。
 
 ## 本机同步（每次抓取后跑一次）
 
+双击 `sync/同步到云端看板.bat`，或：
+
 ```bash
-pip install requests
 python sync/sync_to_cloud.py
 ```
+
+脚本默认使用内置 PAT 写仓库；也可用环境变量 `GH_TOKEN` 覆盖，`GH_REPO` / `GH_BRANCH` / `GH_DATA_PATH` 可自定义。
 
 ## 跨设备开发（在家 / 公司都能改、都能部署）
 
