@@ -137,41 +137,31 @@ def build_report(db, status, predict, auto_coeff, forecast_rows, settings):
                     ]
                     fail_top3 = "<br>".join(parts)
             elif fail_records:
-                from collections import Counter
-
                 reasons = [r.get("reason", "") for r in fail_records if r.get("reason")]
                 if not reasons:
                     fail_top3 = "无提现失败"
                 else:
-                    counter = Counter(reasons)
+                    # 仅在有真实失败原因时使用完整记录格式；多条记录用序号逐条排列
                     blocks = []
-                    # 按原因分组保留 Top3（防止页面过长），每组最多展示 3 条
-                    # 最终格式: 每条记录自成一个 6 行块, 失败原因放最后, 块间空行
-                    for reason, _cnt in counter.most_common(3):
-                        shown = 0
-                        for r in fail_records:
-                            if r.get("reason") != reason:
-                                continue
-                            shown += 1
-                            if shown > 3:
-                                break
-                            name = r.get("driver_name") or "-"
-                            phone = r.get("phone") or "-"
-                            card = r.get("card") or "-"
-                            amount = float(r.get("amount", 0) or 0)
-                            record_status = r.get("status") or "交易失败"
-                            blocks.append(
-                                "<br>".join(
-                                    [
-                                        f"司机姓名：{name}",
-                                        f"手机号：{phone}",
-                                        f"银行卡号：{card}",
-                                        f"提现金额：¥{amount:,.2f}",
-                                        f"交易状态：{record_status}",
-                                        f"失败原因：{reason}",
-                                    ]
-                                )
+                    for idx, r in enumerate(fail_records, 1):
+                        name = r.get("driver_name") or "-"
+                        phone = r.get("phone") or "-"
+                        card = r.get("card") or "-"
+                        amount = float(r.get("amount", 0) or 0)
+                        record_status = r.get("status") or "交易失败"
+                        reason = r.get("reason") or ""
+                        blocks.append(
+                            "<br>".join(
+                                [
+                                    f"{idx}. 司机姓名：{name}",
+                                    f"手机号：{phone}",
+                                    f"银行卡号：{card}",
+                                    f"提现金额：¥{amount:,.2f}",
+                                    f"交易状态：{record_status}",
+                                    f"失败原因：{reason}",
+                                ]
                             )
+                        )
                     fail_top3 = "<br><br>".join(blocks)
     except Exception:
         pass
