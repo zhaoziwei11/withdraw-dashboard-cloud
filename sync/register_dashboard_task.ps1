@@ -32,8 +32,8 @@ $set = New-ScheduledTaskSettingsSet `
     -StartWhenAvailable `
     -ExecutionTimeLimit (New-TimeSpan -Minutes 10)
 
-# 工作日触发
-$days = "Monday,Tuesday,Wednesday,Thursday,Friday"
+# 工作日触发 (Monday=1 ... Friday=5)
+$days = 1,2,3,4,5
 
 Register-ScheduledTask -TaskName "承运提现看板推送-早09:05" -Action $action `
     -Trigger (New-ScheduledTaskTrigger -Weekly -DaysOfWeek $days -At "09:05") `
