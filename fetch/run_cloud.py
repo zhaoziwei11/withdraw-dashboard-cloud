@@ -4,13 +4,13 @@
 云端编排器（由 GitHub Actions 调用）：
   1. 启动本地 8766 控制台（dashboard.py，纯标准库 http.server，聚合 /api）
   2. 运行 withdraw_report.py 抓取（morning=--pending / afternoon=--fail --demand2）
-  3. 显式调用 sync/sync_to_cloud.py 把数据推到 Supabase（8766 在线时）
+  3. 显式调用 sync/sync_to_cloud.py 把数据推到本仓库 data/dashboard.json（GitHub Contents API）
   4. 关闭控制台
 
 环境变量（由 workflow 注入）：
   CW_USER / CW_PASS   登录账号密码（启发式自动登录）
   CW_CHANNEL          浏览器通道，云端留空用 chromium
-  SUPABASE_URL / SUPABASE_ANON_KEY  Supabase 凭证
+  GH_TOKEN            写入仓库用的 token（GitHub Actions 自带 GITHUB_TOKEN）
 """
 import os
 import sys
