@@ -26,7 +26,7 @@ function Register-DashboardTask {
         [string]$StartTime
     )
 
-    # /ST 格式 HH:mm
+    # /TR 里的任务动作：cmd 跑 bat
     $tr = 'cmd.exe /c "' + $bat + '"'
     schtasks.exe /CREATE /SC WEEKLY /D MON,TUE,WED,THU,FRI /ST $StartTime /TN "$TaskName" /TR "$tr" /F | Out-String | Write-Host
     if ($LASTEXITCODE -ne 0) {
@@ -34,8 +34,9 @@ function Register-DashboardTask {
     }
 }
 
-Register-DashboardTask -TaskName "承运提现看板推送-早09:05" -StartTime "09:05"
-Register-DashboardTask -TaskName "承运提现看板推送-午15:15" -StartTime "15:15"
+# 任务名不能包含 \ / : * ? " < > | 字符，所以时间里的冒号去掉
+Register-DashboardTask -TaskName "承运提现看板推送-早0905" -StartTime "09:05"
+Register-DashboardTask -TaskName "承运提现看板推送-午1515" -StartTime "15:15"
 
 Write-Host "OK: 已注册两个定时推送任务 (工作日 09:05 / 15:15), 本机全自动推送看板。"
 Write-Host "提示: 云端 GitHub Actions 已加防护(抓取失败自动跳过推送, 不再污染数据), 与本地任务可同时运行。"
