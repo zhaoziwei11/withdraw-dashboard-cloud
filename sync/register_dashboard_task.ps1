@@ -3,9 +3,7 @@
 # 实现本机全自动。云端 GitHub Actions 已加防护(抓取失败自动跳过推送), 与本地任务可同时运行。
 #
 # 用法(本机, 需管理员 PowerShell):
-#   如果右键"用 PowerShell 运行"报"禁止运行脚本", 请在管理员 PowerShell 里执行:
-#     powershell.exe -ExecutionPolicy Bypass -File ".\register_dashboard_task.ps1"
-#   或直接用完整路径:
+#   右键"开始" -> Windows PowerShell (管理员), 粘贴:
 #     powershell.exe -ExecutionPolicy Bypass -File "C:\Users\92893\WorkBuddy\2026-07-30-18-09-13\withdraw-dashboard-cloud\sync\register_dashboard_task.ps1"
 #   -ExecutionPolicy Bypass 仅本次生效, 不会修改系统策略。
 # 说明: 脚本路径无关, 无论仓库放在哪个目录都能正确定位 bat。
@@ -25,74 +23,19 @@ if (-not (Test-Path $bat)) {
 function Register-DashboardTask {
     param(
         [string]$TaskName,
-        [string]$StartBoundary
+        [string]$StartTime
     )
 
-    $xml = @"
-<?xml version="1.0" encoding="UTF-16"?>
-<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
-  <RegistrationInfo>
-    <Description>承运提现看板自动推送（工作日 $StartBoundary）</Description>
-  </RegistrationInfo>
-  <Triggers>
-    <CalendarTrigger>
-      <StartBoundary>$StartBoundary</StartBoundary>
-      <ScheduleByWeek>
-        <DaysOfWeek>
-          <Monday/><Tuesday/><Wednesday/><Thursday/><Friday/>
-        </DaysOfWeek>
-        <WeeksInterval>1</WeeksInterval>
-      </ScheduleByWeek>
-    </CalendarTrigger>
-  </Triggers>
-  <Principals>
-    <Principal id="Author">
-      <LogonType>InteractiveToken</LogonType>
-      <RunLevel>HighestAvailable</RunLevel>
-    </Principal>
-  </Principals>
-  <Settings>
-    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
-    <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
-    <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
-    <AllowHardTerminate>true</AllowHardTerminate>
-    <StartWhenAvailable>false</StartWhenAvailable>
-    <RunOnlyIfNetworkAvailable>false</RunOnlyIfNetworkAvailable>
-    <IdleSettings>
-      <StopOnIdleEnd>true</StopOnIdleEnd>
-      <RestartOnIdle>false</RestartOnIdle>
-    </IdleSettings>
-    <AllowStartOnDemand>true</AllowStartOnDemand>
-    <Enabled>true</Enabled>
-    <Hidden>false</Hidden>
-    <RunOnlyIfIdle>false</RunOnlyIfIdle>
-    <WakeToRun>false</WakeToRun>
-    <ExecutionTimeLimit>PT10M</ExecutionTimeLimit>
-    <Priority>7</Priority>
-  </Settings>
-  <Actions Context="Author">
-    <Exec>
-      <Command>cmd.exe</Command>
-      <Arguments>/c "$bat"</Arguments>
-    </Exec>
-  </Actions>
-</Task>
-"@
-
-    $tmp = [System.IO.Path]::GetTempFileName() + ".xml"
-    [System.IO.File]::WriteAllText($tmp, $xml, [System.Text.Encoding]::Unicode)
-    try {
-        schtasks.exe /CREATE /XML "$tmp" /TN "$TaskName" /F | Out-String | Write-Host
-        if ($LASTEXITCODE -ne 0) {
-            throw "schtasks.exe 返回非零退出码: $LASTEXITCODE"
-        }
-    } finally {
-        Remove-Item $tmp -ErrorAction SilentlyContinue
+    # /ST 格式 HH:mm
+    $tr = 'cmd.exe /c "' + $bat + '"'
+    schtasks.exe /CREATE /SC WEEKLY /D MON,TUE,WED,THU,FRI /ST $StartTime /TN "$TaskName" /TR "$tr" /F | Out-String | Write-Host
+    if ($LASTEXITCODE -ne 0) {
+        throw "schtasks.exe 返回非零退出码: $LASTEXITCODE"
     }
 }
 
-Register-DashboardTask -TaskName "承运提现看板推送-早09:05" -StartBoundary "2026-08-20T09:05:00"
-Register-DashboardTask -TaskName "承运提现看板推送-午15:15" -StartBoundary "2026-08-20T15:15:00"
+Register-DashboardTask -TaskName "承运提现看板推送-早09:05" -StartTime "09:05"
+Register-DashboardTask -TaskName "承运提现看板推送-午15:15" -StartTime "15:15"
 
 Write-Host "OK: 已注册两个定时推送任务 (工作日 09:05 / 15:15), 本机全自动推送看板。"
 Write-Host "提示: 云端 GitHub Actions 已加防护(抓取失败自动跳过推送, 不再污染数据), 与本地任务可同时运行。"
