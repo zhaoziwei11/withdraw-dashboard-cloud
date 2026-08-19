@@ -1,13 +1,13 @@
 {
   "report": {
     "date": "2026-08-19",
-    "generated_at": "2026-08-19 15:10:27",
+    "generated_at": "2026-08-19 18:24:13",
     "source": "https://chengyun.91msl.com/financial-center/settlement-manage/carrier-withdrawal-manage",
     "stat_range": "创建时间 = 2026-08-18 ~ 2026-08-18",
     "pending_amount": 0.0,
     "pending_count": 0,
     "fail_top3": "1. 司机姓名：王红斌<br>手机号：18191829313<br>银行卡号：6210987970006964233<br>提现金额：¥12,178.85<br>交易状态：交易失败<br>失败原因：收款账户为II、III类账户，超过日累计限额",
-    "demand2_note": "当天 0~15 点待提现 <b>¥64,186.13</b> · 系数 <b>0.722753</b> · 预测当天全天(0~24) <b>¥88,807.84</b>",
+    "demand2_note": "当天 0~15 点待提现 <b>¥64,186.13</b> · 系数 <b>0.694353</b> · 预测当天全天(0~24) <b>¥92,440.20</b>",
     "coeff_active": {
       "coeff": 0.694353,
       "pooled": 0.726398,
@@ -20,7 +20,7 @@
     "forecast_diff": [
       {
         "date": "2026-08-19",
-        "predicted": 88807.84,
+        "predicted": 92440.2,
         "actual": null,
         "diff": null,
         "pct": null
@@ -61,8 +61,8 @@
       "pending_amount": 0,
       "pending_count": 0,
       "today_15": 64186.13,
-      "coefficient": "0.7228",
-      "predicted_full": 88807.84,
+      "coefficient": "0.6944",
+      "predicted_full": 92440.2,
       "actual_next_day_09": null,
       "diff": null,
       "diff_pct": "",
@@ -193,8 +193,8 @@
     "today": "2026-08-19",
     "has_data": true,
     "demand2_today_pending": 64186.13,
-    "coefficient": 0.722753,
-    "predicted_full": 88807.84,
+    "coefficient": 0.694353,
+    "predicted_full": 92440.2,
     "predict_mode": "weekday",
     "predict_breakdown": null,
     "coefficient_source": "2026-07-20 ~ 2026-08-18, 6291 行",
@@ -246,8 +246,8 @@
     {
       "predict_date": "2026-08-19",
       "today_pending_15": 64186.13,
-      "coefficient": "0.722753",
-      "predicted_full": 88807.84,
+      "coefficient": "0.694353",
+      "predicted_full": 92440.2,
       "mode": "weekday",
       "actual_next_day_09": null,
       "diff": null,
@@ -368,7 +368,7 @@
   "status": {
     "today": "2026-08-19",
     "report_exists": true,
-    "report_time": "2026-08-19 15:10:27",
+    "report_time": "2026-08-19 18:24:13",
     "pending_status": "已生成 ¥0.00 / 0 笔",
     "fail_status": "有失败 (1 条)"
   },
