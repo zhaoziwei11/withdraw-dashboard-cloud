@@ -1,6 +1,7 @@
 @echo off
 chcp 65001 >nul
 title 承运提现 - 同步最新数据到云端看板
+set PYTHONIOENCODING=utf-8
 
 echo.
 echo ============================================
@@ -19,7 +20,7 @@ echo.
 if %ERRORLEVEL% EQU 0 (
     echo [成功] 云端看板已更新, 刷新网页即可看到最新数据。
 ) else (
-    echo [失败] 同步未成功, 请检查上方错误信息 ^(常见: 断网 / Supabase 不可达^)。
+    echo [失败] 同步未成功, 请检查上方错误信息 ^(常见: 断网 / api.github.com 不可达^)。
 )
 echo.
 pause
