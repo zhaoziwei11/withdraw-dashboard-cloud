@@ -10,7 +10,7 @@ const DATA = {
     "stat_range": "创建时间 = 2026-08-04 ~ 2026-08-04",
     "pending_amount": 448261.42,
     "pending_count": 191,
-    "fail_top3": "无提现失败",
+    "fail_top3": "司机姓名：—<br>手机号：—<br>银行卡号：—<br>提现金额：¥0.00<br>交易状态：—<br>失败原因：无提现失败",
     "demand2_note": "当天 0~15 点待提现 <b>¥224,805.21</b> · 系数 <b>0.701006</b> · 预测当天全天(0~24) <b>¥320,689.42</b>",
     "coeff_active": {
       "coeff": 0.701006,
@@ -363,7 +363,7 @@ const DATA = {
 
 // ========== 数据来源：同仓库 data/dashboard.json（GitHub Pages 同源，无跨域/无第三方依赖） ==========
 // 由本机 sync/同步到云端看板.bat 或 GitHub Actions 自动推送生成。
-const DATA_JSON_URL = "./data/dashboard.json";
+const DATA_JSON_URL = "./data/dashboard.json?_t=" + Date.now();
 
 // ========== 访问口令（前端密码门） ==========
 // 纯静态站点无法真正登录，这是"挡住随手拿到链接的人"的轻量措施。
