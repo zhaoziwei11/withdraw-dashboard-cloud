@@ -3,8 +3,11 @@
 # 实现本机全自动。云端 GitHub Actions 已加防护(抓取失败自动跳过推送), 与本地任务可同时运行。
 #
 # 用法(本机, 需管理员 PowerShell):
-#   右键此文件 -> 用 PowerShell 运行(管理员), 或在该目录执行:
-#   & ".\register_dashboard_task.ps1"
+#   如果右键"用 PowerShell 运行"报"禁止运行脚本", 请在管理员 PowerShell 里执行:
+#     powershell.exe -ExecutionPolicy Bypass -File ".\register_dashboard_task.ps1"
+#   或直接用完整路径:
+#     powershell.exe -ExecutionPolicy Bypass -File "C:\Users\92893\WorkBuddy\2026-07-30-18-09-13\withdraw-dashboard-cloud\sync\register_dashboard_task.ps1"
+#   -ExecutionPolicy Bypass 仅本次生效, 不会修改系统策略。
 # 说明: 脚本路径无关, 无论仓库放在哪个目录都能正确定位 bat。
 
 $ErrorActionPreference = "Stop"
