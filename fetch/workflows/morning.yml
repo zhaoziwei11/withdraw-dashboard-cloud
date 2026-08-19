@@ -9,6 +9,8 @@ jobs:
   run:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    permissions:
+      contents: write
     steps:
       - name: 检出代码
         uses: actions/checkout@v4
@@ -19,16 +21,17 @@ jobs:
           python-version: "3.12"
 
       - name: 安装依赖 + Chromium
+        working-directory: fetch
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           python -m playwright install --with-deps chromium
 
-      - name: 抓取并同步到 Supabase
+      - name: 抓取并同步到 GitHub 仓库
+        working-directory: fetch
         env:
           CW_USER: ${{ secrets.CW_USER }}
           CW_PASS: ${{ secrets.CW_PASS }}
           CW_CHANNEL: ""
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python run_cloud.py morning
