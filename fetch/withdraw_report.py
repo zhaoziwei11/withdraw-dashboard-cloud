@@ -113,6 +113,9 @@ COL_CREATE_TIME = "创建时间"
 COL_AMOUNT = "金额"
 COL_FAIL_REASON = "失败原因"
 COL_STATUS = "提现状态"
+COL_DRIVER_NAME = "司机姓名"
+COL_PHONE = "手机号"
+COL_CARD = "银行卡号"
 
 # ============ 工具函数 ============
 def now_str():
@@ -152,7 +155,7 @@ def get_report_file(run_date):
 
 
 def save_data(report_date, pending_amount=None, pending_count=None, fail_reasons=None,
-              demand2_today_pending=None, coefficient=None, predicted_full=None,
+              fail_records=None, demand2_today_pending=None, coefficient=None, predicted_full=None,
               predict_mode=None, predict_input=None, predict_breakdown=None):
     """增量保存数据到 JSON"""
     path = get_data_file(report_date)
@@ -169,6 +172,8 @@ def save_data(report_date, pending_amount=None, pending_count=None, fail_reasons
         data["pending_count"] = pending_count
     if fail_reasons is not None:
         data["fail_reasons"] = fail_reasons
+    if fail_records is not None:
+        data["fail_records"] = fail_records
     if demand2_today_pending is not None:
         data["demand2_today_pending"] = demand2_today_pending
     if coefficient is not None:
@@ -744,19 +749,14 @@ def setup_login():
 
 # ============ 浏览器启动/页面打开 ============
 def launch_context(p, debug=False):
-    """启动持久化浏览器上下文（云端用 chromium，本机可用 msedge）"""
-    import os
-    # 云端(Linux)无 Edge，CW_CHANNEL 留空则用默认 chromium；本机默认 msedge
-    channel = os.environ.get("CW_CHANNEL", "msedge")
-    kwargs = dict(
+    """启动 Edge 持久化浏览器上下文"""
+    return p.chromium.launch_persistent_context(
         user_data_dir=BROWSER_DATA_DIR,
         headless=HEADLESS if not debug else False,
+        channel="msedge",
         viewport={"width": 1440, "height": 900},
-        args=["--disable-blink-features=AutomationControlled", "--no-sandbox"],
+        args=["--disable-blink-features=AutomationControlled"],
     )
-    if channel:
-        kwargs["channel"] = channel
-    return p.chromium.launch_persistent_context(**kwargs)
 
 
 def open_target_page(page):
@@ -770,87 +770,6 @@ def open_target_page(page):
 
     page.wait_for_timeout(2000)
     return True
-
-
-def auto_login(page):
-    """云端自动登录：用环境变量 CW_USER / CW_PASS 启发式填写登录表单。
-    返回是否登录成功。登录页是 JS SPA，故用常见占位符/类型/按钮文字猜测。"""
-    import os
-    user = (os.environ.get("CW_USER") or "").strip()
-    pwd = os.environ.get("CW_PASS") or ""
-    if not user or not pwd:
-        print("[auto-login] 未配置 CW_USER/CW_PASS，跳过自动登录")
-        return False
-    print("[auto-login] 尝试自动登录…")
-    try:
-        page.goto(LOGIN_URL, wait_until="networkidle", timeout=60000)
-    except Exception as e:
-        print(f"[auto-login] 打开登录页失败: {e}")
-        return False
-    try:
-        page.wait_for_selector("input", timeout=15000)
-    except Exception:
-        pass
-
-    # 定位用户名输入框（按 placeholder/name/id 猜测，退回第一个可见文本输入）
-    user_sel = None
-    candidates = [
-        "input[placeholder*='账号' i]", "input[placeholder*='用户' i]", "input[placeholder*='手机' i]",
-        "input[name*='user' i]", "input[name*='account' i]", "input[name*='login' i]",
-        "input[name*='phone' i]", "input[name*='mobile' i]", "input[id*='user' i]", "input[id*='account' i]",
-        "input:not([type='password']):not([type='hidden'])",
-    ]
-    for sel in candidates:
-        try:
-            els = [e for e in page.query_selector_all(sel) if e.is_visible()]
-            if els:
-                user_sel = sel
-                break
-        except Exception:
-            continue
-    if not user_sel:
-        print("[auto-login] 找不到用户名输入框")
-        return False
-    try:
-        page.fill(user_sel, user)
-    except Exception as e:
-        print(f"[auto-login] 填写用户名失败: {e}")
-        return False
-    try:
-        page.fill("input[type='password']", pwd)
-    except Exception as e:
-        print(f"[auto-login] 填写密码失败: {e}")
-        return False
-
-    # 定位并提交登录按钮
-    btn = None
-    for bsel in [
-        "button:has-text('登录')", "button:has-text('登 录')", "input[type='submit']",
-        "button[type='submit']", "button:has-text('Sign')", "button:has-text('提交')",
-        "button:has-text('进入')", "a:has-text('登录')",
-    ]:
-        try:
-            el = page.query_selector(bsel)
-            if el and el.is_visible():
-                btn = el
-                break
-        except Exception:
-            continue
-    if not btn:
-        print("[auto-login] 找不到登录按钮")
-        return False
-    try:
-        btn.click(timeout=10000)
-    except Exception as e:
-        print(f"[auto-login] 点击登录失败: {e}")
-        return False
-    try:
-        page.wait_for_timeout(4000)
-    except Exception:
-        pass
-    ok = is_logged_in(page)
-    print(f"[auto-login] 登录{'成功' if ok else '失败（仍在登录页）'}")
-    return ok
 
 
 class CdpError(RuntimeError):
@@ -908,20 +827,9 @@ def acquire_page(debug=False):
         page = context.pages[0] if context.pages else context.new_page()
         page.set_default_timeout(TIMEOUT)
         if not open_target_page(page):
-            # 云端场景：未登录但配置了凭证 → 尝试自动登录后重试
-            import os
-            if os.environ.get("CW_USER") and os.environ.get("CW_PASS"):
-                print("[acquire] 未登录，尝试自动登录…")
-                if auto_login(page) and open_target_page(page):
-                    pass
-                else:
-                    context.close()
-                    p.stop()
-                    return None, (lambda: None)
-            else:
-                context.close()
-                p.stop()
-                return None, (lambda: None)
+            context.close()
+            p.stop()
+            return None, (lambda: None)
 
         def cleanup():
             try:
@@ -1258,7 +1166,7 @@ def sum_amount_column(page, column_name=COL_AMOUNT, max_pages=500):
 
 
 def collect_failure_reasons(page, column_name=COL_FAIL_REASON, max_pages=500):
-    """读取失败原因列并收集"""
+    """读取失败原因列并收集(兼容旧逻辑,现由 collect_failure_records 取代)"""
     texts = read_table_column_texts(page, column_name, max_pages)
     reasons = []
     for t in texts:
@@ -1269,6 +1177,96 @@ def collect_failure_reasons(page, column_name=COL_FAIL_REASON, max_pages=500):
             continue
         reasons.append(t)
     return reasons
+
+
+def collect_failure_records(page, max_pages=500):
+    """读取失败记录的所有可见字段,返回字典列表。
+    列按截图格式: 司机姓名、手机号、银行卡号、提现金额、交易状态、失败原因。
+    如果某列在页面不存在,对应字段为空字符串,避免抓取崩溃。"""
+    wait_table_loaded(page)
+
+    body_text = page.locator("body").inner_text(timeout=5000)
+    if "暂无数据" in body_text or "没有数据" in body_text or "empty" in body_text.lower():
+        print(f"  [INFO] 当前筛选条件下无数据")
+        return []
+
+    # 一次性读取所有列索引,缺失则返回 None
+    cols = {
+        "driver_name": get_column_index(page, COL_DRIVER_NAME),
+        "phone": get_column_index(page, COL_PHONE),
+        "card": get_column_index(page, COL_CARD),
+        "amount": get_column_index(page, COL_AMOUNT),
+        "status": get_column_index(page, COL_STATUS),
+        "reason": get_column_index(page, COL_FAIL_REASON),
+    }
+    print(f"  [INFO] 失败记录列索引: {cols}")
+
+    # 计算总页数
+    total = get_total_count(page)
+    if total is not None:
+        page_size = 10
+        total_pages = max(1, (total + page_size - 1) // page_size)
+        print(f"  [INFO] 分页总条数: {total}, 预计 {total_pages} 页")
+    else:
+        total_pages = max_pages
+        print(f"  [INFO] 未能读取总条数,按最多 {total_pages} 页读取")
+
+    records = []
+    for page_num in range(1, total_pages + 1):
+        wait_table_loaded(page)
+
+        rows = page.locator(".el-table__body-wrapper .el-table__row, .el-table__body .el-table__row").all()
+        if not rows:
+            print(f"  [INFO] 第 {page_num} 页无行数据,停止翻页")
+            break
+
+        for row in rows:
+            cells = row.locator("td").all()
+            if not cells:
+                continue
+
+            def cell_text(idx):
+                if idx is None or idx < 0 or idx >= len(cells):
+                    return ""
+                return cells[idx].inner_text().strip()
+
+            reason = cell_text(cols["reason"])
+            if not reason or reason in ("-", "--", "", "无", "/"):
+                continue
+            if re.sub(r"[.,]", "", reason).isdigit():
+                continue
+
+            amount_str = cell_text(cols["amount"])
+            amount = parse_amount_str(amount_str)
+
+            records.append({
+                "driver_name": cell_text(cols["driver_name"]),
+                "phone": cell_text(cols["phone"]),
+                "card": cell_text(cols["card"]),
+                "amount": amount,
+                "status": cell_text(cols["status"]) or "提现失败",
+                "reason": reason,
+            })
+
+        print(f"  [INFO] 第 {page_num} 页读取 {len(rows)} 行,累计 {len(records)} 条失败记录")
+
+        if page_num >= total_pages:
+            break
+
+        try:
+            next_btn = page.locator(".el-pagination .btn-next, .el-pagination button:has-text('下一页')").first
+            if not next_btn.is_visible(timeout=2000):
+                break
+            cls = next_btn.get_attribute("class") or ""
+            if "disabled" in cls or "is-disabled" in cls:
+                break
+            next_btn.click(timeout=5000)
+            page.wait_for_timeout(1800)
+        except Exception as e:
+            print(f"  [INFO] 翻页终止: {e}")
+            break
+
+    return records
 
 
 # ============ 报表生成 ============
@@ -1307,21 +1305,45 @@ def render_markdown(run_date, start_date=None, end_date=None):
     # 二、失败原因 Top3
     lines.append("## 二、失败原因 Top 3(15:00)")
     lines.append("")
-    fail_reasons = data.get("fail_reasons", [])
-    if fail_reasons:
-        counter = Counter(fail_reasons)
+    fail_records = data.get("fail_records") or []
+    # 兼容旧数据: 旧版只有 fail_reasons 字符串数组
+    if not fail_records:
+        fail_reasons = data.get("fail_reasons", [])
+        if fail_reasons:
+            counter = Counter(fail_reasons)
+            top3 = counter.most_common(3)
+            lines.append("| 排名 | 失败原因 | 出现次数 | 占比 |")
+            lines.append("|------|----------|----------|------|")
+            total = len(fail_reasons)
+            for i, (reason, count) in enumerate(top3, 1):
+                pct = count / total * 100 if total > 0 else 0
+                reason_short = reason[:50] + "..." if len(reason) > 50 else reason
+                lines.append(f"| {i} | {reason_short} | {count} | {pct:.1f}% |")
+            lines.append("")
+            lines.append(f"> 共收集到 {total} 条失败记录")
+        else:
+            lines.append(f"- 待补充(每天 {CONFIG.get('fail_fetch_time', '15:00')} 任务执行后更新)")
+    else:
+        # 按失败原因聚合
+        reasons = [r.get("reason", "") for r in fail_records if r.get("reason")]
+        counter = Counter(reasons)
         top3 = counter.most_common(3)
-        lines.append("| 排名 | 失败原因 | 出现次数 | 占比 |")
-        lines.append("|------|----------|----------|------|")
-        total = len(fail_reasons)
+        total = len(fail_records)
         for i, (reason, count) in enumerate(top3, 1):
             pct = count / total * 100 if total > 0 else 0
-            reason_short = reason[:50] + "..." if len(reason) > 50 else reason
-            lines.append(f"| {i} | {reason_short} | {count} | {pct:.1f}% |")
-        lines.append("")
+            lines.append(f"{i}. **{reason}**（{count} 次 · {pct:.1f}%）")
+            lines.append("")
+            # 列出该原因下的前 3 条详情
+            shown = 0
+            for r in fail_records:
+                if r.get("reason") != reason:
+                    continue
+                shown += 1
+                if shown > 3:
+                    break
+                lines.append(f"   - 司机姓名：{r.get('driver_name') or '-'} | 手机号：{r.get('phone') or '-'} | 银行卡号：{r.get('card') or '-'} | 提现金额：¥{r.get('amount', 0):,.2f} | 交易状态：{r.get('status') or '交易失败'}")
+            lines.append("")
         lines.append(f"> 共收集到 {total} 条失败记录")
-    else:
-        lines.append(f"- 待补充(每天 {CONFIG.get('fail_fetch_time', '15:00')} 任务执行后更新)")
     lines.append("")
 
     # 三、需求二 · 当日待提现与明日提现预测
@@ -1474,12 +1496,13 @@ def run_fail_phase(debug=False, start_date=None, end_date=None):
         return None
     try:
         set_filters(page, start, end, "提现失败")
-        reasons = collect_failure_reasons(page)
+        records = collect_failure_records(page)
+        reasons = [r["reason"] for r in records if r.get("reason")]
 
-        save_data(run_date, fail_reasons=reasons)
+        save_data(run_date, fail_reasons=reasons, fail_records=records)
         report_file = render_markdown(run_date, start, end)
 
-        print(f"\n[OK] 共收集 {len(reasons)} 条失败记录")
+        print(f"\n[OK] 共收集 {len(records)} 条失败记录")
         if reasons:
             counter = Counter(reasons)
             print("[OK] 失败原因 Top3:")
@@ -1652,23 +1675,42 @@ def main():
 
 
 def sync_cloud():
-    """抓取成功后，自动把最新数据推送到云端 Supabase 看板（后台执行，不阻塞本次统计）"""
+    """抓取成功后，自动把最新数据推送到云端 Supabase 看板。
+
+    同步脚本 v2 已改为直接读本地文件，不再依赖 8766 控制台在跑。
+    这里改为前台等待（通常 1~3 秒）并把结果落盘到 cloud_sync.log，
+    避免过去 DETACHED + DEVNULL 时同步失败完全无声、导致云端看板
+    长期停留在旧快照却没人发现。
+    """
     import subprocess, os, sys
-    # 相对仓库根目录定位同步脚本（本机/云端通用）
-    sync_script = SCRIPT_DIR / "sync" / "sync_to_cloud.py"
+    sync_script = r"C:\Users\92893\WorkBuddy\2026-07-30-18-09-13\withdraw-dashboard-cloud\sync\sync_to_cloud.py"
     if not os.path.exists(sync_script):
         print("[sync] 未找到云端同步脚本，跳过:", sync_script)
         return
-    print("[sync] 正在后台同步最新数据到云端看板…")
-    kwargs = dict(
-        cwd=os.path.dirname(str(sync_script)) or ".",
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-    )
-    if os.name == "nt":
-        kwargs["creationflags"] = 0x00000008  # DETACHED_PROCESS（仅 Windows）
+    print("[sync] 正在同步最新数据到云端看板…")
+    log_file = SCRIPT_DIR / "cloud_sync.log"
     try:
-        subprocess.Popen([sys.executable, str(sync_script)], **kwargs)
+        proc = subprocess.run(
+            [sys.executable, sync_script],
+            cwd=os.path.dirname(sync_script),
+            capture_output=True, text=True, timeout=90,
+        )
+        out = (proc.stdout or "") + (proc.stderr or "")
+        stamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        try:
+            with open(log_file, "a", encoding="utf-8") as f:
+                f.write(f"\n===== {stamp} (exit={proc.returncode}) =====\n{out}")
+        except Exception:
+            pass
+        if proc.returncode == 0:
+            print("[sync] 云端看板已更新")
+        else:
+            print(f"[sync] 云端同步失败(非致命, 不影响本次统计), 详见: {log_file}")
+            tail = out.strip().splitlines()[-3:] if out.strip() else []
+            for line in tail:
+                print(f"[sync]   {line}")
+    except subprocess.TimeoutExpired:
+        print("[sync] 云端同步超时(非致命), 已跳过")
     except Exception as e:
         print(f"[sync] 启动同步进程失败（非致命）: {e}")
 
