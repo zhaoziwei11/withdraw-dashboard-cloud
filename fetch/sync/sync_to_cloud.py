@@ -31,9 +31,15 @@ import urllib.request
 from pathlib import Path
 
 # ============ 配置 ============
-# 云端(GitHub Actions)通过 secrets 注入环境变量；本机直接用下面的默认值。
-SUPABASE_URL = os.environ.get("SUPABASE_URL") or "https://kbelxtwmqfbkrbrnetzzm.supabase.co"
-SUPABASE_ANON_KEY = os.environ.get("SUPABASE_ANON_KEY") or "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtiZWx4dHdtcWZia3JibmV0enptIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUyMjg2MTIsImV4cCI6MjEwMDgwNDYxMn0.VWHOrivhqd3NlFBGAXakdGWKbGhSnZ79GpLVYPZXDq0"
+# 后端改用 GitHub 仓库文件（data/dashboard.json），无第三方依赖，不受 Supabase 域名污染影响。
+# 网页从 GitHub Pages 同源读取该文件；本脚本/Action 通过 GitHub Contents API 写它。
+# GitHub Actions 通过 secrets.GITHUB_TOKEN 注入；本机未设环境变量时回退到写死的 PAT。
+# ⚠️ 该 PAT 明文存在于本地脚本，仅适用于私有仓库；若仓库改为公开请改用环境变量 GH_TOKEN。
+GH_REPO = os.environ.get("GH_REPO") or "zhaoziwei11/withdraw-dashboard-cloud"
+GH_BRANCH = os.environ.get("GH_BRANCH") or "main"
+GH_DATA_PATH = os.environ.get("GH_DATA_PATH") or "data/dashboard.json"
+GH_TOKEN = os.environ.get("GH_TOKEN") or ""  # 见下方 _load_gh_token(): 优先环境变量, 回退本地 sync/.gh_token(不入库)
+GH_API = "https://api.github.com"
 
 SOURCE_URL = "https://chengyun.91msl.com/financial-center/settlement-manage/carrier-withdrawal-manage"
 
@@ -263,7 +269,7 @@ def build_settings(s):
 # ============ 采集 ============
 def collect():
     db = load_dashboard()
-    print(f"  \u2713 已载入 dashboard 模块: {resolve_dashboard()}")
+    print(f"  [OK] 已载入 dashboard 模块: {resolve_dashboard()}")
 
     settings = db.load_settings()
     status = db.get_status()
@@ -273,7 +279,7 @@ def collect():
     forecast_rows = db.get_forecast_diff()
 
     print(
-        f"  \u2713 台账 {len(history_rows)} 天 / 预测记录 {len(forecast_rows)} 条 / "
+        f"  [OK] 台账 {len(history_rows)} 天 / 预测记录 {len(forecast_rows)} 条 / "
         f"系数集 {len(auto_coeff.get('sets') or {})} 套"
     )
 
@@ -299,49 +305,122 @@ def _http(method, url, data=None, headers=None, timeout=20):
         return resp.read().decode("utf-8")
 
 
+def repo_root():
+    """从脚本目录向上找含 .git 的仓库根（兼容 sync/ 与 fetch/sync/ 两种位置）。"""
+    d = _HERE
+    for _ in range(5):
+        if (d / ".git").exists():
+            return d
+        d = d.parent
+    return _HERE.parent
+
+
+def _load_gh_token():
+    """按优先级取 GitHub token: 环境变量 GH_TOKEN > 本地 sync/.gh_token(不入库)。
+    注意: 不要把明文 PAT 写进会被提交的脚本/文件, 否则触发仓库密钥扫描拦截。"""
+    t = (os.environ.get("GH_TOKEN") or "").strip()
+    if t:
+        return t
+    for p in (_HERE / ".gh_token", repo_root() / ".gh_token", Path(".gh_token")):
+        try:
+            if p.exists():
+                return p.read_text(encoding="utf-8").strip()
+        except Exception:
+            pass
+    sys.stderr.write(
+        "[WARN] 未找到 GitHub Token: 请设置环境变量 GH_TOKEN, 或在 sync/.gh_token 写入 PAT\n"
+    )
+    return ""
+
+
+GH_TOKEN = _load_gh_token()
+
+
 def push(payload):
-    row = {
-        "generated_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
-        "payload": payload,
-    }
-    body = json.dumps(row, ensure_ascii=False).encode("utf-8")
+    import base64
+
+    content = json.dumps(payload, ensure_ascii=False, indent=2)
+    raw = content.encode("utf-8")
+
+    api = f"{GH_API}/repos/{GH_REPO}/contents/{GH_DATA_PATH}"
     headers = {
-        "apikey": SUPABASE_ANON_KEY,
-        "Authorization": f"Bearer {SUPABASE_ANON_KEY}",
+        "Authorization": f"Bearer {GH_TOKEN}",
+        "Accept": "application/vnd.github+json",
         "Content-Type": "application/json",
-        "Prefer": "return=minimal",
+        "User-Agent": "withdraw-dashboard-sync",
+        "X-GitHub-Api-Version": "2022-11-28",
     }
-    _http("POST", f"{SUPABASE_URL}/rest/v1/withdraw_reports", data=body, headers=headers)
-    print("\u2713 已同步到云端 Supabase")
+
+    # 本地也写一份，方便双击 index.html 离线预览 / 调试（不依赖网络即可看）
+    try:
+        lp = repo_root() / GH_DATA_PATH
+        lp.parent.mkdir(parents=True, exist_ok=True)
+        lp.write_text(content, encoding="utf-8")
+        print(f"[OK] 本地备份已写入: {lp}")
+    except Exception as e:
+        print(f"[WARN] 本地备份失败(不影响云端): {e}")
+
+    # 取现有文件 sha（已存在才需要，用于更新而非新建）
+    sha = None
+    try:
+        info = json.loads(
+            _http("GET", api, headers={k: v for k, v in headers.items() if k != "Content-Type"})
+        )
+        sha = info.get("sha")
+    except urllib.error.HTTPError as e:
+        if e.code != 404:
+            raise
+    except Exception:
+        pass
+
+    msg = "sync: {} 待提现 CNY {}".format(
+        payload["report"]["date"], payload["report"].get("pending_amount")
+    )
+    data = {
+        "message": msg,
+        "content": base64.b64encode(raw).decode("ascii"),
+        "branch": GH_BRANCH,
+    }
+    if sha:
+        data["sha"] = sha
+    _http("PUT", api, data=json.dumps(data).encode("utf-8"), headers=headers)
+    print("[OK] 已同步到 GitHub 仓库 data/dashboard.json")
 
 
 def verify(expect_date=None):
-    """推送后回查云端最新一行，确认数据真的落库（避免"以为同步了"）。"""
+    """推送后回查仓库文件，确认数据真的落库（避免"以为同步了"）。"""
+    import base64
+
+    api = f"{GH_API}/repos/{GH_REPO}/contents/{GH_DATA_PATH}"
     headers = {
-        "apikey": SUPABASE_ANON_KEY,
-        "Authorization": f"Bearer {SUPABASE_ANON_KEY}",
+        "Authorization": f"Bearer {GH_TOKEN}",
+        "Accept": "application/vnd.github+json",
+        "User-Agent": "withdraw-dashboard-sync",
+        "X-GitHub-Api-Version": "2022-11-28",
     }
-    url = (
-        f"{SUPABASE_URL}/rest/v1/withdraw_reports"
-        "?select=generated_at,payload&order=generated_at.desc&limit=1"
-    )
-    raw = _http("GET", url, headers=headers)
-    rows = json.loads(raw)
-    if not rows:
-        print("\u2717 云端回查: 表里没有任何数据")
-        return False
-    row = rows[0]
-    rep = (row.get("payload") or {}).get("report") or {}
+    try:
+        raw = _http("GET", api, headers=headers)
+    except Exception as e:
+        print(f"[WARN] 回查失败(数据可能已推送成功): {type(e).__name__}: {e}")
+        return True
+    info = json.loads(raw)
+    try:
+        content = base64.b64decode(info["content"]).decode("utf-8")
+        data = json.loads(content)
+    except Exception as e:
+        print(f"[WARN] 回查内容解析失败: {e}")
+        return True
+    rep = data.get("report") or {}
     cloud_date = rep.get("date")
     amount = rep.get("pending_amount") or 0
     print("\n--- 云端回查 ---")
     print(f"  云端最新数据日期 : {cloud_date}")
-    print(f"  待提现金额       : \u00a5{amount:,.2f} / {rep.get('pending_count')} 笔")
-    print(f"  入库时间(UTC)    : {row.get('generated_at')}")
+    print(f"  待提现金额       : CNY {amount:,.2f} / {rep.get('pending_count')} 笔")
+    print(f"  文件 SHA         : {str(info.get('sha', ''))[:12]}")
     if expect_date and cloud_date != expect_date:
-        print(f"\u2717 不一致! 本地是 {expect_date}, 云端是 {cloud_date}")
+        print(f"[FAIL] 不一致! 本地是 {expect_date}, 云端是 {cloud_date}")
         return False
-    print("\u2713 云端数据与本机一致, 网页刷新即可看到")
+    print("[OK] 云端数据与本机一致, 网页刷新即可看到")
     return True
 
 
@@ -350,12 +429,12 @@ if __name__ == "__main__":
     try:
         payload = collect()
     except Exception as e:
-        print(f"\u2717 采集失败: {type(e).__name__}: {e}")
+        print(f"[FAIL] 采集失败: {type(e).__name__}: {e}")
         sys.exit(1)
 
     rp = payload["report"]
     print(
-        f"  \u2192 {rp['date']} 待提现 ¥{(rp['pending_amount'] or 0):,.2f} / {rp['pending_count']} 笔"
+        f"  -> {rp['date']} 待提现 CNY {(rp['pending_amount'] or 0):,.2f} / {rp['pending_count']} 笔"
     )
 
     try:
@@ -366,16 +445,16 @@ if __name__ == "__main__":
             detail = e.read().decode("utf-8")[:300]
         except Exception:
             pass
-        print(f"\u2717 同步失败: HTTP {e.code} {detail}")
+        print(f"[FAIL] 同步失败: HTTP {e.code} {detail}")
         sys.exit(1)
     except Exception as e:
-        print(f"\u2717 同步失败: {type(e).__name__}: {e}")
+        print(f"[FAIL] 同步失败: {type(e).__name__}: {e}")
         sys.exit(1)
 
     try:
         ok = verify(expect_date=rp.get("date"))
     except Exception as e:
-        print(f"\u26a0 回查失败(数据可能已推送成功): {type(e).__name__}: {e}")
+        print(f"[WARN] 回查失败(数据可能已推送成功): {type(e).__name__}: {e}")
         ok = True
 
     print("\n完成。" if ok else "\n完成, 但云端校验未通过, 请重跑一次。")
