@@ -28,7 +28,7 @@
 python sync/sync_to_cloud.py
 ```
 
-脚本默认使用内置 PAT 写仓库；也可用环境变量 `GH_TOKEN` 覆盖，`GH_REPO` / `GH_BRANCH` / `GH_DATA_PATH` 可自定义。
+脚本读取 `GH_TOKEN` 环境变量（GitHub Actions 自带 `GITHUB_TOKEN`；本机在 `sync/.gh_token` 写入 PAT，该文件已 gitignore 不入库）。`GH_REPO` / `GH_BRANCH` / `GH_DATA_PATH` 可自定义。
 
 ## 跨设备开发（在家 / 公司都能改、都能部署）
 
