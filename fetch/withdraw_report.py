@@ -1324,25 +1324,19 @@ def render_markdown(run_date, start_date=None, end_date=None):
         else:
             lines.append(f"- 待补充(每天 {CONFIG.get('fail_fetch_time', '15:00')} 任务执行后更新)")
     else:
-        # 按失败原因聚合展示（每条记录完整 6 行, 失败原因放最后）
-        reasons = [r.get("reason", "") for r in fail_records if r.get("reason")]
-        counter = Counter(reasons)
-        top3 = counter.most_common(3)
+        # 仅在有真实失败原因时使用完整记录格式；多条记录用序号逐条排列
         total = len(fail_records)
-        for reason, count in top3:
-            shown = 0
-            for r in fail_records:
-                if r.get("reason") != reason:
-                    continue
-                shown += 1
-                if shown > 3:
-                    break
-                lines.append(f"- 司机姓名：{r.get('driver_name') or '-'}")
-                lines.append(f"  手机号：{r.get('phone') or '-'}")
-                lines.append(f"  银行卡号：{r.get('card') or '-'}")
-                lines.append(f"  提现金额：¥{r.get('amount', 0):,.2f}")
-                lines.append(f"  交易状态：{r.get('status') or '交易失败'}")
-                lines.append(f"  失败原因：{reason}")
+        reasons = [r.get("reason", "") for r in fail_records if r.get("reason")]
+        if not reasons:
+            lines.append("- 无提现失败")
+        else:
+            for idx, r in enumerate(fail_records, 1):
+                lines.append(f"{idx}. 司机姓名：{r.get('driver_name') or '-'}")
+                lines.append(f"   手机号：{r.get('phone') or '-'}")
+                lines.append(f"   银行卡号：{r.get('card') or '-'}")
+                lines.append(f"   提现金额：¥{r.get('amount', 0):,.2f}")
+                lines.append(f"   交易状态：{r.get('status') or '交易失败'}")
+                lines.append(f"   失败原因：{r.get('reason') or ''}")
                 lines.append("")
         lines.append(f"> 共收集到 {total} 条失败记录")
     lines.append("")
