@@ -1,45 +1,376 @@
 {
   "report": {
     "date": "2026-08-19",
-    "generated_at": "2026-08-19 05:46:47",
+    "generated_at": "2026-08-19 15:10:27",
     "source": "https://chengyun.91msl.com/financial-center/settlement-manage/carrier-withdrawal-manage",
     "stat_range": "创建时间 = 2026-08-18 ~ 2026-08-18",
-    "pending_amount": null,
-    "pending_count": null,
-    "fail_top3": "待补充(每天 15:00 任务执行后更新)",
-    "demand2_note": "待补充(每天 15:00 任务执行后更新)",
+    "pending_amount": 0.0,
+    "pending_count": 0,
+    "fail_top3": "1. 收款账户为II、III类账户，超过日累计限额（1 次 · 100.0%）",
+    "demand2_note": "当天 0~15 点待提现 <b>¥64,186.13</b> · 系数 <b>0.722753</b> · 预测当天全天(0~24) <b>¥88,807.84</b>",
     "coeff_active": {
-      "coeff": null,
-      "pooled": null,
-      "range": " ~ ",
-      "days": null,
-      "rows": null
+      "coeff": 0.722753,
+      "pooled": 0.733882,
+      "range": "2026-07-11 ~ 2026-08-09",
+      "days": 30,
+      "rows": 6561
     },
-    "partial_total": null,
-    "full_total": null,
-    "forecast_diff": []
+    "partial_total": 11184600.95,
+    "full_total": 15240329.4,
+    "forecast_diff": [
+      {
+        "date": "2026-08-19",
+        "predicted": 88807.84,
+        "actual": null,
+        "diff": null,
+        "pct": null
+      },
+      {
+        "date": "2026-08-11",
+        "predicted": 131744.47,
+        "actual": null,
+        "diff": null,
+        "pct": null
+      },
+      {
+        "date": "2026-08-10",
+        "predicted": 294351.51,
+        "actual": null,
+        "diff": null,
+        "pct": null
+      },
+      {
+        "date": "2026-08-05",
+        "predicted": 320689.42,
+        "actual": null,
+        "diff": null,
+        "pct": null
+      },
+      {
+        "date": "2026-08-04",
+        "predicted": 469001.96,
+        "actual": 448261.42,
+        "diff": -20740.54,
+        "pct": "-4.42%"
+      }
+    ]
   },
-  "history": [],
+  "history": [
+    {
+      "run_date": "2026-08-19",
+      "pending_amount": 0,
+      "pending_count": 0,
+      "today_15": 64186.13,
+      "coefficient": "0.7228",
+      "predicted_full": 88807.84,
+      "actual_next_day_09": null,
+      "diff": null,
+      "diff_pct": "",
+      "status": "pending"
+    },
+    {
+      "run_date": "2026-08-11",
+      "pending_amount": 503189.93,
+      "pending_count": 186,
+      "today_15": 95218.71,
+      "coefficient": "0.7228",
+      "predicted_full": 131744.47,
+      "actual_next_day_09": null,
+      "diff": null,
+      "diff_pct": "",
+      "status": "pending"
+    },
+    {
+      "run_date": "2026-08-10",
+      "pending_amount": 0,
+      "pending_count": 0,
+      "today_15": 284354.0,
+      "coefficient": "0.7228",
+      "predicted_full": 294351.51,
+      "actual_next_day_09": null,
+      "diff": null,
+      "diff_pct": "",
+      "status": "pending"
+    },
+    {
+      "run_date": "2026-08-05",
+      "pending_amount": 448261.42,
+      "pending_count": 191,
+      "today_15": 224805.21,
+      "coefficient": "0.7010",
+      "predicted_full": 320689.42,
+      "actual_next_day_09": null,
+      "diff": null,
+      "diff_pct": "",
+      "status": "pending"
+    },
+    {
+      "run_date": "2026-08-04",
+      "pending_amount": 0,
+      "pending_count": 0,
+      "today_15": 328773.19,
+      "coefficient": "0.7010",
+      "predicted_full": 469001.96,
+      "actual_next_day_09": 448261.42,
+      "diff": -20740.54,
+      "diff_pct": "-4.42",
+      "status": "compared"
+    },
+    {
+      "run_date": "2026-08-03",
+      "pending_amount": 0,
+      "pending_count": 0,
+      "today_15": 1292526.86,
+      "coefficient": "0.7010",
+      "predicted_full": 1223737.46,
+      "actual_next_day_09": null,
+      "diff": null,
+      "diff_pct": "",
+      "status": "pending"
+    },
+    {
+      "run_date": "2026-07-31",
+      "pending_amount": 890765.61,
+      "pending_count": 425,
+      "today_15": 538022.18,
+      "coefficient": "0.7006",
+      "predicted_full": 767908.71,
+      "actual_next_day_09": 0.0,
+      "diff": -767908.71,
+      "diff_pct": "-100.00",
+      "status": "compared"
+    },
+    {
+      "run_date": "2026-07-30",
+      "pending_amount": 786881.09,
+      "pending_count": 373,
+      "today_15": 637364.72,
+      "coefficient": "0.6877",
+      "predicted_full": 926819.82,
+      "actual_next_day_09": 890765.61,
+      "diff": -36054.21,
+      "diff_pct": "-3.89",
+      "status": "compared"
+    },
+    {
+      "run_date": "2026-07-29",
+      "pending_amount": 807407.44,
+      "pending_count": 348,
+      "today_15": 586134.93,
+      "coefficient": "0.6877",
+      "predicted_full": 852324.35,
+      "actual_next_day_09": 786881.09,
+      "diff": -65443.26,
+      "diff_pct": "-7.68",
+      "status": "compared"
+    },
+    {
+      "run_date": "2026-07-28",
+      "pending_amount": 1673821.24,
+      "pending_count": 506,
+      "today_15": 675197.11,
+      "coefficient": "",
+      "predicted_full": null,
+      "actual_next_day_09": 807407.44,
+      "diff": null,
+      "diff_pct": "",
+      "status": "compared"
+    },
+    {
+      "run_date": "2026-07-27",
+      "pending_amount": 0,
+      "pending_count": 0,
+      "today_15": 1260768.6,
+      "coefficient": "",
+      "predicted_full": null,
+      "actual_next_day_09": 1673821.24,
+      "diff": null,
+      "diff_pct": "",
+      "status": "compared"
+    }
+  ],
   "predict": {
     "today": "2026-08-19",
-    "has_data": false,
-    "demand2_today_pending": null,
-    "coefficient": null,
-    "predicted_full": null,
-    "predict_mode": null,
-    "predict_breakdown": null
+    "has_data": true,
+    "demand2_today_pending": 64186.13,
+    "coefficient": 0.722753,
+    "predicted_full": 88807.84,
+    "predict_mode": "weekday",
+    "predict_breakdown": null,
+    "coefficient_source": "2026-07-11 ~ 2026-08-09, 6561 行",
+    "total_partial": 11184600.95,
+    "total_full": 15240329.4
   },
   "coefficient": {
     "active": "1m",
-    "sets": {}
+    "sets": {
+      "1m": {
+        "label": "近1月",
+        "coeff": 0.722753,
+        "coeff_all": 0.673568,
+        "pooled": 0.733882,
+        "range": "2026-07-11 ~ 2026-08-09",
+        "days": 30,
+        "rows": 6561,
+        "total_partial": 11184600.95,
+        "total_full": 15240329.4,
+        "computed_at": "2026-08-10T19:29:15.599757"
+      },
+      "2m": {
+        "label": "近2月",
+        "coeff": 0.691036,
+        "coeff_all": 0.662543,
+        "pooled": 0.705849,
+        "range": "2026-06-11 ~ 2026-08-09",
+        "days": 60,
+        "rows": 12612,
+        "total_partial": 20057722.27,
+        "total_full": 28416461.15,
+        "computed_at": "2026-08-10T19:29:15.599757"
+      },
+      "3m": {
+        "label": "近3月",
+        "coeff": 0.707092,
+        "coeff_all": 0.677843,
+        "pooled": 0.724343,
+        "range": "2026-05-12 ~ 2026-08-09",
+        "days": 90,
+        "rows": 21670,
+        "total_partial": 36663221.85,
+        "total_full": 50615826.18,
+        "computed_at": "2026-08-10T19:29:15.599757"
+      }
+    }
   },
-  "forecast_diff": [],
+  "forecast_diff": [
+    {
+      "predict_date": "2026-08-19",
+      "today_pending_15": 64186.13,
+      "coefficient": "0.722753",
+      "predicted_full": 88807.84,
+      "mode": "weekday",
+      "actual_next_day_09": null,
+      "diff": null,
+      "diff_pct": "",
+      "status": "pending"
+    },
+    {
+      "predict_date": "2026-08-11",
+      "today_pending_15": 95218.71,
+      "coefficient": "0.722753",
+      "predicted_full": 131744.47,
+      "mode": "weekday",
+      "actual_next_day_09": null,
+      "diff": null,
+      "diff_pct": "",
+      "status": "pending"
+    },
+    {
+      "predict_date": "2026-08-10",
+      "today_pending_15": 87157.11,
+      "coefficient": "0.722753",
+      "predicted_full": 294351.51,
+      "mode": "monday",
+      "actual_next_day_09": null,
+      "diff": null,
+      "diff_pct": "",
+      "status": "pending"
+    },
+    {
+      "predict_date": "2026-08-05",
+      "today_pending_15": 224805.21,
+      "coefficient": "0.701006",
+      "predicted_full": 320689.42,
+      "mode": "weekday",
+      "actual_next_day_09": null,
+      "diff": null,
+      "diff_pct": "",
+      "status": "pending"
+    },
+    {
+      "predict_date": "2026-08-04",
+      "today_pending_15": 328773.19,
+      "coefficient": "0.701006",
+      "predicted_full": 469001.96,
+      "mode": "weekday",
+      "actual_next_day_09": 448261.42,
+      "diff": -20740.54,
+      "diff_pct": "-4.42",
+      "status": "compared"
+    },
+    {
+      "predict_date": "2026-08-03",
+      "today_pending_15": 538022.18,
+      "coefficient": "0.701006",
+      "predicted_full": 1223737.46,
+      "mode": "monday",
+      "actual_next_day_09": null,
+      "diff": null,
+      "diff_pct": "",
+      "status": "pending"
+    },
+    {
+      "predict_date": "2026-07-31",
+      "today_pending_15": 538022.18,
+      "coefficient": "0.700633",
+      "predicted_full": 767908.71,
+      "mode": "weekday",
+      "actual_next_day_09": 0.0,
+      "diff": -767908.71,
+      "diff_pct": "-100.00",
+      "status": "compared"
+    },
+    {
+      "predict_date": "2026-07-30",
+      "today_pending_15": 637364.72,
+      "coefficient": "0.687690",
+      "predicted_full": 926819.82,
+      "mode": "weekday",
+      "actual_next_day_09": 890765.61,
+      "diff": -36054.21,
+      "diff_pct": "-3.89",
+      "status": "compared"
+    },
+    {
+      "predict_date": "2026-07-29",
+      "today_pending_15": 586134.93,
+      "coefficient": "0.687690",
+      "predicted_full": 852324.35,
+      "mode": "weekday",
+      "actual_next_day_09": 786881.09,
+      "diff": -65443.26,
+      "diff_pct": "-7.68",
+      "status": "compared"
+    },
+    {
+      "predict_date": "2026-07-28",
+      "today_pending_15": 675197.11,
+      "coefficient": "",
+      "predicted_full": null,
+      "mode": "",
+      "actual_next_day_09": 807407.44,
+      "diff": null,
+      "diff_pct": "",
+      "status": "compared"
+    },
+    {
+      "predict_date": "2026-07-27",
+      "today_pending_15": 1260768.6,
+      "coefficient": "",
+      "predicted_full": null,
+      "mode": "",
+      "actual_next_day_09": 1673821.24,
+      "diff": null,
+      "diff_pct": "",
+      "status": "compared"
+    }
+  ],
   "status": {
     "today": "2026-08-19",
-    "report_exists": false,
-    "report_time": null,
-    "pending_status": "未生成",
-    "fail_status": "未运行"
+    "report_exists": true,
+    "report_time": "2026-08-19 15:10:27",
+    "pending_status": "已生成 ¥0.00 / 0 笔",
+    "fail_status": "有失败 (1 条)"
   },
   "settings": {
     "pending": {
@@ -48,15 +379,49 @@
       "wechat_push": false
     },
     "fail": {
-      "time": "15:00",
+      "time": "15:10",
       "data_range": "T-1",
       "wechat_push": false
     },
     "holiday": {
       "skip": true,
       "accumulate": true,
-      "holidays": [],
-      "holidays_count": 0
+      "holidays": [
+        "2026-01-01",
+        "2026-01-02",
+        "2026-01-03",
+        "2026-02-15",
+        "2026-02-16",
+        "2026-02-17",
+        "2026-02-18",
+        "2026-02-19",
+        "2026-02-20",
+        "2026-02-21",
+        "2026-02-22",
+        "2026-02-23",
+        "2026-04-04",
+        "2026-04-05",
+        "2026-04-06",
+        "2026-05-01",
+        "2026-05-02",
+        "2026-05-03",
+        "2026-05-04",
+        "2026-05-05",
+        "2026-06-19",
+        "2026-06-20",
+        "2026-06-21",
+        "2026-09-25",
+        "2026-09-26",
+        "2026-09-27",
+        "2026-10-01",
+        "2026-10-02",
+        "2026-10-03",
+        "2026-10-04",
+        "2026-10-05",
+        "2026-10-06",
+        "2026-10-07"
+      ],
+      "holidays_count": 33
     }
   },
   "_synced_from": "local-files-v2"
