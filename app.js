@@ -361,9 +361,9 @@ const DATA = {
   }
 };
 
-// ========== Supabase 配置（前端公开 key，安全） ==========
-const SB_URL = "https://kbelxtwmqfbkrbrnetzzm.supabase.co";
-const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtiZWx4dHdtcWZia3JibmV0enptIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUyMjg2MTIsImV4cCI6MjEwMDgwNDYxMn0.VWHOrivhqd3NlFBGAXakdGWKbGhSnZ79GpLVYPZXDq0";
+// ========== 数据来源：同仓库 data/dashboard.json（GitHub Pages 同源，无跨域/无第三方依赖） ==========
+// 由本机 sync/同步到云端看板.bat 或 GitHub Actions 自动推送生成。
+const DATA_JSON_URL = "./data/dashboard.json";
 
 // ========== 访问口令（前端密码门） ==========
 // 纯静态站点无法真正登录，这是"挡住随手拿到链接的人"的轻量措施。
@@ -417,59 +417,21 @@ function normalizeSettings(s) {
   return s;
 }
 
-async function sbApi(path, opts = {}) {
-  const res = await fetch(SB_URL + path, {
-    ...opts,
-    headers: {
-      ...(opts.headers || {}),
-      apikey: SB_KEY,
-      Authorization: "Bearer " + SB_KEY,
-      "Content-Type": "application/json"
-    }
-  });
-  if (!res.ok) throw new Error("HTTP " + res.status);
-  return res;
-}
-
-// 读取云端配置；失败则保留内置默认
-async function loadSettings() {
+// 读取同仓库 data/dashboard.json，覆盖内置快照；失败则保留内置兜底
+async function loadCloud() {
   try {
-    const res = await sbApi("/rest/v1/withdraw_settings?select=payload&id=eq.1");
-    const rows = await res.json();
-    if (rows && rows.length && rows[0].payload) {
-      DATA.settings = normalizeSettings(rows[0].payload);
-      return "cloud";
+    const res = await fetch(DATA_JSON_URL, { cache: "no-store" });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const data = await res.json();
+    for (const k of ["report", "history", "predict", "coefficient", "forecast_diff", "status", "settings"]) {
+      if (data[k] !== undefined) DATA[k] = data[k];
     }
+    DATA.settings = normalizeSettings(DATA.settings);
+    return data.report ? data.report.generated_at || "cloud" : "cloud";
   } catch (e) {
-    console.warn("云端配置读取失败，使用内置默认：", e);
+    console.warn("云端数据读取失败，使用内置旧快照：", e);
+    return null;
   }
-  return "default";
-}
-
-// 读取云端报表数据（最新一条），覆盖内置快照；失败则保留内置
-async function loadReport() {
-  try {
-    const res = await sbApi("/rest/v1/withdraw_reports?select=*&order=created_at.desc&limit=1");
-    const rows = await res.json();
-    if (rows && rows.length && rows[0].payload) {
-      const p = rows[0].payload;
-      for (const k of ["report", "history", "predict", "coefficient", "forecast_diff", "status"]) {
-        if (p[k] !== undefined) DATA[k] = p[k];
-      }
-      return rows[0].created_at || "cloud";
-    }
-  } catch (e) {
-    console.warn("云端报表读取失败，使用内置快照：", e);
-  }
-  return null;
-}
-
-async function upsertSettings(cfg) {
-  await sbApi("/rest/v1/withdraw_settings", {
-    method: "POST",
-    headers: { Prefer: "resolution=merge-duplicates" },
-    body: JSON.stringify({ id: 1, payload: cfg, updated_at: new Date().toISOString() })
-  });
 }
 
 // ========== 渲染引擎 ==========
@@ -656,7 +618,7 @@ function renderConfig() {
   $("#tab-config").innerHTML = `
     <div class="card">
       <h2>⚙️ 配置（可在线修改）</h2>
-      <p class="meta">修改后点「保存配置」，写入云端 Supabase，家/公司任意浏览器同步生效。</p>
+      <p class="meta">修改后点「保存配置」仅在本会话生效；持久化请在本机 withdraw-report 项目调整 dashboard.py 后重跑同步脚本，配置随数据一同推送到 GitHub。</p>
 
       <h3>待提现推送</h3>
       <div class="form-row">
@@ -690,7 +652,7 @@ function renderConfig() {
         <button id="saveConfig" class="btn">💾 保存配置</button>
         <span id="configStatus" class="config-status"></span>
       </div>
-      <p class="note">说明：配置保存在云端 Supabase，公开网页均可读写（仅供内部使用）。若日后需限制修改权限，可加访问口令。本地 8766 自动化要真正采用这些配置，需让其改为读取云端配置（可后续对接）。</p>
+      <p class="note">说明：看板数据由本机同步脚本 / GitHub Actions 推送到同仓库 data/dashboard.json，任意浏览器同源读取。如需改配置并持久化，请在本机 withdraw-report 项目修改 dashboard.py 后重跑同步脚本。</p>
     </div>`;
 
   // 实时统计节假日天数
@@ -717,20 +679,14 @@ async function saveSettings() {
     fail: { time: $("#fail_time").value, data_range: $("#fail_range").value, wechat_push: $("#fail_wechat").checked },
     holiday: { skip: $("#holiday_skip").checked, accumulate: $("#holiday_accumulate").checked, holidays }
   };
-  status.textContent = "保存中…";
-  status.className = "config-status";
-  try {
-    await upsertSettings(cfg);
-    DATA.settings = normalizeSettings(cfg);
-    status.textContent = "✅ 已保存到云端";
-    status.className = "config-status ok";
-    renderReport();
-    renderPredict();
-    renderSettings();
-  } catch (e) {
-    status.textContent = "❌ 保存失败：" + e.message + "（可能云端不可达，请检查网络后重试）";
-    status.className = "config-status err";
-  }
+  // 静态站点无后端写权限：配置随报表数据由本机脚本生成并同步。
+  // 这里只在本会话内临时生效，真正持久化请在 withdraw-report 项目改 dashboard.py 后重新运行同步脚本。
+  DATA.settings = normalizeSettings(cfg);
+  status.textContent = "✅ 本会话已应用（需持久化请在本机修改 dashboard.py 后重跑同步脚本）";
+  status.className = "config-status ok";
+  renderReport();
+  renderPredict();
+  renderSettings();
 }
 
 // ========== Tab 切换 ==========
@@ -784,8 +740,7 @@ function checkStale(reportDate, fromCloud) {
 function startApp() {
   (async () => {
     try {
-      const src = await loadSettings();
-      const src2 = await loadReport();
+      const src2 = await loadCloud();
       renderReport();
       renderHistory();
       renderPredict();
@@ -795,9 +750,9 @@ function startApp() {
       renderSettings();
 
       const fromCloud = !!src2;
-      const cfgTxt = src === "cloud" ? "配置已从云端加载" : "配置为内置默认";
+      const cfgTxt = fromCloud ? "配置已从云端加载" : "配置为内置默认";
       const repTxt = fromCloud
-        ? "报表已从云端加载(" + new Date(src2).toLocaleString("zh-CN") + ")"
+        ? "报表已从云端加载"
         : "⚠️ 云端无数据，显示内置旧快照";
       $("#genTime").textContent = "数据时间: " + (DATA.report.generated_at || "?") + " · " + cfgTxt + " · " + repTxt;
 
