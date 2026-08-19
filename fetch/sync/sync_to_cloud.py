@@ -144,13 +144,11 @@ def build_report(db, status, predict, auto_coeff, forecast_rows, settings):
                     fail_top3 = "无提现失败"
                 else:
                     counter = Counter(reasons)
-                    total = len(fail_records)
                     blocks = []
-                    for i, (reason, cnt) in enumerate(counter.most_common(3), 1):
-                        pct = cnt / total * 100 if total > 0 else 0
-                        # 该原因下最多展示 3 条详情(按截图格式)
+                    # 按原因分组保留 Top3（防止页面过长），每组最多展示 3 条
+                    # 最终格式: 每条记录自成一个 6 行块, 失败原因放最后, 块间空行
+                    for reason, _cnt in counter.most_common(3):
                         shown = 0
-                        lines = []
                         for r in fail_records:
                             if r.get("reason") != reason:
                                 continue
@@ -162,14 +160,18 @@ def build_report(db, status, predict, auto_coeff, forecast_rows, settings):
                             card = r.get("card") or "-"
                             amount = float(r.get("amount", 0) or 0)
                             record_status = r.get("status") or "交易失败"
-                            lines.append(f"司机姓名：{name}")
-                            lines.append(f"手机号：{phone}")
-                            lines.append(f"银行卡号：{card}")
-                            lines.append(f"提现金额：¥{amount:,.2f}")
-                            lines.append(f"交易状态：{record_status}")
-                        # 失败原因(次数·占比)行放在最后
-                        lines.append(f"{i}. {reason}（{cnt} 次 · {pct:.1f}%）")
-                        blocks.append("<br>".join(lines))
+                            blocks.append(
+                                "<br>".join(
+                                    [
+                                        f"司机姓名：{name}",
+                                        f"手机号：{phone}",
+                                        f"银行卡号：{card}",
+                                        f"提现金额：¥{amount:,.2f}",
+                                        f"交易状态：{record_status}",
+                                        f"失败原因：{reason}",
+                                    ]
+                                )
+                            )
                     fail_top3 = "<br><br>".join(blocks)
     except Exception:
         pass
