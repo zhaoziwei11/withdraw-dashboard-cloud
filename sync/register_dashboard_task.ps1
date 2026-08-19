@@ -25,15 +25,15 @@ if (-not (Test-Path $bat)) {
 # 任务动作: 用 cmd 跑 bat (bat 内部已 cd 到项目根并调用 python)
 $action = New-ScheduledTaskAction -Execute "cmd.exe" -Argument ('/c "' + $bat + '"')
 
-# 设置: 允许用电池/不中断, 错过触发也补跑, 最长 10 分钟
+# 设置: 允许用电池/不中断, 最长 10 分钟
+# 注意: -StartWhenAvailable 与今天已过触发时间组合在某些系统会报 0x80070057, 故移除
 $set = New-ScheduledTaskSettingsSet `
     -AllowStartIfOnBatteries `
     -DontStopIfGoingOnBatteries `
-    -StartWhenAvailable `
     -ExecutionTimeLimit (New-TimeSpan -Minutes 10)
 
-# 工作日触发 (Monday=1 ... Friday=5)
-$days = 1,2,3,4,5
+# 工作日触发 (周一到周五)
+$days = [System.DayOfWeek]::Monday, [System.DayOfWeek]::Tuesday, [System.DayOfWeek]::Wednesday, [System.DayOfWeek]::Thursday, [System.DayOfWeek]::Friday
 
 Register-ScheduledTask -TaskName "承运提现看板推送-早09:05" -Action $action `
     -Trigger (New-ScheduledTaskTrigger -Weekly -DaysOfWeek $days -At "09:05") `
