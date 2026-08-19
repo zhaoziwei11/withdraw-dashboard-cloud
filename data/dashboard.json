@@ -9,14 +9,14 @@
     "fail_top3": "1. 司机姓名：王红斌<br>手机号：18191829313<br>银行卡号：6210987970006964233<br>提现金额：¥12,178.85<br>交易状态：交易失败<br>失败原因：收款账户为II、III类账户，超过日累计限额",
     "demand2_note": "当天 0~15 点待提现 <b>¥64,186.13</b> · 系数 <b>0.722753</b> · 预测当天全天(0~24) <b>¥88,807.84</b>",
     "coeff_active": {
-      "coeff": 0.722753,
-      "pooled": 0.733882,
-      "range": "2026-07-11 ~ 2026-08-09",
+      "coeff": 0.694353,
+      "pooled": 0.726398,
+      "range": "None ~ None",
       "days": 30,
-      "rows": 6561
+      "rows": 6291
     },
-    "partial_total": 11184600.95,
-    "full_total": 15240329.4,
+    "partial_total": 10948853.76,
+    "full_total": 15072804.96,
     "forecast_diff": [
       {
         "date": "2026-08-19",
@@ -197,48 +197,48 @@
     "predicted_full": 88807.84,
     "predict_mode": "weekday",
     "predict_breakdown": null,
-    "coefficient_source": "2026-07-11 ~ 2026-08-09, 6561 行",
-    "total_partial": 11184600.95,
-    "total_full": 15240329.4
+    "coefficient_source": "2026-07-20 ~ 2026-08-18, 6291 行",
+    "total_partial": 10948853.76,
+    "total_full": 15072804.96
   },
   "coefficient": {
     "active": "1m",
     "sets": {
       "1m": {
         "label": "近1月",
-        "coeff": 0.722753,
-        "coeff_all": 0.673568,
-        "pooled": 0.733882,
-        "range": "2026-07-11 ~ 2026-08-09",
+        "coeff": 0.694353,
+        "coeff_all": 0.669304,
+        "pooled": 0.726398,
+        "range": "None ~ None",
         "days": 30,
-        "rows": 6561,
-        "total_partial": 11184600.95,
-        "total_full": 15240329.4,
-        "computed_at": "2026-08-10T19:29:15.599757"
+        "rows": 6291,
+        "total_partial": 10948853.76,
+        "total_full": 15072804.96,
+        "computed_at": "2026-08-19T18:12:28.485068"
       },
       "2m": {
         "label": "近2月",
-        "coeff": 0.691036,
-        "coeff_all": 0.662543,
-        "pooled": 0.705849,
-        "range": "2026-06-11 ~ 2026-08-09",
+        "coeff": 0.6805,
+        "coeff_all": 0.657643,
+        "pooled": 0.70527,
+        "range": "None ~ None",
         "days": 60,
-        "rows": 12612,
-        "total_partial": 20057722.27,
-        "total_full": 28416461.15,
-        "computed_at": "2026-08-10T19:29:15.599757"
+        "rows": 11945,
+        "total_partial": 18863925.91,
+        "total_full": 26747105.39,
+        "computed_at": "2026-08-19T18:12:28.485068"
       },
       "3m": {
         "label": "近3月",
-        "coeff": 0.707092,
-        "coeff_all": 0.677843,
-        "pooled": 0.724343,
-        "range": "2026-05-12 ~ 2026-08-09",
+        "coeff": 0.6943,
+        "coeff_all": 0.672224,
+        "pooled": 0.720451,
+        "range": "None ~ None",
         "days": 90,
-        "rows": 21670,
-        "total_partial": 36663221.85,
-        "total_full": 50615826.18,
-        "computed_at": "2026-08-10T19:29:15.599757"
+        "rows": 19927,
+        "total_partial": 33301356.94,
+        "total_full": 46222938.63,
+        "computed_at": "2026-08-19T18:12:28.485068"
       }
     }
   },
