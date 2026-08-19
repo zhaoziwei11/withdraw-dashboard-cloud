@@ -161,10 +161,10 @@ def build_report(db, status, predict, auto_coeff, forecast_rows, settings):
                             phone = r.get("phone") or "-"
                             card = r.get("card") or "-"
                             amount = float(r.get("amount", 0) or 0)
-                            status = r.get("status") or "交易失败"
+                            record_status = r.get("status") or "交易失败"
                             parts.append(
                                 f"   司机姓名：{name} | 手机号：{phone} | 银行卡号：{card} | "
-                                f"提现金额：¥{amount:,.2f} | 交易状态：{status}"
+                                f"提现金额：¥{amount:,.2f} | 交易状态：{record_status}"
                             )
                     fail_top3 = "<br>".join(parts)
     except Exception:
