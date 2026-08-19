@@ -116,7 +116,7 @@ def build_report(db, status, predict, auto_coeff, forecast_rows, settings):
         pass
 
     # 失败原因 Top3 文本
-    fail_top3 = "待补充(每天 15:00 任务执行后更新)"
+    fail_top3 = "待补充(每天 15:10 任务执行后更新)"
     try:
         data_file = db.DATA_DIR / f"withdraw_data_{today}.json"
         if data_file.exists():
@@ -138,7 +138,7 @@ def build_report(db, status, predict, auto_coeff, forecast_rows, settings):
         pass
 
     # 需求二说明文本
-    demand2_note = "待补充(每天 15:00 任务执行后更新)"
+    demand2_note = "待补充(每天 15:10 任务执行后更新)"
     tp = predict.get("demand2_today_pending")
     pf = predict.get("predicted_full")
     if tp not in (None, ""):
