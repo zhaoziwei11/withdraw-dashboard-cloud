@@ -487,6 +487,8 @@ def append_coefficient_changelog(old_info, new_info):
     old_info/new_info 为 load_coefficient() 的返回(dict 或 None)。
     记录字段: 时间, 来源(区间/auto_key), 样本数, 区间起止, 旧系数, 新系数,
               旧汇总比值, 新汇总比值, 天数, 状态。
+    注: 自动化预测实际使用工作日专属系数 coeff_weekday, 因此变更记录里同时保留
+        coeff(全量含周末) 与 coeff_weekday(仅工作日) 两套值, 方便后续对比。
     """
     def g(info, key):
         return round(float(info.get(key, 0) or 0), 6) if info else 0.0
@@ -500,13 +502,16 @@ def append_coefficient_changelog(old_info, new_info):
         "date_max": new_info.get("date_max", ""),
         "old_coeff": g(old_info, "coeff"),
         "new_coeff": g(new_info, "coeff"),
+        "old_coeff_weekday": g(old_info, "coeff_weekday"),
+        "new_coeff_weekday": g(new_info, "coeff_weekday"),
         "old_pooled": g(old_info, "pooled"),
         "new_pooled": g(new_info, "pooled"),
         "day_count": new_info.get("day_count", ""),
         "status": "替换" if old_exists else "新增",
     }
     header = ["imported_at", "source", "sample_n_rows", "date_min", "date_max",
-              "old_coeff", "new_coeff", "old_pooled", "new_pooled", "day_count", "status"]
+              "old_coeff", "new_coeff", "old_coeff_weekday", "new_coeff_weekday",
+              "old_pooled", "new_pooled", "day_count", "status"]
     exists = COEFFICIENT_CHANGELOG.exists()
     with open(COEFFICIENT_CHANGELOG, "a", encoding="utf-8-sig", newline="") as f:
         w = csv.DictWriter(f, fieldnames=header)
@@ -1377,17 +1382,23 @@ def render_markdown(run_date, start_date=None, end_date=None):
     coeff_old = None
     if changelog:
         last = changelog[0]
+        # 预测实际使用 coeff_weekday, 所以「上次系数」也优先展示 weekday 系数
+        old_c = last.get("old_coeff_weekday") or last.get("old_coeff") or "0"
         coeff_old = {
-            "coeff": float(last.get("old_coeff") or 0),
+            "coeff": float(old_c or 0),
             "pooled": float(last.get("old_pooled") or 0),
         }
 
     def fmt_c(v):
         return f"{v:.4f}" if v else "(无)"
 
+    # 预测实际使用工作日专属系数, 所以「当前系数」展示 coeff_weekday, 同时保留 coeff(全量) 作参考
+    now_coeff = (coeff_now.get("coeff_weekday") if coeff_now else None) or (coeff_now.get("coeff") if coeff_now else None)
+    now_all = coeff_now.get("coeff") if coeff_now else None
     if coeff_now:
-        lines.append(f"- 当前系数(active={coeff_now.get('auto_key', '-')}): 系数 **{fmt_c(coeff_now.get('coeff'))}** "
-                     f"(汇总比值 {fmt_c(coeff_now.get('pooled'))}) · 区间 {coeff_now.get('date_min')} ~ {coeff_now.get('date_max')}, "
+        lines.append(f"- 当前系数(active={coeff_now.get('auto_key', '-')}): 系数 **{fmt_c(now_coeff)}** "
+                     f"(含周末全量 {fmt_c(now_all)} · 汇总比值 {fmt_c(coeff_now.get('pooled'))}) · "
+                     f"区间 {coeff_now.get('date_min')} ~ {coeff_now.get('date_max')}, "
                      f"{coeff_now.get('day_count', 0)} 天, 样本 {coeff_now.get('sample_n_rows', 0)} 行")
         lines.append(f"  - 区间 0~{coeff_now.get('split_hour', SPLIT_HOUR)}点 合计 **¥{coeff_now.get('total_partial', 0):,.2f}** / "
                      f"0~24点 合计 **¥{coeff_now.get('total_full', 0):,.2f}**")
