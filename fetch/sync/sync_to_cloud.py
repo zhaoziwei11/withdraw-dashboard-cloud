@@ -190,10 +190,13 @@ def build_report(db, status, predict, auto_coeff, forecast_rows, settings):
     aset = (auto_coeff.get("sets") or {}).get(active_key, {}) or {}
     # 按项目约定：界面主系数用工作日系数 coeff_weekday，全量 coeff 作参考
     coeff_main = aset.get("coeff_weekday") or aset.get("coeff")
+    # 区间优先使用 date_min/date_max，没有再用 range_start/range_end
+    range_start = aset.get("date_min") or aset.get("range_start") or ""
+    range_end = aset.get("date_max") or aset.get("range_end") or ""
     coeff_active = {
         "coeff": round(coeff_main, 6) if isinstance(coeff_main, (int, float)) else coeff_main,
         "pooled": aset.get("pooled"),
-        "range": f"{aset.get('range_start', '')} ~ {aset.get('range_end', '')}",
+        "range": f"{range_start} ~ {range_end}",
         "days": aset.get("day_count"),
         "rows": aset.get("sample_n_rows"),
     }
@@ -252,13 +255,18 @@ def build_coefficient(auto_coeff):
     """映射成前端期望的 {active, sets:{key:{label,coeff,pooled,range,days,rows,...}}}"""
     sets_out = {}
     for k, v in (auto_coeff.get("sets") or {}).items():
+        # 界面主系数用工作日专属系数 coeff_weekday
         coeff_main = v.get("coeff_weekday") or v.get("coeff")
+        # 区间优先使用 date_min/date_max
+        range_start = v.get("date_min") or v.get("range_start") or ""
+        range_end = v.get("date_max") or v.get("range_end") or ""
         sets_out[k] = {
             "label": v.get("label", k),
             "coeff": round(coeff_main, 6) if isinstance(coeff_main, (int, float)) else coeff_main,
             "coeff_all": v.get("coeff"),           # 含周末全量，参考用
+            "coeff_weekday": v.get("coeff_weekday"),
             "pooled": v.get("pooled"),
-            "range": f"{v.get('range_start', '')} ~ {v.get('range_end', '')}",
+            "range": f"{range_start} ~ {range_end}",
             "days": v.get("day_count"),
             "rows": v.get("sample_n_rows"),
             "total_partial": v.get("total_partial"),
