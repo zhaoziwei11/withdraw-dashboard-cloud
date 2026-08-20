@@ -1,17 +1,17 @@
 {
   "report": {
-    "date": "2026-08-19",
-    "generated_at": "2026-08-19 18:24:13",
+    "date": "2026-08-20",
+    "generated_at": "2026-08-20 09:41:31",
     "source": "https://chengyun.91msl.com/financial-center/settlement-manage/carrier-withdrawal-manage",
-    "stat_range": "创建时间 = 2026-08-18 ~ 2026-08-18",
+    "stat_range": "创建时间 = 2026-08-19 ~ 2026-08-19",
     "pending_amount": 0.0,
     "pending_count": 0,
-    "fail_top3": "1. 司机姓名：王红斌<br>手机号：18191829313<br>银行卡号：6210987970006964233<br>提现金额：¥12,178.85<br>交易状态：交易失败<br>失败原因：收款账户为II、III类账户，超过日累计限额",
-    "demand2_note": "当天 0~15 点待提现 <b>¥64,186.13</b> · 系数 <b>0.694353</b> · 预测当天全天(0~24) <b>¥92,440.20</b>",
+    "fail_top3": "待补充(每天 15:10 任务执行后更新)",
+    "demand2_note": "待补充(每天 15:10 任务执行后更新)",
     "coeff_active": {
       "coeff": 0.694353,
       "pooled": 0.726398,
-      "range": "None ~ None",
+      "range": " ~ ",
       "days": 30,
       "rows": 6291
     },
@@ -21,9 +21,9 @@
       {
         "date": "2026-08-19",
         "predicted": 92440.2,
-        "actual": null,
-        "diff": null,
-        "pct": null
+        "actual": 0.0,
+        "diff": -92440.2,
+        "pct": "-100.00%"
       },
       {
         "date": "2026-08-11",
@@ -57,16 +57,28 @@
   },
   "history": [
     {
+      "run_date": "2026-08-20",
+      "pending_amount": 0,
+      "pending_count": 0,
+      "today_15": null,
+      "coefficient": "",
+      "predicted_full": null,
+      "actual_next_day_09": null,
+      "diff": null,
+      "diff_pct": "",
+      "status": ""
+    },
+    {
       "run_date": "2026-08-19",
       "pending_amount": 0,
       "pending_count": 0,
       "today_15": 64186.13,
       "coefficient": "0.6944",
       "predicted_full": 92440.2,
-      "actual_next_day_09": null,
-      "diff": null,
-      "diff_pct": "",
-      "status": "pending"
+      "actual_next_day_09": 0.0,
+      "diff": -92440.2,
+      "diff_pct": "-100.00",
+      "status": "compared"
     },
     {
       "run_date": "2026-08-11",
@@ -190,12 +202,12 @@
     }
   ],
   "predict": {
-    "today": "2026-08-19",
+    "today": "2026-08-20",
     "has_data": true,
-    "demand2_today_pending": 64186.13,
+    "demand2_today_pending": null,
     "coefficient": 0.694353,
-    "predicted_full": 92440.2,
-    "predict_mode": "weekday",
+    "predicted_full": null,
+    "predict_mode": null,
     "predict_breakdown": null,
     "coefficient_source": "2026-07-20 ~ 2026-08-18, 6291 行",
     "total_partial": 10948853.76,
@@ -208,8 +220,9 @@
         "label": "近1月",
         "coeff": 0.694353,
         "coeff_all": 0.669304,
+        "coeff_weekday": 0.694353,
         "pooled": 0.726398,
-        "range": "None ~ None",
+        "range": " ~ ",
         "days": 30,
         "rows": 6291,
         "total_partial": 10948853.76,
@@ -220,8 +233,9 @@
         "label": "近2月",
         "coeff": 0.6805,
         "coeff_all": 0.657643,
+        "coeff_weekday": 0.6805,
         "pooled": 0.70527,
-        "range": "None ~ None",
+        "range": " ~ ",
         "days": 60,
         "rows": 11945,
         "total_partial": 18863925.91,
@@ -232,8 +246,9 @@
         "label": "近3月",
         "coeff": 0.6943,
         "coeff_all": 0.672224,
+        "coeff_weekday": 0.6943,
         "pooled": 0.720451,
-        "range": "None ~ None",
+        "range": " ~ ",
         "days": 90,
         "rows": 19927,
         "total_partial": 33301356.94,
@@ -249,10 +264,10 @@
       "coefficient": "0.694353",
       "predicted_full": 92440.2,
       "mode": "weekday",
-      "actual_next_day_09": null,
-      "diff": null,
-      "diff_pct": "",
-      "status": "pending"
+      "actual_next_day_09": 0.0,
+      "diff": -92440.2,
+      "diff_pct": "-100.00",
+      "status": "compared"
     },
     {
       "predict_date": "2026-08-11",
@@ -366,11 +381,11 @@
     }
   ],
   "status": {
-    "today": "2026-08-19",
+    "today": "2026-08-20",
     "report_exists": true,
-    "report_time": "2026-08-19 18:24:13",
+    "report_time": "2026-08-20 09:41:31",
     "pending_status": "已生成 ¥0.00 / 0 笔",
-    "fail_status": "有失败 (1 条)"
+    "fail_status": "未运行"
   },
   "settings": {
     "pending": {
