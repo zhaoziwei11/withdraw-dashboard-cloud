@@ -882,7 +882,7 @@ def find_field_container(label_text, child_selector=None):
     """
 
 
-ddef set_create_time_range(page, start_date, end_date):
+def set_create_time_range(page, start_date, end_date):
     """设置创建时间范围: 直接定位日期范围输入框 (Element Plus .el-range-input)"""
     print(f"  -> 设置创建时间: {start_date} ~ {end_date}")
     print(f"  -> 当前 URL: {page.url}")
