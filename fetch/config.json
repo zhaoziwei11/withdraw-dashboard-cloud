@@ -7,6 +7,6 @@
     "headless": true,
     "timeout_ms": 30000,
     "pending_fetch_time": "09:00",
-    "fail_fetch_time": "15:00",
+    "fail_fetch_time": "15:15",
     "statuses": ["\u5f85\u63d0\u73b0", "\u6210\u529f", "\u5931\u8d25"]
 }
