@@ -836,6 +836,10 @@ def acquire_page(debug=False):
             p.stop()
             return None, (lambda: None)
 
+        # 业务表单可能嵌在 iframe 中, 切到真正承载内容的作用域
+        page.wait_for_timeout(1500)
+        page = _scope(page)
+
         def cleanup():
             try:
                 context.close()
@@ -880,6 +884,26 @@ def find_field_container(label_text, child_selector=None):
             throw new Error('找不到合适的 label 容器: {label_text}');
         }})()
     """
+
+
+def _scope(page):
+    """返回真正承载业务表单的作用域:
+    若内容嵌在 iframe 内, 返回该 frame; 否则返回 page。
+    通过 'input 数量最多' 判断, 本地无 iframe 场景自动回退到顶层文档。"""
+    print(f"  -> [scope] 顶层文档 input 数: {page.locator('input').count()}")
+    try:/r/n        iframes = [f for f in page.frames if f != page.main_frame]
+    except Exception:/r/n        iframes = []
+    print(f"  -> [scope] iframe 数量: {len(iframes)}")
+    best = page
+    try:/r/n        best_cnt = page.locator("input").count()
+    except Exception:/r/n        best_cnt = 0
+    for f in iframes:/r/n        u = f.url or ""
+        try:/r/n            cnt = f.locator("input").count()
+        except Exception:/r/n            cnt = 0
+        print(f"  -> [scope] iframe {u} input 数: {cnt}")
+        if cnt > best_cnt:/r/n            best, best_cnt = f, cnt
+    print(f"  -> [scope] 选用作用域: {'iframe' if best is not page else '顶层文档'} (input 数 {best_cnt})")
+    return best
 
 
 def set_create_time_range(page, start_date, end_date):
