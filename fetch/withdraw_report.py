@@ -886,12 +886,18 @@ def set_create_time_range(page, start_date, end_date):
     """设置创建时间范围: 直接定位日期范围输入框 (Element Plus .el-range-input)"""
     print(f"  -> 设置创建时间: {start_date} ~ {end_date}")
 
-    inputs = page.locator(".el-range-input").all()
-    if len(inputs) < 2:
-        # 回退旧版 Element UI
+    try:
+        # 等待日期范围输入框出现（页面可能是异步渲染）
+        page.locator(".el-range-input").first.wait_for(timeout=10000)
+        inputs = page.locator(".el-range-input").all()
+        if len(inputs) < 2:
+            raise RuntimeError("创建时间编辑器下未找到两个 input")
+    except Exception as e:
+        # 兜底旧版 Element UI
+        page.locator(".el-date-editor--daterange input").first.wait_for(timeout=5000)
         inputs = page.locator(".el-date-editor--daterange input").all()
-    if len(inputs) < 2:
-        raise RuntimeError("无法定位创建时间输入框")
+        if len(inputs) < 2:
+            raise RuntimeError(f"无法定位创建时间输入框: {e}")
 
     inputs[0].click(timeout=5000)
     inputs[0].fill(start_date)
@@ -900,6 +906,7 @@ def set_create_time_range(page, start_date, end_date):
     inputs[1].fill(end_date)
     inputs[1].press("Tab")
     page.wait_for_timeout(600)
+
 
 
 
