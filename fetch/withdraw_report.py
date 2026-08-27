@@ -882,18 +882,51 @@ def find_field_container(label_text, child_selector=None):
     """
 
 
-def set_create_time_range(page, start_date, end_date):
+ddef set_create_time_range(page, start_date, end_date):
     """设置创建时间范围: 直接定位日期范围输入框 (Element Plus .el-range-input)"""
     print(f"  -> 设置创建时间: {start_date} ~ {end_date}")
+    print(f"  -> 当前 URL: {page.url}")
+    print(f"  -> 当前 title: {page.title()}")
 
+    # 再额外等 2 秒，确保异步渲染
+    page.wait_for_timeout(2000)
+
+    # 打印页面上所有 input 的信息
     try:
-        # 等待日期范围输入框出现（页面可能是异步渲染）
+        inputs_info = page.locator("input").evaluate_all(
+            "els => els.map(e => ({type:e.type, placeholder:e.placeholder, className:e.className, offsetParent:e.offsetParent !== null}))"
+        )
+        print(f"  -> 页面上 input 总数: {len(inputs_info)}")
+        for info in inputs_info[:30]:
+            print(f"      {info}")
+    except Exception as e:
+        print(f"  -> 获取 input 信息失败: {e}")
+
+    # 打印各 selector 匹配数
+    selectors = [
+        ".el-range-input",
+        ".el-date-editor--daterange input",
+        "input[placeholder*='创建']",
+        "input[placeholder*='开始']",
+        "input[placeholder*='结束']",
+        "input[type='text']",
+        ".el-form-item__label:has-text('创建时间')",
+        ".el-form-item__label",
+    ]
+    for sel in selectors:
+        try:
+            count = page.locator(sel).count()
+            print(f"  -> selector '{sel}' 匹配数: {count}")
+        except Exception as e:
+            print(f"  -> selector '{sel}' 报错: {e}")
+
+    # 尝试定位并填充
+    try:
         page.locator(".el-range-input").first.wait_for(timeout=10000)
         inputs = page.locator(".el-range-input").all()
         if len(inputs) < 2:
             raise RuntimeError("创建时间编辑器下未找到两个 input")
     except Exception as e:
-        # 兜底旧版 Element UI
         page.locator(".el-date-editor--daterange input").first.wait_for(timeout=5000)
         inputs = page.locator(".el-date-editor--daterange input").all()
         if len(inputs) < 2:
