@@ -886,19 +886,33 @@ def set_create_time_range(page, start_date, end_date):
     """设置创建时间范围:用 Playwright fill 模拟用户输入"""
     print(f"  -> 设置创建时间: {start_date} ~ {end_date}")
 
-    # 通过 label 找到"创建时间"表单项,再取其中的 daterange 两个 input
+    # 通过 label 找到"创建时间"表单项,再取其中的日期范围两个 input
     try:
-        label = page.locator(".el-form-item__label:text-is('创建时间')")
+        label = page.locator(".el-form-item__label:has-text('创建时间')")
         label.wait_for(timeout=10000)
         form_item = label.locator("xpath=..")
-        inputs = form_item.locator(".el-form-item__content .el-date-editor--daterange input").all()
+        # 兼容 Element Plus 新版 (.el-range-input) 与旧版 (.el-date-editor--daterange input)
+        inputs = form_item.locator(".el-form-item__content .el-range-input").all()
+        if len(inputs) < 2:
+            inputs = form_item.locator(".el-form-item__content .el-date-editor--daterange input").all()
         if len(inputs) < 2:
             raise RuntimeError("创建时间编辑器下未找到两个 input")
     except Exception as e:
-        # 兜底:直接用页面上第一个 daterange 的两个 input
-        inputs = page.locator(".el-date-editor--daterange input").all()[:2]
+        # 兜底:先用新版 selector，再回退旧版
+        inputs = page.locator(".el-range-input").all()[:2]
+        if len(inputs) < 2:
+            inputs = page.locator(".el-date-editor--daterange input").all()[:2]
         if len(inputs) < 2:
             raise RuntimeError(f"无法定位创建时间输入框: {e}")
+
+    inputs[0].click(timeout=5000)
+    inputs[0].fill(start_date)
+    page.wait_for_timeout(300)
+    inputs[1].click(timeout=5000)
+    inputs[1].fill(end_date)
+    inputs[1].press("Tab")
+    page.wait_for_timeout(600)
+
 
     inputs[0].click(timeout=5000)
     inputs[0].fill(start_date)
