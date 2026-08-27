@@ -891,17 +891,25 @@ def _scope(page):
     若内容嵌在 iframe 内, 返回该 frame; 否则返回 page。
     通过 'input 数量最多' 判断, 本地无 iframe 场景自动回退到顶层文档。"""
     print(f"  -> [scope] 顶层文档 input 数: {page.locator('input').count()}")
-    try:/r/n        iframes = [f for f in page.frames if f != page.main_frame]
-    except Exception:/r/n        iframes = []
+    try:
+        iframes = [f for f in page.frames if f != page.main_frame]
+    except Exception:
+        iframes = []
     print(f"  -> [scope] iframe 数量: {len(iframes)}")
     best = page
-    try:/r/n        best_cnt = page.locator("input").count()
-    except Exception:/r/n        best_cnt = 0
-    for f in iframes:/r/n        u = f.url or ""
-        try:/r/n            cnt = f.locator("input").count()
-        except Exception:/r/n            cnt = 0
+    try:
+        best_cnt = page.locator("input").count()
+    except Exception:
+        best_cnt = 0
+    for f in iframes:
+        u = f.url or ""
+        try:
+            cnt = f.locator("input").count()
+        except Exception:
+            cnt = 0
         print(f"  -> [scope] iframe {u} input 数: {cnt}")
-        if cnt > best_cnt:/r/n            best, best_cnt = f, cnt
+        if cnt > best_cnt:
+            best, best_cnt = f, cnt
     print(f"  -> [scope] 选用作用域: {'iframe' if best is not page else '顶层文档'} (input 数 {best_cnt})")
     return best
 
