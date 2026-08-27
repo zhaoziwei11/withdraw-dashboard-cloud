@@ -1,9 +1,9 @@
 {
   "report": {
-    "date": "2026-08-26",
-    "generated_at": "2026-08-26 15:15:01",
+    "date": "2026-08-27",
+    "generated_at": "2026-08-27 09:05:02",
     "source": "https://chengyun.91msl.com/financial-center/settlement-manage/carrier-withdrawal-manage",
-    "stat_range": "创建时间 = 2026-08-25 ~ 2026-08-25",
+    "stat_range": "创建时间 = 2026-08-26 ~ 2026-08-26",
     "pending_amount": 232294.45,
     "pending_count": 145,
     "fail_top3": "待补充(每天 15:10 任务执行后更新)",
@@ -214,7 +214,7 @@
     }
   ],
   "predict": {
-    "today": "2026-08-26",
+    "today": "2026-08-27",
     "has_data": false,
     "demand2_today_pending": null,
     "coefficient": 0.694353,
@@ -404,7 +404,7 @@
     }
   ],
   "status": {
-    "today": "2026-08-26",
+    "today": "2026-08-27",
     "report_exists": false,
     "report_time": null,
     "pending_status": "未生成",
