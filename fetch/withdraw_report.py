@@ -4,7 +4,7 @@
 
 任务:
     09:00  统计"上一个工作日区间"内创建且状态为"待提现"的明细金额之和
-    15:00  统计"上一个工作日区间"内创建且状态为"提现失败"的失败原因 Top3
+    15:15  统计"上一个工作日区间"内创建且状态为"提现失败"的失败原因 Top3
     最终合并为同一张 Markdown 日报
 
 统计范围(工作日补算周末):
@@ -17,9 +17,9 @@
 用法:
     python withdraw_report.py --setup            # 首次登录配置(Edge  headed 模式)
     python withdraw_report.py --pending          # 9:00  待提现金额统计(需求一,并写入累积表+回填比对)
-    python withdraw_report.py --fail             # 15:00 失败原因统计
-    python withdraw_report.py --demand2          # 15:00 需求二:当天0~15点待提现+预测当天全天(0~24)待提现
-    python withdraw_report.py --fail --demand2   # 15:00 两个任务一起跑(推荐,任务计划用这个)
+    python withdraw_report.py --fail             # 15:15 失败原因统计
+    python withdraw_report.py --demand2          # 15:15 需求二:当天0~15点待提现+预测当天全天(0~24)待提现
+    python withdraw_report.py --fail --demand2   # 15:15 两个任务一起跑(推荐,任务计划用这个)
     python withdraw_report.py --auto-coeff        # 自动抓取近1/2/3月数据计算三套系数(需求二)
     python withdraw_report.py --pending --debug  # 调试模式(headed)
     python withdraw_report.py --fail --debug      # 调试模式(headed)
@@ -217,7 +217,7 @@ def parse_amount_str(s):
 
 
 # 系数逻辑: 系数 = 每日(创建时间 0~SPLIT_HOUR 点金额 / 创建时间 0~24 点金额) 的均值
-# 15:00 观测当天 0~SPLIT_HOUR 点待提现 ÷ 系数 ≈ 当天全天(0~24点)待提现
+# 15:15 观测当天 0~SPLIT_HOUR 点待提现 ÷ 系数 ≈ 当天全天(0~24点)待提现
 SPLIT_HOUR = 15
 
 
@@ -1342,7 +1342,7 @@ def render_markdown(run_date, start_date=None, end_date=None):
     lines.append("")
 
     # 二、失败原因 Top3
-    lines.append("## 二、失败原因 Top 3(15:00)")
+    lines.append("## 二、失败原因 Top 3(15:15)")
     lines.append("")
     fail_records = data.get("fail_records") or []
     # 兼容旧数据: 旧版只有 fail_reasons 字符串数组
@@ -1361,7 +1361,7 @@ def render_markdown(run_date, start_date=None, end_date=None):
             lines.append("")
             lines.append(f"> 共收集到 {total} 条失败记录")
         else:
-            lines.append(f"- 待补充(每天 {CONFIG.get('fail_fetch_time', '15:00')} 任务执行后更新)")
+            lines.append(f"- 待补充(每天 {CONFIG.get('fail_fetch_time', '15:15')} 任务执行后更新)")
     else:
         # 仅在有真实失败原因时使用完整记录格式；多条记录用序号逐条排列
         total = len(fail_records)
@@ -1381,7 +1381,7 @@ def render_markdown(run_date, start_date=None, end_date=None):
     lines.append("")
 
     # 三、需求二 · 当日待提现与明日提现预测
-    lines.append("## 三、需求二 · 当日待提现与明日提现预测(15:00)")
+    lines.append("## 三、需求二 · 当日待提现与明日提现预测(15:15)")
     lines.append("")
     lines.append(f"> 口径: 创建时间 = {today} (当天), 提现状态 = 待提现")
     lines.append("")
@@ -1405,7 +1405,7 @@ def render_markdown(run_date, start_date=None, end_date=None):
         else:
             lines.append(f"- 预测系数: **未计算** → 请先点仪表盘「自动抓取并计算系数」或运行 `python withdraw_report.py --auto-coeff`")
     else:
-        lines.append(f"- 待补充(每天 {CONFIG.get('fail_fetch_time', '15:00')} 任务执行后更新)")
+        lines.append(f"- 待补充(每天 {CONFIG.get('fail_fetch_time', '15:15')} 任务执行后更新)")
     lines.append("")
 
     # 系数对比: 当前 active 系数 vs 上次系数
@@ -1466,7 +1466,7 @@ def render_markdown(run_date, start_date=None, end_date=None):
         lines.append("> 差异 = 真实 − 预测；差异率 = 差异 ÷ 预测 × 100%。预测值=当天 0~15点待提现 ÷ 系数；"
                      "真实值取次日 09:00 待提现金额(需求一)作为当天全天的近似实测。")
     else:
-        lines.append("- 暂无比对数据(需先完成至少一次 15:00 预测 + 次日 09:00 真实数据)")
+        lines.append("- 暂无比对数据(需先完成至少一次 15:15 预测 + 次日 09:00 真实数据)")
     lines.append("")
 
     # 注: 需求二(当天0~15点待提现+预测当天全天)已在「## 三」渲染, 系数变更在「系数对比」子节留存;
@@ -1522,7 +1522,7 @@ def run_pending_phase(debug=False, start_date=None, end_date=None):
 
 
 def run_fail_phase(debug=False, start_date=None, end_date=None):
-    """15:00 执行:统计指定区间失败原因 Top3(默认工作日补算)"""
+    """15:15 执行:统计指定区间失败原因 Top3(默认工作日补算)"""
     run_date = get_run_date()
     start, end = get_business_range(start_date, end_date)
     print(f"[{now_str()}] 开始统计 {start} ~ {end} 失败原因(运行日 {run_date})...")
@@ -1561,7 +1561,7 @@ def run_fail_phase(debug=False, start_date=None, end_date=None):
 
 
 def run_demand2_phase(debug=False):
-    """15:00 执行(需求二): 观测待提现金额, 用工作日系数预测, 按星期切换口径。
+    """15:15 执行(需求二): 观测待提现金额, 用工作日系数预测, 按星期切换口径。
 
     - 周二~周五: 预测当天全天(0~24点)待提现 ≈ 当天 0~SPLIT_HOUR 点待提现 ÷ 工作日系数。
     - 周一:     预测(上周五~周日合计)待提现 = 上周五全天(0~24, 由 0~15÷系数推算)
@@ -1670,8 +1670,8 @@ def main():
     parser.add_argument("--cdp", action="store_true",
                         help="CDP 手动模式: 接管本机已打开并登录的 admin 网页取数(需先运行 open_admin_debug.bat)")
     parser.add_argument("--pending", action="store_true", help="9:00 需求一:待提现金额统计(写入累积表+回填比对)")
-    parser.add_argument("--fail", action="store_true", help="15:00 失败原因统计")
-    parser.add_argument("--demand2", action="store_true", help="15:00 需求二:当天0~15点待提现+预测当天全天(0~24)待提现")
+    parser.add_argument("--fail", action="store_true", help="15:15 失败原因统计")
+    parser.add_argument("--demand2", action="store_true", help="15:15 需求二:当天0~15点待提现+预测当天全天(0~24)待提现")
     parser.add_argument("--auto-coeff", action="store_true", help="自动抓取近1/2/3月数据计算三套系数(需求二)")
     parser.add_argument("--set-active", dest="set_active", metavar="KEY", help="切换 active 系数: 1m/2m/3m")
     parser.add_argument("--debug", action="store_true", help="调试模式(headed)")
@@ -1703,7 +1703,7 @@ def main():
         if not did:
             print("[ERROR] 请指定模式: --pending / --fail / --demand2 / --import, 或 --setup")
             print("        示例: python withdraw_report.py --pending")
-            print("        15:00 同时跑: python withdraw_report.py --fail --demand2")
+            print("        15:15 同时跑: python withdraw_report.py --fail --demand2")
             sys.exit(1)
 
     # 抓取完成后，自动同步最新数据到云端看板（失败不影响本次统计）
