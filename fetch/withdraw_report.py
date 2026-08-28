@@ -722,12 +722,28 @@ def _top_page(scope):
 
 
 def dump_page(scope):
-    """诊断: 打印 #app HTML/所有 input/button 信息, 辅助判断 SPA 未渲染/登录方式"""
+    """诊断: 打印去掉水印/style/script 后的 SPA 内容与 input/button 信息"""
     try:
-        app_html = scope.evaluate("() => { var el=document.getElementById('app'); return el ? el.innerHTML.slice(0,1200) : '(no #app)' }")
-        print(f"  -> [诊断] #app.innerHTML 前 1200 字:\n{app_html}")
+        txt = scope.evaluate(
+            "() => { var c = document.getElementById('app'); if (!c) return '(no #app)'; "
+            "c = c.cloneNode(true); "
+            "c.querySelectorAll('style,script').forEach(e=>e.remove()); "
+            "return c.innerText.replace(/\\s+/g,' ').slice(0,800) }"
+        )
+        print(f"  -> [诊断] #app 文本(去水印): {txt}")
     except Exception as e:
-        print(f"  -> [诊断] 取 #app 失败: {e}")
+        print(f"  -> [诊断] 取 #app 文本失败: {e}")
+    try:
+        html = scope.evaluate(
+            "() => { var c = document.getElementById('app'); if (!c) return '(no #app)'; "
+            "c = c.cloneNode(true); "
+            "c.querySelectorAll('style,script').forEach(e=>e.remove()); "
+            "c.querySelectorAll('[style]').forEach(e=>e.removeAttribute('style')); "
+            "return c.innerHTML.slice(0,1500) }"
+        )
+        print(f"  -> [诊断] #app HTML(去样式): {html}")
+    except Exception as e:
+        print(f"  -> [诊断] 取 #app HTML 失败: {e}")
     try:
         inputs = scope.evaluate(
             "() => Array.from(document.querySelectorAll('input'))"
@@ -747,12 +763,12 @@ def dump_page(scope):
 
 
 def _wait_spa_render(scope, max_sec=30):
-    """等待 SPA (#app) 渲染出内容或 input, 返回是否有 input"""
+    """等待 SPA (#app) 渲染出子元素, 返回是否渲染成功"""
     for i in range(max_sec * 2):
         try:
             app_children = scope.evaluate("() => { var el=document.getElementById('app'); return el ? el.children.length : 0 }")
             inputs = scope.locator("input").count()
-            if app_children > 0 and inputs > 0:
+            if app_children > 0:
                 print(f"  -> [auto-login] SPA 已渲染 ({app_children} 子元素, {inputs} input)")
                 return True
         except Exception:
@@ -761,8 +777,10 @@ def _wait_spa_render(scope, max_sec=30):
     return False
 
 def do_auto_login(page, timeout=20000):
-    """云端用 CW_USER/CW_PASS 自动登录(启发式: 账号框=首个非密码 input, 密码框=input[type=password], 登录按钮=含'登录')。
-    SPA 场景下先等待 Vue/React 异步渲染出表单。
+    """云端用 CW_USER/CW_PASS 自动登录。
+    承运平台是 SSO 单点登录: 未登录时前端跳 /sso-login -> 调 /sso/getSsoAuthUrl -> 跳转到
+    SSO 认证中心 (sso.91msl.com/login)。真正的登录表单在 SSO 认证中心页。
+    启发式: 账号框=首个非密码 input, 密码框=input[type=password], 登录按钮=含'登录'。
     返回 True 表示已尝试登录(不论成败, 调用方需重新 goto 目标页)。"""
     user = os.environ.get("CW_USER")
     pwd = os.environ.get("CW_PASS")
@@ -771,7 +789,11 @@ def do_auto_login(page, timeout=20000):
         return False
     print("  -> [auto-login] 尝试自动登录...")
 
-    urls_to_try = [LOGIN_URL]
+    urls_to_try = [
+        "https://sso.91msl.com/login",          # SSO 统一认证中心(真实登录表单)
+        "https://sso.91msl.com/login?redirect=" + LOGIN_URL,
+        LOGIN_URL,
+    ]
     if not LOGIN_URL.rstrip("/").endswith("/login"):
         urls_to_try.append(LOGIN_URL.rstrip("/") + "/login")
 
