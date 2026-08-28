@@ -3,7 +3,7 @@
         "name": "承运提现",
         "base_url": "https://chengyun.91msl.com",
         "target_page": "https://chengyun.91msl.com/financial-center/settlement-manage/carrier-withdrawal-manage",
-        "login_url": "https://chengyun.91msl.com/login",
+        "login_url": "https://chengyun.91msl.com",
         "browser_data_dir": "browser-data",
         "output_dir": "reports",
         "demand2_dir": "demand2",
