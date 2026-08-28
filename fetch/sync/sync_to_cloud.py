@@ -315,6 +315,29 @@ def collect():
     auto_coeff = db.get_auto_coefficients()
     forecast_rows = db.get_forecast_diff()
 
+    # 云端不生成 Markdown 报告，按实际数据文件回填状态，避免前端显示"未生成"
+    today = status.get("today")
+    if today:
+        data_file = Path(db.DATA_DIR) / f"withdraw_data_{today}.json"
+        if data_file.exists():
+            status["report_exists"] = True
+            try:
+                mtime = datetime.datetime.fromtimestamp(data_file.stat().st_mtime)
+                status["report_time"] = mtime.strftime("%Y-%m-%d %H:%M:%S")
+            except Exception:
+                status["report_time"] = status.get("report_time") or datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            try:
+                d = json.loads(data_file.read_text(encoding="utf-8"))
+                pa = d.get("pending_amount")
+                pc = d.get("pending_count")
+                if pa is not None:
+                    status["pending_status"] = f"已生成 ¥{float(pa):,.2f} / {pc} 笔"
+                if "fail_reasons" in d:
+                    fr = d.get("fail_reasons") or []
+                    status["fail_status"] = "无失败" if len(fr) == 0 else f"有失败 ({len(fr)} 条)"
+            except Exception:
+                pass
+
     print(
         f"  [OK] 台账 {len(history_rows)} 天 / 预测记录 {len(forecast_rows)} 条 / "
         f"系数集 {len(auto_coeff.get('sets') or {})} 套"
