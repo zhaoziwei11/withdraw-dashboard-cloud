@@ -716,6 +716,74 @@ def is_logged_in(page):
     return True
 
 
+def _top_page(scope):
+    """返回可 goto 的顶层 page(frame 取其所属 page)"""
+    return scope if hasattr(scope, "goto") else scope.page
+
+
+def dump_page(scope):
+    """诊断: 打印 body 文本前 600 字与可点击元素文本, 辅助判断未登录/空壳/结构变化"""
+    try:
+        txt = scope.evaluate("() => document.body ? document.body.innerText.slice(0,600) : '(no body)'")
+        print(f"  -> [诊断] body 文本前 600 字:\n{txt}")
+    except Exception as e:
+        print(f"  -> [诊断] 取 body 失败: {e}")
+    try:
+        btns = scope.evaluate(
+            "() => Array.from(document.querySelectorAll('button,a,input[type=submit]'))"
+            ".map(e => (e.innerText||e.value||'').trim()).filter(Boolean).slice(0,20)"
+        )
+        print(f"  -> [诊断] 可点击文本: {btns}")
+    except Exception as e:
+        print(f"  -> [诊断] 取按钮失败: {e}")
+
+
+def do_auto_login(page, timeout=20000):
+    """云端用 CW_USER/CW_PASS 自动登录(启发式: 账号框=首个非密码 input, 密码框=input[type=password], 登录按钮=含'登录')。
+    返回 True 表示已尝试登录(不论成败, 调用方需重新 goto 目标页)。"""
+    user = os.environ.get("CW_USER")
+    pwd = os.environ.get("CW_PASS")
+    if not user or not pwd:
+        print("  -> [auto-login] 未提供 CW_USER/CW_PASS, 跳过自动登录")
+        return False
+    print("  -> [auto-login] 尝试自动登录...")
+    try:
+        page.goto(LOGIN_URL, wait_until="networkidle", timeout=60000)
+    except Exception as e:
+        print(f"  -> [auto-login] 打开登录页失败: {e}")
+        return False
+    try:
+        page.locator("input[type='password']").first.wait_for(timeout=timeout)
+    except Exception:
+        print("  -> [auto-login] 登录页未出现密码框(可能为扫码/SSO), 放弃自动登录")
+        dump_page(page)
+        return False
+    try:
+        pw = page.locator("input[type='password']").first
+        user_inputs = page.locator("input:not([type='password'])").all()
+        # 账号框取第一个可见的 text/普通 input
+        for ui in user_inputs:
+            try:
+                if ui.is_visible():
+                    ui.fill(user)
+                    break
+            except Exception:
+                continue
+        else:
+            if user_inputs:
+                user_inputs[0].fill(user)
+        pw.fill(pwd)
+        btn = page.locator("button:has-text('登录'), button:has-text('登 录'), input[type='submit']").first
+        btn.click(timeout=10000)
+        page.wait_for_timeout(3000)
+        print(f"  -> [auto-login] 已提交登录, 当前 URL: {page.url}")
+        return True
+    except Exception as e:
+        print(f"  -> [auto-login] 填表/提交失败: {e}")
+        dump_page(page)
+        return False
+
+
 def setup_login():
     """首次登录配置:headed 模式打开 Edge,用户手动登录"""
     print("=" * 50)
@@ -770,8 +838,12 @@ def open_target_page(page):
     page.goto(TARGET_PAGE, wait_until="networkidle", timeout=60000)
 
     if not is_logged_in(page):
-        print("[ERROR] 未登录!请先运行: python withdraw_report.py --setup")
-        return False
+        print("[WARN] 未登录, 尝试用 CW_USER/CW_PASS 自动登录...")
+        if do_auto_login(page):
+            page.goto(TARGET_PAGE, wait_until="networkidle", timeout=60000)
+        else:
+            print("[ERROR] 未登录!请先运行: python withdraw_report.py --setup")
+            return False
 
     page.wait_for_timeout(2000)
     return True
@@ -931,6 +1003,25 @@ def set_create_time_range(page, start_date, end_date):
     print(f"  -> 设置创建时间: {start_date} ~ {end_date}")
     print(f"  -> 当前 URL: {page.url}")
     print(f"  -> 当前 title: {page.title()}")
+
+    # 若当前作用域一个 input 都没有, 很可能是未登录(云端空壳页)导致表单未渲染:
+    # 尝试用 CW_USER/CW_PASS 自动登录, 再重新加载目标页并重新选作用域。
+    if page.locator("input").count() == 0:
+        print("  -> [WARN] 当前作用域 input 数为 0, 怀疑未登录, 尝试自动登录")
+        dump_page(page)
+        top = _top_page(page)
+        if do_auto_login(top):
+            try:
+                top.goto(TARGET_PAGE, wait_until="networkidle", timeout=60000)
+                top.wait_for_timeout(2000)
+            except Exception as e:
+                print(f"  -> 重新加载目标页失败: {e}")
+            # 轮询等待表单渲染
+            for _ in range(30):
+                if top.locator("input").count() > 0:
+                    break
+                top.wait_for_timeout(500)
+            page = _scope(top)
 
     # 再额外等 2 秒，确保异步渲染
     page.wait_for_timeout(2000)
