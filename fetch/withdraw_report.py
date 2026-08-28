@@ -722,24 +722,47 @@ def _top_page(scope):
 
 
 def dump_page(scope):
-    """诊断: 打印 body 文本前 600 字与可点击元素文本, 辅助判断未登录/空壳/结构变化"""
+    """诊断: 打印 #app HTML/所有 input/button 信息, 辅助判断 SPA 未渲染/登录方式"""
     try:
-        txt = scope.evaluate("() => document.body ? document.body.innerText.slice(0,600) : '(no body)'")
-        print(f"  -> [诊断] body 文本前 600 字:\n{txt}")
+        app_html = scope.evaluate("() => { var el=document.getElementById('app'); return el ? el.innerHTML.slice(0,1200) : '(no #app)' }")
+        print(f"  -> [诊断] #app.innerHTML 前 1200 字:\n{app_html}")
     except Exception as e:
-        print(f"  -> [诊断] 取 body 失败: {e}")
+        print(f"  -> [诊断] 取 #app 失败: {e}")
+    try:
+        inputs = scope.evaluate(
+            "() => Array.from(document.querySelectorAll('input'))"
+            ".map(e => ({type:e.type, placeholder:e.placeholder, name:e.name, id:e.id, className:e.className})).slice(0,20)"
+        )
+        print(f"  -> [诊断] input 列表: {inputs}")
+    except Exception as e:
+        print(f"  -> [诊断] 取 input 失败: {e}")
     try:
         btns = scope.evaluate(
             "() => Array.from(document.querySelectorAll('button,a,input[type=submit]'))"
-            ".map(e => (e.innerText||e.value||'').trim()).filter(Boolean).slice(0,20)"
+            ".map(e => (e.innerText||e.value||e.textContent||'').trim()).filter(Boolean).slice(0,20)"
         )
         print(f"  -> [诊断] 可点击文本: {btns}")
     except Exception as e:
         print(f"  -> [诊断] 取按钮失败: {e}")
 
 
+def _wait_spa_render(scope, max_sec=30):
+    """等待 SPA (#app) 渲染出内容或 input, 返回是否有 input"""
+    for i in range(max_sec * 2):
+        try:
+            app_children = scope.evaluate("() => { var el=document.getElementById('app'); return el ? el.children.length : 0 }")
+            inputs = scope.locator("input").count()
+            if app_children > 0 and inputs > 0:
+                print(f"  -> [auto-login] SPA 已渲染 ({app_children} 子元素, {inputs} input)")
+                return True
+        except Exception:
+            pass
+        scope.page.wait_for_timeout(500) if hasattr(scope, "page") else scope.wait_for_timeout(500)
+    return False
+
 def do_auto_login(page, timeout=20000):
     """云端用 CW_USER/CW_PASS 自动登录(启发式: 账号框=首个非密码 input, 密码框=input[type=password], 登录按钮=含'登录')。
+    SPA 场景下先等待 Vue/React 异步渲染出表单。
     返回 True 表示已尝试登录(不论成败, 调用方需重新 goto 目标页)。"""
     user = os.environ.get("CW_USER")
     pwd = os.environ.get("CW_PASS")
@@ -747,41 +770,55 @@ def do_auto_login(page, timeout=20000):
         print("  -> [auto-login] 未提供 CW_USER/CW_PASS, 跳过自动登录")
         return False
     print("  -> [auto-login] 尝试自动登录...")
-    try:
-        page.goto(LOGIN_URL, wait_until="networkidle", timeout=60000)
-    except Exception as e:
-        print(f"  -> [auto-login] 打开登录页失败: {e}")
-        return False
-    try:
-        page.locator("input[type='password']").first.wait_for(timeout=timeout)
-    except Exception:
-        print("  -> [auto-login] 登录页未出现密码框(可能为扫码/SSO), 放弃自动登录")
-        dump_page(page)
-        return False
-    try:
-        pw = page.locator("input[type='password']").first
-        user_inputs = page.locator("input:not([type='password'])").all()
-        # 账号框取第一个可见的 text/普通 input
-        for ui in user_inputs:
-            try:
-                if ui.is_visible():
-                    ui.fill(user)
-                    break
-            except Exception:
-                continue
-        else:
-            if user_inputs:
-                user_inputs[0].fill(user)
-        pw.fill(pwd)
-        btn = page.locator("button:has-text('登录'), button:has-text('登 录'), input[type='submit']").first
-        btn.click(timeout=10000)
-        page.wait_for_timeout(3000)
-        print(f"  -> [auto-login] 已提交登录, 当前 URL: {page.url}")
-        return True
-    except Exception as e:
-        print(f"  -> [auto-login] 填表/提交失败: {e}")
-        dump_page(page)
-        return False
+
+    urls_to_try = [LOGIN_URL]
+    if not LOGIN_URL.rstrip("/").endswith("/login"):
+        urls_to_try.append(LOGIN_URL.rstrip("/") + "/login")
+
+    for url in urls_to_try:
+        try:
+            print(f"  -> [auto-login] 打开 {url} ...")
+            page.goto(url, wait_until="networkidle", timeout=60000)
+        except Exception as e:
+            print(f"  -> [auto-login] 打开失败: {e}")
+            continue
+        print("  -> [auto-login] 等待 SPA 渲染...")
+        if not _wait_spa_render(page, max_sec=30):
+            print("  -> [auto-login] 30 秒内 SPA 未渲染出 input, 继续尝试下一个 URL")
+            dump_page(page)
+            continue
+        try:
+            page.locator("input[type='password']").first.wait_for(timeout=timeout)
+        except Exception:
+            print("  -> [auto-login] 当前页未出现密码框, 尝试下一个 URL")
+            dump_page(page)
+            continue
+        try:
+            pw = page.locator("input[type='password']").first
+            user_inputs = page.locator("input:not([type='password'])").all()
+            for ui in user_inputs:
+                try:
+                    if ui.is_visible():
+                        ui.fill(user)
+                        break
+                except Exception:
+                    continue
+            else:
+                if user_inputs:
+                    user_inputs[0].fill(user)
+            pw.fill(pwd)
+            btn = page.locator("button:has-text('登录'), button:has-text('登 录'), input[type='submit']").first
+            btn.click(timeout=10000)
+            page.wait_for_timeout(3000)
+            print(f"  -> [auto-login] 已提交登录, 当前 URL: {page.url}")
+            return True
+        except Exception as e:
+            print(f"  -> [auto-login] 填表/提交失败: {e}")
+            dump_page(page)
+            return False
+
+    print("  -> [auto-login] 所有登录页 URL 均未出现密码框, 放弃自动登录")
+    return False
 
 
 def setup_login():
@@ -909,17 +946,21 @@ def acquire_page(debug=False):
             return None, (lambda: None)
 
         # 业务表单可能嵌在 iframe 中, 切到真正承载内容的作用域
-        # 先轮询等待表单/iframe 异步渲染, 最多 15 秒(某些环境网络 idle 后仍有 JS 延迟渲染)
+        # 先轮询等待 SPA 渲染 (#app 有子元素) 且表单出现, 最多 60 秒
         print("  -> 等待页面表单渲染...")
-        for i in range(30):
+        for i in range(120):
+            try:
+                app_children = page.evaluate("() => { var el=document.getElementById('app'); return el ? el.children.length : 0 }")
+            except Exception:
+                app_children = 0
             total_inputs = page.locator("input").count()
             iframes = [f for f in page.frames if f != page.main_frame]
-            if total_inputs > 0 or len(iframes) > 0:
-                print(f"  -> 检测到 {total_inputs} 个 input / {len(iframes)} 个 iframe")
+            if (app_children > 0 and total_inputs > 0) or len(iframes) > 0:
+                print(f"  -> 检测到 SPA 已渲染 (#app 子元素={app_children}) + {total_inputs} 个 input / {len(iframes)} 个 iframe")
                 break
             page.wait_for_timeout(500)
         else:
-            print("  -> [WARN] 15 秒内未检测到任何 input/iframe, 继续尝试")
+            print("  -> [WARN] 60 秒内未检测到 SPA 渲染出表单, 继续尝试")
         page = _scope(page)
 
         def cleanup():
