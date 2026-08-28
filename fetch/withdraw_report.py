@@ -440,7 +440,7 @@ def export_daily_csv(page, start_date, end_date, status="全部", key="1m"):
     """点「导出」下载当前筛选区间的全部明细(xlsx),跳过标题行转 CSV,
     返回 CSV 路径(供 compute_coeff_from_export 复用)。status=全部 表示忽略状态筛选。"""
     print(f"  -> 导出每日明细: {start_date} ~ {end_date}, 状态={status}")
-    set_create_time_range(page, start_date, end_date)
+    page = set_create_time_range(page, start_date, end_date)
     set_withdraw_status(page, status)
     click_query(page)
     page.wait_for_timeout(800)
@@ -837,7 +837,17 @@ def acquire_page(debug=False):
             return None, (lambda: None)
 
         # 业务表单可能嵌在 iframe 中, 切到真正承载内容的作用域
-        page.wait_for_timeout(1500)
+        # 先轮询等待表单/iframe 异步渲染, 最多 15 秒(某些环境网络 idle 后仍有 JS 延迟渲染)
+        print("  -> 等待页面表单渲染...")
+        for i in range(30):
+            total_inputs = page.locator("input").count()
+            iframes = [f for f in page.frames if f != page.main_frame]
+            if total_inputs > 0 or len(iframes) > 0:
+                print(f"  -> 检测到 {total_inputs} 个 input / {len(iframes)} 个 iframe")
+                break
+            page.wait_for_timeout(500)
+        else:
+            print("  -> [WARN] 15 秒内未检测到任何 input/iframe, 继续尝试")
         page = _scope(page)
 
         def cleanup():
@@ -916,6 +926,8 @@ def _scope(page):
 
 def set_create_time_range(page, start_date, end_date):
     """设置创建时间范围: 直接定位日期范围输入框 (Element Plus .el-range-input)"""
+    # 页面可能仍在异步渲染/iframe 加载, 进入本函数时重新确认作用域
+    page = _scope(page)
     print(f"  -> 设置创建时间: {start_date} ~ {end_date}")
     print(f"  -> 当前 URL: {page.url}")
     print(f"  -> 当前 title: {page.title()}")
@@ -971,7 +983,7 @@ def set_create_time_range(page, start_date, end_date):
     inputs[1].fill(end_date)
     inputs[1].press("Tab")
     page.wait_for_timeout(600)
-
+    return page
 
 
 
@@ -1106,10 +1118,11 @@ def click_query(page):
 
 def set_filters(page, start_date, end_date, status_text):
     """设置完整筛选条件并查询,查询后校验是否生效"""
-    set_create_time_range(page, start_date, end_date)
+    page = set_create_time_range(page, start_date, end_date)
     set_withdraw_status(page, status_text)
     click_query(page)
     verify_filters(page, status_text, start_date, end_date)
+    return page
 
 
 # ============ 表格读取 ============
@@ -1530,7 +1543,7 @@ def run_pending_phase(debug=False, start_date=None, end_date=None):
     if page is None:
         return None
     try:
-        set_filters(page, start, end, "待提现")
+        page = set_filters(page, start, end, "待提现")
         amount, count = sum_amount_column(page)
 
         save_data(run_date, pending_amount=amount, pending_count=count)
@@ -1567,7 +1580,7 @@ def run_fail_phase(debug=False, start_date=None, end_date=None):
     if page is None:
         return None
     try:
-        set_filters(page, start, end, "提现失败")
+        page = set_filters(page, start, end, "提现失败")
         records = collect_failure_records(page)
         reasons = [r["reason"] for r in records if r.get("reason")]
 
