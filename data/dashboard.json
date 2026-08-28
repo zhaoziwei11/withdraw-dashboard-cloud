@@ -69,6 +69,30 @@
       "status": ""
     },
     {
+      "run_date": "2026-08-27",
+      "pending_amount": 0,
+      "pending_count": 0,
+      "today_15": null,
+      "coefficient": "",
+      "predicted_full": null,
+      "actual_next_day_09": null,
+      "diff": null,
+      "diff_pct": "",
+      "status": ""
+    },
+    {
+      "run_date": "2026-08-26",
+      "pending_amount": 0,
+      "pending_count": 0,
+      "today_15": null,
+      "coefficient": "",
+      "predicted_full": null,
+      "actual_next_day_09": null,
+      "diff": null,
+      "diff_pct": "",
+      "status": ""
+    },
+    {
       "run_date": "2026-08-21",
       "pending_amount": 232294.45,
       "pending_count": 145,
