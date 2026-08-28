@@ -256,7 +256,7 @@ def get_run_date():
 
 
 
-def get_business_range(start_date=None, end_date=None):
+def get_business_range(start_date=None, end_date=None, run_date=None):
 
     """返回统计范围 (start, end)
 
@@ -276,13 +276,13 @@ def get_business_range(start_date=None, end_date=None):
 
         return start_date, end_date
 
-    today = datetime.now().date()
+    base = datetime.strptime(run_date, "%Y-%m-%d").date() if run_date else datetime.now().date()
 
-    yesterday = today - timedelta(days=1)
+    yesterday = base - timedelta(days=1)
 
-    if today.weekday() == 0:  # 周一
+    if base.weekday() == 0:  # 周一
 
-        start = today - timedelta(days=3)  # 上周五
+        start = base - timedelta(days=3)  # 上周五
 
     else:
 
@@ -3031,7 +3031,7 @@ def render_markdown(run_date, start_date=None, end_date=None):
 
     # 业务区间(一/二章节)与当天(三章节)各自独立计算
 
-    biz_start, biz_end = get_business_range()
+    biz_start, biz_end = get_business_range(run_date=run_date)
 
     today = get_today_range()[0]
 
@@ -3367,15 +3367,20 @@ def render_markdown(run_date, start_date=None, end_date=None):
 
 # ============ 主流程 ============
 
-def run_pending_phase(debug=False, start_date=None, end_date=None):
+def run_pending_phase(debug=False, start_date=None, end_date=None, run_date=None):
 
-    """9:00 执行:统计指定区间待提现金额(默认工作日补算)"""
+    """9:00 执行:统计指定区间待提现金额(默认工作日补算)
 
-    run_date = start_date if start_date else get_run_date()
+    run_date: 看板展示日(ledger 行日期), 默认=今天。
+    stat_range: 默认=run_date 的前一个工作日(T-1); 显式传 --start-date/--end-date 则用之。
+    即「当天展示昨天」: 今天 9:00 跑, 统计昨天的待提现, 展示在今天的卡片上。
+    """
 
-    start, end = get_business_range(start_date, end_date)
+    eff_run_date = run_date if run_date else get_run_date()
 
-    print(f"[{now_str()}] 开始统计 {start} ~ {end} 待提现金额(运行日 {run_date})...")
+    start, end = get_business_range(start_date, end_date, run_date=eff_run_date)
+
+    print(f"[{now_str()}] 开始统计 {start} ~ {end} 待提现金额(展示日 {eff_run_date})...")
 
 
 
@@ -3401,17 +3406,17 @@ def run_pending_phase(debug=False, start_date=None, end_date=None):
 
 
 
-        save_data(run_date, pending_amount=amount, pending_count=count)
+        save_data(eff_run_date, pending_amount=amount, pending_count=count)
 
         # 需求一: 追加到累积表
 
-        append_pending_ledger(run_date, start, end, count, amount)
+        append_pending_ledger(eff_run_date, start, end, count, amount)
 
         # 需求一: 回填预测比对(用今日真实待提现对比上一工作日的预测)
 
-        fill_forecast_comparison(run_date, amount)
+        fill_forecast_comparison(eff_run_date, amount)
 
-        report_file = render_markdown(run_date, start, end)
+        report_file = render_markdown(eff_run_date, start, end)
 
 
 
@@ -3752,6 +3757,7 @@ def main():
     parser.add_argument("--start-date", metavar="YYYY-MM-DD", help="覆盖默认工作日区间起始日期")
 
     parser.add_argument("--end-date", metavar="YYYY-MM-DD", help="覆盖默认工作日区间结束日期")
+    parser.add_argument("--run-date", metavar="YYYY-MM-DD", help="覆盖 ledger 展示日(默认=今天);用于补跑历史,统计日=展示日的前一个工作日")
 
     args = parser.parse_args()
 
@@ -3783,7 +3789,7 @@ def main():
 
         if args.pending:
 
-            run_pending_phase(debug=args.debug, start_date=args.start_date, end_date=args.end_date)
+            run_pending_phase(debug=args.debug, start_date=args.start_date, end_date=args.end_date, run_date=args.run_date)
 
             did = True
 
