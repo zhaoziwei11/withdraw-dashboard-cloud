@@ -1,22 +1,22 @@
 {
   "report": {
-    "date": "2026-08-28",
-    "generated_at": "2026-08-28 18:08:21",
+    "date": "2026-08-31",
+    "generated_at": "2026-08-31 09:34:25",
     "source": "https://chengyun.91msl.com/financial-center/settlement-manage/carrier-withdrawal-manage",
-    "stat_range": "创建时间 = 2026-08-27 ~ 2026-08-27",
-    "pending_amount": 0.0,
-    "pending_count": 0,
+    "stat_range": "创建时间 = 2026-08-30 ~ 2026-08-30",
+    "pending_amount": 473654.17,
+    "pending_count": 248,
     "fail_top3": "待补充(每天 15:10 任务执行后更新)",
     "demand2_note": "待补充(每天 15:10 任务执行后更新)",
     "coeff_active": {
-      "coeff": 0.694353,
-      "pooled": 0.726398,
-      "range": " ~ ",
+      "coeff": 0.653217,
+      "pooled": 0.670966,
+      "range": "2026-08-01 ~ 2026-08-30",
       "days": 30,
-      "rows": 6291
+      "rows": 3686
     },
-    "partial_total": 10948853.76,
-    "full_total": 15072804.96,
+    "partial_total": 5533433.59,
+    "full_total": 8246968.75,
     "forecast_diff": [
       {
         "date": "2026-08-20",
@@ -56,6 +56,18 @@
     ]
   },
   "history": [
+    {
+      "run_date": "2026-08-31",
+      "pending_amount": 473654.17,
+      "pending_count": 248,
+      "today_15": null,
+      "coefficient": "",
+      "predicted_full": null,
+      "actual_next_day_09": null,
+      "diff": null,
+      "diff_pct": "",
+      "status": ""
+    },
     {
       "run_date": "2026-08-28",
       "pending_amount": 0,
@@ -250,58 +262,58 @@
     }
   ],
   "predict": {
-    "today": "2026-08-28",
+    "today": "2026-08-31",
     "has_data": true,
     "demand2_today_pending": null,
-    "coefficient": 0.694353,
+    "coefficient": 0.653217,
     "predicted_full": null,
     "predict_mode": null,
     "predict_breakdown": null,
-    "coefficient_source": "2026-07-20 ~ 2026-08-18, 6291 行",
-    "total_partial": 10948853.76,
-    "total_full": 15072804.96
+    "coefficient_source": "2026-08-01 ~ 2026-08-30, 3686 行",
+    "total_partial": 5533433.59,
+    "total_full": 8246968.75
   },
   "coefficient": {
     "active": "1m",
     "sets": {
       "1m": {
         "label": "近1月",
-        "coeff": 0.694353,
-        "coeff_all": 0.669304,
-        "coeff_weekday": 0.694353,
-        "pooled": 0.726398,
-        "range": " ~ ",
+        "coeff": 0.653217,
+        "coeff_all": 0.644213,
+        "coeff_weekday": 0.653217,
+        "pooled": 0.670966,
+        "range": "2026-08-01 ~ 2026-08-30",
         "days": 30,
-        "rows": 6291,
-        "total_partial": 10948853.76,
-        "total_full": 15072804.96,
-        "computed_at": "2026-08-19T18:12:28.485068"
+        "rows": 3686,
+        "total_partial": 5533433.59,
+        "total_full": 8246968.75,
+        "computed_at": "2026-08-31T10:03:57.923766"
       },
       "2m": {
         "label": "近2月",
-        "coeff": 0.6805,
-        "coeff_all": 0.657643,
-        "coeff_weekday": 0.6805,
-        "pooled": 0.70527,
-        "range": " ~ ",
+        "coeff": 0.675374,
+        "coeff_all": 0.64845,
+        "coeff_weekday": 0.675374,
+        "pooled": 0.698744,
+        "range": "2026-07-02 ~ 2026-08-30",
         "days": 60,
-        "rows": 11945,
-        "total_partial": 18863925.91,
-        "total_full": 26747105.39,
-        "computed_at": "2026-08-19T18:12:28.485068"
+        "rows": 10508,
+        "total_partial": 15822777.36,
+        "total_full": 22644612.93,
+        "computed_at": "2026-08-31T10:03:57.923766"
       },
       "3m": {
         "label": "近3月",
-        "coeff": 0.6943,
-        "coeff_all": 0.672224,
-        "coeff_weekday": 0.6943,
-        "pooled": 0.720451,
-        "range": " ~ ",
+        "coeff": 0.682727,
+        "coeff_all": 0.662924,
+        "coeff_weekday": 0.682727,
+        "pooled": 0.701442,
+        "range": "2026-06-02 ~ 2026-08-30",
         "days": 90,
-        "rows": 19927,
-        "total_partial": 33301356.94,
-        "total_full": 46222938.63,
-        "computed_at": "2026-08-19T18:12:28.485068"
+        "rows": 18030,
+        "total_partial": 28184647.17,
+        "total_full": 40181015.24,
+        "computed_at": "2026-08-31T10:03:57.923766"
       }
     }
   },
@@ -440,10 +452,10 @@
     }
   ],
   "status": {
-    "today": "2026-08-28",
+    "today": "2026-08-31",
     "report_exists": true,
-    "report_time": "2026-08-28 18:08:21",
-    "pending_status": "已生成 ¥0.00 / 0 笔",
+    "report_time": "2026-08-31 09:34:25",
+    "pending_status": "已生成 ¥473,654.17 / 248 笔",
     "fail_status": "未运行"
   },
   "settings": {
