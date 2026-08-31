@@ -1,7 +1,7 @@
 {
   "report": {
     "date": "2026-08-31",
-    "generated_at": "2026-08-31 18:12:51",
+    "generated_at": "2026-08-31 19:26:18",
     "source": "https://chengyun.91msl.com/financial-center/settlement-manage/carrier-withdrawal-manage",
     "stat_range": "创建时间 = 2026-08-30 ~ 2026-08-30",
     "pending_amount": 473654.17,
@@ -485,7 +485,7 @@
   "status": {
     "today": "2026-08-31",
     "report_exists": true,
-    "report_time": "2026-08-31 18:12:51",
+    "report_time": "2026-08-31 19:26:18",
     "pending_status": "已生成 ¥44,799.02 / 29 笔",
     "fail_status": "无失败"
   },
@@ -547,18 +547,283 @@
     "pending_amount": 0.0,
     "pending_count": 0,
     "fail_top3": "无提现失败",
+    "fail_records": [],
     "predict": {
       "today": "2026-08-31",
       "has_data": true,
       "demand2_today_pending": 0.0,
       "coefficient": null,
       "predicted_full": 0.0,
+      "predicted_today": 0.0,
       "predict_mode": "T-1 快照",
       "predict_breakdown": null,
       "coefficient_source": "T-1 实时(无系数外推)",
       "total_partial": 0.0,
       "total_full": 0.0
     },
-    "stat_range": "创建时间 = 2026-08-28 ~ 2026-08-30"
+    "stat_range": "创建时间 = 2026-08-28 ~ 2026-08-30",
+    "history": [
+      {
+        "run_date": "2026-07-27",
+        "pending_amount": 0,
+        "pending_count": 0,
+        "today_15": null,
+        "coefficient": "",
+        "predicted_full": null,
+        "actual_next_day_09": null,
+        "diff": null,
+        "diff_pct": "",
+        "status": ""
+      },
+      {
+        "run_date": "2026-07-28",
+        "pending_amount": 1673821.24,
+        "pending_count": 506,
+        "today_15": null,
+        "coefficient": "",
+        "predicted_full": null,
+        "actual_next_day_09": null,
+        "diff": null,
+        "diff_pct": "",
+        "status": ""
+      },
+      {
+        "run_date": "2026-07-29",
+        "pending_amount": 807407.44,
+        "pending_count": 348,
+        "today_15": null,
+        "coefficient": "",
+        "predicted_full": null,
+        "actual_next_day_09": null,
+        "diff": null,
+        "diff_pct": "",
+        "status": ""
+      },
+      {
+        "run_date": "2026-07-30",
+        "pending_amount": 786881.09,
+        "pending_count": 373,
+        "today_15": null,
+        "coefficient": "",
+        "predicted_full": null,
+        "actual_next_day_09": null,
+        "diff": null,
+        "diff_pct": "",
+        "status": ""
+      },
+      {
+        "run_date": "2026-07-31",
+        "pending_amount": 890765.61,
+        "pending_count": 425,
+        "today_15": null,
+        "coefficient": "",
+        "predicted_full": null,
+        "actual_next_day_09": null,
+        "diff": null,
+        "diff_pct": "",
+        "status": ""
+      },
+      {
+        "run_date": "2026-08-03",
+        "pending_amount": 0,
+        "pending_count": 0,
+        "today_15": null,
+        "coefficient": "",
+        "predicted_full": null,
+        "actual_next_day_09": null,
+        "diff": null,
+        "diff_pct": "",
+        "status": ""
+      },
+      {
+        "run_date": "2026-08-04",
+        "pending_amount": 0,
+        "pending_count": 0,
+        "today_15": null,
+        "coefficient": "",
+        "predicted_full": null,
+        "actual_next_day_09": null,
+        "diff": null,
+        "diff_pct": "",
+        "status": ""
+      },
+      {
+        "run_date": "2026-08-05",
+        "pending_amount": 448261.42,
+        "pending_count": 191,
+        "today_15": null,
+        "coefficient": "",
+        "predicted_full": null,
+        "actual_next_day_09": null,
+        "diff": null,
+        "diff_pct": "",
+        "status": ""
+      },
+      {
+        "run_date": "2026-08-10",
+        "pending_amount": 0,
+        "pending_count": 0,
+        "today_15": null,
+        "coefficient": "",
+        "predicted_full": null,
+        "actual_next_day_09": null,
+        "diff": null,
+        "diff_pct": "",
+        "status": ""
+      },
+      {
+        "run_date": "2026-08-11",
+        "pending_amount": 503189.93,
+        "pending_count": 186,
+        "today_15": null,
+        "coefficient": "",
+        "predicted_full": null,
+        "actual_next_day_09": null,
+        "diff": null,
+        "diff_pct": "",
+        "status": ""
+      },
+      {
+        "run_date": "2026-08-19",
+        "pending_amount": 0,
+        "pending_count": 0,
+        "today_15": null,
+        "coefficient": "",
+        "predicted_full": null,
+        "actual_next_day_09": null,
+        "diff": null,
+        "diff_pct": "",
+        "status": ""
+      },
+      {
+        "run_date": "2026-08-20",
+        "pending_amount": 0,
+        "pending_count": 0,
+        "today_15": null,
+        "coefficient": "",
+        "predicted_full": null,
+        "actual_next_day_09": null,
+        "diff": null,
+        "diff_pct": "",
+        "status": ""
+      },
+      {
+        "run_date": "2026-08-21",
+        "pending_amount": 232294.45,
+        "pending_count": 145,
+        "today_15": null,
+        "coefficient": "",
+        "predicted_full": null,
+        "actual_next_day_09": null,
+        "diff": null,
+        "diff_pct": "",
+        "status": ""
+      },
+      {
+        "run_date": "2026-08-28",
+        "pending_amount": 0,
+        "pending_count": 0,
+        "today_15": null,
+        "coefficient": "",
+        "predicted_full": null,
+        "actual_next_day_09": null,
+        "diff": null,
+        "diff_pct": "",
+        "status": ""
+      },
+      {
+        "run_date": "2026-08-27",
+        "pending_amount": 0,
+        "pending_count": 0,
+        "today_15": null,
+        "coefficient": "",
+        "predicted_full": null,
+        "actual_next_day_09": null,
+        "diff": null,
+        "diff_pct": "",
+        "status": ""
+      },
+      {
+        "run_date": "2026-08-26",
+        "pending_amount": 0,
+        "pending_count": 0,
+        "today_15": null,
+        "coefficient": "",
+        "predicted_full": null,
+        "actual_next_day_09": null,
+        "diff": null,
+        "diff_pct": "",
+        "status": ""
+      },
+      {
+        "run_date": "2026-08-31",
+        "pending_amount": 473654.17,
+        "pending_count": 248,
+        "today_15": null,
+        "coefficient": "",
+        "predicted_full": null,
+        "actual_next_day_09": null,
+        "diff": null,
+        "diff_pct": "",
+        "status": ""
+      },
+      {
+        "run_date": "2026-08-31",
+        "pending_amount": 44799.02,
+        "pending_count": 29,
+        "today_15": null,
+        "coefficient": "",
+        "predicted_full": null,
+        "actual_next_day_09": null,
+        "diff": null,
+        "diff_pct": "",
+        "status": ""
+      }
+    ],
+    "coefficient": {
+      "active": "1m",
+      "sets": {
+        "1m": {
+          "label": "1m",
+          "coeff": 0.653217,
+          "coeff_all": 0.644213,
+          "coeff_weekday": 0.653217,
+          "pooled": 0.670966,
+          "range": "2026-08-01 ~ 2026-08-30",
+          "days": 30,
+          "rows": 3686,
+          "total_partial": 5533433.59,
+          "total_full": 8246968.75,
+          "computed_at": "2026-08-31T10:03:57.923766"
+        },
+        "2m": {
+          "label": "2m",
+          "coeff": 0.675374,
+          "coeff_all": 0.64845,
+          "coeff_weekday": 0.675374,
+          "pooled": 0.698744,
+          "range": "2026-07-02 ~ 2026-08-30",
+          "days": 60,
+          "rows": 10508,
+          "total_partial": 15822777.36,
+          "total_full": 22644612.93,
+          "computed_at": "2026-08-31T10:03:57.923766"
+        },
+        "3m": {
+          "label": "3m",
+          "coeff": 0.682727,
+          "coeff_all": 0.662924,
+          "coeff_weekday": 0.682727,
+          "pooled": 0.701442,
+          "range": "2026-06-02 ~ 2026-08-30",
+          "days": 90,
+          "rows": 18030,
+          "total_partial": 28184647.17,
+          "total_full": 40181015.24,
+          "computed_at": "2026-08-31T10:03:57.923766"
+        }
+      }
+    },
+    "forecast_diff": []
   }
 }
