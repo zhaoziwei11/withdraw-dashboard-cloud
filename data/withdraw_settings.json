@@ -1,0 +1,5 @@
+{
+  "pending": { "time": "09:00", "data_range": "T-1", "wechat_push": false },
+  "fail": { "time": "15:10", "data_range": "T-1", "wechat_push": false },
+  "holiday": { "skip": true, "accumulate": true, "holidays": [], "holidays_count": 0 }
+}
