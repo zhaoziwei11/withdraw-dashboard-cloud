@@ -1,11 +1,11 @@
 {
   "report": {
     "date": "2026-09-01",
-    "generated_at": "2026-09-01 09:33:25",
+    "generated_at": "2026-09-01 09:38:34",
     "source": "https://chengyun.91msl.com/financial-center/settlement-manage/carrier-withdrawal-manage",
     "stat_range": "创建时间 = 2026-08-31 ~ 2026-08-31",
-    "pending_amount": 473654.17,
-    "pending_count": 248,
+    "pending_amount": 1482588.29,
+    "pending_count": 475,
     "fail_top3": "待补充(每天 15:10 任务执行后更新)",
     "demand2_note": "待补充(每天 15:10 任务执行后更新)",
     "coeff_active": {
@@ -56,6 +56,18 @@
     ]
   },
   "history": [
+    {
+      "run_date": "2026-09-01",
+      "pending_amount": 1482588.29,
+      "pending_count": 475,
+      "today_15": null,
+      "coefficient": "",
+      "predicted_full": null,
+      "actual_next_day_09": null,
+      "diff": null,
+      "diff_pct": "",
+      "status": ""
+    },
     {
       "run_date": "2026-08-31",
       "pending_amount": 473654.17,
@@ -275,7 +287,7 @@
   ],
   "predict": {
     "today": "2026-09-01",
-    "has_data": false,
+    "has_data": true,
     "demand2_today_pending": null,
     "coefficient": 0.653217,
     "predicted_full": null,
@@ -476,9 +488,9 @@
   ],
   "status": {
     "today": "2026-09-01",
-    "report_exists": false,
-    "report_time": null,
-    "pending_status": "未生成",
+    "report_exists": true,
+    "report_time": "2026-09-01 09:38:34",
+    "pending_status": "已生成 ¥1,482,588.29 / 475 笔",
     "fail_status": "未运行"
   },
   "settings": {
@@ -536,12 +548,23 @@
   "_synced_from": "local-files-v2",
   "withdrawal": {
     "date": "2026-09-01",
-    "pending_amount": null,
-    "pending_count": 0,
-    "fail_top3": "待补充(每天 09:00 任务执行后更新)",
+    "pending_amount": 3207204.78,
+    "pending_count": 76,
+    "fail_top3": "无提现失败",
     "fail_records": [],
-    "predict": null,
-    "stat_range": "",
+    "predict": {
+      "today": "2026-09-01",
+      "has_data": true,
+      "demand2_today_pending": 3207204.78,
+      "coefficient": null,
+      "predicted_full": 3207204.78,
+      "predict_mode": "T-1 快照",
+      "predict_breakdown": null,
+      "coefficient_source": "T-1 实时(无系数外推)",
+      "total_partial": 3207204.78,
+      "total_full": 3207204.78
+    },
+    "stat_range": "创建时间 = 2026-08-31 ~ 2026-08-31",
     "history": [],
     "coefficient": {
       "active": "1m",
