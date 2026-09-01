@@ -352,6 +352,7 @@ def collect():
         "status": status,
         "settings": build_settings(settings),
         "_synced_from": "local-files-v2",
+        "withdrawal": build_withdrawal(db, today),
     }
     return payload
 
@@ -482,6 +483,172 @@ def verify(expect_date=None):
         return False
     print("[OK] 云端数据与本机一致, 网页刷新即可看到")
     return True
+
+
+def build_withdrawal(db, today):
+    """组装提现管理模块结构化数据(与承运功能对齐: history/coefficient/forecast_diff/predict)"""
+    if not today:
+        return {"date": None, "pending_amount": None, "pending_count": None,
+                "fail_top3": "待补充(每天 09:00 任务执行后更新)", "stat_range": "",
+                "history": [], "coefficient": {"active": "", "sets": {}}, "forecast_diff": []}
+    try:
+        import csv as _csv
+        from collections import Counter
+
+        # 提现管理站点(prefix=tx_)的真实当天数据文件。
+        # 若不存在，说明 withdrawal 站点的需求二任务尚未执行，禁止回退旧快照
+        # (旧快照是 8-31 的未剔除失败数据，会导致页面一直显示错误旧数)。
+        data_file = Path(db.DATA_DIR) / f"tx_withdraw_data_{today}.json"
+        wd = {}
+        if data_file.exists():
+            wd = json.loads(data_file.read_text(encoding="utf-8"))
+
+        # 提现管理使用 tx_ 前缀隔离文件(dashboard.py 本身无 configure_site/前缀逻辑,
+        # 这里直接拼路径读取, 避免误读承运的无前缀文件)
+        _dd = db.DEMAND2_DIR
+        ledger_path = _dd / "tx_pending_ledger.csv"
+        coeff_auto_path = _dd / "tx_coefficients_auto.json"
+        forecast_path = _dd / "tx_forecast.csv"
+
+        # 历史累积表(tx_pending_ledger.csv)，同时抓取今天这一行用于 stat_range
+        history = []
+        today_ledger_row = None
+        try:
+            if ledger_path.exists():
+                with open(ledger_path, "r", encoding="utf-8", newline="") as f:
+                    rows = list(_csv.DictReader(f))
+                for r in rows:
+                    history.append({
+                        "run_date": r.get("run_date"),
+                        "pending_amount": num(r.get("pending_amount"), 0) or 0,
+                        "pending_count": int(num(r.get("pending_count"), 0) or 0),
+                        "today_15": None,
+                        "coefficient": "",
+                        "predicted_full": None,
+                        "actual_next_day_09": None,
+                        "diff": None,
+                        "diff_pct": "",
+                        "status": "",
+                    })
+                    if r.get("run_date") == today:
+                        today_ledger_row = r
+        except Exception:
+            history = []
+
+        # 系数(tx_coefficients_auto.json)
+        coefficient = {"active": "", "sets": {}}
+        try:
+            if coeff_auto_path.exists():
+                auto_coeff = json.loads(coeff_auto_path.read_text(encoding="utf-8"))
+                coefficient = build_coefficient(auto_coeff)
+        except Exception:
+            pass
+
+        # 预测 vs 真实比对(tx_forecast.csv 的 compared 行)
+        forecast_diff = []
+        try:
+            if forecast_path.exists():
+                with open(forecast_path, "r", encoding="utf-8", newline="") as f:
+                    frows = list(_csv.DictReader(f))
+                for r in frows:
+                    if r.get("status") == "compared":
+                        forecast_diff.append({
+                            "predict_date": r.get("predict_date"),
+                            "today_pending_15": num(r.get("today_pending_15"), 0) or 0,
+                            "coefficient": r.get("coefficient") or "",
+                            "predicted_full": num(r.get("predicted_full"), 0) or 0,
+                            "mode": r.get("predict_mode") or "",
+                            "actual_next_day_09": num(r.get("actual_next_day_pending_09")),
+                            "diff": num(r.get("diff")),
+                            "diff_pct": (f"{r.get('diff_pct')}%" if r.get("diff_pct") else None),
+                            "status": r.get("status") or "",
+                        })
+        except Exception:
+            pass
+
+        # 组装 predict 对象：优先用 withdrawal 文件里的 predict 字段；否则从根级字段组装
+        predict = wd.get("predict")
+        if predict is None:
+            demand2 = wd.get("demand2_today_pending")
+            if demand2 is not None:
+                coeff = wd.get("coefficient")
+                predicted_full = wd.get("predicted_full")
+                predict = {
+                    "today": today,
+                    "has_data": True,
+                    "demand2_today_pending": demand2,
+                    "coefficient": coeff,
+                    "predicted_full": predicted_full,
+                    "predict_mode": wd.get("predict_mode"),
+                    "predict_input": wd.get("predict_input"),
+                    "predict_breakdown": wd.get("predict_breakdown"),
+                    "coefficient_source": "T-1 实时(无系数外推)" if coeff is None else "自动计算",
+                    "total_partial": demand2,
+                    "total_full": predicted_full,
+                }
+
+        # stat_range：优先用数据文件字段；否则从今天 ledger 行组装
+        stat_range = wd.get("stat_range") or ""
+        if not stat_range and today_ledger_row:
+            s_start = today_ledger_row.get("stat_range_start")
+            s_end = today_ledger_row.get("stat_range_end")
+            if s_start and s_end:
+                stat_range = f"创建时间 = {s_start} ~ {s_end}"
+
+        # fail_top3：兼容旧字段 / 从 fail_records / fail_reasons 组装
+        fail_records = wd.get("fail_records") or []
+        fail_reasons = wd.get("fail_reasons") or []
+        fail_top3 = wd.get("fail_top3")
+        if fail_top3 is None:
+            if fail_records:
+                blocks = []
+                for idx, r in enumerate(fail_records, 1):
+                    name = r.get("driver_name") or "-"
+                    phone = r.get("phone") or "-"
+                    card = r.get("card") or "-"
+                    amount = float(r.get("amount", 0) or 0)
+                    record_status = r.get("status") or "交易失败"
+                    reason = r.get("reason") or ""
+                    blocks.append("<br>".join([
+                        f"{idx}. 司机姓名：{name}",
+                        f"手机号：{phone}",
+                        f"银行卡号：{card}",
+                        f"提现金额：¥{amount:,.2f}",
+                        f"交易状态：{record_status}",
+                        f"失败原因：{reason}",
+                    ]))
+                fail_top3 = "<br><br>".join(blocks)
+            elif fail_reasons:
+                fr = [x for x in fail_reasons if x not in (None, "", "-")]
+                if not fr:
+                    fail_top3 = "无提现失败"
+                else:
+                    total = len(fr)
+                    parts = [
+                        f"{i}. {reason}（{cnt} 次 · {cnt / total * 100:.1f}%）"
+                        for i, (reason, cnt) in enumerate(Counter(fr).most_common(3), 1)
+                    ]
+                    fail_top3 = "<br>".join(parts)
+            else:
+                fail_top3 = "待补充(每天 09:00 任务执行后更新)"
+
+        return {
+            "date": today,
+            "pending_amount": num(wd.get("pending_amount")),
+            "pending_count": int(num(wd.get("pending_count"), 0) or 0),
+            "fail_top3": fail_top3,
+            "fail_records": fail_records,
+            "predict": predict,
+            "stat_range": stat_range,
+            "history": history,
+            "coefficient": coefficient,
+            "forecast_diff": forecast_diff[:5],
+        }
+    except Exception:
+        pass
+    return {"date": today, "pending_amount": None, "pending_count": None,
+            "fail_top3": "待补充(每天 09:00 任务执行后更新)", "stat_range": "",
+            "history": [], "coefficient": {"active": "", "sets": {}}, "forecast_diff": []}
 
 
 if __name__ == "__main__":
