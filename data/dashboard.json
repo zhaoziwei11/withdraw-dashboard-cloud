@@ -1,12 +1,12 @@
 {
   "report": {
     "date": "2026-09-01",
-    "generated_at": "2026-09-01 15:15:48",
+    "generated_at": "2026-09-01 15:56:24",
     "source": "https://chengyun.91msl.com/financial-center/settlement-manage/carrier-withdrawal-manage",
     "stat_range": "创建时间 = 2026-08-31 ~ 2026-08-31",
     "pending_amount": 1482588.29,
     "pending_count": 475,
-    "fail_top3": "1. 司机姓名：-<br>手机号：15719223328<br>银行卡号：6217853600017795245<br>提现金额：¥812.93<br>交易状态：提现失败<br>失败原因：对方银行拒绝，请联系收方或其所属银行核实",
+    "fail_top3": "1. 司机姓名：张孝平<br>手机号：15719223328<br>银行卡号：6217853600017795245<br>提现金额：¥812.93<br>交易状态：提现失败<br>失败原因：对方银行拒绝，请联系收方或其所属银行核实",
     "demand2_note": "当天 0~15 点待提现 <b>¥562,687.05</b> · 系数 <b>0.653217</b> · 预测当天全天(0~24) <b>¥861,409.07</b>",
     "coeff_active": {
       "coeff": 0.653217,
@@ -500,7 +500,7 @@
   "status": {
     "today": "2026-09-01",
     "report_exists": true,
-    "report_time": "2026-09-01 15:15:48",
+    "report_time": "2026-09-01 15:56:24",
     "pending_status": "已生成 ¥1,482,588.29 / 475 笔",
     "fail_status": "有失败 (1 条)"
   },
