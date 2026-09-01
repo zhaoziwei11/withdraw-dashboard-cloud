@@ -563,7 +563,19 @@
     "pending_count": 0,
     "fail_top3": "待补充(每天 09:00 任务执行后更新)",
     "fail_records": [],
-    "predict": null,
+    "predict": {
+      "today": "2026-09-01",
+      "has_data": true,
+      "demand2_today_pending": 91062.51,
+      "coefficient": 0.590742,
+      "predicted_full": 154149.37,
+      "predict_mode": "weekday",
+      "predict_input": 91062.51,
+      "predict_breakdown": null,
+      "coefficient_source": "自动计算",
+      "total_partial": 91062.51,
+      "total_full": 154149.37
+    },
     "stat_range": "",
     "history": [],
     "coefficient": {
