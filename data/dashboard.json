@@ -588,7 +588,20 @@
     "fail_records": [],
     "predict": null,
     "stat_range": "",
-    "history": [],
+    "history": [
+      {
+        "run_date": "2026-09-01",
+        "pending_amount": 3207204.78,
+        "pending_count": 76,
+        "today_15": null,
+        "coefficient": "",
+        "predicted_full": null,
+        "actual_next_day_09": null,
+        "diff": null,
+        "diff_pct": "",
+        "status": ""
+      }
+    ],
     "coefficient": {
       "active": "1m",
       "sets": {
