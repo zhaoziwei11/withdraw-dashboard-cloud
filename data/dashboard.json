@@ -583,7 +583,7 @@
   "withdrawal": {
     "date": "2026-09-02",
     "pending_amount": 85064.3,
-    "pending_count": 0,
+    "pending_count": 50,
     "fail_top3": "待补充(每天 09:00 任务执行后更新)",
     "fail_records": [],
     "predict": {
@@ -658,18 +658,6 @@
         }
       }
     },
-    "forecast_diff": [
-      {
-        "predict_date": "2026-09-01",
-        "today_pending_15": 91062.51,
-        "coefficient": "0.590742",
-        "predicted_full": 154149.37,
-        "mode": "weekday",
-        "actual_next_day_09": 0.0,
-        "diff": -154149.37,
-        "diff_pct": "-100.00%",
-        "status": "compared"
-      }
-    ]
+    "forecast_diff": []
   }
 }
