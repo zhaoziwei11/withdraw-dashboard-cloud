@@ -589,15 +589,15 @@
     "predict": {
       "today": "2026-09-02",
       "has_data": true,
-      "demand2_today_pending": 65981.27,
+      "demand2_today_pending": 61931.02,
       "coefficient": 0.590742,
-      "predicted_full": 111692.19,
+      "predicted_full": 104835.99,
       "predict_mode": "weekday",
-      "predict_input": 65981.27,
+      "predict_input": 61931.02,
       "predict_breakdown": null,
       "coefficient_source": "自动计算",
-      "total_partial": 65981.27,
-      "total_full": 111692.19
+      "total_partial": 61931.02,
+      "total_full": 104835.99
     },
     "stat_range": "创建时间 = 2026-09-01 ~ 2026-09-01",
     "history": [
