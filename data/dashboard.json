@@ -69,18 +69,6 @@
       "status": ""
     },
     {
-      "run_date": "2026-09-02",
-      "pending_amount": 686567.92,
-      "pending_count": 239,
-      "today_15": null,
-      "coefficient": "",
-      "predicted_full": null,
-      "actual_next_day_09": null,
-      "diff": null,
-      "diff_pct": "",
-      "status": ""
-    },
-    {
       "run_date": "2026-09-01",
       "pending_amount": 1482588.29,
       "pending_count": 475,
