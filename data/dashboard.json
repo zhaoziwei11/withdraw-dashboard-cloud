@@ -596,6 +596,7 @@
     "pending_amount": 142865.5,
     "pending_count": 76,
     "generated_at": "2026-09-03 10:17:56",
+    "fail_generated_at": null,
     "fail_top3": "待补充(每天 15:10 失败核查任务执行后更新)",
     "fail_records": [],
     "predict": null,
