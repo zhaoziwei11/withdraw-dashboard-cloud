@@ -584,23 +584,11 @@
     "date": "2026-09-03",
     "pending_amount": 142865.5,
     "pending_count": 76,
-    "fail_top3": "待补充(每天 09:00 任务执行后更新)",
+    "fail_top3": "待补充(每天 15:10 失败核查任务执行后更新)",
     "fail_records": [],
     "predict": null,
     "stat_range": "创建时间 = 2026-09-02 ~ 2026-09-02",
     "history": [
-      {
-        "run_date": "2026-09-02",
-        "pending_amount": 142865.5,
-        "pending_count": 76,
-        "today_15": null,
-        "coefficient": "",
-        "predicted_full": null,
-        "actual_next_day_09": null,
-        "diff": null,
-        "diff_pct": "",
-        "status": ""
-      },
       {
         "run_date": "2026-09-03",
         "pending_amount": 142865.5,
