@@ -1,13 +1,13 @@
 {
   "report": {
-    "date": "2026-09-03",
-    "generated_at": "2026-09-03 15:11:46",
+    "date": "2026-09-04",
+    "generated_at": "2026-09-04 06:00:04",
     "source": "https://chengyun.91msl.com/financial-center/settlement-manage/carrier-withdrawal-manage",
-    "stat_range": "创建时间 = 2026-09-02 ~ 2026-09-02",
+    "stat_range": "创建时间 = 2026-09-03 ~ 2026-09-03",
     "pending_amount": 288903.01,
     "pending_count": 178,
-    "fail_top3": "无提现失败",
-    "demand2_note": "当天 0~15 点待提现 <b>¥170,602.92</b> · 系数 <b>0.653217</b> · 预测当天全天(0~24) <b>¥261,173.42</b>",
+    "fail_top3": "待补充(每天 15:10 任务执行后更新)",
+    "demand2_note": "待补充(每天 15:10 任务执行后更新)",
     "coeff_active": {
       "coeff": 0.653217,
       "pooled": 0.670966,
@@ -298,12 +298,12 @@
     }
   ],
   "predict": {
-    "today": "2026-09-03",
-    "has_data": true,
-    "demand2_today_pending": 170602.92,
+    "today": "2026-09-04",
+    "has_data": false,
+    "demand2_today_pending": null,
     "coefficient": 0.653217,
-    "predicted_full": 261173.42,
-    "predict_mode": "weekday",
+    "predicted_full": null,
+    "predict_mode": null,
     "predict_breakdown": null,
     "coefficient_source": "2026-08-01 ~ 2026-08-30, 3686 行",
     "total_partial": 5533433.59,
@@ -532,11 +532,11 @@
     }
   ],
   "status": {
-    "today": "2026-09-03",
-    "report_exists": true,
-    "report_time": "2026-09-03 15:11:46",
-    "pending_status": "已生成 ¥288,903.01 / 178 笔",
-    "fail_status": "无失败"
+    "today": "2026-09-04",
+    "report_exists": false,
+    "report_time": null,
+    "pending_status": "未生成",
+    "fail_status": "未运行"
   },
   "settings": {
     "pending": {
@@ -592,27 +592,15 @@
   },
   "_synced_from": "local-files-v2",
   "withdrawal": {
-    "date": "2026-09-03",
-    "pending_amount": 142865.5,
-    "pending_count": 76,
-    "generated_at": "2026-09-03 10:17:56",
-    "fail_generated_at": "2026-09-03 18:28:30",
+    "date": "2026-09-04",
+    "pending_amount": null,
+    "pending_count": 0,
+    "generated_at": null,
+    "fail_generated_at": null,
     "fail_top3": "待补充(每天 15:10 失败核查任务执行后更新)",
     "fail_records": [],
-    "predict": {
-      "today": "2026-09-03",
-      "has_data": true,
-      "demand2_today_pending": 49756.0,
-      "coefficient": 0.590742,
-      "predicted_full": 84226.28,
-      "predict_mode": "weekday",
-      "predict_input": 49756.0,
-      "predict_breakdown": null,
-      "coefficient_source": "自动计算",
-      "total_partial": 49756.0,
-      "total_full": 84226.28
-    },
-    "stat_range": "创建时间 = 2026-09-02 ~ 2026-09-02",
+    "predict": null,
+    "stat_range": "",
     "history": [
       {
         "run_date": "2026-09-03",
