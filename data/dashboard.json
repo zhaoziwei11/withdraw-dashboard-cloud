@@ -619,21 +619,21 @@
     "pending_amount": 112938.04,
     "pending_count": 35,
     "generated_at": "2026-09-04 08:10:21",
-    "fail_generated_at": "2026-09-04 15:10:54",
+    "fail_generated_at": "2026-09-04 17:06:44",
     "fail_top3": "待补充(每天 15:10 失败核查任务执行后更新)",
     "fail_records": [],
     "predict": {
       "today": "2026-09-04",
       "has_data": true,
-      "demand2_today_pending": 75748.05,
+      "demand2_today_pending": 74899.05,
       "coefficient": 0.590742,
-      "predicted_full": 128225.27,
+      "predicted_full": 126788.09,
       "predict_mode": "weekday",
-      "predict_input": 75748.05,
+      "predict_input": 74899.05,
       "predict_breakdown": null,
       "coefficient_source": "自动计算",
-      "total_partial": 75748.05,
-      "total_full": 128225.27
+      "total_partial": 74899.05,
+      "total_full": 126788.09
     },
     "stat_range": "创建时间 = 2026-09-03 ~ 2026-09-03",
     "history": [
