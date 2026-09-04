@@ -616,9 +616,9 @@
   "_synced_from": "local-files-v2",
   "withdrawal": {
     "date": "2026-09-04",
-    "pending_amount": 112938.04,
-    "pending_count": 35,
-    "generated_at": "2026-09-04 08:10:21",
+    "pending_amount": 0.0,
+    "pending_count": 0,
+    "generated_at": "2026-09-04 17:11:12",
     "fail_generated_at": "2026-09-04 17:06:44",
     "fail_top3": "待补充(每天 15:10 失败核查任务执行后更新)",
     "fail_records": [],
@@ -651,8 +651,8 @@
       },
       {
         "run_date": "2026-09-04",
-        "pending_amount": 112938.04,
-        "pending_count": 35,
+        "pending_amount": 0,
+        "pending_count": 0,
         "today_15": null,
         "coefficient": "",
         "predicted_full": null,
