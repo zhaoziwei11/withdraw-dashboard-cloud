@@ -8,8 +8,8 @@
     "pending_count": 110,
     "all_amount": 409239.67,
     "all_count": 110,
-    "fail_top3": "待补充(每天 15:10 任务执行后更新)",
-    "demand2_note": "待补充(每天 15:10 任务执行后更新)",
+    "fail_top3": "无提现失败",
+    "demand2_note": "当天 0~15 点待提现 <b>¥175,465.00</b> · 系数 <b>0.665788</b> · 预测周一算法(上周五~周日合计) <b>¥423,469.11</b>",
     "coeff_active": {
       "coeff": 0.665788,
       "pooled": 0.672922,
@@ -20,6 +20,13 @@
     "partial_total": 5533638.31,
     "full_total": 8223296.81,
     "forecast_diff": [
+      {
+        "date": "2026-09-07",
+        "predicted": 423469.11,
+        "actual": null,
+        "diff": null,
+        "pct": null
+      },
       {
         "date": "2026-09-04",
         "predicted": 135836.47,
@@ -47,13 +54,6 @@
         "actual": 686567.92,
         "diff": -174841.15,
         "pct": "-20.30%"
-      },
-      {
-        "date": "2026-08-31",
-        "predicted": 498389.26,
-        "actual": null,
-        "diff": null,
-        "pct": null
       }
     ]
   },
@@ -62,13 +62,13 @@
       "run_date": "2026-09-07",
       "pending_amount": 409239.67,
       "pending_count": 110,
-      "today_15": null,
-      "coefficient": "",
-      "predicted_full": null,
+      "today_15": 175465.0,
+      "coefficient": "0.6658",
+      "predicted_full": 423469.11,
       "actual_next_day_09": null,
       "diff": null,
       "diff_pct": "",
-      "status": ""
+      "status": "pending"
     },
     {
       "run_date": "2026-09-04",
@@ -326,11 +326,19 @@
   "predict": {
     "today": "2026-09-07",
     "has_data": true,
-    "demand2_today_pending": null,
+    "demand2_today_pending": 175465.0,
     "coefficient": 0.665788,
-    "predicted_full": null,
-    "predict_mode": null,
-    "predict_breakdown": null,
+    "predicted_full": 423469.11,
+    "predict_mode": "monday",
+    "predict_breakdown": {
+      "fri_date": "2026-09-04",
+      "fri_partial": 88730.69,
+      "fri_full_pred": 133271.69,
+      "sat_date": "2026-09-05",
+      "sat_full": 209632.07,
+      "sun_date": "2026-09-06",
+      "sun_full": 80565.35
+    },
     "coefficient_source": "2026-08-08 ~ 2026-09-06, 3699 行",
     "total_partial": 5533638.31,
     "total_full": 8223296.81
@@ -380,6 +388,17 @@
     }
   },
   "forecast_diff": [
+    {
+      "predict_date": "2026-09-07",
+      "today_pending_15": 88730.69,
+      "coefficient": "0.665788",
+      "predicted_full": 423469.11,
+      "mode": "monday",
+      "actual_next_day_09": null,
+      "diff": null,
+      "diff_pct": "",
+      "status": "pending"
+    },
     {
       "predict_date": "2026-09-04",
       "today_pending_15": 88730.69,
@@ -571,9 +590,9 @@
   "status": {
     "today": "2026-09-07",
     "report_exists": true,
-    "report_time": "2026-09-07 13:22:48",
+    "report_time": "2026-09-07 15:15:58",
     "pending_status": "已生成 ¥409,239.67 / 110 笔",
-    "fail_status": "未运行"
+    "fail_status": "无失败"
   },
   "settings": {
     "pending": {
@@ -633,7 +652,7 @@
     "pending_amount": 135548.79,
     "pending_count": 0,
     "generated_at": "2026-09-07 14:07:53",
-    "fail_generated_at": null,
+    "fail_generated_at": "2026-09-07 15:10:50",
     "fail_top3": "待补充(每天 15:10 失败核查任务执行后更新)",
     "fail_records": [],
     "predict": {
