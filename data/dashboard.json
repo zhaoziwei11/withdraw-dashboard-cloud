@@ -636,7 +636,27 @@
     "fail_generated_at": null,
     "fail_top3": "待补充(每天 15:10 失败核查任务执行后更新)",
     "fail_records": [],
-    "predict": null,
+    "predict": {
+      "today": "2026-09-07",
+      "has_data": true,
+      "demand2_today_pending": 135548.79,
+      "coefficient": 0.590742,
+      "predicted_full": 232988.87,
+      "predict_mode": "monday",
+      "predict_input": 60763.61,
+      "predict_breakdown": {
+        "fri_date": "2026-08-28",
+        "fri_partial": 60763.61,
+        "fri_full_pred": 102859.81,
+        "sat_date": "2026-08-29",
+        "sat_full": 54961.49,
+        "sun_date": "2026-08-30",
+        "sun_full": 75167.57
+      },
+      "coefficient_source": "自动计算",
+      "total_partial": 135548.79,
+      "total_full": 232988.87
+    },
     "stat_range": "创建时间 = 2026-09-04 ~ 2026-09-06",
     "history": [
       {
