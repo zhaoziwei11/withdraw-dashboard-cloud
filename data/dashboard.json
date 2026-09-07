@@ -1,11 +1,11 @@
 {
   "report": {
     "date": "2026-09-07",
-    "generated_at": "2026-09-04 09:05:22",
+    "generated_at": "2026-09-07 08:57:55",
     "source": "https://chengyun.91msl.com/financial-center/settlement-manage/carrier-withdrawal-manage",
     "stat_range": "创建时间 = 2026-09-06 ~ 2026-09-06",
-    "pending_amount": 252279.48,
-    "pending_count": 132,
+    "pending_amount": 348904.87,
+    "pending_count": 80,
     "fail_top3": "待补充(每天 15:10 任务执行后更新)",
     "demand2_note": "待补充(每天 15:10 任务执行后更新)",
     "coeff_active": {
@@ -21,9 +21,9 @@
       {
         "date": "2026-09-04",
         "predicted": 135836.47,
-        "actual": null,
-        "diff": null,
-        "pct": null
+        "actual": 348904.87,
+        "diff": 213068.4,
+        "pct": "156.86%"
       },
       {
         "date": "2026-09-03",
@@ -57,16 +57,28 @@
   },
   "history": [
     {
+      "run_date": "2026-09-07",
+      "pending_amount": 348904.87,
+      "pending_count": 80,
+      "today_15": null,
+      "coefficient": "",
+      "predicted_full": null,
+      "actual_next_day_09": null,
+      "diff": null,
+      "diff_pct": "",
+      "status": ""
+    },
+    {
       "run_date": "2026-09-04",
       "pending_amount": 252279.48,
       "pending_count": 132,
       "today_15": 88730.69,
       "coefficient": "0.6532",
       "predicted_full": 135836.47,
-      "actual_next_day_09": null,
-      "diff": null,
-      "diff_pct": "",
-      "status": "pending"
+      "actual_next_day_09": 348904.87,
+      "diff": 213068.4,
+      "diff_pct": "156.86",
+      "status": "compared"
     },
     {
       "run_date": "2026-09-03",
@@ -311,7 +323,7 @@
   ],
   "predict": {
     "today": "2026-09-07",
-    "has_data": false,
+    "has_data": true,
     "demand2_today_pending": null,
     "coefficient": 0.653217,
     "predicted_full": null,
@@ -372,10 +384,10 @@
       "coefficient": "0.653217",
       "predicted_full": 135836.47,
       "mode": "weekday",
-      "actual_next_day_09": null,
-      "diff": null,
-      "diff_pct": "",
-      "status": "pending"
+      "actual_next_day_09": 348904.87,
+      "diff": 213068.4,
+      "diff_pct": "156.86",
+      "status": "compared"
     },
     {
       "predict_date": "2026-09-03",
@@ -556,9 +568,9 @@
   ],
   "status": {
     "today": "2026-09-07",
-    "report_exists": false,
-    "report_time": null,
-    "pending_status": "未生成",
+    "report_exists": true,
+    "report_time": "2026-09-07 08:57:55",
+    "pending_status": "已生成 ¥348,904.87 / 80 笔",
     "fail_status": "未运行"
   },
   "settings": {
