@@ -630,7 +630,7 @@
   "_synced_from": "local-files-v2",
   "withdrawal": {
     "date": "2026-09-07",
-    "pending_amount": 0.0,
+    "pending_amount": 135548.79,
     "pending_count": 0,
     "generated_at": "2026-09-07 14:07:53",
     "fail_generated_at": null,
