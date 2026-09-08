@@ -659,6 +659,7 @@
     "pending_count": 95,
     "generated_at": "2026-09-08 08:55:10",
     "fail_generated_at": null,
+    "demand2_generated_at": "2026-09-08 14:06:47",
     "fail_top3": "待补充(每天 15:10 失败核查任务执行后更新)",
     "fail_records": [],
     "predict": {
