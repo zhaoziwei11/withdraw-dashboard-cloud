@@ -2,7 +2,7 @@
   "report": {
     "date": "2026-09-09",
     "generated_at": "2026-09-09 10:54:33",
-    "fail_generated_at": "2026-09-08 15:11:32",
+    "fail_generated_at": "2026-09-09 15:00:50",
     "demand2_generated_at": "2026-09-08 15:11:48",
     "source": "https://chengyun.91msl.com/financial-center/settlement-manage/carrier-withdrawal-manage",
     "stat_range": "创建时间 = 2026-09-08 ~ 2026-09-08",
@@ -10,7 +10,7 @@
     "pending_count": 49,
     "all_amount": 76195.43999999999,
     "all_count": 49,
-    "fail_top3": "待补充(每天 15:10 任务执行后更新)",
+    "fail_top3": "无提现失败",
     "demand2_note": "待补充(每天 15:10 任务执行后更新)",
     "coeff_active": {
       "coeff": 0.665788,
@@ -619,9 +619,9 @@
   "status": {
     "today": "2026-09-09",
     "report_exists": true,
-    "report_time": "2026-09-09 10:54:33",
+    "report_time": "2026-09-09 15:00:50",
     "pending_status": "已生成 ¥76,195.44 / 49 笔",
-    "fail_status": "未运行"
+    "fail_status": "无失败"
   },
   "settings": {
     "pending": {
@@ -681,11 +681,23 @@
     "pending_amount": 175204.26,
     "pending_count": 93,
     "generated_at": "2026-09-09 08:11:03",
-    "fail_generated_at": "2026-09-08 15:18:42",
-    "demand2_generated_at": "2026-09-08 15:19:34",
+    "fail_generated_at": "2026-09-09 15:10:50",
+    "demand2_generated_at": "2026-09-09 15:11:42",
     "fail_top3": "待补充(每天 15:10 失败核查任务执行后更新)",
     "fail_records": [],
-    "predict": null,
+    "predict": {
+      "today": "2026-09-09",
+      "has_data": true,
+      "demand2_today_pending": 87632.22,
+      "coefficient": 0.590742,
+      "predicted_full": 148342.63,
+      "predict_mode": "weekday",
+      "predict_input": 87632.22,
+      "predict_breakdown": null,
+      "coefficient_source": "自动计算",
+      "total_partial": 87632.22,
+      "total_full": 148342.63
+    },
     "stat_range": "创建时间 = 2026-09-08 ~ 2026-09-08",
     "fail_stat_range": "创建时间 = 2026-09-08 ~ 2026-09-08",
     "history": [
