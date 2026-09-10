@@ -1,7 +1,7 @@
 {
   "report": {
     "date": "2026-09-10",
-    "generated_at": "2026-09-10 08:20:31",
+    "generated_at": "2026-09-10 09:03:34",
     "fail_generated_at": "2026-09-09 15:00:50",
     "demand2_generated_at": "2026-09-09 16:40:22",
     "source": "https://chengyun.91msl.com/financial-center/settlement-manage/carrier-withdrawal-manage",
@@ -642,7 +642,7 @@
   "status": {
     "today": "2026-09-10",
     "report_exists": true,
-    "report_time": "2026-09-10 08:20:31",
+    "report_time": "2026-09-10 09:03:34",
     "pending_status": "已生成 ¥61,567.00 / 43 笔",
     "fail_status": "未运行"
   },
