@@ -689,15 +689,15 @@
   "_synced_from": "local-files-v2",
   "withdrawal": {
     "date": "2026-09-10",
-    "pending_amount": null,
-    "pending_count": 0,
-    "generated_at": null,
+    "pending_amount": 263937.83,
+    "pending_count": 135,
+    "generated_at": "2026-09-10 08:11:08",
     "fail_generated_at": "2026-09-09 15:10:50",
     "demand2_generated_at": "2026-09-09 15:11:42",
     "fail_top3": "待补充(每天 15:10 失败核查任务执行后更新)",
     "fail_records": [],
     "predict": null,
-    "stat_range": "创建时间 = 2026-09-10 ~ 2026-09-10",
+    "stat_range": "创建时间 = 2026-09-09 ~ 2026-09-09",
     "fail_stat_range": "创建时间 = 2026-09-09 ~ 2026-09-09",
     "history": [
       {
@@ -752,6 +752,18 @@
         "run_date": "2026-09-09",
         "pending_amount": 175204.26,
         "pending_count": 93,
+        "today_15": null,
+        "coefficient": "",
+        "predicted_full": null,
+        "actual_next_day_09": null,
+        "diff": null,
+        "diff_pct": "",
+        "status": ""
+      },
+      {
+        "run_date": "2026-09-10",
+        "pending_amount": 263937.83,
+        "pending_count": 135,
         "today_15": null,
         "coefficient": "",
         "predicted_full": null,
@@ -837,6 +849,17 @@
         "actual_next_day_09": 175204.26,
         "diff": 40259.24,
         "diff_pct": "29.83%",
+        "status": "compared"
+      },
+      {
+        "predict_date": "2026-09-09",
+        "today_pending_15": 87632.22,
+        "coefficient": "0.590742",
+        "predicted_full": 148342.63,
+        "mode": "weekday",
+        "actual_next_day_09": 263937.83,
+        "diff": 115595.2,
+        "diff_pct": "77.92%",
         "status": "compared"
       }
     ]
