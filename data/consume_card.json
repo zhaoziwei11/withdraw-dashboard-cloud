@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-11 11:45:18",
+  "generated_at": "2026-09-11 11:55:33",
   "accounts": {
     "total_issued": 61930590.7,
-    "total_consumed": 60949977.4,
-    "total_balance": 980613.3,
+    "total_consumed": 60952377.4,
+    "total_balance": 978213.3,
     "card_count": 2,
     "cards": [
       {
@@ -11,8 +11,8 @@
         "card_name": "旭茂消费卡",
         "stores": "",
         "issued": 61930590.7,
-        "consumed": 60949977.4,
-        "balance": 980613.3
+        "consumed": 60952377.4,
+        "balance": 978213.3
       },
       {
         "company": "江西旭茂运输有限公司",
@@ -23,7 +23,7 @@
         "balance": 0.0
       }
     ],
-    "updated_at": "2026-09-11 11:43:16"
+    "updated_at": "2026-09-11 11:53:31"
   },
   "daily": [
     {
@@ -78,11 +78,11 @@
     },
     {
       "date": "2026-03-06",
-      "card_amount": 167984.45,
+      "card_amount": 164776.45,
       "card_count": 194,
       "balance_amount": 10079.85,
       "balance_count": 8,
-      "total_amount": 178064.3,
+      "total_amount": 174856.3,
       "total_count": 202,
       "types": []
     },
@@ -108,11 +108,11 @@
     },
     {
       "date": "2026-03-09",
-      "card_amount": 196370.96,
+      "card_amount": 195770.96,
       "card_count": 187,
       "balance_amount": 40346.0,
       "balance_count": 20,
-      "total_amount": 236716.96,
+      "total_amount": 236116.96,
       "total_count": 207,
       "types": []
     },
@@ -210,9 +210,9 @@
       "date": "2026-03-19",
       "card_amount": 187938.57,
       "card_count": 225,
-      "balance_amount": 26127.0,
+      "balance_amount": 21127.0,
       "balance_count": 24,
-      "total_amount": 214065.57,
+      "total_amount": 209065.57,
       "total_count": 249,
       "types": []
     },
@@ -378,11 +378,11 @@
     },
     {
       "date": "2026-04-05",
-      "card_amount": 66052.35,
+      "card_amount": 62672.35,
       "card_count": 83,
       "balance_amount": 10220.0,
       "balance_count": 9,
-      "total_amount": 76272.35,
+      "total_amount": 72892.35,
       "total_count": 92,
       "types": []
     },
@@ -408,11 +408,11 @@
     },
     {
       "date": "2026-04-08",
-      "card_amount": 195975.49,
+      "card_amount": 193975.49,
       "card_count": 222,
       "balance_amount": 32778.0,
       "balance_count": 25,
-      "total_amount": 228753.49,
+      "total_amount": 226753.49,
       "total_count": 247,
       "types": []
     },
@@ -528,21 +528,21 @@
     },
     {
       "date": "2026-04-20",
-      "card_amount": 181525.35,
+      "card_amount": 178525.35,
       "card_count": 202,
       "balance_amount": 15974.11,
       "balance_count": 12,
-      "total_amount": 197499.46,
+      "total_amount": 194499.46,
       "total_count": 214,
       "types": []
     },
     {
       "date": "2026-04-21",
-      "card_amount": 251203.49,
+      "card_amount": 249881.49,
       "card_count": 273,
       "balance_amount": 26589.85,
       "balance_count": 20,
-      "total_amount": 277793.34,
+      "total_amount": 276471.34,
       "total_count": 293,
       "types": []
     },
@@ -628,11 +628,11 @@
     },
     {
       "date": "2026-04-30",
-      "card_amount": 167018.76,
+      "card_amount": 163018.76,
       "card_count": 189,
       "balance_amount": 20301.02,
       "balance_count": 18,
-      "total_amount": 187319.78,
+      "total_amount": 183319.78,
       "total_count": 207,
       "types": []
     },
@@ -708,11 +708,11 @@
     },
     {
       "date": "2026-05-08",
-      "card_amount": 389568.65,
+      "card_amount": 387628.65,
       "card_count": 321,
       "balance_amount": 27470.0,
       "balance_count": 18,
-      "total_amount": 417038.65,
+      "total_amount": 415098.65,
       "total_count": 339,
       "types": []
     },
@@ -798,11 +798,11 @@
     },
     {
       "date": "2026-05-17",
-      "card_amount": 138719.48,
+      "card_amount": 136619.48,
       "card_count": 140,
       "balance_amount": 33003.0,
       "balance_count": 21,
-      "total_amount": 171722.48,
+      "total_amount": 169622.48,
       "total_count": 161,
       "types": []
     },
@@ -838,11 +838,11 @@
     },
     {
       "date": "2026-05-21",
-      "card_amount": 138094.28,
+      "card_amount": 137894.28,
       "card_count": 134,
       "balance_amount": 22974.77,
       "balance_count": 15,
-      "total_amount": 161069.05,
+      "total_amount": 160869.05,
       "total_count": 149,
       "types": []
     },
@@ -898,11 +898,11 @@
     },
     {
       "date": "2026-05-27",
-      "card_amount": 235678.71,
+      "card_amount": 232678.71,
       "card_count": 237,
       "balance_amount": 12687.57,
       "balance_count": 13,
-      "total_amount": 248366.28,
+      "total_amount": 245366.28,
       "total_count": 250,
       "types": []
     },
@@ -1110,9 +1110,9 @@
       "date": "2026-06-17",
       "card_amount": 107192.61,
       "card_count": 136,
-      "balance_amount": 35920.44,
+      "balance_amount": 33920.44,
       "balance_count": 27,
-      "total_amount": 143113.05,
+      "total_amount": 141113.05,
       "total_count": 163,
       "types": []
     },
@@ -1208,11 +1208,11 @@
     },
     {
       "date": "2026-06-27",
-      "card_amount": 154231.23,
+      "card_amount": 154151.23,
       "card_count": 163,
       "balance_amount": 31676.0,
       "balance_count": 30,
-      "total_amount": 185907.23,
+      "total_amount": 185827.23,
       "total_count": 193,
       "types": []
     },
@@ -1258,11 +1258,11 @@
     },
     {
       "date": "2026-07-02",
-      "card_amount": 125244.66,
+      "card_amount": 122644.66,
       "card_count": 144,
       "balance_amount": 15152.76,
       "balance_count": 12,
-      "total_amount": 140397.42,
+      "total_amount": 137797.42,
       "total_count": 156,
       "types": []
     },
@@ -1278,11 +1278,11 @@
     },
     {
       "date": "2026-07-04",
-      "card_amount": 81469.16,
+      "card_amount": 80469.16,
       "card_count": 102,
-      "balance_amount": 20396.98,
+      "balance_amount": 19196.98,
       "balance_count": 17,
-      "total_amount": 101866.14,
+      "total_amount": 99666.14,
       "total_count": 119,
       "types": []
     },
@@ -1300,9 +1300,9 @@
       "date": "2026-07-06",
       "card_amount": 84252.06,
       "card_count": 114,
-      "balance_amount": 36867.0,
+      "balance_amount": 34867.0,
       "balance_count": 15,
-      "total_amount": 121119.06,
+      "total_amount": 119119.06,
       "total_count": 129,
       "types": []
     },
@@ -1398,11 +1398,11 @@
     },
     {
       "date": "2026-07-16",
-      "card_amount": 115327.78,
+      "card_amount": 113827.78,
       "card_count": 160,
       "balance_amount": 25958.0,
       "balance_count": 19,
-      "total_amount": 141285.78,
+      "total_amount": 139785.78,
       "total_count": 179,
       "types": []
     },
@@ -1448,11 +1448,11 @@
     },
     {
       "date": "2026-07-21",
-      "card_amount": 184032.09,
+      "card_amount": 181140.09,
       "card_count": 194,
       "balance_amount": 59976.0,
       "balance_count": 32,
-      "total_amount": 244008.09,
+      "total_amount": 241116.09,
       "total_count": 226,
       "types": []
     },
@@ -1508,11 +1508,11 @@
     },
     {
       "date": "2026-07-27",
-      "card_amount": 188316.66,
+      "card_amount": 186316.66,
       "card_count": 191,
       "balance_amount": 47514.04,
       "balance_count": 22,
-      "total_amount": 235830.7,
+      "total_amount": 233830.7,
       "total_count": 213,
       "types": []
     },
@@ -1568,11 +1568,11 @@
     },
     {
       "date": "2026-08-02",
-      "card_amount": 57567.03,
+      "card_amount": 54767.03,
       "card_count": 66,
       "balance_amount": 17611.59,
       "balance_count": 15,
-      "total_amount": 75178.62,
+      "total_amount": 72378.62,
       "total_count": 81,
       "types": []
     },
@@ -1818,11 +1818,11 @@
     },
     {
       "date": "2026-08-27",
-      "card_amount": 119168.7,
+      "card_amount": 118028.7,
       "card_count": 120,
       "balance_amount": 10611.0,
       "balance_count": 8,
-      "total_amount": 129779.7,
+      "total_amount": 128639.7,
       "total_count": 128,
       "types": []
     },
@@ -1898,11 +1898,11 @@
     },
     {
       "date": "2026-09-04",
-      "card_amount": 122983.41,
+      "card_amount": 120983.41,
       "card_count": 81,
       "balance_amount": 6761.0,
       "balance_count": 7,
-      "total_amount": 129744.41,
+      "total_amount": 127744.41,
       "total_count": 88,
       "types": []
     },
@@ -1940,9 +1940,9 @@
       "date": "2026-09-08",
       "card_amount": 73564.59,
       "card_count": 68,
-      "balance_amount": 17009.0,
+      "balance_amount": 14609.0,
       "balance_count": 13,
-      "total_amount": 90573.59,
+      "total_amount": 88173.59,
       "total_count": 81,
       "types": []
     },
@@ -2293,11 +2293,11 @@
       "pre_issued": 4257664.67,
       "card_withdraw": 21788.91,
       "actual_issued": 4235875.76,
-      "card_consume": 4405188.99,
+      "card_consume": 4401380.99,
       "card_daily7": 134445.54,
-      "balance_consume": 638100.84,
+      "balance_consume": 633100.84,
       "balance_daily7": 21472.34,
-      "uninvoiced": 8808.0,
+      "uninvoiced": 0.0,
       "invoiced": 5034481.83,
       "_manual": [
         "invoiced",
@@ -2305,8 +2305,8 @@
       ],
       "_auto_from_settlement": false,
       "issued_ratio": 0.125145,
-      "consume_ratio": 1.034649,
-      "balance_ratio": 0.021439
+      "consume_ratio": 1.033755,
+      "balance_ratio": 0.021271
     },
     {
       "month": "2026-04",
@@ -2316,11 +2316,11 @@
       "pre_issued": 5299507.81,
       "card_withdraw": 0.0,
       "actual_issued": 5299507.81,
-      "card_consume": 4990571.69,
-      "card_daily7": 170972.13,
+      "card_consume": 4976869.69,
+      "card_daily7": 170400.7,
       "balance_consume": 870025.42,
       "balance_daily7": 35004.19,
-      "uninvoiced": 13702.0,
+      "uninvoiced": 0.0,
       "invoiced": 5846895.11,
       "_manual": [
         "invoiced",
@@ -2328,7 +2328,7 @@
       ],
       "_auto_from_settlement": false,
       "issued_ratio": 0.150443,
-      "consume_ratio": 0.941705,
+      "consume_ratio": 0.939119,
       "balance_ratio": 0.029072
     },
     {
@@ -2339,11 +2339,11 @@
       "pre_issued": 5474196.2,
       "card_withdraw": 0.0,
       "actual_issued": 5474196.2,
-      "card_consume": 5815478.91,
-      "card_daily7": 203072.55,
+      "card_consume": 5808238.91,
+      "card_daily7": 202643.98,
       "balance_consume": 728384.56,
       "balance_daily7": 27942.56,
-      "uninvoiced": 7240.0,
+      "uninvoiced": 0.0,
       "invoiced": 6536623.47,
       "_manual": [
         "invoiced",
@@ -2351,7 +2351,7 @@
       ],
       "_auto_from_settlement": true,
       "issued_ratio": 0.192998,
-      "consume_ratio": 1.062344,
+      "consume_ratio": 1.061021,
       "balance_ratio": 0.031821
     },
     {
@@ -2362,11 +2362,11 @@
       "pre_issued": 4910572.05,
       "card_withdraw": 0.0,
       "actual_issued": 4910572.05,
-      "card_consume": 4756305.76,
-      "card_daily7": 135195.5,
-      "balance_consume": 754680.07,
+      "card_consume": 4756225.76,
+      "card_daily7": 135184.07,
+      "balance_consume": 752680.07,
       "balance_daily7": 23801.1,
-      "uninvoiced": 2080.0,
+      "uninvoiced": 0.0,
       "invoiced": 5508905.83,
       "_manual": [
         "invoiced",
@@ -2374,8 +2374,8 @@
       ],
       "_auto_from_settlement": true,
       "issued_ratio": 0.15251,
-      "consume_ratio": 0.968585,
-      "balance_ratio": 0.027656
+      "consume_ratio": 0.968569,
+      "balance_ratio": 0.027583
     },
     {
       "month": "2026-07",
@@ -2385,11 +2385,11 @@
       "pre_issued": 4040919.36,
       "card_withdraw": 615.97,
       "actual_issued": 4040303.39,
-      "card_consume": 3800949.83,
-      "card_daily7": 185243.92,
-      "balance_consume": 750666.54,
+      "card_consume": 3790957.83,
+      "card_daily7": 184958.21,
+      "balance_consume": 747466.54,
       "balance_daily7": 27812.7,
-      "uninvoiced": 13192.0,
+      "uninvoiced": 0.0,
       "invoiced": 4538424.37,
       "_manual": [
         "invoiced",
@@ -2397,8 +2397,8 @@
       ],
       "_auto_from_settlement": true,
       "issued_ratio": 0.147305,
-      "consume_ratio": 0.940615,
-      "balance_ratio": 0.032092
+      "consume_ratio": 0.938142,
+      "balance_ratio": 0.031955
     },
     {
       "month": "2026-08",
@@ -2408,11 +2408,11 @@
       "pre_issued": 2524258.52,
       "card_withdraw": 0.0,
       "actual_issued": 2524258.52,
-      "card_consume": 2581198.98,
-      "card_daily7": 103887.77,
+      "card_consume": 2577258.98,
+      "card_daily7": 103724.91,
       "balance_consume": 436247.05,
       "balance_daily7": 16194.52,
-      "uninvoiced": 1403503.19,
+      "uninvoiced": 1399563.19,
       "invoiced": 1613942.84,
       "_manual": [
         "invoiced",
@@ -2420,7 +2420,7 @@
       ],
       "_auto_from_settlement": true,
       "issued_ratio": 0.193758,
-      "consume_ratio": 1.022557,
+      "consume_ratio": 1.020996,
       "balance_ratio": 0.041533
     },
     {
@@ -2431,11 +2431,11 @@
       "pre_issued": 58064.23,
       "card_withdraw": 0.0,
       "actual_issued": 58064.23,
-      "card_consume": 770836.97,
-      "card_daily7": 64118.28,
-      "balance_consume": 151841.54,
-      "balance_daily7": 15802.79,
-      "uninvoiced": 922678.51,
+      "card_consume": 768836.97,
+      "card_daily7": 63832.57,
+      "balance_consume": 149441.54,
+      "balance_daily7": 15459.93,
+      "uninvoiced": 918278.51,
       "invoiced": 0.0,
       "_manual": [
         "invoiced",
@@ -2443,10 +2443,10 @@
       ],
       "_auto_from_settlement": true,
       "issued_ratio": 0.015084,
-      "consume_ratio": 13.275591,
-      "balance_ratio": 0.040049
+      "consume_ratio": 13.241146,
+      "balance_ratio": 0.039416
     }
   ],
-  "seeded_at": "2026-09-11 11:29:38",
+  "seeded_at": "2026-09-11 11:48:57",
   "seed_source": "D:\\消费卡统计\\消费卡消费明细统计 - 副本.xlsx"
 }
