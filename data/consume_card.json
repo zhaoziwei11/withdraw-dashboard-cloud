@@ -1993,8 +1993,8 @@
       "card_daily7": 0.0,
       "balance_consume": 0,
       "balance_daily7": 0.0,
-      "uninvoiced": NaN,
-      "invoiced": NaN,
+      "uninvoiced": null,
+      "invoiced": null,
       "_manual": [
         "invoiced",
         "uninvoiced"
@@ -2016,8 +2016,8 @@
       "card_daily7": 0.0,
       "balance_consume": 0,
       "balance_daily7": 0.0,
-      "uninvoiced": NaN,
-      "invoiced": NaN,
+      "uninvoiced": null,
+      "invoiced": null,
       "_manual": [
         "invoiced",
         "uninvoiced"
