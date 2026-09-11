@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-10 18:29:05",
+  "generated_at": "2026-09-11 11:20:44",
   "accounts": {
     "total_issued": 61930590.7,
-    "total_consumed": 60928691.73,
-    "total_balance": 1001898.97,
+    "total_consumed": 60949977.4,
+    "total_balance": 980613.3,
     "card_count": 2,
     "cards": [
       {
@@ -11,8 +11,8 @@
         "card_name": "旭茂消费卡",
         "stores": "",
         "issued": 61930590.7,
-        "consumed": 60928691.73,
-        "balance": 1001898.97
+        "consumed": 60949977.4,
+        "balance": 980613.3
       },
       {
         "company": "江西旭茂运输有限公司",
@@ -23,7 +23,7 @@
         "balance": 0.0
       }
     ],
-    "updated_at": "2026-09-10 18:29:05"
+    "updated_at": "2026-09-11 11:20:10"
   },
   "daily": [
     {
@@ -1964,16 +1964,22 @@
     },
     {
       "date": "2026-09-10",
-      "card_amount": -48170.4,
+      "card_amount": 48170.4,
       "card_count": 56,
-      "balance_amount": -15683.54,
+      "balance_amount": 15683.54,
       "balance_count": 10,
-      "total_amount": -63853.94,
+      "total_amount": 63853.94,
       "total_count": 66,
-      "types": []
+      "types": [
+        {
+          "type": "商城消费",
+          "amount": 63853.94,
+          "count": 66
+        }
+      ]
     }
   ],
-  "stat_range": "2026-09-09 ~ 2026-09-09",
+  "stat_range": "2026-09-10 ~ 2026-09-10",
   "monthly": [
     {
       "month": "2025-01",
@@ -1983,9 +1989,9 @@
       "pre_issued": 0.0,
       "card_withdraw": 0.0,
       "actual_issued": 0.0,
-      "card_consume": 0.0,
+      "card_consume": 0,
       "card_daily7": 0.0,
-      "balance_consume": 0.0,
+      "balance_consume": 0,
       "balance_daily7": 0.0,
       "uninvoiced": NaN,
       "invoiced": NaN,
@@ -1993,7 +1999,10 @@
         "invoiced",
         "uninvoiced"
       ],
-      "_auto_from_settlement": false
+      "_auto_from_settlement": false,
+      "issued_ratio": 0.0,
+      "consume_ratio": null,
+      "balance_ratio": 0.0
     },
     {
       "month": "2025-02",
@@ -2003,9 +2012,9 @@
       "pre_issued": 0.0,
       "card_withdraw": 0.0,
       "actual_issued": 0.0,
-      "card_consume": 0.0,
+      "card_consume": 0,
       "card_daily7": 0.0,
-      "balance_consume": 0.0,
+      "balance_consume": 0,
       "balance_daily7": 0.0,
       "uninvoiced": NaN,
       "invoiced": NaN,
@@ -2013,7 +2022,10 @@
         "invoiced",
         "uninvoiced"
       ],
-      "_auto_from_settlement": false
+      "_auto_from_settlement": false,
+      "issued_ratio": 0.0,
+      "consume_ratio": null,
+      "balance_ratio": 0.0
     },
     {
       "month": "2025-03",
@@ -2023,7 +2035,7 @@
       "pre_issued": 0.0,
       "card_withdraw": 0.0,
       "actual_issued": 0.0,
-      "card_consume": 0.0,
+      "card_consume": 0,
       "card_daily7": 0.0,
       "balance_consume": 2000.0,
       "balance_daily7": 2000.0,
@@ -2033,7 +2045,9 @@
         "invoiced",
         "uninvoiced"
       ],
-      "_auto_from_settlement": false
+      "_auto_from_settlement": false,
+      "issued_ratio": 0.0,
+      "consume_ratio": null
     },
     {
       "month": "2025-04",
@@ -2043,7 +2057,7 @@
       "pre_issued": 0.0,
       "card_withdraw": 0.0,
       "actual_issued": 0.0,
-      "card_consume": 0.0,
+      "card_consume": 0,
       "card_daily7": 0.0,
       "balance_consume": 406374.02,
       "balance_daily7": 13545.8,
@@ -2053,7 +2067,9 @@
         "invoiced",
         "uninvoiced"
       ],
-      "_auto_from_settlement": false
+      "_auto_from_settlement": false,
+      "issued_ratio": 0.0,
+      "consume_ratio": null
     },
     {
       "month": "2025-05",
@@ -2063,7 +2079,7 @@
       "pre_issued": 0.0,
       "card_withdraw": 0.0,
       "actual_issued": 0.0,
-      "card_consume": 0.0,
+      "card_consume": 0,
       "card_daily7": 0.0,
       "balance_consume": 702393.56,
       "balance_daily7": 22657.86,
@@ -2073,7 +2089,9 @@
         "invoiced",
         "uninvoiced"
       ],
-      "_auto_from_settlement": false
+      "_auto_from_settlement": false,
+      "issued_ratio": 0.0,
+      "consume_ratio": null
     },
     {
       "month": "2025-06",
@@ -2083,7 +2101,7 @@
       "pre_issued": 0.0,
       "card_withdraw": 0.0,
       "actual_issued": 0.0,
-      "card_consume": 0.0,
+      "card_consume": 0,
       "card_daily7": 0.0,
       "balance_consume": 910125.05,
       "balance_daily7": 30337.5,
@@ -2093,7 +2111,9 @@
         "invoiced",
         "uninvoiced"
       ],
-      "_auto_from_settlement": false
+      "_auto_from_settlement": false,
+      "issued_ratio": 0.0,
+      "consume_ratio": null
     },
     {
       "month": "2025-07",
@@ -2103,7 +2123,7 @@
       "pre_issued": 0.0,
       "card_withdraw": 0.0,
       "actual_issued": 0.0,
-      "card_consume": 0.0,
+      "card_consume": 0,
       "card_daily7": 0.0,
       "balance_consume": 1354070.79,
       "balance_daily7": 43679.7,
@@ -2113,7 +2133,9 @@
         "invoiced",
         "uninvoiced"
       ],
-      "_auto_from_settlement": false
+      "_auto_from_settlement": false,
+      "issued_ratio": 0.0,
+      "consume_ratio": null
     },
     {
       "month": "2025-08",
@@ -2123,7 +2145,7 @@
       "pre_issued": 0.0,
       "card_withdraw": 0.0,
       "actual_issued": 0.0,
-      "card_consume": 0.0,
+      "card_consume": 0,
       "card_daily7": 0.0,
       "balance_consume": 1213270.24,
       "balance_daily7": 39137.75,
@@ -2133,7 +2155,9 @@
         "invoiced",
         "uninvoiced"
       ],
-      "_auto_from_settlement": false
+      "_auto_from_settlement": false,
+      "issued_ratio": 0.0,
+      "consume_ratio": null
     },
     {
       "month": "2025-09",
@@ -2153,7 +2177,8 @@
         "invoiced",
         "uninvoiced"
       ],
-      "_auto_from_settlement": false
+      "_auto_from_settlement": false,
+      "issued_ratio": 0.124619
     },
     {
       "month": "2025-10",
@@ -2173,7 +2198,8 @@
         "invoiced",
         "uninvoiced"
       ],
-      "_auto_from_settlement": false
+      "_auto_from_settlement": false,
+      "issued_ratio": 0.162359
     },
     {
       "month": "2025-11",
@@ -2193,7 +2219,8 @@
         "invoiced",
         "uninvoiced"
       ],
-      "_auto_from_settlement": false
+      "_auto_from_settlement": false,
+      "issued_ratio": 0.198202
     },
     {
       "month": "2025-12",
@@ -2213,7 +2240,8 @@
         "invoiced",
         "uninvoiced"
       ],
-      "_auto_from_settlement": false
+      "_auto_from_settlement": false,
+      "issued_ratio": 0.198336
     },
     {
       "month": "2026-01",
@@ -2233,7 +2261,8 @@
         "invoiced",
         "uninvoiced"
       ],
-      "_auto_from_settlement": false
+      "_auto_from_settlement": false,
+      "issued_ratio": 0.197683
     },
     {
       "month": "2026-02",
@@ -2253,7 +2282,8 @@
         "invoiced",
         "uninvoiced"
       ],
-      "_auto_from_settlement": false
+      "_auto_from_settlement": false,
+      "issued_ratio": 0.141636
     },
     {
       "month": "2026-03",
@@ -2263,17 +2293,20 @@
       "pre_issued": 4257664.67,
       "card_withdraw": 21788.91,
       "actual_issued": 4235875.76,
-      "card_consume": 4401380.99,
-      "card_daily7": 140629.56,
-      "balance_consume": 633100.84,
-      "balance_daily7": 20236.02,
+      "card_consume": -4401380.99,
+      "card_daily7": -134445.54,
+      "balance_consume": -633100.84,
+      "balance_daily7": -21472.34,
       "uninvoiced": 0.0,
       "invoiced": 5034481.83,
       "_manual": [
         "invoiced",
         "uninvoiced"
       ],
-      "_auto_from_settlement": false
+      "_auto_from_settlement": false,
+      "issued_ratio": 0.125145,
+      "consume_ratio": -1.033755,
+      "balance_ratio": -0.021271
     },
     {
       "month": "2026-04",
@@ -2283,17 +2316,20 @@
       "pre_issued": 5299507.81,
       "card_withdraw": 0.0,
       "actual_issued": 5299507.81,
-      "card_consume": 4976869.69,
-      "card_daily7": 171328.94,
-      "balance_consume": 870025.42,
-      "balance_daily7": 36047.04,
+      "card_consume": -4976869.69,
+      "card_daily7": -170400.7,
+      "balance_consume": -870025.42,
+      "balance_daily7": -35004.19,
       "uninvoiced": 0.0,
       "invoiced": 5846895.11,
       "_manual": [
         "invoiced",
         "uninvoiced"
       ],
-      "_auto_from_settlement": false
+      "_auto_from_settlement": false,
+      "issued_ratio": 0.150443,
+      "consume_ratio": -0.939119,
+      "balance_ratio": -0.029072
     },
     {
       "month": "2026-05",
@@ -2303,17 +2339,20 @@
       "pre_issued": 5474196.2,
       "card_withdraw": 0.0,
       "actual_issued": 5474196.2,
-      "card_consume": 5808238.91,
-      "card_daily7": 185798.74,
-      "balance_consume": 728384.56,
-      "balance_daily7": 24785.91,
+      "card_consume": -5808238.91,
+      "card_daily7": -202643.98,
+      "balance_consume": -728384.56,
+      "balance_daily7": -27942.56,
       "uninvoiced": 0.0,
       "invoiced": 6536623.47,
       "_manual": [
         "invoiced",
         "uninvoiced"
       ],
-      "_auto_from_settlement": true
+      "_auto_from_settlement": false,
+      "issued_ratio": 0.192998,
+      "consume_ratio": -1.061021,
+      "balance_ratio": -0.031821
     },
     {
       "month": "2026-06",
@@ -2323,77 +2362,89 @@
       "pre_issued": 4910572.05,
       "card_withdraw": 0.0,
       "actual_issued": 4910572.05,
-      "card_consume": 4756225.76,
-      "card_daily7": 135184.07,
-      "balance_consume": 752680.07,
-      "balance_daily7": 23801.1,
+      "card_consume": -4756225.76,
+      "card_daily7": -135184.07,
+      "balance_consume": -752680.07,
+      "balance_daily7": -23801.1,
       "uninvoiced": 0.0,
       "invoiced": 5508905.83,
       "_manual": [
         "invoiced",
         "uninvoiced"
       ],
-      "_auto_from_settlement": true
+      "_auto_from_settlement": false,
+      "issued_ratio": 0.15251,
+      "consume_ratio": -0.968569,
+      "balance_ratio": -0.027583
     },
     {
       "month": "2026-07",
-      "car_count": 35138,
-      "due_amount": 27432267.88,
-      "paid_freight": 23391348.52,
-      "pre_issued": 4040919.36,
+      "car_count": 16414,
+      "due_amount": 13078954.69,
+      "paid_freight": 10519225.03,
+      "pre_issued": 2559729.66,
       "card_withdraw": 615.97,
-      "actual_issued": 4040303.39,
-      "card_consume": 3790957.83,
-      "card_daily7": 189167.76,
-      "balance_consume": 747466.54,
-      "balance_daily7": 26415.54,
+      "actual_issued": 2559113.69,
+      "card_consume": -3790957.83,
+      "card_daily7": -184958.21,
+      "balance_consume": -747466.54,
+      "balance_daily7": -27812.7,
       "uninvoiced": 0.0,
       "invoiced": 4538424.37,
       "_manual": [
         "invoiced",
         "uninvoiced"
       ],
-      "_auto_from_settlement": true
+      "_auto_from_settlement": true,
+      "issued_ratio": 0.195714,
+      "consume_ratio": -1.480999,
+      "balance_ratio": -0.071057
     },
     {
       "month": "2026-08",
-      "car_count": 16679,
-      "due_amount": 12820772.13,
-      "paid_freight": 10296513.61,
+      "car_count": 16955,
+      "due_amount": 13027910.44,
+      "paid_freight": 10503651.92,
       "pre_issued": 2524258.52,
       "card_withdraw": 0.0,
       "actual_issued": 2524258.52,
-      "card_consume": 2577258.98,
-      "card_daily7": 103724.91,
-      "balance_consume": 436247.05,
-      "balance_daily7": 16194.52,
+      "card_consume": -2577258.98,
+      "card_daily7": -103724.91,
+      "balance_consume": -436247.05,
+      "balance_daily7": -16194.52,
       "uninvoiced": 1399563.19,
       "invoiced": 1613942.84,
       "_manual": [
         "invoiced",
         "uninvoiced"
       ],
-      "_auto_from_settlement": true
+      "_auto_from_settlement": true,
+      "issued_ratio": 0.193758,
+      "consume_ratio": -1.020996,
+      "balance_ratio": -0.041533
     },
     {
       "month": "2026-09",
-      "car_count": 5034,
-      "due_amount": 3864992.32,
-      "paid_freight": 3806928.09,
+      "car_count": 5020,
+      "due_amount": 3849463.19,
+      "paid_freight": 3791398.96,
       "pre_issued": 58064.23,
       "card_withdraw": 0.0,
       "actual_issued": 58064.23,
-      "card_consume": 768836.97,
-      "card_daily7": 63832.57,
-      "balance_consume": 149441.54,
-      "balance_daily7": 15459.93,
+      "card_consume": -672496.17,
+      "card_daily7": -50069.6,
+      "balance_consume": -118074.46,
+      "balance_daily7": -10978.92,
       "uninvoiced": 918278.51,
       "invoiced": 0.0,
       "_manual": [
         "invoiced",
         "uninvoiced"
       ],
-      "_auto_from_settlement": true
+      "_auto_from_settlement": true,
+      "issued_ratio": 0.015084,
+      "consume_ratio": -11.581936,
+      "balance_ratio": -0.031143
     }
   ],
   "seeded_at": "2026-09-11 11:13:03",
