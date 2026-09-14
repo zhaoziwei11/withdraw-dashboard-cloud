@@ -1,15 +1,15 @@
 {
   "report": {
     "date": "2026-09-14",
-    "generated_at": "2026-09-14 09:16:58",
+    "generated_at": "2026-09-14 18:47:54",
     "fail_generated_at": "2026-09-14 15:00:50",
     "demand2_generated_at": "2026-09-14 15:01:09",
     "source": "https://chengyun.91msl.com/financial-center/settlement-manage/carrier-withdrawal-manage",
     "stat_range": "创建时间 = 2026-09-11 ~ 2026-09-13",
-    "pending_amount": 144764.29,
-    "pending_count": 76,
-    "all_amount": 144764.28999999998,
-    "all_count": 76,
+    "pending_amount": 47127.37,
+    "pending_count": 13,
+    "all_amount": 47127.369999999995,
+    "all_count": 13,
     "fail_top3": "无提现失败",
     "demand2_note": "当天 0~15 点待提现 <b>¥132,830.53</b> · 系数 <b>0.665788</b> · 预测周一算法(上周五~周日合计) <b>¥423,469.11</b>",
     "coeff_active": {
@@ -62,8 +62,8 @@
   "history": [
     {
       "run_date": "2026-09-14",
-      "pending_amount": 144764.29,
-      "pending_count": 76,
+      "pending_amount": 47127.37,
+      "pending_count": 13,
       "today_15": 132830.53,
       "coefficient": "0.6658",
       "predicted_full": 423469.11,
@@ -707,8 +707,8 @@
   "status": {
     "today": "2026-09-14",
     "report_exists": true,
-    "report_time": "2026-09-14 15:01:09",
-    "pending_status": "已生成 ¥144,764.29 / 76 笔",
+    "report_time": "2026-09-14 18:47:54",
+    "pending_status": "已生成 ¥47,127.37 / 13 笔",
     "fail_status": "无失败"
   },
   "settings": {
