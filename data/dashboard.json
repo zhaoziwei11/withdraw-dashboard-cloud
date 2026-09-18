@@ -782,7 +782,7 @@
     "report_exists": true,
     "report_time": "2026-09-18 09:30:11",
     "pending_status": "已生成 ¥141,499.02 / 79 笔",
-    "fail_status": "未运行"
+    "fail_status": "有失败 (1 条)"
   },
   "settings": {
     "pending": {
