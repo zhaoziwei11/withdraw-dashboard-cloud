@@ -2,7 +2,7 @@
   "report": {
     "date": "2026-09-18",
     "generated_at": "2026-09-18 09:30:11",
-    "fail_generated_at": "2026-09-17 15:11:38",
+    "fail_generated_at": "2026-09-18 13:23:34",
     "demand2_generated_at": "2026-09-17 15:11:56",
     "source": "https://chengyun.91msl.com/financial-center/settlement-manage/carrier-withdrawal-manage",
     "stat_range": "创建时间 = 2026-09-17 ~ 2026-09-17",
@@ -10,7 +10,7 @@
     "pending_count": 79,
     "all_amount": 141499.02,
     "all_count": 79,
-    "fail_top3": "1. 司机姓名：-<br>手机号：13689212896<br>银行卡号：6217853600063681752<br>提现金额：¥1,000.00<br>交易状态：提现失败<br>失败原因：对方银行拒绝，请联系收方或其所属银行核实",
+    "fail_top3": "1. 司机姓名：闫伍奎<br>手机号：13689212896<br>银行卡号：6217853600063681752<br>提现金额：¥1,000.00<br>交易状态：提现失败<br>失败原因：对方银行拒绝，请联系收方或其所属银行核实",
     "demand2_note": "待补充(每天 15:10 任务执行后更新)",
     "coeff_active": {
       "coeff": 0.688604,
@@ -780,7 +780,7 @@
   "status": {
     "today": "2026-09-18",
     "report_exists": true,
-    "report_time": "2026-09-18 09:30:11",
+    "report_time": "2026-09-18 13:23:34",
     "pending_status": "已生成 ¥141,499.02 / 79 笔",
     "fail_status": "有失败 (1 条)"
   },
