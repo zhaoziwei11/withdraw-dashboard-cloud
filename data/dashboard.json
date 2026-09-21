@@ -1,11 +1,11 @@
 {
   "report": {
-    "date": "2026-09-20",
+    "date": "2026-09-21",
     "generated_at": "2026-09-18 09:30:11",
     "fail_generated_at": "2026-09-18 15:11:12",
     "demand2_generated_at": "2026-09-18 15:11:30",
     "source": "https://chengyun.91msl.com/financial-center/settlement-manage/carrier-withdrawal-manage",
-    "stat_range": "创建时间 = 2026-09-19 ~ 2026-09-19",
+    "stat_range": "创建时间 = 2026-09-18 ~ 2026-09-20",
     "pending_amount": 141499.02,
     "pending_count": 79,
     "all_amount": null,
@@ -434,7 +434,7 @@
     }
   ],
   "predict": {
-    "today": "2026-09-20",
+    "today": "2026-09-21",
     "has_data": false,
     "demand2_today_pending": null,
     "coefficient": 0.688604,
@@ -789,7 +789,7 @@
     }
   ],
   "status": {
-    "today": "2026-09-20",
+    "today": "2026-09-21",
     "report_exists": false,
     "report_time": null,
     "pending_status": "未生成",
@@ -849,7 +849,7 @@
   },
   "_synced_from": "local-files-v2",
   "withdrawal": {
-    "date": "2026-09-20",
+    "date": "2026-09-21",
     "pending_amount": null,
     "pending_count": 0,
     "generated_at": null,
@@ -858,8 +858,8 @@
     "fail_top3": "待补充(每天 15:10 失败核查任务执行后更新)",
     "fail_records": [],
     "predict": null,
-    "stat_range": "创建时间 = 2026-09-20 ~ 2026-09-20",
-    "fail_stat_range": "创建时间 = 2026-09-19 ~ 2026-09-19",
+    "stat_range": "创建时间 = 2026-09-21 ~ 2026-09-21",
+    "fail_stat_range": "创建时间 = 2026-09-18 ~ 2026-09-20",
     "history": [
       {
         "run_date": "2026-09-03",
