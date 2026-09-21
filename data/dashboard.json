@@ -2,7 +2,7 @@
   "report": {
     "date": "2026-09-21",
     "generated_at": "2026-09-21 09:14:10",
-    "fail_generated_at": "2026-09-18 15:11:12",
+    "fail_generated_at": "2026-09-21 15:00:51",
     "demand2_generated_at": "2026-09-18 15:11:30",
     "source": "https://chengyun.91msl.com/financial-center/settlement-manage/carrier-withdrawal-manage",
     "stat_range": "创建时间 = 2026-09-18 ~ 2026-09-20",
@@ -10,7 +10,7 @@
     "pending_count": 60,
     "all_amount": 122527.89000000003,
     "all_count": 60,
-    "fail_top3": "待补充(每天 15:10 任务执行后更新)",
+    "fail_top3": "无提现失败",
     "demand2_note": "待补充(每天 15:10 任务执行后更新)",
     "coeff_active": {
       "coeff": 0.685556,
@@ -803,9 +803,9 @@
   "status": {
     "today": "2026-09-21",
     "report_exists": true,
-    "report_time": "2026-09-21 09:14:10",
+    "report_time": "2026-09-21 15:00:51",
     "pending_status": "已生成 ¥122,527.89 / 60 笔",
-    "fail_status": "未运行"
+    "fail_status": "无失败"
   },
   "settings": {
     "pending": {
@@ -865,13 +865,25 @@
     "pending_amount": 181780.98,
     "pending_count": 55,
     "generated_at": "2026-09-21 09:12:20",
-    "fail_generated_at": "2026-09-18 15:10:51",
-    "demand2_generated_at": "2026-09-18 15:35:32",
+    "fail_generated_at": "2026-09-21 15:10:52",
+    "demand2_generated_at": "2026-09-21 15:11:56",
     "fail_top3": "待补充(每天 15:10 失败核查任务执行后更新)",
     "fail_records": [],
-    "predict": null,
+    "predict": {
+      "today": "2026-09-21",
+      "has_data": true,
+      "demand2_today_pending": 237074.54,
+      "coefficient": 0.576756,
+      "predicted_full": 411048.24,
+      "predict_mode": "weekday",
+      "predict_input": 237074.54,
+      "predict_breakdown": null,
+      "coefficient_source": "自动计算",
+      "total_partial": 237074.54,
+      "total_full": 411048.24
+    },
     "stat_range": "创建时间 = 2026-09-18 ~ 2026-09-20",
-    "fail_stat_range": "创建时间 = 2026-09-18 ~ 2026-09-20",
+    "fail_stat_range": "创建时间 = 2026-09-20 ~ 2026-09-20",
     "history": [
       {
         "run_date": "2026-09-03",
