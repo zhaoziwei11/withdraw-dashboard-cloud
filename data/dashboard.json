@@ -931,15 +931,15 @@
   "_synced_from": "local-files-v2",
   "withdrawal": {
     "date": "2026-09-28",
-    "pending_amount": null,
-    "pending_count": 0,
-    "generated_at": null,
+    "pending_amount": 512708.59,
+    "pending_count": 137,
+    "generated_at": "2026-09-28 09:12:18",
     "fail_generated_at": "2026-09-24 15:11:54",
     "demand2_generated_at": "2026-09-24 15:12:46",
     "fail_top3": "待补充(每天 15:10 失败核查任务执行后更新)",
     "fail_records": [],
     "predict": null,
-    "stat_range": "创建时间 = 2026-09-28 ~ 2026-09-28",
+    "stat_range": "创建时间 = 2026-09-24 ~ 2026-09-27",
     "fail_stat_range": "创建时间 = 2026-09-25 ~ 2026-09-27",
     "history": [
       {
@@ -1126,6 +1126,18 @@
         "run_date": "2026-09-24",
         "pending_amount": 263801.02,
         "pending_count": 80,
+        "today_15": null,
+        "coefficient": "",
+        "predicted_full": null,
+        "actual_next_day_09": null,
+        "diff": null,
+        "diff_pct": "",
+        "status": ""
+      },
+      {
+        "run_date": "2026-09-28",
+        "pending_amount": 512708.59,
+        "pending_count": 137,
         "today_15": null,
         "coefficient": "",
         "predicted_full": null,
