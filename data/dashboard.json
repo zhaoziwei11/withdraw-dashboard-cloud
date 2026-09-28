@@ -871,8 +871,8 @@
   ],
   "status": {
     "today": "2026-09-28",
-    "report_exists": false,
-    "report_time": null,
+    "report_exists": true,
+    "report_time": "2026-09-28 09:12:23",
     "pending_status": "未生成",
     "fail_status": "未运行"
   },
