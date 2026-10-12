@@ -13,14 +13,14 @@
     "fail_top3": "无提现失败",
     "demand2_note": "当天 0~15 点待提现 <b>¥6,128.72</b> · 系数 <b>0.681807</b> · 预测当天全天(0~24) <b>¥8,988.94</b>",
     "coeff_active": {
-      "coeff": 0.681807,
-      "pooled": 0.707057,
-      "range": "2026-08-29 ~ 2026-09-27",
+      "coeff": 0.698151,
+      "pooled": 0.70904,
+      "range": "2026-09-12 ~ 2026-10-11",
       "days": 30,
-      "rows": 2206
+      "rows": 1732
     },
-    "partial_total": 3736598.6,
-    "full_total": 5284721.62,
+    "partial_total": 2913445.79,
+    "full_total": 4108998.08,
     "forecast_diff": [
       {
         "date": "2026-10-12",
@@ -573,51 +573,51 @@
     "predicted_full": 8988.94,
     "predict_mode": "weekday",
     "predict_breakdown": null,
-    "coefficient_source": "2026-08-29 ~ 2026-09-27, 2206 行",
-    "total_partial": 3736598.6,
-    "total_full": 5284721.62
+    "coefficient_source": "2026-09-12 ~ 2026-10-11, 1732 行",
+    "total_partial": 2913445.79,
+    "total_full": 4108998.08
   },
   "coefficient": {
     "active": "1m",
     "sets": {
       "1m": {
         "label": "近1月",
-        "coeff": 0.681807,
-        "coeff_all": 0.622898,
-        "coeff_weekday": 0.681807,
-        "pooled": 0.707057,
-        "range": "2026-08-29 ~ 2026-09-27",
+        "coeff": 0.698151,
+        "coeff_all": 0.625706,
+        "coeff_weekday": 0.698151,
+        "pooled": 0.70904,
+        "range": "2026-09-12 ~ 2026-10-11",
         "days": 30,
-        "rows": 2206,
-        "total_partial": 3736598.6,
-        "total_full": 5284721.62,
-        "computed_at": "2026-09-28T11:17:56.349877"
+        "rows": 1732,
+        "total_partial": 2913445.79,
+        "total_full": 4108998.08,
+        "computed_at": "2026-10-12T10:01:09.475010"
       },
       "2m": {
         "label": "近2月",
-        "coeff": 0.669104,
-        "coeff_all": 0.634124,
-        "coeff_weekday": 0.669104,
-        "pooled": 0.686451,
-        "range": "2026-07-30 ~ 2026-09-27",
+        "coeff": 0.694297,
+        "coeff_all": 0.642211,
+        "coeff_weekday": 0.694297,
+        "pooled": 0.699201,
+        "range": "2026-08-13 ~ 2026-10-11",
         "days": 60,
-        "rows": 6568,
-        "total_partial": 10311270.94,
-        "total_full": 15021129.33,
-        "computed_at": "2026-09-28T11:17:56.349877"
+        "rows": 5309,
+        "total_partial": 8303101.49,
+        "total_full": 11875120.12,
+        "computed_at": "2026-10-12T10:01:09.475010"
       },
       "3m": {
         "label": "近3月",
-        "coeff": 0.678794,
-        "coeff_all": 0.640746,
-        "coeff_weekday": 0.678794,
-        "pooled": 0.701291,
-        "range": "2026-06-30 ~ 2026-09-27",
+        "coeff": 0.695419,
+        "coeff_all": 0.652578,
+        "coeff_weekday": 0.695419,
+        "pooled": 0.714786,
+        "range": "2026-07-14 ~ 2026-10-11",
         "days": 90,
-        "rows": 13133,
-        "total_partial": 20171123.98,
-        "total_full": 28762828.04,
-        "computed_at": "2026-09-28T11:17:56.349877"
+        "rows": 11973,
+        "total_partial": 19673852.57,
+        "total_full": 27524123.23,
+        "computed_at": "2026-10-12T10:01:09.475010"
       }
     }
   },
@@ -1468,42 +1468,42 @@
       "sets": {
         "1m": {
           "label": "1m",
-          "coeff": 0.525334,
-          "coeff_all": 0.543658,
-          "coeff_weekday": 0.525334,
-          "pooled": 0.638294,
-          "range": "2026-08-31 ~ 2026-09-27",
-          "days": 28,
-          "rows": 1990,
-          "total_partial": 4557625.12,
-          "total_full": 7140326.2,
-          "computed_at": "2026-09-28T10:18:04.241684"
+          "coeff": 0.614337,
+          "coeff_all": 0.566262,
+          "coeff_weekday": 0.614337,
+          "pooled": 0.583497,
+          "range": "2026-09-12 ~ 2026-10-11",
+          "days": 30,
+          "rows": 1331,
+          "total_partial": 2665963.15,
+          "total_full": 4568937.24,
+          "computed_at": "2026-10-12T10:13:15.487673"
         },
         "2m": {
           "label": "2m",
-          "coeff": 0.525334,
-          "coeff_all": 0.543658,
-          "coeff_weekday": 0.525334,
-          "pooled": 0.638294,
-          "range": "2026-08-31 ~ 2026-09-27",
-          "days": 28,
+          "coeff": 0.579138,
+          "coeff_all": 0.56281,
+          "coeff_weekday": 0.579138,
+          "pooled": 0.576467,
+          "range": "2026-09-05 ~ 2026-10-11",
+          "days": 37,
           "rows": 1990,
-          "total_partial": 4557625.12,
-          "total_full": 7140326.2,
-          "computed_at": "2026-09-28T10:18:04.241684"
+          "total_partial": 3582632.82,
+          "total_full": 6214814.17,
+          "computed_at": "2026-10-12T10:13:15.487673"
         },
         "3m": {
           "label": "3m",
-          "coeff": 0.525334,
-          "coeff_all": 0.543658,
-          "coeff_weekday": 0.525334,
-          "pooled": 0.638294,
-          "range": "2026-08-31 ~ 2026-09-27",
-          "days": 28,
+          "coeff": 0.579138,
+          "coeff_all": 0.56281,
+          "coeff_weekday": 0.579138,
+          "pooled": 0.576467,
+          "range": "2026-09-05 ~ 2026-10-11",
+          "days": 37,
           "rows": 1990,
-          "total_partial": 4557625.12,
-          "total_full": 7140326.2,
-          "computed_at": "2026-09-28T10:18:04.241684"
+          "total_partial": 3582632.82,
+          "total_full": 6214814.17,
+          "computed_at": "2026-10-12T10:13:15.487673"
         }
       }
     },
