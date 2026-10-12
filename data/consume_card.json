@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-10-10 11:55:52",
+  "generated_at": "2026-10-12 10:30:00",
   "accounts": {
-    "total_issued": 62884774.39,
-    "total_consumed": 61821239.52,
-    "total_balance": 1063534.87,
+    "total_issued": 62951628.34,
+    "total_consumed": 62005547.99,
+    "total_balance": 946080.35,
     "card_count": 2,
     "cards": [
       {
         "company": "江西旭茂运输有限公司",
         "card_name": "旭茂消费卡",
         "stores": "",
-        "issued": 62884774.39,
-        "consumed": 61821239.52,
-        "balance": 1063534.87
+        "issued": 62951628.34,
+        "consumed": 62005547.99,
+        "balance": 946080.35
       },
       {
         "company": "江西旭茂运输有限公司",
@@ -23,7 +23,7 @@
         "balance": 0.0
       }
     ],
-    "updated_at": "2026-10-10 11:34:54"
+    "updated_at": "2026-10-12 10:20:54"
   },
   "daily": [
     {
@@ -2414,9 +2414,41 @@
           "count": 145
         }
       ]
+    },
+    {
+      "date": "2026-10-10",
+      "card_amount": 125163.02,
+      "card_count": 122,
+      "balance_amount": 11330.0,
+      "balance_count": 6,
+      "total_amount": 136493.02,
+      "total_count": 128,
+      "types": [
+        {
+          "type": "商城消费",
+          "amount": 136493.02,
+          "count": 128
+        }
+      ]
+    },
+    {
+      "date": "2026-10-11",
+      "card_amount": 87466.75,
+      "card_count": 83,
+      "balance_amount": 6417.0,
+      "balance_count": 4,
+      "total_amount": 93883.75,
+      "total_count": 87,
+      "types": [
+        {
+          "type": "商城消费",
+          "amount": 93883.75,
+          "count": 87
+        }
+      ]
     }
   ],
-  "stat_range": "2026-10-09 ~ 2026-10-09",
+  "stat_range": "2026-10-10 ~ 2026-10-11",
   "monthly": [
     {
       "month": "2025-01",
@@ -2862,12 +2894,12 @@
     },
     {
       "month": "2026-09",
-      "car_count": 21219,
-      "due_amount": 16943244.09,
-      "paid_freight": 16590590.78,
-      "pre_issued": 352653.31,
+      "car_count": 21603,
+      "due_amount": 17195244.87,
+      "paid_freight": 16785455.47,
+      "pre_issued": 409789.4,
       "card_withdraw": 0.0,
-      "actual_issued": 352653.31,
+      "actual_issued": 409789.4,
       "card_consume": 1188956.62,
       "card_daily7": 22881.38,
       "balance_consume": 305647.3,
@@ -2879,27 +2911,27 @@
         "uninvoiced"
       ],
       "_auto_from_settlement": true,
-      "issued_ratio": 0.020814,
+      "issued_ratio": 0.023832,
       "consume_ratio": 2.901385,
       "balance_ratio": 0.018209
     },
     {
       "month": "2026-10",
       "_auto": true,
-      "car_count": 3504,
-      "due_amount": 3563831.87,
-      "paid_freight": 2961373.35,
-      "pre_issued": 602458.52,
+      "car_count": 4085,
+      "due_amount": 4136964.29,
+      "paid_freight": 3467651.82,
+      "pre_issued": 669312.47,
       "_auto_from_settlement": true,
       "card_withdraw": 0.0,
-      "actual_issued": 602458.52,
-      "issued_ratio": 0.169048,
-      "card_consume": 382999.7,
-      "consume_ratio": 0.636017,
-      "card_daily7": 45946.1,
-      "balance_consume": 59526.66,
-      "balance_ratio": 0.018843,
-      "balance_daily7": 4514.67
+      "actual_issued": 669312.47,
+      "issued_ratio": 0.161788,
+      "card_consume": 595629.47,
+      "consume_ratio": 0.889912,
+      "card_daily7": 69902.49,
+      "balance_consume": 77273.66,
+      "balance_ratio": 0.022284,
+      "balance_daily7": 5441.38
     }
   ],
   "seeded_at": "2026-09-11 11:48:57",
@@ -3098,6 +3130,20 @@
       "accounts_issued": 62884774.39,
       "accounts_consumed": 61821239.52,
       "accounts_balance": 1063534.87,
+      "status": "success",
+      "note": "车主结算单已更新"
+    },
+    {
+      "run_at": "2026-10-12 10:30:00",
+      "stat_range": "2026-10-10 ~ 2026-10-11",
+      "day_count": 2,
+      "card_amount": 212629.77,
+      "balance_amount": 17747.0,
+      "total_amount": 230376.77,
+      "total_count": 215,
+      "accounts_issued": 62951628.34,
+      "accounts_consumed": 62005547.99,
+      "accounts_balance": 946080.35,
       "status": "success",
       "note": "车主结算单已更新"
     }
