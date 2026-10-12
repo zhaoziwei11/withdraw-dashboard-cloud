@@ -1092,11 +1092,11 @@
   "_synced_from": "local-files-v2",
   "withdrawal": {
     "date": "2026-10-12",
-    "collected": false,
-    "collected_note": "今日(2026-10-12)尚未采集到提现管理数据，当前显示的是最近一次成功采集（运行日 2026-10-10）的值。最常见原因是提现管理站点登录态失效，需人工重新登录后补跑。",
-    "pending_amount": 44434.97,
-    "pending_count": 12,
-    "generated_at": "2026-10-10 12:00:05",
+    "collected": true,
+    "collected_note": null,
+    "pending_amount": 64602.23,
+    "pending_count": 32,
+    "generated_at": "2026-10-12 09:42:28",
     "fail_generated_at": "2026-10-12 09:19:14",
     "demand2_generated_at": "2026-10-12 09:30:02",
     "fail_top3": "待补充(每天 15:10 失败核查任务执行后更新)",
@@ -1114,7 +1114,7 @@
       "total_partial": 13654.09,
       "total_full": 25991.26
     },
-    "stat_range": "创建时间 = 2026-10-09 ~ 2026-10-09",
+    "stat_range": "创建时间 = 2026-10-10 ~ 2026-10-11",
     "fail_stat_range": "创建时间 = 2026-10-10 ~ 2026-10-11",
     "history": [
       {
@@ -1439,6 +1439,21 @@
         "stat_range_start": "2026-10-09",
         "stat_range_end": "2026-10-09",
         "generated_at": "2026-10-10 12:00:05",
+        "today_15": null,
+        "coefficient": "",
+        "predicted_full": null,
+        "actual_next_day_09": null,
+        "diff": null,
+        "diff_pct": "",
+        "status": ""
+      },
+      {
+        "run_date": "2026-10-12",
+        "pending_amount": 64602.23,
+        "pending_count": 32,
+        "stat_range_start": "2026-10-10",
+        "stat_range_end": "2026-10-11",
+        "generated_at": "2026-10-12 09:42:28",
         "today_15": null,
         "coefficient": "",
         "predicted_full": null,
