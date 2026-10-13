@@ -2649,9 +2649,9 @@
       "car_count": 39082,
       "due_amount": 39133687.13,
       "paid_freight": 34256890.78,
-      "pre_issued": 4876796.35,
+      "pre_issued": 4876885.24,
       "card_withdraw": 0.0,
-      "actual_issued": 4876796.35,
+      "actual_issued": 4876885.24,
       "card_consume": 3526711.67,
       "card_daily7": 253126.37,
       "balance_consume": 854695.03,
@@ -2663,16 +2663,16 @@
         "uninvoiced"
       ],
       "_auto_from_settlement": false,
-      "issued_ratio": 0.124619
+      "issued_ratio": 0.124621
     },
     {
       "month": "2025-10",
       "car_count": 39323,
       "due_amount": 38073889.28,
       "paid_freight": 31892233.46,
-      "pre_issued": 6181655.82,
+      "pre_issued": 6181566.93,
       "card_withdraw": 0.0,
-      "actual_issued": 6181655.82,
+      "actual_issued": 6181566.93,
       "card_consume": 6019275.76,
       "card_daily7": 192838.87,
       "balance_consume": 604017.12,
@@ -2684,16 +2684,16 @@
         "uninvoiced"
       ],
       "_auto_from_settlement": false,
-      "issued_ratio": 0.162359
+      "issued_ratio": 0.162357
     },
     {
       "month": "2025-11",
       "car_count": 40082,
       "due_amount": 35422930.38,
       "paid_freight": 28401765.51,
-      "pre_issued": 7021164.87,
+      "pre_issued": 7021224.06,
       "card_withdraw": 0.0,
-      "actual_issued": 7021164.87,
+      "actual_issued": 7021224.06,
       "card_consume": 7065766.3,
       "card_daily7": 212824.27,
       "balance_consume": 637483.74,
@@ -2705,7 +2705,7 @@
         "uninvoiced"
       ],
       "_auto_from_settlement": true,
-      "issued_ratio": 0.19821
+      "issued_ratio": 0.198211
     },
     {
       "month": "2025-12",
