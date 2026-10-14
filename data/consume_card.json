@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-14 11:31:53",
+  "generated_at": "2026-10-14 11:42:55",
   "accounts": {
     "total_issued": 63045530.89,
     "total_consumed": 62117406.94,
@@ -58,13 +58,29 @@
     },
     {
       "date": "2026-03-04",
-      "card_amount": 123942.17,
-      "card_count": 143,
+      "card_amount": 145363.46,
+      "card_count": 168,
       "balance_amount": 3454.0,
       "balance_count": 4,
-      "total_amount": 127396.17,
-      "total_count": 147,
-      "types": []
+      "total_amount": 148817.46,
+      "total_count": 172,
+      "types": [
+        {
+          "type": "商城消费",
+          "amount": 123942.17,
+          "count": 143
+        },
+        {
+          "type": "消费卡提现成功",
+          "amount": 21421.29,
+          "count": 25
+        },
+        {
+          "type": "商城消费",
+          "amount": 3454.0,
+          "count": 4
+        }
+      ]
     },
     {
       "date": "2026-03-05",
@@ -328,13 +344,29 @@
     },
     {
       "date": "2026-03-31",
-      "card_amount": 172417.5,
-      "card_count": 208,
+      "card_amount": 172785.12,
+      "card_count": 209,
       "balance_amount": 16474.0,
       "balance_count": 19,
-      "total_amount": 188891.5,
-      "total_count": 227,
-      "types": []
+      "total_amount": 189259.12,
+      "total_count": 228,
+      "types": [
+        {
+          "type": "商城消费",
+          "amount": 172417.5,
+          "count": 208
+        },
+        {
+          "type": "消费卡提现成功",
+          "amount": 367.62,
+          "count": 1
+        },
+        {
+          "type": "商城消费",
+          "amount": 16474.0,
+          "count": 19
+        }
+      ]
     },
     {
       "date": "2026-04-01",
@@ -1258,23 +1290,60 @@
     },
     {
       "date": "2026-07-02",
-      "card_amount": 122644.66,
-      "card_count": 144,
+      "card_amount": 123149.28,
+      "card_count": 145,
       "balance_amount": 15152.76,
       "balance_count": 12,
-      "total_amount": 137797.42,
-      "total_count": 156,
-      "types": []
+      "total_amount": 138302.04,
+      "total_count": 157,
+      "types": [
+        {
+          "type": "商城消费",
+          "amount": 123944.66,
+          "count": 143
+        },
+        {
+          "type": "消费卡提现成功",
+          "amount": 504.62,
+          "count": 1
+        },
+        {
+          "type": "商城消费退款",
+          "amount": -1300.0,
+          "count": 1
+        },
+        {
+          "type": "商城消费",
+          "amount": 15152.76,
+          "count": 12
+        }
+      ]
     },
     {
       "date": "2026-07-03",
-      "card_amount": 109297.51,
-      "card_count": 146,
+      "card_amount": 109408.86,
+      "card_count": 147,
       "balance_amount": 23431.68,
       "balance_count": 20,
-      "total_amount": 132729.19,
-      "total_count": 166,
-      "types": []
+      "total_amount": 132840.54,
+      "total_count": 167,
+      "types": [
+        {
+          "type": "商城消费",
+          "amount": 109297.51,
+          "count": 146
+        },
+        {
+          "type": "消费卡提现成功",
+          "amount": 111.35,
+          "count": 1
+        },
+        {
+          "type": "商城消费",
+          "amount": 23431.68,
+          "count": 20
+        }
+      ]
     },
     {
       "date": "2026-07-04",
@@ -2096,6 +2165,48 @@
       ]
     },
     {
+      "date": "2026-09-18",
+      "card_amount": 16907.73,
+      "card_count": 28,
+      "balance_amount": 10451.0,
+      "balance_count": 9,
+      "total_amount": 27358.73,
+      "total_count": 37,
+      "types": [
+        {
+          "type": "商城消费",
+          "amount": 16907.73,
+          "count": 28
+        },
+        {
+          "type": "商城消费",
+          "amount": 10451.0,
+          "count": 9
+        }
+      ]
+    },
+    {
+      "date": "2026-09-19",
+      "card_amount": 15060.03,
+      "card_count": 22,
+      "balance_amount": 4992.0,
+      "balance_count": 4,
+      "total_amount": 20052.03,
+      "total_count": 26,
+      "types": [
+        {
+          "type": "商城消费",
+          "amount": 15060.03,
+          "count": 22
+        },
+        {
+          "type": "商城消费",
+          "amount": 4992.0,
+          "count": 4
+        }
+      ]
+    },
+    {
       "date": "2026-09-20",
       "card_amount": 13692.0,
       "card_count": 22,
@@ -2794,11 +2905,11 @@
       "pre_issued": 4257664.67,
       "card_withdraw": 21788.91,
       "actual_issued": 4235875.76,
-      "card_consume": 4401380.99,
-      "card_daily7": 134445.54,
+      "card_consume": 4423169.9,
+      "card_daily7": 134498.06,
       "balance_consume": 633100.84,
       "balance_daily7": 21472.34,
-      "uninvoiced": 0.0,
+      "uninvoiced": 21788.91,
       "invoiced": 5034481.83,
       "_manual": [
         "invoiced",
@@ -2806,7 +2917,7 @@
       ],
       "_auto_from_settlement": true,
       "issued_ratio": 0.125145,
-      "consume_ratio": 1.033755,
+      "consume_ratio": 1.038872,
       "balance_ratio": 0.021271
     },
     {
@@ -2886,11 +2997,11 @@
       "pre_issued": 4040919.36,
       "card_withdraw": 615.97,
       "actual_issued": 4040303.39,
-      "card_consume": 3790957.83,
+      "card_consume": 3791573.8,
       "card_daily7": 184958.21,
       "balance_consume": 747466.54,
       "balance_daily7": 27812.7,
-      "uninvoiced": 0.0,
+      "uninvoiced": 615.97,
       "invoiced": 4538424.37,
       "_manual": [
         "invoiced",
@@ -2898,7 +3009,7 @@
       ],
       "_auto_from_settlement": true,
       "issued_ratio": 0.14731,
-      "consume_ratio": 0.938142,
+      "consume_ratio": 0.938295,
       "balance_ratio": 0.031956
     },
     {
@@ -2932,11 +3043,11 @@
       "pre_issued": 409789.4,
       "card_withdraw": 0.0,
       "actual_issued": 409789.4,
-      "card_consume": 1188956.62,
+      "card_consume": 1220924.38,
       "card_daily7": 22881.38,
-      "balance_consume": 305647.3,
+      "balance_consume": 321090.3,
       "balance_daily7": 4610.29,
-      "uninvoiced": 1494603.92,
+      "uninvoiced": 1542014.68,
       "invoiced": 0.0,
       "_manual": [
         "invoiced",
@@ -2944,8 +3055,8 @@
       ],
       "_auto_from_settlement": true,
       "issued_ratio": 0.023832,
-      "consume_ratio": 2.901385,
-      "balance_ratio": 0.018209
+      "consume_ratio": 2.979395,
+      "balance_ratio": 0.019129
     },
     {
       "month": "2026-10",
@@ -3206,6 +3317,12 @@
       "accounts_balance": 928123.95,
       "status": "success",
       "note": "车主结算单已更新"
+    },
+    {
+      "run_at": "2026-10-14 11:42:55",
+      "stat_range": "补录 6 天漏抓(03-04/03-31/07-02/07-03/09-18/09-19)",
+      "note": "手动补录界面每日抓取漏掉的消费/余额数据（A 数据归位）",
+      "status": "backfill"
     }
   ]
 }
