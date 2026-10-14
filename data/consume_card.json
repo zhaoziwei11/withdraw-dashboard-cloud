@@ -2659,7 +2659,8 @@
       ],
       "_auto_from_settlement": false,
       "issued_ratio": 0.0,
-      "consume_ratio": null
+      "consume_ratio": null,
+      "balance_ratio": 0.000138
     },
     {
       "month": "2025-04",
@@ -2681,7 +2682,8 @@
       ],
       "_auto_from_settlement": false,
       "issued_ratio": 0.0,
-      "consume_ratio": null
+      "consume_ratio": null,
+      "balance_ratio": 0.019273
     },
     {
       "month": "2025-05",
@@ -2703,7 +2705,8 @@
       ],
       "_auto_from_settlement": false,
       "issued_ratio": 0.0,
-      "consume_ratio": null
+      "consume_ratio": null,
+      "balance_ratio": 0.034719
     },
     {
       "month": "2025-06",
@@ -2725,7 +2728,8 @@
       ],
       "_auto_from_settlement": false,
       "issued_ratio": 0.0,
-      "consume_ratio": null
+      "consume_ratio": null,
+      "balance_ratio": 0.032515
     },
     {
       "month": "2025-07",
@@ -2747,7 +2751,8 @@
       ],
       "_auto_from_settlement": false,
       "issued_ratio": 0.0,
-      "consume_ratio": null
+      "consume_ratio": null,
+      "balance_ratio": 0.039693
     },
     {
       "month": "2025-08",
@@ -2769,7 +2774,8 @@
       ],
       "_auto_from_settlement": false,
       "issued_ratio": 0.0,
-      "consume_ratio": null
+      "consume_ratio": null,
+      "balance_ratio": 0.036411
     },
     {
       "month": "2025-09",
@@ -2790,7 +2796,9 @@
         "uninvoiced"
       ],
       "_auto_from_settlement": false,
-      "issued_ratio": 0.124621
+      "issued_ratio": 0.124621,
+      "consume_ratio": 0.723148,
+      "balance_ratio": 0.02495
     },
     {
       "month": "2025-10",
@@ -2811,7 +2819,9 @@
         "uninvoiced"
       ],
       "_auto_from_settlement": false,
-      "issued_ratio": 0.162357
+      "issued_ratio": 0.162357,
+      "consume_ratio": 0.973746,
+      "balance_ratio": 0.018939
     },
     {
       "month": "2025-11",
@@ -2832,7 +2842,9 @@
         "uninvoiced"
       ],
       "_auto_from_settlement": true,
-      "issued_ratio": 0.198211
+      "issued_ratio": 0.198211,
+      "consume_ratio": 1.006344,
+      "balance_ratio": 0.022445
     },
     {
       "month": "2025-12",
@@ -2853,7 +2865,9 @@
         "uninvoiced"
       ],
       "_auto_from_settlement": true,
-      "issued_ratio": 0.198336
+      "issued_ratio": 0.198336,
+      "consume_ratio": 0.967421,
+      "balance_ratio": 0.019253
     },
     {
       "month": "2026-01",
@@ -2874,7 +2888,9 @@
         "uninvoiced"
       ],
       "_auto_from_settlement": true,
-      "issued_ratio": 0.197683
+      "issued_ratio": 0.197683,
+      "consume_ratio": 1.039721,
+      "balance_ratio": 0.018336
     },
     {
       "month": "2026-02",
@@ -2895,7 +2911,9 @@
         "uninvoiced"
       ],
       "_auto_from_settlement": true,
-      "issued_ratio": 0.141636
+      "issued_ratio": 0.141636,
+      "consume_ratio": 0.971173,
+      "balance_ratio": 0.013765
     },
     {
       "month": "2026-03",
