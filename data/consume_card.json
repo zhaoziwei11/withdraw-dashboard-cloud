@@ -3092,7 +3092,9 @@
       "card_daily7": 82236.35,
       "balance_consume": 96575.66,
       "balance_ratio": 0.017105,
-      "balance_daily7": 7322.24
+      "balance_daily7": 7322.24,
+      "invoiced": 0.0,
+      "uninvoiced": 802718.87
     }
   ],
   "seeded_at": "2026-09-11 11:48:57",
