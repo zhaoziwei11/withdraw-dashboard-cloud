@@ -1,0 +1,902 @@
+{
+  "generated_at": "2026-10-16 15:57:04",
+  "ok": true,
+  "summary": {
+    "months_checked": 22,
+    "ok": 21,
+    "lag": 1,
+    "diff": 0,
+    "issue_months": [
+      "2026-10"
+    ],
+    "diff_months": [],
+    "page_snapshot": "2026-10-16 15:56:11",
+    "card_csv_snapshot": "2026-10-16 13:02:00",
+    "balance_csv_snapshot": "2026-10-16 13:02:00",
+    "settle_csv_snapshot": "2026-10-16 13:03:07",
+    "daily_covered_from": "2026-03"
+  },
+  "checks": [
+    "消费卡消费金额",
+    "余额消费金额",
+    "消费卡预发放金额"
+  ],
+  "months": [
+    {
+      "month": "2025-01",
+      "cells": [
+        {
+          "key": "card",
+          "label": "消费卡消费金额",
+          "page": 0.0,
+          "detail": 0.0,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "balance",
+          "label": "余额消费金额",
+          "page": 0.0,
+          "detail": 0.0,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "pre_issued",
+          "label": "消费卡预发放金额",
+          "page": 0.0,
+          "detail": 0.0,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        }
+      ],
+      "status": "ok",
+      "issues": []
+    },
+    {
+      "month": "2025-02",
+      "cells": [
+        {
+          "key": "card",
+          "label": "消费卡消费金额",
+          "page": 0.0,
+          "detail": 0.0,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "balance",
+          "label": "余额消费金额",
+          "page": 0.0,
+          "detail": 0.0,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "pre_issued",
+          "label": "消费卡预发放金额",
+          "page": 0.0,
+          "detail": 0.0,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        }
+      ],
+      "status": "ok",
+      "issues": []
+    },
+    {
+      "month": "2025-03",
+      "cells": [
+        {
+          "key": "card",
+          "label": "消费卡消费金额",
+          "page": 0.0,
+          "detail": 0.0,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "balance",
+          "label": "余额消费金额",
+          "page": 2000.0,
+          "detail": 2000.0,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "pre_issued",
+          "label": "消费卡预发放金额",
+          "page": 0.0,
+          "detail": 0.0,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        }
+      ],
+      "status": "ok",
+      "issues": []
+    },
+    {
+      "month": "2025-04",
+      "cells": [
+        {
+          "key": "card",
+          "label": "消费卡消费金额",
+          "page": 0.0,
+          "detail": 0.0,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "balance",
+          "label": "余额消费金额",
+          "page": 406374.02,
+          "detail": 406374.02,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "pre_issued",
+          "label": "消费卡预发放金额",
+          "page": 0.0,
+          "detail": 0.0,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        }
+      ],
+      "status": "ok",
+      "issues": []
+    },
+    {
+      "month": "2025-05",
+      "cells": [
+        {
+          "key": "card",
+          "label": "消费卡消费金额",
+          "page": 0.0,
+          "detail": 0.0,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "balance",
+          "label": "余额消费金额",
+          "page": 702393.56,
+          "detail": 702393.56,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "pre_issued",
+          "label": "消费卡预发放金额",
+          "page": 0.0,
+          "detail": 0.0,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        }
+      ],
+      "status": "ok",
+      "issues": []
+    },
+    {
+      "month": "2025-06",
+      "cells": [
+        {
+          "key": "card",
+          "label": "消费卡消费金额",
+          "page": 0.0,
+          "detail": 0.0,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "balance",
+          "label": "余额消费金额",
+          "page": 910125.05,
+          "detail": 910125.05,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "pre_issued",
+          "label": "消费卡预发放金额",
+          "page": 0.0,
+          "detail": 0.0,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        }
+      ],
+      "status": "ok",
+      "issues": []
+    },
+    {
+      "month": "2025-07",
+      "cells": [
+        {
+          "key": "card",
+          "label": "消费卡消费金额",
+          "page": 0.0,
+          "detail": 0.0,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "balance",
+          "label": "余额消费金额",
+          "page": 1354070.79,
+          "detail": 1354070.79,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "pre_issued",
+          "label": "消费卡预发放金额",
+          "page": 0.0,
+          "detail": 0.0,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        }
+      ],
+      "status": "ok",
+      "issues": []
+    },
+    {
+      "month": "2025-08",
+      "cells": [
+        {
+          "key": "card",
+          "label": "消费卡消费金额",
+          "page": 0.0,
+          "detail": 0.0,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "balance",
+          "label": "余额消费金额",
+          "page": 1213270.24,
+          "detail": 1213270.24,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "pre_issued",
+          "label": "消费卡预发放金额",
+          "page": 0.0,
+          "detail": 0.0,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        }
+      ],
+      "status": "ok",
+      "issues": []
+    },
+    {
+      "month": "2025-09",
+      "cells": [
+        {
+          "key": "card",
+          "label": "消费卡消费金额",
+          "page": 3526711.67,
+          "detail": 3526711.67,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "balance",
+          "label": "余额消费金额",
+          "page": 854695.03,
+          "detail": 854695.03,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "pre_issued",
+          "label": "消费卡预发放金额",
+          "page": 4876885.24,
+          "detail": 4876885.24,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        }
+      ],
+      "status": "ok",
+      "issues": []
+    },
+    {
+      "month": "2025-10",
+      "cells": [
+        {
+          "key": "card",
+          "label": "消费卡消费金额",
+          "page": 6019275.76,
+          "detail": 6019275.76,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "balance",
+          "label": "余额消费金额",
+          "page": 604017.12,
+          "detail": 604017.12,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "pre_issued",
+          "label": "消费卡预发放金额",
+          "page": 6181566.93,
+          "detail": 6181566.93,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        }
+      ],
+      "status": "ok",
+      "issues": []
+    },
+    {
+      "month": "2025-11",
+      "cells": [
+        {
+          "key": "card",
+          "label": "消费卡消费金额",
+          "page": 7065766.3,
+          "detail": 7065766.3,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "balance",
+          "label": "余额消费金额",
+          "page": 637483.74,
+          "detail": 637483.74,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "pre_issued",
+          "label": "消费卡预发放金额",
+          "page": 7021224.06,
+          "detail": 7021224.06,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        }
+      ],
+      "status": "ok",
+      "issues": []
+    },
+    {
+      "month": "2025-12",
+      "cells": [
+        {
+          "key": "card",
+          "label": "消费卡消费金额",
+          "page": 6546489.14,
+          "detail": 6546489.14,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "balance",
+          "label": "余额消费金额",
+          "page": 526610.68,
+          "detail": 526610.68,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "pre_issued",
+          "label": "消费卡预发放金额",
+          "page": 6766948.46,
+          "detail": 6766948.46,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        }
+      ],
+      "status": "ok",
+      "issues": []
+    },
+    {
+      "month": "2026-01",
+      "cells": [
+        {
+          "key": "card",
+          "label": "消费卡消费金额",
+          "page": 7059841.87,
+          "detail": 7059841.87,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "balance",
+          "label": "余额消费金额",
+          "page": 505552.38,
+          "detail": 505552.38,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "pre_issued",
+          "label": "消费卡预发放金额",
+          "page": 6793353.77,
+          "detail": 6793353.77,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        }
+      ],
+      "status": "ok",
+      "issues": []
+    },
+    {
+      "month": "2026-02",
+      "cells": [
+        {
+          "key": "card",
+          "label": "消费卡消费金额",
+          "page": 3616515.11,
+          "detail": 3616515.11,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "balance",
+          "label": "余额消费金额",
+          "page": 310778.79,
+          "detail": 310778.79,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "pre_issued",
+          "label": "消费卡预发放金额",
+          "page": 3725429.4,
+          "detail": 3725429.4,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        }
+      ],
+      "status": "ok",
+      "issues": []
+    },
+    {
+      "month": "2026-03",
+      "cells": [
+        {
+          "key": "card",
+          "label": "消费卡消费金额",
+          "page": 4401380.99,
+          "detail": 4401380.99,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "balance",
+          "label": "余额消费金额",
+          "page": 633100.84,
+          "detail": 633100.84,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "pre_issued",
+          "label": "消费卡预发放金额",
+          "page": 4257664.67,
+          "detail": 4257664.67,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        }
+      ],
+      "status": "ok",
+      "issues": []
+    },
+    {
+      "month": "2026-04",
+      "cells": [
+        {
+          "key": "card",
+          "label": "消费卡消费金额",
+          "page": 4976869.69,
+          "detail": 4976869.69,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "balance",
+          "label": "余额消费金额",
+          "page": 870025.42,
+          "detail": 870025.42,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "pre_issued",
+          "label": "消费卡预发放金额",
+          "page": 5299507.81,
+          "detail": 5299507.81,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        }
+      ],
+      "status": "ok",
+      "issues": []
+    },
+    {
+      "month": "2026-05",
+      "cells": [
+        {
+          "key": "card",
+          "label": "消费卡消费金额",
+          "page": 5808238.91,
+          "detail": 5808238.91,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "balance",
+          "label": "余额消费金额",
+          "page": 728384.56,
+          "detail": 728384.56,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "pre_issued",
+          "label": "消费卡预发放金额",
+          "page": 5474196.2,
+          "detail": 5474196.2,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        }
+      ],
+      "status": "ok",
+      "issues": []
+    },
+    {
+      "month": "2026-06",
+      "cells": [
+        {
+          "key": "card",
+          "label": "消费卡消费金额",
+          "page": 4756225.76,
+          "detail": 4756225.76,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "balance",
+          "label": "余额消费金额",
+          "page": 752680.07,
+          "detail": 752680.07,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "pre_issued",
+          "label": "消费卡预发放金额",
+          "page": 4910572.05,
+          "detail": 4910572.05,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        }
+      ],
+      "status": "ok",
+      "issues": []
+    },
+    {
+      "month": "2026-07",
+      "cells": [
+        {
+          "key": "card",
+          "label": "消费卡消费金额",
+          "page": 3790957.83,
+          "detail": 3790957.83,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "balance",
+          "label": "余额消费金额",
+          "page": 747466.54,
+          "detail": 747466.54,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "pre_issued",
+          "label": "消费卡预发放金额",
+          "page": 4040919.36,
+          "detail": 4040919.36,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        }
+      ],
+      "status": "ok",
+      "issues": []
+    },
+    {
+      "month": "2026-08",
+      "cells": [
+        {
+          "key": "card",
+          "label": "消费卡消费金额",
+          "page": 2577258.98,
+          "detail": 2577258.98,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "balance",
+          "label": "余额消费金额",
+          "page": 436247.05,
+          "detail": 436247.05,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "pre_issued",
+          "label": "消费卡预发放金额",
+          "page": 2524258.52,
+          "detail": 2524258.52,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        }
+      ],
+      "status": "ok",
+      "issues": []
+    },
+    {
+      "month": "2026-09",
+      "cells": [
+        {
+          "key": "card",
+          "label": "消费卡消费金额",
+          "page": 1220924.38,
+          "detail": 1220924.38,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "balance",
+          "label": "余额消费金额",
+          "page": 321090.3,
+          "detail": 321090.3,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "pre_issued",
+          "label": "消费卡预发放金额",
+          "page": 409789.4,
+          "detail": 409789.4,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        }
+      ],
+      "status": "ok",
+      "issues": []
+    },
+    {
+      "month": "2026-10",
+      "cells": [
+        {
+          "key": "card",
+          "label": "消费卡消费金额",
+          "page": 855055.87,
+          "detail": 855055.87,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "balance",
+          "label": "余额消费金额",
+          "page": 122942.66,
+          "detail": 122942.66,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "pre_issued",
+          "label": "消费卡预发放金额",
+          "page": 1074253.59,
+          "detail": 1108125.71,
+          "diff": -33872.12,
+          "kind": "lag",
+          "note": "消费卡预发放（结算池）为采集时点快照，当月当日新结算单尚未全部进入池；明细 CSV 含全量，故页面预发放 ≤ 明细（差 -33,872.12）。属采集时点差，次日自动收敛"
+        }
+      ],
+      "status": "lag",
+      "issues": [
+        {
+          "key": "pre_issued",
+          "label": "消费卡预发放金额",
+          "page": 1074253.59,
+          "detail": 1108125.71,
+          "diff": -33872.12,
+          "kind": "lag",
+          "note": "消费卡预发放（结算池）为采集时点快照，当月当日新结算单尚未全部进入池；明细 CSV 含全量，故页面预发放 ≤ 明细（差 -33,872.12）。属采集时点差，次日自动收敛"
+        }
+      ]
+    }
+  ],
+  "exports": {
+    "2025-01": {
+      "exists": true,
+      "mtime": "2026-10-13 17:56:05",
+      "size": 2308098
+    },
+    "2025-02": {
+      "exists": true,
+      "mtime": "2026-10-13 17:56:10",
+      "size": 1782434
+    },
+    "2025-03": {
+      "exists": true,
+      "mtime": "2026-10-13 17:56:16",
+      "size": 3184666
+    },
+    "2025-04": {
+      "exists": true,
+      "mtime": "2026-10-13 17:56:25",
+      "size": 4973363
+    },
+    "2025-05": {
+      "exists": true,
+      "mtime": "2026-10-13 17:56:44",
+      "size": 5043397
+    },
+    "2025-06": {
+      "exists": true,
+      "mtime": "2026-10-13 17:56:56",
+      "size": 6568426
+    },
+    "2025-07": {
+      "exists": true,
+      "mtime": "2026-10-13 17:57:11",
+      "size": 8086542
+    },
+    "2025-08": {
+      "exists": true,
+      "mtime": "2026-10-13 17:57:31",
+      "size": 7084046
+    },
+    "2025-09": {
+      "exists": true,
+      "mtime": "2026-10-13 17:58:34",
+      "size": 8459064
+    },
+    "2025-10": {
+      "exists": true,
+      "mtime": "2026-10-13 17:59:26",
+      "size": 8875580
+    },
+    "2025-11": {
+      "exists": true,
+      "mtime": "2026-10-13 18:00:17",
+      "size": 9222261
+    },
+    "2025-12": {
+      "exists": true,
+      "mtime": "2026-10-13 18:01:10",
+      "size": 8968210
+    },
+    "2026-01": {
+      "exists": true,
+      "mtime": "2026-10-13 18:02:05",
+      "size": 9094585
+    },
+    "2026-02": {
+      "exists": true,
+      "mtime": "2026-10-13 18:02:26",
+      "size": 6228259
+    },
+    "2026-03": {
+      "exists": true,
+      "mtime": "2026-10-13 18:02:40",
+      "size": 8255330
+    },
+    "2026-04": {
+      "exists": true,
+      "mtime": "2026-10-13 18:02:57",
+      "size": 9202548
+    },
+    "2026-05": {
+      "exists": true,
+      "mtime": "2026-10-13 18:03:11",
+      "size": 7376349
+    },
+    "2026-06": {
+      "exists": true,
+      "mtime": "2026-10-13 18:03:26",
+      "size": 8792785
+    },
+    "2026-07": {
+      "exists": true,
+      "mtime": "2026-10-13 18:03:40",
+      "size": 7839943
+    },
+    "2026-08": {
+      "exists": true,
+      "mtime": "2026-10-13 18:03:49",
+      "size": 3826781
+    },
+    "2026-09": {
+      "exists": true,
+      "mtime": "2026-10-16 13:04:23",
+      "size": 4384806
+    },
+    "2026-10": {
+      "exists": true,
+      "mtime": "2026-10-16 13:04:41",
+      "size": 2064709
+    }
+  },
+  "served": {},
+  "notes": [
+    "页面数据 = 云端 consume_card.json（每工作日 11:30 采集推送）；导出明细 = exports/<月>.xlsx（13:00 刷新明细 CSV 后 13:04 重生成推 Pages）。两条链路刷新时点不同，「lag（快照时差）」属预期，次日自动收敛；「diff（真实差异）」需处理。",
+    "消费卡消费金额 = 收支明细「消费卡账户」按月求和（剔除提现、退款自动冲减）；余额消费金额 = 「马上来旗舰版账户」按月求和（剔除提现）。",
+    "消费卡预发放金额（页面）= 承运平台「结算池」采集时点（11:30）快照，只含截至该时点的已结算单；明细「车主结算单」13:00 后含当日全量，故当月当日新结算单会先在明细里出现（页面 ≤ 明细），属采集时点差，次日自动收敛。"
+  ]
+}
