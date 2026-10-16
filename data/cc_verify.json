@@ -1,15 +1,18 @@
 {
-  "generated_at": "2026-10-16 16:29:53",
-  "ok": true,
+  "generated_at": "2026-10-16 16:31:46",
+  "ok": false,
   "summary": {
     "months_checked": 22,
-    "ok": 21,
+    "ok": 20,
     "lag": 1,
-    "diff": 0,
+    "diff": 1,
     "issue_months": [
+      "2026-09",
       "2026-10"
     ],
-    "diff_months": [],
+    "diff_months": [
+      "2026-09"
+    ],
     "page_snapshot": "2026-10-16 15:56:11",
     "card_csv_snapshot": "2026-10-16 13:02:00",
     "balance_csv_snapshot": "2026-10-16 13:02:00",
@@ -749,9 +752,18 @@
           "diff": 0.0,
           "kind": "ok",
           "note": "直接读用户点「导出明细」下载到的那份 xlsx（同一 URL）"
+        },
+        {
+          "key": "pre_issued_served",
+          "label": "消费卡预发放金额（对比 Pages 导出文件）",
+          "page": 409789.4,
+          "detail": -409789.4,
+          "diff": 819578.8,
+          "kind": "diff",
+          "note": "直接读用户点「导出明细」下载到的那份 xlsx（同一 URL）"
         }
       ],
-      "status": "ok",
+      "status": "diff",
       "issues": []
     },
     {
@@ -800,6 +812,15 @@
           "detail": 122942.66,
           "diff": 0.0,
           "kind": "ok",
+          "note": "直接读用户点「导出明细」下载到的那份 xlsx（同一 URL）"
+        },
+        {
+          "key": "pre_issued_served",
+          "label": "消费卡预发放金额（对比 Pages 导出文件）",
+          "page": 1074253.59,
+          "detail": -1108125.71,
+          "diff": 2182379.3,
+          "kind": "lag",
           "note": "直接读用户点「导出明细」下载到的那份 xlsx（同一 URL）"
         }
       ],
@@ -940,8 +961,8 @@
         "rows": 96
       },
       "车主结算单": {
-        "sum": 0.0,
-        "rows": 0
+        "sum": -1108125.71,
+        "rows": 9807
       }
     },
     "2026-09": {
@@ -954,8 +975,8 @@
         "rows": 268
       },
       "车主结算单": {
-        "sum": 0.0,
-        "rows": 0
+        "sum": -409789.4,
+        "rows": 21603
       }
     }
   },
