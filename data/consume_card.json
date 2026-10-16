@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-16 11:31:53",
+  "generated_at": "2026-10-16 15:56:11",
   "accounts": {
     "total_issued": 63356569.46,
     "total_consumed": 62284213.93,
@@ -3107,11 +3107,11 @@
       "card_consume": 855055.87,
       "consume_ratio": 0.795953,
       "card_daily7": 88758.5,
-      "balance_consume": 98625.66,
-      "balance_ratio": 0.013359,
+      "balance_consume": 122942.66,
+      "balance_ratio": 0.016652,
       "balance_daily7": 9648.52,
       "invoiced": 0.0,
-      "uninvoiced": 953681.53
+      "uninvoiced": 977998.53
     }
   ],
   "seeded_at": "2026-09-11 11:48:57",
