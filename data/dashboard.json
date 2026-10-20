@@ -70,7 +70,10 @@
       "actual_next_day_09": null,
       "diff": null,
       "diff_pct": "",
-      "status": "pending"
+      "status": "pending",
+      "daily": [],
+      "stat_range_start": "2026-10-19",
+      "stat_range_end": "2026-10-19"
     },
     {
       "run_date": "2026-10-19",
@@ -82,7 +85,10 @@
       "actual_next_day_09": null,
       "diff": null,
       "diff_pct": "",
-      "status": "pending"
+      "status": "pending",
+      "daily": [],
+      "stat_range_start": "2026-10-16",
+      "stat_range_end": "2026-10-18"
     },
     {
       "run_date": "2026-10-16",
@@ -94,7 +100,10 @@
       "actual_next_day_09": 539885.99,
       "diff": 121112.34,
       "diff_pct": "28.92",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-10-15",
+      "stat_range_end": "2026-10-15"
     },
     {
       "run_date": "2026-10-15",
@@ -106,7 +115,10 @@
       "actual_next_day_09": 331983.1,
       "diff": -45538.8,
       "diff_pct": "-12.06",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-10-14",
+      "stat_range_end": "2026-10-14"
     },
     {
       "run_date": "2026-10-14",
@@ -118,7 +130,10 @@
       "actual_next_day_09": 171445.09,
       "diff": -7164.94,
       "diff_pct": "-4.01",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-10-13",
+      "stat_range_end": "2026-10-13"
     },
     {
       "run_date": "2026-10-13",
@@ -130,7 +145,10 @@
       "actual_next_day_09": 97087.2,
       "diff": 12020.82,
       "diff_pct": "14.13",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-10-12",
+      "stat_range_end": "2026-10-12"
     },
     {
       "run_date": "2026-10-12",
@@ -142,7 +160,10 @@
       "actual_next_day_09": 164085.87,
       "diff": -10091.36,
       "diff_pct": "-5.79",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-10-10",
+      "stat_range_end": "2026-10-11"
     },
     {
       "run_date": "2026-10-10",
@@ -154,7 +175,10 @@
       "actual_next_day_09": 155046.21,
       "diff": 83007.33,
       "diff_pct": "115.23",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-10-09",
+      "stat_range_end": "2026-10-09"
     },
     {
       "run_date": "2026-10-09",
@@ -166,7 +190,10 @@
       "actual_next_day_09": 205804.14,
       "diff": -14248.02,
       "diff_pct": "-6.47",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-10-08",
+      "stat_range_end": "2026-10-08"
     },
     {
       "run_date": "2026-10-08",
@@ -178,7 +205,10 @@
       "actual_next_day_09": 1629242.2,
       "diff": -85860.33,
       "diff_pct": "-5.01",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-09-30",
+      "stat_range_end": "2026-10-07"
     },
     {
       "run_date": "2026-09-30",
@@ -190,7 +220,10 @@
       "actual_next_day_09": 302458.85,
       "diff": 117075.19,
       "diff_pct": "63.15",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-09-29",
+      "stat_range_end": "2026-09-29"
     },
     {
       "run_date": "2026-09-29",
@@ -202,7 +235,10 @@
       "actual_next_day_09": 183718.72,
       "diff": -43125.89,
       "diff_pct": "-19.01",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-09-28",
+      "stat_range_end": "2026-09-28"
     },
     {
       "run_date": "2026-09-28",
@@ -214,7 +250,10 @@
       "actual_next_day_09": 271169.38,
       "diff": -56921.12,
       "diff_pct": "-17.35",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-09-24",
+      "stat_range_end": "2026-09-27"
     },
     {
       "run_date": "2026-09-24",
@@ -226,7 +265,10 @@
       "actual_next_day_09": null,
       "diff": null,
       "diff_pct": "",
-      "status": ""
+      "status": "",
+      "daily": [],
+      "stat_range_start": "2026-09-23",
+      "stat_range_end": "2026-09-23"
     },
     {
       "run_date": "2026-09-23",
@@ -238,7 +280,10 @@
       "actual_next_day_09": 16917.65,
       "diff": 5220.08,
       "diff_pct": "44.63",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-09-22",
+      "stat_range_end": "2026-09-22"
     },
     {
       "run_date": "2026-09-22",
@@ -250,7 +295,10 @@
       "actual_next_day_09": 110415.54,
       "diff": -30094.73,
       "diff_pct": "-21.42",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-09-21",
+      "stat_range_end": "2026-09-21"
     },
     {
       "run_date": "2026-09-21",
@@ -262,7 +310,10 @@
       "actual_next_day_09": 120761.27,
       "diff": -18774.8,
       "diff_pct": "-13.46",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-09-20",
+      "stat_range_end": "2026-09-20"
     },
     {
       "run_date": "2026-09-18",
@@ -274,7 +325,10 @@
       "actual_next_day_09": 206360.03,
       "diff": 148795.22,
       "diff_pct": "258.48",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-09-17",
+      "stat_range_end": "2026-09-17"
     },
     {
       "run_date": "2026-09-17",
@@ -286,7 +340,10 @@
       "actual_next_day_09": 141499.02,
       "diff": 8516.48,
       "diff_pct": "6.40",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-09-16",
+      "stat_range_end": "2026-09-16"
     },
     {
       "run_date": "2026-09-16",
@@ -298,7 +355,10 @@
       "actual_next_day_09": 177689.72,
       "diff": -23819.06,
       "diff_pct": "-11.82",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-09-15",
+      "stat_range_end": "2026-09-15"
     },
     {
       "run_date": "2026-09-15",
@@ -310,7 +370,10 @@
       "actual_next_day_09": 181306.59,
       "diff": -32891.88,
       "diff_pct": "-15.36",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-09-14",
+      "stat_range_end": "2026-09-14"
     },
     {
       "run_date": "2026-09-14",
@@ -322,7 +385,10 @@
       "actual_next_day_09": null,
       "diff": null,
       "diff_pct": "",
-      "status": "pending"
+      "status": "pending",
+      "daily": [],
+      "stat_range_start": "2026-09-13",
+      "stat_range_end": "2026-09-13"
     },
     {
       "run_date": "2026-09-11",
@@ -334,7 +400,10 @@
       "actual_next_day_09": 144764.29,
       "diff": 66528.41,
       "diff_pct": "85.04",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-09-10",
+      "stat_range_end": "2026-09-10"
     },
     {
       "run_date": "2026-09-10",
@@ -346,7 +415,10 @@
       "actual_next_day_09": 158877.84,
       "diff": -3237.68,
       "diff_pct": "-2.00",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-09-09",
+      "stat_range_end": "2026-09-09"
     },
     {
       "run_date": "2026-09-09",
@@ -358,7 +430,10 @@
       "actual_next_day_09": 61567.0,
       "diff": 7539.38,
       "diff_pct": "13.95",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-09-08",
+      "stat_range_end": "2026-09-08"
     },
     {
       "run_date": "2026-09-08",
@@ -370,7 +445,10 @@
       "actual_next_day_09": 76195.44,
       "diff": -5425.71,
       "diff_pct": "-6.65",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-09-07",
+      "stat_range_end": "2026-09-07"
     },
     {
       "run_date": "2026-09-07",
@@ -382,7 +460,10 @@
       "actual_next_day_09": null,
       "diff": null,
       "diff_pct": "",
-      "status": "pending"
+      "status": "pending",
+      "daily": [],
+      "stat_range_start": "2026-09-04",
+      "stat_range_end": "2026-09-06"
     },
     {
       "run_date": "2026-09-04",
@@ -394,7 +475,10 @@
       "actual_next_day_09": 348904.87,
       "diff": 213068.4,
       "diff_pct": "156.86",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-09-03",
+      "stat_range_end": "2026-09-03"
     },
     {
       "run_date": "2026-09-03",
@@ -406,7 +490,10 @@
       "actual_next_day_09": 252279.48,
       "diff": -8893.94,
       "diff_pct": "-3.41",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-09-02",
+      "stat_range_end": "2026-09-02"
     },
     {
       "run_date": "2026-09-02",
@@ -418,7 +505,10 @@
       "actual_next_day_09": 288903.01,
       "diff": -30249.72,
       "diff_pct": "-9.48",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-09-01",
+      "stat_range_end": "2026-09-01"
     },
     {
       "run_date": "2026-09-01",
@@ -430,7 +520,10 @@
       "actual_next_day_09": 686567.92,
       "diff": -174841.15,
       "diff_pct": "-20.30",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-08-31",
+      "stat_range_end": "2026-08-31"
     },
     {
       "run_date": "2026-08-31",
@@ -442,7 +535,10 @@
       "actual_next_day_09": null,
       "diff": null,
       "diff_pct": "",
-      "status": "pending"
+      "status": "pending",
+      "daily": [],
+      "stat_range_start": "2026-08-30",
+      "stat_range_end": "2026-08-30"
     },
     {
       "run_date": "2026-08-28",
@@ -454,7 +550,10 @@
       "actual_next_day_09": null,
       "diff": null,
       "diff_pct": "",
-      "status": ""
+      "status": "",
+      "daily": [],
+      "stat_range_start": "2026-08-27",
+      "stat_range_end": "2026-08-27"
     },
     {
       "run_date": "2026-08-27",
@@ -466,7 +565,10 @@
       "actual_next_day_09": null,
       "diff": null,
       "diff_pct": "",
-      "status": ""
+      "status": "",
+      "daily": [],
+      "stat_range_start": "2026-08-26",
+      "stat_range_end": "2026-08-26"
     },
     {
       "run_date": "2026-08-26",
@@ -478,7 +580,10 @@
       "actual_next_day_09": null,
       "diff": null,
       "diff_pct": "",
-      "status": ""
+      "status": "",
+      "daily": [],
+      "stat_range_start": "2026-08-25",
+      "stat_range_end": "2026-08-25"
     },
     {
       "run_date": "2026-08-21",
@@ -490,7 +595,10 @@
       "actual_next_day_09": null,
       "diff": null,
       "diff_pct": "",
-      "status": ""
+      "status": "",
+      "daily": [],
+      "stat_range_start": "2026-08-20",
+      "stat_range_end": "2026-08-20"
     },
     {
       "run_date": "2026-08-20",
@@ -502,7 +610,10 @@
       "actual_next_day_09": 232294.45,
       "diff": -13575.76,
       "diff_pct": "-5.52",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-08-19",
+      "stat_range_end": "2026-08-19"
     },
     {
       "run_date": "2026-08-19",
@@ -514,7 +625,10 @@
       "actual_next_day_09": 0.0,
       "diff": -92440.2,
       "diff_pct": "-100.00",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-08-18",
+      "stat_range_end": "2026-08-18"
     },
     {
       "run_date": "2026-08-11",
@@ -526,7 +640,10 @@
       "actual_next_day_09": null,
       "diff": null,
       "diff_pct": "",
-      "status": "pending"
+      "status": "pending",
+      "daily": [],
+      "stat_range_start": "2026-08-10",
+      "stat_range_end": "2026-08-10"
     },
     {
       "run_date": "2026-08-10",
@@ -538,7 +655,10 @@
       "actual_next_day_09": null,
       "diff": null,
       "diff_pct": "",
-      "status": "pending"
+      "status": "pending",
+      "daily": [],
+      "stat_range_start": "2026-08-09",
+      "stat_range_end": "2026-08-09"
     },
     {
       "run_date": "2026-08-05",
@@ -550,7 +670,10 @@
       "actual_next_day_09": null,
       "diff": null,
       "diff_pct": "",
-      "status": "pending"
+      "status": "pending",
+      "daily": [],
+      "stat_range_start": "2026-08-04",
+      "stat_range_end": "2026-08-04"
     },
     {
       "run_date": "2026-08-04",
@@ -562,7 +685,10 @@
       "actual_next_day_09": 448261.42,
       "diff": -20740.54,
       "diff_pct": "-4.42",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-08-03",
+      "stat_range_end": "2026-08-03"
     },
     {
       "run_date": "2026-08-03",
@@ -574,7 +700,10 @@
       "actual_next_day_09": null,
       "diff": null,
       "diff_pct": "",
-      "status": "pending"
+      "status": "pending",
+      "daily": [],
+      "stat_range_start": "2026-08-02",
+      "stat_range_end": "2026-08-02"
     },
     {
       "run_date": "2026-07-31",
@@ -586,7 +715,10 @@
       "actual_next_day_09": 0.0,
       "diff": -767908.71,
       "diff_pct": "-100.00",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-07-30",
+      "stat_range_end": "2026-07-30"
     },
     {
       "run_date": "2026-07-30",
@@ -598,7 +730,10 @@
       "actual_next_day_09": 890765.61,
       "diff": -36054.21,
       "diff_pct": "-3.89",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-07-29",
+      "stat_range_end": "2026-07-29"
     },
     {
       "run_date": "2026-07-29",
@@ -610,7 +745,10 @@
       "actual_next_day_09": 786881.09,
       "diff": -65443.26,
       "diff_pct": "-7.68",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-07-28",
+      "stat_range_end": "2026-07-28"
     },
     {
       "run_date": "2026-07-28",
@@ -622,7 +760,10 @@
       "actual_next_day_09": 807407.44,
       "diff": null,
       "diff_pct": "",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-07-27",
+      "stat_range_end": "2026-07-27"
     },
     {
       "run_date": "2026-07-27",
@@ -634,7 +775,10 @@
       "actual_next_day_09": 1673821.24,
       "diff": null,
       "diff_pct": "",
-      "status": "compared"
+      "status": "compared",
+      "daily": [],
+      "stat_range_start": "2026-07-24",
+      "stat_range_end": "2026-07-26"
     }
   ],
   "predict": {
@@ -1268,7 +1412,8 @@
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": ""
+        "status": "",
+        "daily": []
       },
       {
         "run_date": "2026-09-04",
@@ -1283,7 +1428,8 @@
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": ""
+        "status": "",
+        "daily": []
       },
       {
         "run_date": "2026-09-07",
@@ -1298,7 +1444,24 @@
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": ""
+        "status": "",
+        "daily": [
+          {
+            "date": "2026-09-04",
+            "count": 0,
+            "amount": 0.0
+          },
+          {
+            "date": "2026-09-05",
+            "count": 0,
+            "amount": 0.0
+          },
+          {
+            "date": "2026-09-06",
+            "count": 0,
+            "amount": 0.0
+          }
+        ]
       },
       {
         "run_date": "2026-09-08",
@@ -1313,7 +1476,8 @@
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": ""
+        "status": "",
+        "daily": []
       },
       {
         "run_date": "2026-09-09",
@@ -1328,7 +1492,8 @@
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": ""
+        "status": "",
+        "daily": []
       },
       {
         "run_date": "2026-09-10",
@@ -1343,7 +1508,8 @@
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": ""
+        "status": "",
+        "daily": []
       },
       {
         "run_date": "2026-09-11",
@@ -1358,7 +1524,8 @@
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": ""
+        "status": "",
+        "daily": []
       },
       {
         "run_date": "2026-09-14",
@@ -1373,7 +1540,24 @@
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": ""
+        "status": "",
+        "daily": [
+          {
+            "date": "2026-09-11",
+            "count": 92,
+            "amount": 171917.08
+          },
+          {
+            "date": "2026-09-12",
+            "count": 59,
+            "amount": 154891.04
+          },
+          {
+            "date": "2026-09-13",
+            "count": 78,
+            "amount": 162960.07
+          }
+        ]
       },
       {
         "run_date": "2026-09-15",
@@ -1388,7 +1572,8 @@
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": ""
+        "status": "",
+        "daily": []
       },
       {
         "run_date": "2026-09-16",
@@ -1403,7 +1588,8 @@
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": ""
+        "status": "",
+        "daily": []
       },
       {
         "run_date": "2026-09-17",
@@ -1418,7 +1604,8 @@
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": ""
+        "status": "",
+        "daily": []
       },
       {
         "run_date": "2026-09-18",
@@ -1433,7 +1620,8 @@
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": ""
+        "status": "",
+        "daily": []
       },
       {
         "run_date": "2026-09-21",
@@ -1448,7 +1636,24 @@
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": ""
+        "status": "",
+        "daily": [
+          {
+            "date": "2026-09-18",
+            "count": 0,
+            "amount": 0.0
+          },
+          {
+            "date": "2026-09-19",
+            "count": 0,
+            "amount": 0.0
+          },
+          {
+            "date": "2026-09-20",
+            "count": 55,
+            "amount": 181780.98
+          }
+        ]
       },
       {
         "run_date": "2026-09-22",
@@ -1463,7 +1668,8 @@
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": ""
+        "status": "",
+        "daily": []
       },
       {
         "run_date": "2026-09-23",
@@ -1478,7 +1684,8 @@
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": ""
+        "status": "",
+        "daily": []
       },
       {
         "run_date": "2026-09-24",
@@ -1493,7 +1700,8 @@
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": ""
+        "status": "",
+        "daily": []
       },
       {
         "run_date": "2026-09-28",
@@ -1508,7 +1716,29 @@
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": ""
+        "status": "",
+        "daily": [
+          {
+            "date": "2026-09-24",
+            "count": 41,
+            "amount": 102700.18
+          },
+          {
+            "date": "2026-09-25",
+            "count": 23,
+            "amount": 153989.85
+          },
+          {
+            "date": "2026-09-26",
+            "count": 30,
+            "amount": 175401.74
+          },
+          {
+            "date": "2026-09-27",
+            "count": 43,
+            "amount": 80616.82
+          }
+        ]
       },
       {
         "run_date": "2026-09-29",
@@ -1523,7 +1753,8 @@
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": ""
+        "status": "",
+        "daily": []
       },
       {
         "run_date": "2026-09-30",
@@ -1538,7 +1769,8 @@
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": ""
+        "status": "",
+        "daily": []
       },
       {
         "run_date": "2026-10-08",
@@ -1553,7 +1785,49 @@
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": ""
+        "status": "",
+        "daily": [
+          {
+            "date": "2026-09-30",
+            "count": 17,
+            "amount": 134941.27
+          },
+          {
+            "date": "2026-10-01",
+            "count": 12,
+            "amount": 27285.55
+          },
+          {
+            "date": "2026-10-02",
+            "count": 10,
+            "amount": 14308.0
+          },
+          {
+            "date": "2026-10-03",
+            "count": 17,
+            "amount": 34668.35
+          },
+          {
+            "date": "2026-10-04",
+            "count": 13,
+            "amount": 20928.78
+          },
+          {
+            "date": "2026-10-05",
+            "count": 14,
+            "amount": 135965.19
+          },
+          {
+            "date": "2026-10-06",
+            "count": 8,
+            "amount": 17351.43
+          },
+          {
+            "date": "2026-10-07",
+            "count": 15,
+            "amount": 52825.0
+          }
+        ]
       },
       {
         "run_date": "2026-10-09",
@@ -1568,7 +1842,8 @@
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": ""
+        "status": "",
+        "daily": []
       },
       {
         "run_date": "2026-10-10",
@@ -1583,7 +1858,8 @@
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": ""
+        "status": "",
+        "daily": []
       },
       {
         "run_date": "2026-10-12",
@@ -1598,7 +1874,19 @@
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": ""
+        "status": "",
+        "daily": [
+          {
+            "date": "2026-10-10",
+            "count": 12,
+            "amount": 31271.8
+          },
+          {
+            "date": "2026-10-11",
+            "count": 20,
+            "amount": 33330.43
+          }
+        ]
       },
       {
         "run_date": "2026-10-13",
@@ -1613,7 +1901,8 @@
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": ""
+        "status": "",
+        "daily": []
       },
       {
         "run_date": "2026-10-14",
@@ -1628,7 +1917,8 @@
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": ""
+        "status": "",
+        "daily": []
       },
       {
         "run_date": "2026-10-15",
@@ -1643,7 +1933,8 @@
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": ""
+        "status": "",
+        "daily": []
       },
       {
         "run_date": "2026-10-16",
@@ -1658,7 +1949,8 @@
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": ""
+        "status": "",
+        "daily": []
       },
       {
         "run_date": "2026-10-19",
@@ -1673,7 +1965,24 @@
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": ""
+        "status": "",
+        "daily": [
+          {
+            "date": "2026-10-16",
+            "count": 37,
+            "amount": 128393.74
+          },
+          {
+            "date": "2026-10-17",
+            "count": 21,
+            "amount": 43705.44
+          },
+          {
+            "date": "2026-10-18",
+            "count": 38,
+            "amount": 85238.13
+          }
+        ]
       },
       {
         "run_date": "2026-10-20",
@@ -1688,7 +1997,8 @@
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": ""
+        "status": "",
+        "daily": []
       }
     ],
     "coefficient": {
