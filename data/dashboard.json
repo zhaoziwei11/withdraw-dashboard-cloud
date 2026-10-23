@@ -2,16 +2,16 @@
   "report": {
     "date": "2026-10-23",
     "generated_at": "2026-10-23 08:55:58",
-    "fail_generated_at": "2026-10-22 15:10:56",
-    "demand2_generated_at": "2026-10-22 15:11:17",
+    "fail_generated_at": "2026-10-23 15:11:00",
+    "demand2_generated_at": "2026-10-23 15:11:24",
     "source": "https://chengyun.91msl.com/financial-center/settlement-manage/carrier-withdrawal-manage",
     "stat_range": "创建时间 = 2026-10-22 ~ 2026-10-22",
     "pending_amount": 803639.23,
     "pending_count": 460,
     "all_amount": 803639.2300000004,
     "all_count": 460,
-    "fail_top3": "待补充(每天 15:10 任务执行后更新)",
-    "demand2_note": "待补充(每天 15:10 任务执行后更新)",
+    "fail_top3": "无提现失败",
+    "demand2_note": "当天 0~15 点待提现 <b>¥352,699.91</b> · 系数 <b>0.719747</b> · 预测当天全天(0~24) <b>¥490,033.18</b>",
     "coeff_active": {
       "coeff": 0.719747,
       "pooled": 0.727702,
@@ -22,6 +22,13 @@
     "partial_total": 3287694.19,
     "full_total": 4517911.45,
     "forecast_diff": [
+      {
+        "date": "2026-10-23",
+        "predicted": 490033.18,
+        "actual": null,
+        "diff": null,
+        "pct": null
+      },
       {
         "date": "2026-10-22",
         "predicted": 823757.03,
@@ -49,13 +56,6 @@
         "actual": null,
         "diff": null,
         "pct": null
-      },
-      {
-        "date": "2026-10-16",
-        "predicted": 418773.65,
-        "actual": 539885.99,
-        "diff": 121112.34,
-        "pct": "28.92%"
       }
     ]
   },
@@ -64,13 +64,13 @@
       "run_date": "2026-10-23",
       "pending_amount": 803639.23,
       "pending_count": 460,
-      "today_15": null,
-      "coefficient": "",
-      "predicted_full": null,
+      "today_15": 352699.91,
+      "coefficient": "0.7197",
+      "predicted_full": 490033.18,
       "actual_next_day_09": null,
       "diff": null,
       "diff_pct": "",
-      "status": "",
+      "status": "pending",
       "daily": [],
       "stat_range_start": "2026-10-22",
       "stat_range_end": "2026-10-22"
@@ -829,10 +829,10 @@
   "predict": {
     "today": "2026-10-23",
     "has_data": true,
-    "demand2_today_pending": null,
+    "demand2_today_pending": 352699.91,
     "coefficient": 0.719747,
-    "predicted_full": null,
-    "predict_mode": null,
+    "predicted_full": 490033.18,
+    "predict_mode": "weekday",
     "predict_breakdown": null,
     "coefficient_source": "2026-09-19 ~ 2026-10-18, 2198 行",
     "total_partial": 3287694.19,
@@ -883,6 +883,17 @@
     }
   },
   "forecast_diff": [
+    {
+      "predict_date": "2026-10-23",
+      "today_pending_15": 352699.91,
+      "coefficient": "0.719747",
+      "predicted_full": 490033.18,
+      "mode": "weekday",
+      "actual_next_day_09": null,
+      "diff": null,
+      "diff_pct": "",
+      "status": "pending"
+    },
     {
       "predict_date": "2026-10-22",
       "today_pending_15": 592896.65,
@@ -1382,9 +1393,9 @@
   "status": {
     "today": "2026-10-23",
     "report_exists": true,
-    "report_time": "2026-10-23 08:55:58",
+    "report_time": "2026-10-23 15:11:24",
     "pending_status": "已生成 ¥803,639.23 / 460 笔",
-    "fail_status": "未运行"
+    "fail_status": "无失败"
   },
   "settings": {
     "pending": {
