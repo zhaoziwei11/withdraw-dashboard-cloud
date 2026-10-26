@@ -1483,17 +1483,17 @@
   "_synced_from": "local-files-v2",
   "withdrawal": {
     "date": "2026-10-26",
-    "collected": false,
-    "collected_note": "今日(2026-10-26)尚未采集到提现管理数据，当前显示的是最近一次成功采集（运行日 2026-10-23）的值。最常见原因是提现管理站点登录态失效，需人工重新登录后补跑。",
-    "pending_amount": 254465.52,
-    "pending_count": 103,
-    "generated_at": "2026-10-23 08:57:03",
+    "collected": true,
+    "collected_note": null,
+    "pending_amount": 444059.88,
+    "pending_count": 163,
+    "generated_at": "2026-10-26 09:08:30",
     "fail_generated_at": "2026-10-23 15:12:18",
     "demand2_generated_at": "2026-10-23 15:13:12",
     "fail_top3": "待补充(每天 15:10 失败核查任务执行后更新)",
     "fail_records": [],
     "predict": null,
-    "stat_range": "创建时间 = 2026-10-22 ~ 2026-10-22",
+    "stat_range": "创建时间 = 2026-10-23 ~ 2026-10-25",
     "fail_stat_range": "创建时间 = 2026-10-23 ~ 2026-10-25",
     "history": [
       {
@@ -2139,11 +2139,43 @@
         "today_15": 104404.39,
         "coefficient": "0.609362",
         "predicted_full": 171333.94,
+        "actual_next_day_09": 444059.88,
+        "diff": 272725.94,
+        "diff_pct": "159.18",
+        "status": "compared",
+        "daily": []
+      },
+      {
+        "run_date": "2026-10-26",
+        "pending_amount": 444059.88,
+        "pending_count": 163,
+        "stat_range_start": "2026-10-23",
+        "stat_range_end": "2026-10-25",
+        "generated_at": "2026-10-26 09:08:30",
+        "today_15": null,
+        "coefficient": "",
+        "predicted_full": null,
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": "pending",
-        "daily": []
+        "status": "",
+        "daily": [
+          {
+            "date": "2026-10-23",
+            "count": 73,
+            "amount": 155204.03
+          },
+          {
+            "date": "2026-10-24",
+            "count": 47,
+            "amount": 115077.82
+          },
+          {
+            "date": "2026-10-25",
+            "count": 43,
+            "amount": 173778.03
+          }
+        ]
       }
     ],
     "coefficient": {
