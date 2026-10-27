@@ -1,17 +1,17 @@
 {
   "report": {
-    "date": "2026-10-26",
+    "date": "2026-10-27",
     "generated_at": "2026-10-26 09:07:01",
     "fail_generated_at": "2026-10-26 15:10:22",
     "demand2_generated_at": "2026-10-26 15:10:38",
     "source": "https://chengyun.91msl.com/financial-center/settlement-manage/carrier-withdrawal-manage",
-    "stat_range": "创建时间 = 2026-10-23 ~ 2026-10-25",
+    "stat_range": "创建时间 = 2026-10-26 ~ 2026-10-26",
     "pending_amount": 678384.18,
     "pending_count": 420,
-    "all_amount": 679000.3699999996,
-    "all_count": 421,
-    "fail_top3": "无提现失败",
-    "demand2_note": "当天 0~15 点待提现 <b>¥740,425.94</b> · 系数 <b>0.744037</b> · 预测周一算法(上周五~周日合计) <b>¥676,546.56</b>",
+    "all_amount": null,
+    "all_count": null,
+    "fail_top3": "待补充(每天 15:10 任务执行后更新)",
+    "demand2_note": "待补充(每天 15:10 任务执行后更新)",
     "coeff_active": {
       "coeff": 0.744037,
       "pooled": 0.728321,
@@ -858,21 +858,13 @@
     }
   ],
   "predict": {
-    "today": "2026-10-26",
-    "has_data": true,
-    "demand2_today_pending": 740425.94,
+    "today": "2026-10-27",
+    "has_data": false,
+    "demand2_today_pending": null,
     "coefficient": 0.744037,
-    "predicted_full": 676546.56,
-    "predict_mode": "monday",
-    "predict_breakdown": {
-      "fri_date": "2026-10-23",
-      "fri_partial": 352699.91,
-      "fri_full_pred": 474035.44,
-      "sat_date": "2026-10-24",
-      "sat_full": 119922.82,
-      "sun_date": "2026-10-25",
-      "sun_full": 82588.3
-    },
+    "predicted_full": null,
+    "predict_mode": null,
+    "predict_breakdown": null,
     "coefficient_source": "2026-09-26 ~ 2026-10-25, 3885 行",
     "total_partial": 5469744.03,
     "total_full": 7510074.18
@@ -1441,11 +1433,11 @@
     }
   ],
   "status": {
-    "today": "2026-10-26",
-    "report_exists": true,
-    "report_time": "2026-10-26 15:10:38",
-    "pending_status": "已生成 ¥678,384.18 / 420 笔",
-    "fail_status": "无失败"
+    "today": "2026-10-27",
+    "report_exists": false,
+    "report_time": null,
+    "pending_status": "未生成",
+    "fail_status": "未运行"
   },
   "settings": {
     "pending": {
@@ -1501,9 +1493,9 @@
   },
   "_synced_from": "local-files-v2",
   "withdrawal": {
-    "date": "2026-10-26",
-    "collected": true,
-    "collected_note": null,
+    "date": "2026-10-27",
+    "collected": false,
+    "collected_note": "今日(2026-10-27)尚未采集到提现管理数据，当前显示的是最近一次成功采集（运行日 2026-10-26）的值。最常见原因是提现管理站点登录态失效，需人工重新登录后补跑。",
     "pending_amount": 444059.88,
     "pending_count": 163,
     "generated_at": "2026-10-26 09:08:30",
@@ -1511,29 +1503,9 @@
     "demand2_generated_at": "2026-10-26 15:11:50",
     "fail_top3": "待补充(每天 15:10 失败核查任务执行后更新)",
     "fail_records": [],
-    "predict": {
-      "today": "2026-10-26",
-      "has_data": true,
-      "demand2_today_pending": 87978.48,
-      "coefficient": 0.631665,
-      "predicted_full": 454140.28,
-      "predict_mode": "monday",
-      "predict_input": 104404.39,
-      "predict_breakdown": {
-        "fri_date": "2026-10-23",
-        "fri_partial": 104404.39,
-        "fri_full_pred": 165284.43,
-        "sat_date": "2026-10-24",
-        "sat_full": 115077.82,
-        "sun_date": "2026-10-25",
-        "sun_full": 173778.03
-      },
-      "coefficient_source": "自动计算",
-      "total_partial": 87978.48,
-      "total_full": 454140.28
-    },
+    "predict": null,
     "stat_range": "创建时间 = 2026-10-23 ~ 2026-10-25",
-    "fail_stat_range": "创建时间 = 2026-10-23 ~ 2026-10-25",
+    "fail_stat_range": "创建时间 = 2026-10-26 ~ 2026-10-26",
     "history": [
       {
         "run_date": "2026-09-03",
