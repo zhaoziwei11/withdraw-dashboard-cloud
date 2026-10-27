@@ -2,7 +2,7 @@
   "report": {
     "date": "2026-10-27",
     "generated_at": "2026-10-27 09:31:53",
-    "fail_generated_at": "2026-10-27 15:10:28",
+    "fail_generated_at": "2026-10-27 17:45:46",
     "demand2_generated_at": "2026-10-27 15:10:50",
     "source": "https://chengyun.91msl.com/financial-center/settlement-manage/carrier-withdrawal-manage",
     "stat_range": "创建时间 = 2026-10-26 ~ 2026-10-26",
@@ -10,7 +10,7 @@
     "pending_count": 424,
     "all_amount": 1035022.4800000002,
     "all_count": 424,
-    "fail_top3": "无提现失败",
+    "fail_top3": "1. 司机姓名：刘清峰<br>手机号：15991112846<br>银行卡号：6228482928731809273<br>提现金额：¥2,800.00<br>交易状态：提现失败<br>失败原因：(页面未显示失败原因)<br><br>2. 司机姓名：康永<br>手机号：15129606016<br>银行卡号：6217004120009052941<br>提现金额：¥1,764.67<br>交易状态：提现失败<br>失败原因：(页面未显示失败原因)",
     "demand2_note": "当天 0~15 点待提现 <b>¥261,983.09</b> · 系数 <b>0.744037</b> · 预测当天全天(0~24) <b>¥352,110.30</b>",
     "coeff_active": {
       "coeff": 0.744037,
@@ -1461,9 +1461,9 @@
   "status": {
     "today": "2026-10-27",
     "report_exists": true,
-    "report_time": "2026-10-27 15:10:50",
+    "report_time": "2026-10-27 17:45:46",
     "pending_status": "已生成 ¥1,035,022.48 / 424 笔",
-    "fail_status": "无失败"
+    "fail_status": "有失败 (2 条)"
   },
   "settings": {
     "pending": {
