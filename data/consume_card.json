@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-10-28 17:27:54",
+  "generated_at": "2026-10-29 11:31:57",
   "accounts": {
-    "total_issued": 65023406.88,
-    "total_consumed": 63614227.7,
-    "total_balance": 1409179.18,
+    "total_issued": 65093297.13,
+    "total_consumed": 63710775.53,
+    "total_balance": 1382521.6,
     "card_count": 2,
     "cards": [
       {
         "company": "江西旭茂运输有限公司",
         "card_name": "旭茂消费卡",
         "stores": "",
-        "issued": 65023406.88,
-        "consumed": 63614227.7,
-        "balance": 1409179.18
+        "issued": 65093297.13,
+        "consumed": 63710775.53,
+        "balance": 1382521.6
       },
       {
         "company": "江西旭茂运输有限公司",
@@ -23,7 +23,7 @@
         "balance": 0.0
       }
     ],
-    "updated_at": "2026-10-28 17:27:20"
+    "updated_at": "2026-10-29 11:30:36"
   },
   "daily": [
     {
@@ -2803,9 +2803,25 @@
           "count": 121
         }
       ]
+    },
+    {
+      "date": "2026-10-28",
+      "card_amount": 88590.68,
+      "card_count": 87,
+      "balance_amount": 5401.0,
+      "balance_count": 6,
+      "total_amount": 93991.68,
+      "total_count": 93,
+      "types": [
+        {
+          "type": "商城消费",
+          "amount": 93991.68,
+          "count": 93
+        }
+      ]
     }
   ],
-  "stat_range": "2026-10-27 ~ 2026-10-27",
+  "stat_range": "2026-10-28 ~ 2026-10-28",
   "monthly": [
     {
       "month": "2025-01",
@@ -3293,22 +3309,22 @@
     {
       "month": "2026-10",
       "_auto": true,
-      "car_count": 21110,
-      "due_amount": 19766429.64,
-      "paid_freight": 17025338.63,
-      "pre_issued": 2741091.01,
+      "car_count": 21446,
+      "due_amount": 20090510.17,
+      "paid_freight": 17279528.91,
+      "pre_issued": 2810981.26,
       "_auto_from_settlement": true,
       "card_withdraw": 0.0,
-      "actual_issued": 2741091.01,
-      "issued_ratio": 0.138674,
-      "card_consume": 2166351.96,
-      "consume_ratio": 0.790325,
-      "card_daily7": 119754.43,
-      "balance_consume": 272019.06,
-      "balance_ratio": 0.015977,
-      "balance_daily7": 11444.77,
+      "actual_issued": 2810981.26,
+      "issued_ratio": 0.139916,
+      "card_consume": 2254942.64,
+      "consume_ratio": 0.802191,
+      "card_daily7": 113572.66,
+      "balance_consume": 277420.06,
+      "balance_ratio": 0.016055,
+      "balance_daily7": 8690.91,
       "invoiced": 0,
-      "uninvoiced": 2438371.02
+      "uninvoiced": 2532362.7
     }
   ],
   "seeded_at": "2026-09-11 11:48:57",
@@ -3695,6 +3711,20 @@
       "accounts_issued": 65023406.88,
       "accounts_consumed": 63614227.7,
       "accounts_balance": 1409179.18,
+      "status": "success",
+      "note": "车主结算单已更新"
+    },
+    {
+      "run_at": "2026-10-29 11:31:57",
+      "stat_range": "2026-10-28 ~ 2026-10-28",
+      "day_count": 1,
+      "card_amount": 88590.68,
+      "balance_amount": 5401.0,
+      "total_amount": 93991.68,
+      "total_count": 93,
+      "accounts_issued": 65093297.13,
+      "accounts_consumed": 63710775.53,
+      "accounts_balance": 1382521.6,
       "status": "success",
       "note": "车主结算单已更新"
     }
