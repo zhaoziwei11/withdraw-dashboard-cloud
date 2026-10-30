@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-30 11:31:58",
+  "generated_at": "2026-10-30 14:25:19",
   "accounts": {
     "total_issued": 65146187.1,
     "total_consumed": 63835227.11,
@@ -3330,11 +3330,11 @@
       "paid_freight": 17651244.56,
       "pre_issued": 2863871.23,
       "_auto_from_settlement": true,
-      "card_withdraw": 0.0,
-      "actual_issued": 2863871.23,
-      "issued_ratio": 0.139598,
+      "card_withdraw": 1054.04,
+      "actual_issued": 2862817.19,
+      "issued_ratio": 0.139547,
       "card_consume": 2388695.98,
-      "consume_ratio": 0.834079,
+      "consume_ratio": 0.834386,
       "card_daily7": 104518.27,
       "balance_consume": 282856.06,
       "balance_ratio": 0.016025,
