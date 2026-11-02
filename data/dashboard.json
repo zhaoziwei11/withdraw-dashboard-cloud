@@ -1637,11 +1637,11 @@
   "_synced_from": "local-files-v2",
   "withdrawal": {
     "date": "2026-11-02",
-    "collected": false,
-    "collected_note": "今日(2026-11-02)尚未采集到提现管理数据，当前显示的是最近一次成功采集（运行日 2026-10-30）的值。最常见原因是提现管理站点登录态失效，需人工重新登录后补跑。",
-    "pending_amount": 249868.8,
-    "pending_count": 46,
-    "generated_at": "2026-10-30 08:53:50",
+    "collected": true,
+    "collected_note": null,
+    "pending_amount": 794692.75,
+    "pending_count": 154,
+    "generated_at": "2026-11-02 09:50:03",
     "fail_generated_at": "2026-11-02 09:34:25",
     "demand2_generated_at": "2026-11-02 09:35:32",
     "fail_top3": "待补充(每天 15:10 失败核查任务执行后更新)",
@@ -1667,7 +1667,7 @@
       "total_partial": 87103.07,
       "total_full": 454140.28
     },
-    "stat_range": "创建时间 = 2026-10-29 ~ 2026-10-29",
+    "stat_range": "创建时间 = 2026-10-30 ~ 2026-11-01",
     "fail_stat_range": "创建时间 = 2026-10-30 ~ 2026-11-01",
     "history": [
       {
@@ -2409,11 +2409,43 @@
         "today_15": 157151.08,
         "coefficient": "0.631665",
         "predicted_full": 248788.65,
+        "actual_next_day_09": 794692.75,
+        "diff": 545904.1,
+        "diff_pct": "219.42",
+        "status": "compared",
+        "daily": []
+      },
+      {
+        "run_date": "2026-11-02",
+        "pending_amount": 794692.75,
+        "pending_count": 154,
+        "stat_range_start": "2026-10-30",
+        "stat_range_end": "2026-11-01",
+        "generated_at": "2026-11-02 09:50:03",
+        "today_15": 104404.39,
+        "coefficient": "0.631665",
+        "predicted_full": 454140.28,
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
         "status": "pending",
-        "daily": []
+        "daily": [
+          {
+            "date": "2026-10-30",
+            "count": 32,
+            "amount": 254485.89
+          },
+          {
+            "date": "2026-10-31",
+            "count": 53,
+            "amount": 216396.05
+          },
+          {
+            "date": "2026-11-01",
+            "count": 69,
+            "amount": 323810.81
+          }
+        ]
       }
     ],
     "coefficient": {
