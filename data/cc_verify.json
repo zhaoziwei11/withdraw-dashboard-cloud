@@ -1,21 +1,23 @@
 {
-  "generated_at": "2026-11-02 09:33:56",
+  "generated_at": "2026-11-02 13:10:53",
   "ok": false,
   "summary": {
-    "months_checked": 22,
+    "months_checked": 23,
     "ok": 21,
     "lag": 0,
-    "diff": 1,
+    "diff": 2,
     "issue_months": [
-      "2026-10"
+      "2026-10",
+      "2026-11"
     ],
     "diff_months": [
-      "2026-10"
+      "2026-10",
+      "2026-11"
     ],
-    "page_snapshot": "2026-10-30 14:25:19",
-    "card_csv_snapshot": "2026-10-30 13:02:37",
-    "balance_csv_snapshot": "2026-10-30 13:02:38",
-    "settle_csv_snapshot": "2026-10-30 13:04:10",
+    "page_snapshot": "2026-11-02 11:32:12",
+    "card_csv_snapshot": "2026-11-02 13:10:36",
+    "balance_csv_snapshot": "2026-11-02 13:10:36",
+    "settle_csv_snapshot": "2026-11-02 13:09:15",
     "daily_covered_from": "2026-03"
   },
   "checks": [
@@ -744,8 +746,8 @@
         {
           "key": "card",
           "label": "消费卡消费金额",
-          "page": 2388695.98,
-          "detail": 2388695.98,
+          "page": 2529425.1,
+          "detail": 2529425.1,
           "diff": 0.0,
           "kind": "ok",
           "note": ""
@@ -753,8 +755,8 @@
         {
           "key": "balance",
           "label": "余额消费金额",
-          "page": 282856.06,
-          "detail": 282856.06,
+          "page": 305058.06,
+          "detail": 305058.06,
           "diff": 0.0,
           "kind": "ok",
           "note": ""
@@ -763,27 +765,27 @@
           "key": "pre_issued",
           "label": "消费卡预发放金额",
           "page": 2863871.23,
-          "detail": 2887738.53,
-          "diff": -23867.3,
+          "detail": 2864821.4,
+          "diff": -950.17,
           "kind": "diff",
           "note": "页面预发放与车主结算单明细不一致，需要核查"
         },
         {
           "key": "card_served",
           "label": "消费卡消费金额（对比 Pages 导出文件）",
-          "page": 2388695.98,
+          "page": 2529425.1,
           "detail": 2388695.98,
-          "diff": 0.0,
-          "kind": "ok",
+          "diff": 140729.12,
+          "kind": "diff",
           "note": "直接读用户点「导出明细」下载到的那份 xlsx（同一 URL）"
         },
         {
           "key": "balance_served",
           "label": "余额消费金额（对比 Pages 导出文件）",
-          "page": 282856.06,
+          "page": 305058.06,
           "detail": 282856.06,
-          "diff": 0.0,
-          "kind": "ok",
+          "diff": 22202.0,
+          "kind": "diff",
           "note": "直接读用户点「导出明细」下载到的那份 xlsx（同一 URL）"
         },
         {
@@ -802,10 +804,81 @@
           "key": "pre_issued",
           "label": "消费卡预发放金额",
           "page": 2863871.23,
-          "detail": 2887738.53,
-          "diff": -23867.3,
+          "detail": 2864821.4,
+          "diff": -950.17,
           "kind": "diff",
           "note": "页面预发放与车主结算单明细不一致，需要核查"
+        }
+      ]
+    },
+    {
+      "month": "2026-11",
+      "cells": [
+        {
+          "key": "card",
+          "label": "消费卡消费金额",
+          "page": 34859.0,
+          "detail": 0.0,
+          "diff": 34859.0,
+          "kind": "lag",
+          "note": "页面与每日数据一致（34,859.00），是明细 CSV 快照滞后"
+        },
+        {
+          "key": "balance",
+          "label": "余额消费金额",
+          "page": 0.0,
+          "detail": 0.0,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
+        },
+        {
+          "key": "pre_issued",
+          "label": "消费卡预发放金额",
+          "page": 162173.28,
+          "detail": 119017.85,
+          "diff": 43155.43,
+          "kind": "diff",
+          "note": "页面预发放与车主结算单明细不一致，需要核查"
+        },
+        {
+          "key": "balance_vs_daily",
+          "label": "余额消费金额（对比每日合计）",
+          "page": 0.0,
+          "detail": 2861.0,
+          "diff": -2861.0,
+          "kind": "diff",
+          "note": "页面月度与每日数据自相矛盾（同一次生成的 JSON 内部不一致）"
+        }
+      ],
+      "status": "diff",
+      "issues": [
+        {
+          "key": "card",
+          "label": "消费卡消费金额",
+          "page": 34859.0,
+          "detail": 0.0,
+          "diff": 34859.0,
+          "kind": "lag",
+          "note": "页面与每日数据一致（34,859.00），是明细 CSV 快照滞后"
+        },
+        {
+          "key": "pre_issued",
+          "label": "消费卡预发放金额",
+          "page": 162173.28,
+          "detail": 119017.85,
+          "diff": 43155.43,
+          "kind": "diff",
+          "note": "页面预发放与车主结算单明细不一致，需要核查"
+        },
+        {
+          "key": "balance_vs_daily",
+          "label": "余额消费金额（对比每日合计）",
+          "page": 0.0,
+          "detail": 2861.0,
+          "diff": -2861.0,
+          "kind": "diff",
+          "note": "页面月度与每日数据自相矛盾（同一次生成的 JSON 内部不一致）"
         }
       ]
     }
@@ -918,8 +991,13 @@
     },
     "2026-10": {
       "exists": true,
-      "mtime": "2026-10-30 13:06:38",
-      "size": 4862219
+      "mtime": "2026-11-02 13:10:12",
+      "size": 4910203
+    },
+    "2026-11": {
+      "exists": false,
+      "mtime": "",
+      "size": 0
     }
   },
   "served": {
