@@ -1,23 +1,22 @@
 {
-  "generated_at": "2026-11-02 13:10:53",
+  "generated_at": "2026-11-03 13:10:36",
   "ok": false,
   "summary": {
     "months_checked": 23,
     "ok": 21,
-    "lag": 0,
-    "diff": 2,
+    "lag": 1,
+    "diff": 1,
     "issue_months": [
       "2026-10",
       "2026-11"
     ],
     "diff_months": [
-      "2026-10",
-      "2026-11"
+      "2026-10"
     ],
-    "page_snapshot": "2026-11-02 11:32:12",
-    "card_csv_snapshot": "2026-11-02 13:10:36",
-    "balance_csv_snapshot": "2026-11-02 13:10:36",
-    "settle_csv_snapshot": "2026-11-02 13:09:15",
+    "page_snapshot": "2026-11-03 11:32:12",
+    "card_csv_snapshot": "2026-11-03 13:01:13",
+    "balance_csv_snapshot": "2026-11-03 13:01:13",
+    "settle_csv_snapshot": "2026-11-03 13:02:14",
     "daily_covered_from": "2026-03"
   },
   "checks": [
@@ -774,8 +773,8 @@
           "key": "card_served",
           "label": "消费卡消费金额（对比 Pages 导出文件）",
           "page": 2529425.1,
-          "detail": 2388695.98,
-          "diff": 140729.12,
+          "detail": 2530479.14,
+          "diff": -1054.04,
           "kind": "diff",
           "note": "直接读用户点「导出明细」下载到的那份 xlsx（同一 URL）"
         },
@@ -783,17 +782,17 @@
           "key": "balance_served",
           "label": "余额消费金额（对比 Pages 导出文件）",
           "page": 305058.06,
-          "detail": 282856.06,
-          "diff": 22202.0,
-          "kind": "diff",
+          "detail": 305058.06,
+          "diff": 0.0,
+          "kind": "ok",
           "note": "直接读用户点「导出明细」下载到的那份 xlsx（同一 URL）"
         },
         {
           "key": "pre_issued_served",
           "label": "消费卡预发放金额（对比 Pages 导出文件）",
           "page": 2863871.23,
-          "detail": 2887738.53,
-          "diff": -23867.3,
+          "detail": 2864821.4,
+          "diff": -950.17,
           "kind": "diff",
           "note": "直接读用户点「导出明细」下载到的那份 xlsx（同一 URL）"
         }
@@ -817,17 +816,17 @@
         {
           "key": "card",
           "label": "消费卡消费金额",
-          "page": 34859.0,
-          "detail": 0.0,
-          "diff": 34859.0,
-          "kind": "lag",
-          "note": "页面与每日数据一致（34,859.00），是明细 CSV 快照滞后"
+          "page": 80105.7,
+          "detail": 80105.7,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": ""
         },
         {
           "key": "balance",
           "label": "余额消费金额",
-          "page": 0.0,
-          "detail": 0.0,
+          "page": 7338.0,
+          "detail": 7338.0,
           "diff": 0.0,
           "kind": "ok",
           "note": ""
@@ -835,50 +834,50 @@
         {
           "key": "pre_issued",
           "label": "消费卡预发放金额",
-          "page": 162173.28,
-          "detail": 119017.85,
-          "diff": 43155.43,
-          "kind": "diff",
-          "note": "页面预发放与车主结算单明细不一致，需要核查"
+          "page": 218894.09,
+          "detail": 226144.28,
+          "diff": -7250.19,
+          "kind": "lag",
+          "note": "消费卡预发放（结算池）为采集时点快照，当月当日新结算单尚未全部进入池；明细 CSV 含全量，故页面预发放 ≤ 明细（差 -7,250.19）。属采集时点差，次日自动收敛"
         },
         {
-          "key": "balance_vs_daily",
-          "label": "余额消费金额（对比每日合计）",
-          "page": 0.0,
-          "detail": 2861.0,
-          "diff": -2861.0,
-          "kind": "diff",
-          "note": "页面月度与每日数据自相矛盾（同一次生成的 JSON 内部不一致）"
+          "key": "card_served",
+          "label": "消费卡消费金额（对比 Pages 导出文件）",
+          "page": 80105.7,
+          "detail": 80105.7,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": "直接读用户点「导出明细」下载到的那份 xlsx（同一 URL）"
+        },
+        {
+          "key": "balance_served",
+          "label": "余额消费金额（对比 Pages 导出文件）",
+          "page": 7338.0,
+          "detail": 7338.0,
+          "diff": 0.0,
+          "kind": "ok",
+          "note": "直接读用户点「导出明细」下载到的那份 xlsx（同一 URL）"
+        },
+        {
+          "key": "pre_issued_served",
+          "label": "消费卡预发放金额（对比 Pages 导出文件）",
+          "page": 218894.09,
+          "detail": 226144.28,
+          "diff": -7250.19,
+          "kind": "lag",
+          "note": "直接读用户点「导出明细」下载到的那份 xlsx（同一 URL）"
         }
       ],
-      "status": "diff",
+      "status": "lag",
       "issues": [
-        {
-          "key": "card",
-          "label": "消费卡消费金额",
-          "page": 34859.0,
-          "detail": 0.0,
-          "diff": 34859.0,
-          "kind": "lag",
-          "note": "页面与每日数据一致（34,859.00），是明细 CSV 快照滞后"
-        },
         {
           "key": "pre_issued",
           "label": "消费卡预发放金额",
-          "page": 162173.28,
-          "detail": 119017.85,
-          "diff": 43155.43,
-          "kind": "diff",
-          "note": "页面预发放与车主结算单明细不一致，需要核查"
-        },
-        {
-          "key": "balance_vs_daily",
-          "label": "余额消费金额（对比每日合计）",
-          "page": 0.0,
-          "detail": 2861.0,
-          "diff": -2861.0,
-          "kind": "diff",
-          "note": "页面月度与每日数据自相矛盾（同一次生成的 JSON 内部不一致）"
+          "page": 218894.09,
+          "detail": 226144.28,
+          "diff": -7250.19,
+          "kind": "lag",
+          "note": "消费卡预发放（结算池）为采集时点快照，当月当日新结算单尚未全部进入池；明细 CSV 含全量，故页面预发放 ≤ 明细（差 -7,250.19）。属采集时点差，次日自动收敛"
         }
       ]
     }
@@ -991,31 +990,42 @@
     },
     "2026-10": {
       "exists": true,
-      "mtime": "2026-11-02 13:10:12",
-      "size": 4910203
+      "mtime": "2026-11-03 13:03:24",
+      "size": 4968605
     },
     "2026-11": {
-      "exists": false,
-      "mtime": "",
-      "size": 0
+      "exists": true,
+      "mtime": "2026-11-03 13:03:27",
+      "size": 371284
     }
   },
   "served": {
     "2026-11": {
-      "_error": "HTTP Error 404: Not Found"
+      "消费卡收支明细统计": {
+        "sum": 80105.7,
+        "rows": 92
+      },
+      "马上来旗舰版账户": {
+        "sum": 7338.0,
+        "rows": 10
+      },
+      "车主结算单": {
+        "sum": 226144.28,
+        "rows": 1766
+      }
     },
     "2026-10": {
       "消费卡收支明细统计": {
-        "sum": 2388695.98,
-        "rows": 2613
+        "sum": 2530479.14,
+        "rows": 2765
       },
       "马上来旗舰版账户": {
-        "sum": 282856.06,
-        "rows": 259
+        "sum": 305058.06,
+        "rows": 267
       },
       "车主结算单": {
-        "sum": 2887738.53,
-        "rows": 22703
+        "sum": 2864821.4,
+        "rows": 23192
       }
     }
   },
