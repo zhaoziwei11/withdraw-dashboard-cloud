@@ -1,17 +1,17 @@
 {
   "report": {
-    "date": "2026-11-05",
+    "date": "2026-11-06",
     "generated_at": "2026-11-05 08:52:15",
     "fail_generated_at": "2026-11-04 15:10:23",
     "demand2_generated_at": "2026-11-05 15:11:17",
     "source": "https://chengyun.91msl.com/financial-center/settlement-manage/carrier-withdrawal-manage",
-    "stat_range": "创建时间 = 2026-11-04 ~ 2026-11-04",
+    "stat_range": "创建时间 = 2026-11-05 ~ 2026-11-05",
     "pending_amount": 196040.3,
     "pending_count": 141,
-    "all_amount": 196040.30000000002,
-    "all_count": 141,
-    "fail_top3": "1. 司机姓名：白永康<br>手机号：18220989823<br>银行卡号：6228482948729200277<br>提现金额：¥1,335.24<br>交易状态：提现失败<br>失败原因：(页面未显示失败原因)",
-    "demand2_note": "当天 0~15 点待提现 <b>¥235,952.19</b> · 系数 <b>0.723577</b> · 预测当天全天(0~24) <b>¥326,091.34</b>",
+    "all_amount": null,
+    "all_count": null,
+    "fail_top3": "待补充(每天 15:10 任务执行后更新)",
+    "demand2_note": "待补充(每天 15:10 任务执行后更新)",
     "coeff_active": {
       "coeff": 0.723577,
       "pooled": 0.724685,
@@ -994,12 +994,12 @@
     }
   ],
   "predict": {
-    "today": "2026-11-05",
-    "has_data": true,
-    "demand2_today_pending": 235952.19,
+    "today": "2026-11-06",
+    "has_data": false,
+    "demand2_today_pending": null,
     "coefficient": 0.723577,
-    "predicted_full": 326091.34,
-    "predict_mode": "weekday",
+    "predicted_full": null,
+    "predict_mode": null,
     "predict_breakdown": null,
     "coefficient_source": "2026-10-03 ~ 2026-11-01, 4688 行",
     "total_partial": 6776522.38,
@@ -1646,11 +1646,11 @@
     }
   ],
   "status": {
-    "today": "2026-11-05",
-    "report_exists": true,
-    "report_time": "2026-11-05 15:11:17",
-    "pending_status": "已生成 ¥196,040.30 / 141 笔",
-    "fail_status": "有失败 (1 条)"
+    "today": "2026-11-06",
+    "report_exists": false,
+    "report_time": null,
+    "pending_status": "未生成",
+    "fail_status": "未运行"
   },
   "settings": {
     "pending": {
@@ -1706,9 +1706,9 @@
   },
   "_synced_from": "local-files-v2",
   "withdrawal": {
-    "date": "2026-11-05",
-    "collected": true,
-    "collected_note": null,
+    "date": "2026-11-06",
+    "collected": false,
+    "collected_note": "今日(2026-11-06)尚未采集到提现管理数据，当前显示的是最近一次成功采集（运行日 2026-11-05）的值。最常见原因是提现管理站点登录态失效，需人工重新登录后补跑。",
     "pending_amount": 173670.13,
     "pending_count": 57,
     "generated_at": "2026-11-05 08:53:16",
@@ -1716,21 +1716,9 @@
     "demand2_generated_at": "2026-11-05 15:13:01",
     "fail_top3": "待补充(每天 15:10 失败核查任务执行后更新)",
     "fail_records": [],
-    "predict": {
-      "today": "2026-11-05",
-      "has_data": true,
-      "demand2_today_pending": 99017.3,
-      "coefficient": 0.609989,
-      "predicted_full": 162326.37,
-      "predict_mode": "weekday",
-      "predict_input": 99017.3,
-      "predict_breakdown": null,
-      "coefficient_source": "自动计算",
-      "total_partial": 99017.3,
-      "total_full": 162326.37
-    },
+    "predict": null,
     "stat_range": "创建时间 = 2026-11-04 ~ 2026-11-04",
-    "fail_stat_range": "创建时间 = 2026-11-04 ~ 2026-11-04",
+    "fail_stat_range": "创建时间 = 2026-11-05 ~ 2026-11-05",
     "history": [
       {
         "run_date": "2026-09-03",
