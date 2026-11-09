@@ -13,14 +13,14 @@
     "fail_top3": "待补充(每天 15:10 任务执行后更新)",
     "demand2_note": "待补充(每天 15:10 任务执行后更新)",
     "coeff_active": {
-      "coeff": 0.723577,
-      "pooled": 0.724685,
-      "range": "2026-10-03 ~ 2026-11-01",
+      "coeff": 0.717471,
+      "pooled": 0.721106,
+      "range": "2026-10-10 ~ 2026-11-08",
       "days": 30,
-      "rows": 4688
+      "rows": 5053
     },
-    "partial_total": 6776522.38,
-    "full_total": 9350992.77,
+    "partial_total": 6406202.47,
+    "full_total": 8883861.45,
     "forecast_diff": [
       {
         "date": "2026-11-06",
@@ -1043,55 +1043,55 @@
     "today": "2026-11-09",
     "has_data": true,
     "demand2_today_pending": null,
-    "coefficient": 0.723577,
+    "coefficient": 0.717471,
     "predicted_full": null,
     "predict_mode": null,
     "predict_breakdown": null,
-    "coefficient_source": "2026-10-03 ~ 2026-11-01, 4688 行",
-    "total_partial": 6776522.38,
-    "total_full": 9350992.77
+    "coefficient_source": "2026-10-10 ~ 2026-11-08, 5053 行",
+    "total_partial": 6406202.47,
+    "total_full": 8883861.45
   },
   "coefficient": {
     "active": "1m",
     "sets": {
       "1m": {
         "label": "近1月",
-        "coeff": 0.723577,
-        "coeff_all": 0.689198,
-        "coeff_weekday": 0.723577,
-        "pooled": 0.724685,
-        "range": "2026-10-03 ~ 2026-11-01",
+        "coeff": 0.717471,
+        "coeff_all": 0.701179,
+        "coeff_weekday": 0.717471,
+        "pooled": 0.721106,
+        "range": "2026-10-10 ~ 2026-11-08",
         "days": 30,
-        "rows": 4688,
-        "total_partial": 6776522.38,
-        "total_full": 9350992.77,
-        "computed_at": "2026-11-02T10:01:07.578268"
+        "rows": 5053,
+        "total_partial": 6406202.47,
+        "total_full": 8883861.45,
+        "computed_at": "2026-11-09T10:01:06.278305"
       },
       "2m": {
         "label": "近2月",
-        "coeff": 0.705077,
-        "coeff_all": 0.658463,
-        "coeff_weekday": 0.705077,
-        "pooled": 0.711285,
-        "range": "2026-09-03 ~ 2026-11-01",
+        "coeff": 0.706739,
+        "coeff_all": 0.666064,
+        "coeff_weekday": 0.706739,
+        "pooled": 0.718136,
+        "range": "2026-09-10 ~ 2026-11-08",
         "days": 60,
-        "rows": 6405,
-        "total_partial": 9020041.31,
-        "total_full": 12681326.88,
-        "computed_at": "2026-11-02T10:01:07.578268"
+        "rows": 6864,
+        "total_partial": 9390861.47,
+        "total_full": 13076715.71,
+        "computed_at": "2026-11-09T10:01:06.278305"
       },
       "3m": {
         "label": "近3月",
-        "coeff": 0.689699,
-        "coeff_all": 0.658765,
-        "coeff_weekday": 0.689699,
-        "pooled": 0.701203,
-        "range": "2026-08-04 ~ 2026-11-01",
+        "coeff": 0.693564,
+        "coeff_all": 0.658558,
+        "coeff_weekday": 0.693564,
+        "pooled": 0.703953,
+        "range": "2026-08-11 ~ 2026-11-08",
         "days": 90,
-        "rows": 10307,
-        "total_partial": 14925421.46,
-        "total_full": 21285462.31,
-        "computed_at": "2026-11-02T10:01:07.578268"
+        "rows": 10534,
+        "total_partial": 14788100.92,
+        "total_full": 21007228.66,
+        "computed_at": "2026-11-09T10:01:06.278305"
       }
     }
   },
@@ -2656,42 +2656,42 @@
       "sets": {
         "1m": {
           "label": "1m",
-          "coeff": 0.609989,
-          "coeff_all": 0.601502,
-          "coeff_weekday": 0.609989,
-          "pooled": 0.624556,
-          "range": "2026-10-03 ~ 2026-11-01",
+          "coeff": 0.597279,
+          "coeff_all": 0.593376,
+          "coeff_weekday": 0.597279,
+          "pooled": 0.60148,
+          "range": "2026-10-10 ~ 2026-11-08",
           "days": 30,
-          "rows": 1207,
-          "total_partial": 2342659.24,
-          "total_full": 3750918.94,
-          "computed_at": "2026-11-02T10:13:09.754500"
+          "rows": 1548,
+          "total_partial": 2716910.77,
+          "total_full": 4517045.49,
+          "computed_at": "2026-11-09T10:13:29.264784"
         },
         "2m": {
           "label": "2m",
-          "coeff": 0.602946,
-          "coeff_all": 0.595967,
-          "coeff_weekday": 0.602946,
-          "pooled": 0.614422,
-          "range": "2026-09-16 ~ 2026-11-01",
-          "days": 47,
+          "coeff": 0.600897,
+          "coeff_all": 0.58299,
+          "coeff_weekday": 0.600897,
+          "pooled": 0.604355,
+          "range": "2026-09-22 ~ 2026-11-08",
+          "days": 48,
           "rows": 1990,
-          "total_partial": 4090680.96,
-          "total_full": 6657766.31,
-          "computed_at": "2026-11-02T10:13:09.754500"
+          "total_partial": 3778689.45,
+          "total_full": 6252434.61,
+          "computed_at": "2026-11-09T10:13:29.264784"
         },
         "3m": {
           "label": "3m",
-          "coeff": 0.602946,
-          "coeff_all": 0.595967,
-          "coeff_weekday": 0.602946,
-          "pooled": 0.614422,
-          "range": "2026-09-16 ~ 2026-11-01",
-          "days": 47,
+          "coeff": 0.600897,
+          "coeff_all": 0.58299,
+          "coeff_weekday": 0.600897,
+          "pooled": 0.604355,
+          "range": "2026-09-22 ~ 2026-11-08",
+          "days": 48,
           "rows": 1990,
-          "total_partial": 4090680.96,
-          "total_full": 6657766.31,
-          "computed_at": "2026-11-02T10:13:09.754500"
+          "total_partial": 3778689.45,
+          "total_full": 6252434.61,
+          "computed_at": "2026-11-09T10:13:29.264784"
         }
       }
     },
