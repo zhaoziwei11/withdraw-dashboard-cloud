@@ -1,15 +1,15 @@
 {
   "report": {
     "date": "2026-11-10",
-    "generated_at": "2026-11-09 09:09:26",
+    "generated_at": "2026-11-10 08:55:25",
     "fail_generated_at": "2026-11-09 15:10:26",
     "demand2_generated_at": "2026-11-09 15:10:49",
     "source": "https://chengyun.91msl.com/financial-center/settlement-manage/carrier-withdrawal-manage",
     "stat_range": "创建时间 = 2026-11-09 ~ 2026-11-09",
-    "pending_amount": 193646.36,
-    "pending_count": 159,
-    "all_amount": null,
-    "all_count": null,
+    "pending_amount": 1091290.17,
+    "pending_count": 402,
+    "all_amount": 1091290.1699999995,
+    "all_count": 402,
     "fail_top3": "1. 司机姓名：张三涛<br>手机号：13468870005<br>银行卡号：6221807900001840083<br>提现金额：¥630.01<br>交易状态：提现失败<br>失败原因：收款账户为II、III类账户，超过年度限额",
     "demand2_note": "待补充(每天 15:10 任务执行后更新)",
     "coeff_active": {
@@ -60,6 +60,21 @@
     ]
   },
   "history": [
+    {
+      "run_date": "2026-11-10",
+      "pending_amount": 1091290.17,
+      "pending_count": 402,
+      "today_15": null,
+      "coefficient": "",
+      "predicted_full": null,
+      "actual_next_day_09": null,
+      "diff": null,
+      "diff_pct": "",
+      "status": "",
+      "daily": [],
+      "stat_range_start": "2026-11-09",
+      "stat_range_end": "2026-11-09"
+    },
     {
       "run_date": "2026-11-09",
       "pending_amount": 193646.36,
@@ -1041,7 +1056,7 @@
   ],
   "predict": {
     "today": "2026-11-10",
-    "has_data": false,
+    "has_data": true,
     "demand2_today_pending": null,
     "coefficient": 0.717471,
     "predicted_full": null,
@@ -1715,10 +1730,10 @@
   ],
   "status": {
     "today": "2026-11-10",
-    "report_exists": false,
-    "report_time": null,
-    "pending_status": "未生成",
-    "fail_status": "未运行"
+    "report_exists": true,
+    "report_time": "2026-11-10 08:55:25",
+    "pending_status": "已生成 ¥1,091,290.17 / 402 笔",
+    "fail_status": "有失败 (1 条)"
   },
   "settings": {
     "pending": {
