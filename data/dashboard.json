@@ -1884,22 +1884,34 @@
     "pending_amount": 1611982.15,
     "pending_count": 109,
     "generated_at": "2026-11-13 08:56:10",
-    "fail_generated_at": "2026-11-12 15:11:14",
-    "demand2_generated_at": "2026-11-12 15:12:10",
-    "fail_top3": "1. 司机姓名：-<br>手机号：-<br>银行卡号：6217991710003837407<br>提现金额：¥2,078.61<br>交易状态：失败<br>失败原因：(页面未显示失败原因)",
+    "fail_generated_at": "2026-11-13 15:11:16",
+    "demand2_generated_at": "2026-11-13 15:12:10",
+    "fail_top3": "1. 司机姓名：-<br>手机号：-<br>银行卡号：6228481668620282874<br>提现金额：¥1,125.00<br>交易状态：失败<br>失败原因：(页面未显示失败原因)",
     "fail_records": [
       {
         "driver_name": "",
         "phone": "",
-        "card": "6217991710003837407",
-        "amount": 2078.61,
+        "card": "6228481668620282874",
+        "amount": 1125.0,
         "status": "失败",
         "reason": "(页面未显示失败原因)"
       }
     ],
-    "predict": null,
+    "predict": {
+      "today": "2026-11-13",
+      "has_data": true,
+      "demand2_today_pending": 109715.78,
+      "coefficient": 0.597279,
+      "predicted_full": 183692.68,
+      "predict_mode": "weekday",
+      "predict_input": 109715.78,
+      "predict_breakdown": null,
+      "coefficient_source": "自动计算",
+      "total_partial": 109715.78,
+      "total_full": 183692.68
+    },
     "stat_range": "创建时间 = 2026-11-12 ~ 2026-11-12",
-    "fail_stat_range": "创建时间 = 2026-11-11 ~ 2026-11-11",
+    "fail_stat_range": "创建时间 = 2026-11-12 ~ 2026-11-12",
     "history": [
       {
         "run_date": "2026-09-03",
@@ -2829,13 +2841,13 @@
         "stat_range_start": "2026-11-12",
         "stat_range_end": "2026-11-12",
         "generated_at": "2026-11-13 08:56:10",
-        "today_15": null,
-        "coefficient": "",
-        "predicted_full": null,
+        "today_15": 109715.78,
+        "coefficient": "0.597279",
+        "predicted_full": 183692.68,
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": "",
+        "status": "pending",
         "daily": []
       }
     ],
