@@ -1,33 +1,33 @@
 {
   "report": {
     "date": "2026-11-16",
-    "generated_at": "2026-11-13 08:54:59",
+    "generated_at": "2026-11-16 09:47:15",
     "fail_generated_at": "2026-11-13 15:10:27",
     "demand2_generated_at": "2026-11-13 15:10:50",
     "source": "https://chengyun.91msl.com/financial-center/settlement-manage/carrier-withdrawal-manage",
     "stat_range": "创建时间 = 2026-11-13 ~ 2026-11-15",
-    "pending_amount": 591998.79,
-    "pending_count": 345,
-    "all_amount": null,
-    "all_count": null,
+    "pending_amount": 578030.23,
+    "pending_count": 377,
+    "all_amount": 578030.2300000003,
+    "all_count": 377,
     "fail_top3": "待补充(每天 15:10 任务执行后更新)",
     "demand2_note": "待补充(每天 15:10 任务执行后更新)",
     "coeff_active": {
-      "coeff": 0.717471,
-      "pooled": 0.721106,
-      "range": "2026-10-10 ~ 2026-11-08",
+      "coeff": 0.736182,
+      "pooled": 0.739402,
+      "range": "2026-10-17 ~ 2026-11-15",
       "days": 30,
-      "rows": 5053
+      "rows": 5840
     },
-    "partial_total": 6406202.47,
-    "full_total": 8883861.45,
+    "partial_total": 7876660.18,
+    "full_total": 10652742.79,
     "forecast_diff": [
       {
         "date": "2026-11-13",
         "predicted": 479000.52,
-        "actual": null,
-        "diff": null,
-        "pct": null
+        "actual": 578030.23,
+        "diff": 99029.71,
+        "pct": "20.67%"
       },
       {
         "date": "2026-11-12",
@@ -61,16 +61,47 @@
   },
   "history": [
     {
+      "run_date": "2026-11-16",
+      "pending_amount": 578030.23,
+      "pending_count": 377,
+      "today_15": null,
+      "coefficient": "",
+      "predicted_full": null,
+      "actual_next_day_09": null,
+      "diff": null,
+      "diff_pct": "",
+      "status": "",
+      "daily": [
+        {
+          "date": "2026-11-13",
+          "count": 297,
+          "amount": 445505.19
+        },
+        {
+          "date": "2026-11-14",
+          "count": 46,
+          "amount": 68843.36
+        },
+        {
+          "date": "2026-11-15",
+          "count": 34,
+          "amount": 63681.68
+        }
+      ],
+      "stat_range_start": "2026-11-13",
+      "stat_range_end": "2026-11-15"
+    },
+    {
       "run_date": "2026-11-13",
       "pending_amount": 591998.79,
       "pending_count": 345,
       "today_15": 343668.98,
       "coefficient": "0.7175",
       "predicted_full": 479000.52,
-      "actual_next_day_09": null,
-      "diff": null,
-      "diff_pct": "",
-      "status": "pending",
+      "actual_next_day_09": 578030.23,
+      "diff": 99029.71,
+      "diff_pct": "20.67",
+      "status": "compared",
       "daily": [],
       "stat_range_start": "2026-11-12",
       "stat_range_end": "2026-11-12"
@@ -1101,57 +1132,57 @@
   ],
   "predict": {
     "today": "2026-11-16",
-    "has_data": false,
+    "has_data": true,
     "demand2_today_pending": null,
-    "coefficient": 0.717471,
+    "coefficient": 0.736182,
     "predicted_full": null,
     "predict_mode": null,
     "predict_breakdown": null,
-    "coefficient_source": "2026-10-10 ~ 2026-11-08, 5053 行",
-    "total_partial": 6406202.47,
-    "total_full": 8883861.45
+    "coefficient_source": "2026-10-17 ~ 2026-11-15, 5840 行",
+    "total_partial": 7876660.18,
+    "total_full": 10652742.79
   },
   "coefficient": {
     "active": "1m",
     "sets": {
       "1m": {
         "label": "近1月",
-        "coeff": 0.717471,
-        "coeff_all": 0.701179,
-        "coeff_weekday": 0.717471,
-        "pooled": 0.721106,
-        "range": "2026-10-10 ~ 2026-11-08",
+        "coeff": 0.736182,
+        "coeff_all": 0.712243,
+        "coeff_weekday": 0.736182,
+        "pooled": 0.739402,
+        "range": "2026-10-17 ~ 2026-11-15",
         "days": 30,
-        "rows": 5053,
-        "total_partial": 6406202.47,
-        "total_full": 8883861.45,
-        "computed_at": "2026-11-09T10:01:06.278305"
+        "rows": 5840,
+        "total_partial": 7876660.18,
+        "total_full": 10652742.79,
+        "computed_at": "2026-11-16T09:35:23.762259"
       },
       "2m": {
         "label": "近2月",
-        "coeff": 0.706739,
-        "coeff_all": 0.666064,
-        "coeff_weekday": 0.706739,
-        "pooled": 0.718136,
-        "range": "2026-09-10 ~ 2026-11-08",
+        "coeff": 0.723077,
+        "coeff_all": 0.671385,
+        "coeff_weekday": 0.723077,
+        "pooled": 0.734894,
+        "range": "2026-09-17 ~ 2026-11-15",
         "days": 60,
-        "rows": 6864,
-        "total_partial": 9390861.47,
-        "total_full": 13076715.71,
-        "computed_at": "2026-11-09T10:01:06.278305"
+        "rows": 8074,
+        "total_partial": 11189933.38,
+        "total_full": 15226597.09,
+        "computed_at": "2026-11-16T09:35:23.762259"
       },
       "3m": {
         "label": "近3月",
-        "coeff": 0.693564,
-        "coeff_all": 0.658558,
-        "coeff_weekday": 0.693564,
-        "pooled": 0.703953,
-        "range": "2026-08-11 ~ 2026-11-08",
+        "coeff": 0.710437,
+        "coeff_all": 0.666203,
+        "coeff_weekday": 0.710437,
+        "pooled": 0.720357,
+        "range": "2026-08-18 ~ 2026-11-15",
         "days": 90,
-        "rows": 10534,
-        "total_partial": 14788100.92,
-        "total_full": 21007228.66,
-        "computed_at": "2026-11-09T10:01:06.278305"
+        "rows": 11354,
+        "total_partial": 16350916.33,
+        "total_full": 22698346.85,
+        "computed_at": "2026-11-16T09:35:23.762259"
       }
     }
   },
@@ -1162,10 +1193,10 @@
       "coefficient": "0.717471",
       "predicted_full": 479000.52,
       "mode": "weekday",
-      "actual_next_day_09": null,
-      "diff": null,
-      "diff_pct": "",
-      "status": "pending"
+      "actual_next_day_09": 578030.23,
+      "diff": 99029.71,
+      "diff_pct": "20.67",
+      "status": "compared"
     },
     {
       "predict_date": "2026-11-12",
@@ -1819,9 +1850,9 @@
   ],
   "status": {
     "today": "2026-11-16",
-    "report_exists": false,
-    "report_time": null,
-    "pending_status": "未生成",
+    "report_exists": true,
+    "report_time": "2026-11-16 09:47:15",
+    "pending_status": "已生成 ¥578,030.23 / 377 笔",
     "fail_status": "未运行"
   },
   "settings": {
