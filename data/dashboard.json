@@ -1156,7 +1156,7 @@
         "rows": 5840,
         "total_partial": 7876660.18,
         "total_full": 10652742.79,
-        "computed_at": "2026-11-16T09:35:23.762259"
+        "computed_at": "2026-11-16T10:01:29.535922"
       },
       "2m": {
         "label": "近2月",
@@ -1169,7 +1169,7 @@
         "rows": 8074,
         "total_partial": 11189933.38,
         "total_full": 15226597.09,
-        "computed_at": "2026-11-16T09:35:23.762259"
+        "computed_at": "2026-11-16T10:01:29.535922"
       },
       "3m": {
         "label": "近3月",
@@ -1182,7 +1182,7 @@
         "rows": 11354,
         "total_partial": 16350916.33,
         "total_full": 22698346.85,
-        "computed_at": "2026-11-16T09:35:23.762259"
+        "computed_at": "2026-11-16T10:01:29.535922"
       }
     }
   },
@@ -2898,42 +2898,42 @@
       "sets": {
         "1m": {
           "label": "1m",
-          "coeff": 0.597279,
-          "coeff_all": 0.593376,
-          "coeff_weekday": 0.597279,
-          "pooled": 0.60148,
-          "range": "2026-10-10 ~ 2026-11-08",
+          "coeff": 0.657398,
+          "coeff_all": 0.639159,
+          "coeff_weekday": 0.657398,
+          "pooled": 0.762156,
+          "range": "2026-10-17 ~ 2026-11-15",
           "days": 30,
-          "rows": 1548,
-          "total_partial": 2716910.77,
-          "total_full": 4517045.49,
-          "computed_at": "2026-11-09T10:13:29.264784"
+          "rows": 1899,
+          "total_partial": 11975176.31,
+          "total_full": 15712235.6,
+          "computed_at": "2026-11-16T10:14:51.278858"
         },
         "2m": {
           "label": "2m",
-          "coeff": 0.600897,
-          "coeff_all": 0.58299,
-          "coeff_weekday": 0.600897,
-          "pooled": 0.604355,
-          "range": "2026-09-22 ~ 2026-11-08",
-          "days": 48,
+          "coeff": 0.652417,
+          "coeff_all": 0.636875,
+          "coeff_weekday": 0.652417,
+          "pooled": 0.759439,
+          "range": "2026-10-15 ~ 2026-11-15",
+          "days": 32,
           "rows": 1990,
-          "total_partial": 3778689.45,
-          "total_full": 6252434.61,
-          "computed_at": "2026-11-09T10:13:29.264784"
+          "total_partial": 12132311.78,
+          "total_full": 15975359.56,
+          "computed_at": "2026-11-16T10:14:51.278858"
         },
         "3m": {
           "label": "3m",
-          "coeff": 0.600897,
-          "coeff_all": 0.58299,
-          "coeff_weekday": 0.600897,
-          "pooled": 0.604355,
-          "range": "2026-09-22 ~ 2026-11-08",
-          "days": 48,
+          "coeff": 0.652417,
+          "coeff_all": 0.636875,
+          "coeff_weekday": 0.652417,
+          "pooled": 0.759439,
+          "range": "2026-10-15 ~ 2026-11-15",
+          "days": 32,
           "rows": 1990,
-          "total_partial": 3778689.45,
-          "total_full": 6252434.61,
-          "computed_at": "2026-11-09T10:13:29.264784"
+          "total_partial": 12132311.78,
+          "total_full": 15975359.56,
+          "computed_at": "2026-11-16T10:14:51.278858"
         }
       }
     },
