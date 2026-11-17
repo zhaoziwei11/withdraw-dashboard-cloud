@@ -1953,7 +1953,7 @@
     "pending_count": 64,
     "generated_at": "2026-11-17 08:57:48",
     "fail_generated_at": "2026-11-16 15:11:48",
-    "demand2_generated_at": "2026-11-16 15:12:38",
+    "demand2_generated_at": "2026-11-17 15:13:10",
     "fail_top3": "1. 司机姓名：-<br>手机号：-<br>银行卡号：6228481668626535770<br>提现金额：¥582.94<br>交易状态：失败<br>失败原因：(页面未显示失败原因)<br><br>2. 司机姓名：-<br>手机号：-<br>银行卡号：6228481668620282874<br>提现金额：¥1,125.00<br>交易状态：失败<br>失败原因：(页面未显示失败原因)",
     "fail_records": [
       {
@@ -1973,7 +1973,19 @@
         "reason": "(页面未显示失败原因)"
       }
     ],
-    "predict": null,
+    "predict": {
+      "today": "2026-11-17",
+      "has_data": true,
+      "demand2_today_pending": 99107.05,
+      "coefficient": 0.657398,
+      "predicted_full": 150756.54,
+      "predict_mode": "weekday",
+      "predict_input": 99107.05,
+      "predict_breakdown": null,
+      "coefficient_source": "自动计算",
+      "total_partial": 99107.05,
+      "total_full": 150756.54
+    },
     "stat_range": "创建时间 = 2026-11-16 ~ 2026-11-16",
     "fail_stat_range": "创建时间 = 2026-11-13 ~ 2026-11-15",
     "history": [
@@ -2953,13 +2965,13 @@
         "stat_range_start": "2026-11-16",
         "stat_range_end": "2026-11-16",
         "generated_at": "2026-11-17 08:57:48",
-        "today_15": null,
-        "coefficient": "",
-        "predicted_full": null,
+        "today_15": 99107.05,
+        "coefficient": "0.657398",
+        "predicted_full": 150756.54,
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": "",
+        "status": "pending",
         "daily": []
       }
     ],
