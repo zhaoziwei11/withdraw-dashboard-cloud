@@ -2150,22 +2150,42 @@
     "pending_amount": 240487.82,
     "pending_count": 123,
     "generated_at": "2026-11-26 08:52:31",
-    "fail_generated_at": "2026-11-25 15:11:46",
-    "demand2_generated_at": "2026-11-25 15:12:44",
-    "fail_top3": "1. 司机姓名：-<br>手机号：-<br>银行卡号：6217991710002059359<br>提现金额：¥1,894.12<br>交易状态：失败<br>失败原因：(页面未显示失败原因)",
+    "fail_generated_at": "2026-11-26 15:11:53",
+    "demand2_generated_at": "2026-11-26 15:12:51",
+    "fail_top3": "1. 司机姓名：-<br>手机号：-<br>银行卡号：6230521660029640875<br>提现金额：¥11,012.00<br>交易状态：失败<br>失败原因：(页面未显示失败原因)<br><br>2. 司机姓名：-<br>手机号：-<br>银行卡号：6217991710002059359<br>提现金额：¥1,902.00<br>交易状态：失败<br>失败原因：(页面未显示失败原因)",
     "fail_records": [
       {
         "driver_name": "",
         "phone": "",
+        "card": "6230521660029640875",
+        "amount": 11012.0,
+        "status": "失败",
+        "reason": "(页面未显示失败原因)"
+      },
+      {
+        "driver_name": "",
+        "phone": "",
         "card": "6217991710002059359",
-        "amount": 1894.12,
+        "amount": 1902.0,
         "status": "失败",
         "reason": "(页面未显示失败原因)"
       }
     ],
-    "predict": null,
+    "predict": {
+      "today": "2026-11-26",
+      "has_data": true,
+      "demand2_today_pending": 282486.26,
+      "coefficient": 0.641926,
+      "predicted_full": 440060.47,
+      "predict_mode": "weekday",
+      "predict_input": 282486.26,
+      "predict_breakdown": null,
+      "coefficient_source": "自动计算",
+      "total_partial": 282486.26,
+      "total_full": 440060.47
+    },
     "stat_range": "创建时间 = 2026-11-25 ~ 2026-11-25",
-    "fail_stat_range": "创建时间 = 2026-11-24 ~ 2026-11-24",
+    "fail_stat_range": "创建时间 = 2026-11-25 ~ 2026-11-25",
     "history": [
       {
         "run_date": "2026-09-03",
@@ -3271,13 +3291,13 @@
         "stat_range_start": "2026-11-25",
         "stat_range_end": "2026-11-25",
         "generated_at": "2026-11-26 08:52:31",
-        "today_15": null,
-        "coefficient": "",
-        "predicted_full": null,
+        "today_15": 282486.26,
+        "coefficient": "0.641926",
+        "predicted_full": 440060.47,
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": "",
+        "status": "pending",
         "daily": []
       }
     ],
