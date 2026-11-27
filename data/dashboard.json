@@ -2160,11 +2160,11 @@
   "_synced_from": "local-files-v2",
   "withdrawal": {
     "date": "2026-11-27",
-    "collected": false,
-    "collected_note": "今日(2026-11-27)尚未采集到提现管理数据，当前显示的是最近一次成功采集（运行日 2026-11-26）的值。最常见原因是提现管理站点登录态失效，需人工重新登录后补跑。",
-    "pending_amount": 240487.82,
-    "pending_count": 123,
-    "generated_at": "2026-11-26 08:52:31",
+    "collected": true,
+    "collected_note": null,
+    "pending_amount": 386127.01,
+    "pending_count": 113,
+    "generated_at": "2026-11-27 08:54:00",
     "fail_generated_at": "2026-11-26 15:11:53",
     "demand2_generated_at": "2026-11-26 15:12:51",
     "fail_top3": "1. 司机姓名：-<br>手机号：-<br>银行卡号：6230521660029640875<br>提现金额：¥11,012.00<br>交易状态：失败<br>失败原因：(页面未显示失败原因)<br><br>2. 司机姓名：-<br>手机号：-<br>银行卡号：6217991710002059359<br>提现金额：¥1,902.00<br>交易状态：失败<br>失败原因：(页面未显示失败原因)",
@@ -2187,7 +2187,7 @@
       }
     ],
     "predict": null,
-    "stat_range": "创建时间 = 2026-11-25 ~ 2026-11-25",
+    "stat_range": "创建时间 = 2026-11-26 ~ 2026-11-26",
     "fail_stat_range": "创建时间 = 2026-11-25 ~ 2026-11-25",
     "history": [
       {
@@ -3297,10 +3297,26 @@
         "today_15": 282486.26,
         "coefficient": "0.641926",
         "predicted_full": 440060.47,
+        "actual_next_day_09": 386127.01,
+        "diff": -53933.46,
+        "diff_pct": "-12.26",
+        "status": "compared",
+        "daily": []
+      },
+      {
+        "run_date": "2026-11-27",
+        "pending_amount": 386127.01,
+        "pending_count": 113,
+        "stat_range_start": "2026-11-26",
+        "stat_range_end": "2026-11-26",
+        "generated_at": "2026-11-27 08:54:00",
+        "today_15": null,
+        "coefficient": "",
+        "predicted_full": null,
         "actual_next_day_09": null,
         "diff": null,
         "diff_pct": "",
-        "status": "pending",
+        "status": "",
         "daily": []
       }
     ],
